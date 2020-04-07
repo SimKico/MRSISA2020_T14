@@ -2,15 +2,7 @@ import React from "react";
 import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <a className="App-link" href="http://localhost:8080/test/hello">
-          EClinic demo
-        </a>
-      </header>
-    </div>
-  );
+  return (window.location.href = "http://localhost:8080/test/hello");
 }
 
 export default App;
