@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <a className="App-link" href="http://localhost:8080/test/hello">
-          Learn React
+          EClinic demo
         </a>
       </header>
     </div>
