@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Korisnik
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid 46306310-94bd-4f4e-85d3-f1f044684e7f */

@@ -4,17 +4,12 @@
  * Purpose: Defines the Class AdminKlinike
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid cfa93a6a-92d5-4426-ba2d-acecb1b0ace1 */
 public class AdminKlinike extends Korisnik {
    /** @pdRoleInfo migr=no name=Klinika assc=association3 mult=1..1 */
    public Klinika klinika;
-   /** @pdRoleInfo migr=no name=TipPregleda assc=association6 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
-   public java.util.Collection<TipPregleda> tipPregleda;
-   /** @pdRoleInfo migr=no name=Ljekar assc=association8 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
-   public java.util.Collection<Ljekar> ljekar;
    /** @pdRoleInfo migr=no name=ZahtjeviZaOdsustvo assc=association19 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<ZahtjeviZaOdsustvo> zahtjeviZaOdsustvo;
    /** @pdRoleInfo migr=no name=ZahtjeviZaSale assc=association20 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
@@ -23,102 +18,6 @@ public class AdminKlinike extends Korisnik {
    public java.util.Collection<Operacija> operacija;
    
    
-   /** @pdGenerated default getter */
-   public java.util.Collection<TipPregleda> getTipPregleda() {
-      if (tipPregleda == null)
-         tipPregleda = new java.util.HashSet<TipPregleda>();
-      return tipPregleda;
-   }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorTipPregleda() {
-      if (tipPregleda == null)
-         tipPregleda = new java.util.HashSet<TipPregleda>();
-      return tipPregleda.iterator();
-   }
-   
-   /** @pdGenerated default setter
-     * @param newTipPregleda */
-   public void setTipPregleda(java.util.Collection<TipPregleda> newTipPregleda) {
-      removeAllTipPregleda();
-      for (java.util.Iterator iter = newTipPregleda.iterator(); iter.hasNext();)
-         addTipPregleda((TipPregleda)iter.next());
-   }
-   
-   /** @pdGenerated default add
-     * @param newTipPregleda */
-   public void addTipPregleda(TipPregleda newTipPregleda) {
-      if (newTipPregleda == null)
-         return;
-      if (this.tipPregleda == null)
-         this.tipPregleda = new java.util.HashSet<TipPregleda>();
-      if (!this.tipPregleda.contains(newTipPregleda))
-         this.tipPregleda.add(newTipPregleda);
-   }
-   
-   /** @pdGenerated default remove
-     * @param oldTipPregleda */
-   public void removeTipPregleda(TipPregleda oldTipPregleda) {
-      if (oldTipPregleda == null)
-         return;
-      if (this.tipPregleda != null)
-         if (this.tipPregleda.contains(oldTipPregleda))
-            this.tipPregleda.remove(oldTipPregleda);
-   }
-   
-   /** @pdGenerated default removeAll */
-   public void removeAllTipPregleda() {
-      if (tipPregleda != null)
-         tipPregleda.clear();
-   }
-   /** @pdGenerated default getter */
-   public java.util.Collection<Ljekar> getLjekar() {
-      if (ljekar == null)
-         ljekar = new java.util.HashSet<Ljekar>();
-      return ljekar;
-   }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorLjekar() {
-      if (ljekar == null)
-         ljekar = new java.util.HashSet<Ljekar>();
-      return ljekar.iterator();
-   }
-   
-   /** @pdGenerated default setter
-     * @param newLjekar */
-   public void setLjekar(java.util.Collection<Ljekar> newLjekar) {
-      removeAllLjekar();
-      for (java.util.Iterator iter = newLjekar.iterator(); iter.hasNext();)
-         addLjekar((Ljekar)iter.next());
-   }
-   
-   /** @pdGenerated default add
-     * @param newLjekar */
-   public void addLjekar(Ljekar newLjekar) {
-      if (newLjekar == null)
-         return;
-      if (this.ljekar == null)
-         this.ljekar = new java.util.HashSet<Ljekar>();
-      if (!this.ljekar.contains(newLjekar))
-         this.ljekar.add(newLjekar);
-   }
-   
-   /** @pdGenerated default remove
-     * @param oldLjekar */
-   public void removeLjekar(Ljekar oldLjekar) {
-      if (oldLjekar == null)
-         return;
-      if (this.ljekar != null)
-         if (this.ljekar.contains(oldLjekar))
-            this.ljekar.remove(oldLjekar);
-   }
-   
-   /** @pdGenerated default removeAll */
-   public void removeAllLjekar() {
-      if (ljekar != null)
-         ljekar.clear();
-   }
    /** @pdGenerated default getter */
    public java.util.Collection<ZahtjeviZaOdsustvo> getZahtjeviZaOdsustvo() {
       if (zahtjeviZaOdsustvo == null)

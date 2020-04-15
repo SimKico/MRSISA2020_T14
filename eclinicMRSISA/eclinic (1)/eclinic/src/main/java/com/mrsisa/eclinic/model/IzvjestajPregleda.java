@@ -4,7 +4,6 @@
  * Purpose: Defines the Class IzvjestajPregleda
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid 4240c0d2-69f6-4c4e-9143-625832f3b188 */
@@ -14,5 +13,7 @@ public class IzvjestajPregleda {
    
    /** @pdRoleInfo migr=no name=Pregled assc=association30 mult=1..1 */
    public Pregled pregled;
+   /** @pdRoleInfo migr=no name=Dijagnoza assc=association45 mult=1..1 */
+   public Dijagnoza dijagnoza;
 
 }

@@ -4,7 +4,6 @@
  * Purpose: Defines the Class ZahtjeviZaOdsustvo
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid ffe636a4-fcc2-429c-86ab-528e308a7f24 */
@@ -15,5 +14,7 @@ public class ZahtjeviZaOdsustvo {
    private Date kraj;
    /** @pdOid 45a72fda-b93f-4cac-bddb-6777462771aa */
    private Odsustvo tipOdsustva;
+   /** @pdOid dbf21a27-d084-436f-b049-d0e39e8280be */
+   private boolean prihvacen;
 
 }

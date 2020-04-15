@@ -4,7 +4,6 @@
  * Purpose: Defines the Class ZdravstveniKarton
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid bbfeb6a0-a610-4d56-9bbc-3685831862e7 */

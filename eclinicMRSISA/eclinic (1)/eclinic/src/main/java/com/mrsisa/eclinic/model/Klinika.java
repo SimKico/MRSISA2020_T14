@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Klinika
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid a879aab1-3e55-40a1-9cfb-bd26efc9dec7 */
@@ -22,7 +21,7 @@ public class Klinika {
    public java.util.Collection<Sala> sala;
    /** @pdRoleInfo migr=no name=TipPregleda assc=association10 coll=java.util.Collection impl=java.util.HashSet mult=1..* */
    public java.util.Collection<TipPregleda> tipPregleda;
-   /** @pdRoleInfo migr=no name=Pregled assc=association11 coll=java.util.Collection impl=java.util.HashSet mult=1..* */
+   /** @pdRoleInfo migr=no name=Pregled assc=association11 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<Pregled> pregled;
    /** @pdRoleInfo migr=no name=AdminKlinike assc=association3 mult=1..* side=A */
    public AdminKlinike[] adminKlinike;

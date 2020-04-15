@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Sala
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid 806678b6-67b3-4f3d-b159-c7c8a81df461 */

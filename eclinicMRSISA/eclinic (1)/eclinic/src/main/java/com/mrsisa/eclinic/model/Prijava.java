@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Prijava
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid eb1dab53-e698-4ee0-9069-17053809915b */

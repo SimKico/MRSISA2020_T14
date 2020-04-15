@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Ljekar
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid 7ab969cc-9306-4ee8-a505-d2df0aac2c42 */
@@ -17,8 +16,5 @@ public class Ljekar extends Korisnik {
    private String dodatneInfo;
    /** @pdOid f29b07a1-1f8b-4fef-8689-5478d81d01de */
    private String radnoVrijeme;
-   
-   /** @pdRoleInfo migr=no name=SifarnikDijagnoza assc=association15 mult=1..1 side=A */
-   public SifarnikDijagnoza sifarnikDijagnoza;
 
 }

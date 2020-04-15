@@ -4,11 +4,10 @@
  * Purpose: Defines the Class AdminKlinickogCentra
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
+import java.util.*;
 
 /** @pdOid 159a66c6-e139-481b-b23a-0e1b29a20361 */
 public class AdminKlinickogCentra extends Korisnik {
-   /** @pdRoleInfo migr=no name=SifarnikDijagnoza assc=association13 mult=1..1 */
-   public SifarnikDijagnoza sifarnikDijagnoza;
    /** @pdRoleInfo migr=no name=ZahtjeviZaRegistraciju assc=association21 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<ZahtjeviZaRegistraciju> zahtjeviZaRegistraciju;
    

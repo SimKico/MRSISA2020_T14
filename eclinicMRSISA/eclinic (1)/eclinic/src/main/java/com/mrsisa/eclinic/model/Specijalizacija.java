@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Specijalizacija
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid b4a20b2f-8f58-4665-8293-546569806177 */

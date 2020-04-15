@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Pregled
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid 8ae40554-59e7-47f5-8a70-7a7be18186e4 */
@@ -12,13 +11,11 @@ public class Pregled {
    /** @pdOid c06d2242-8a35-4481-9d3f-2620d3121331 */
    private Date datum;
    /** @pdOid 9f5d08fa-5010-4e8a-98d3-380e0a544f42 */
-   private int trajanje;
+   private int popust;
    /** @pdOid 0022ba4d-f962-47cc-9eeb-3bb9028fcef9 */
    private Date vrijemePocetka;
-   /** @pdOid 59626d41-0360-413d-9cc8-5e5679c8a62f */
-   private boolean odrzan;
-   /** @pdOid bc3b55b4-6c30-45a6-b72d-49f98e89252e */
-   private boolean slobodan;
+   /** @pdOid 96f20362-57db-4d37-965f-ed022187d8c9 */
+   private StatusPregleda status;
    
    /** @pdRoleInfo migr=no name=TipPregleda assc=association4 mult=1..1 */
    public TipPregleda tipPregleda;

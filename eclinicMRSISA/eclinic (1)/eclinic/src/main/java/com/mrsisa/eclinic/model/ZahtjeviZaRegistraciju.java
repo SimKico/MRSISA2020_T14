@@ -4,11 +4,12 @@
  * Purpose: Defines the Class ZahtjeviZaRegistraciju
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid cfd58906-5c2d-403f-8742-279cd0f41d0b */
 public class ZahtjeviZaRegistraciju {
+   /** @pdOid 3310a970-e9db-46e1-9506-65ad9baf2023 */
+   private boolean prihvacen;
    /** @pdOid 382fe20f-0fcb-4de6-86ae-32abf359d14b */
    private int idZahtjeva;
    /** @pdOid 30a791e8-1354-4075-8043-24314f69fa8d */

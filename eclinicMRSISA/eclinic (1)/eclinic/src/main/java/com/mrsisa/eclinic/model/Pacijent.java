@@ -4,7 +4,6 @@
  * Purpose: Defines the Class Pacijent
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
 import java.util.*;
 
 /** @pdOid fc011767-4f4c-4b79-9b74-ba22cca58e27 */
