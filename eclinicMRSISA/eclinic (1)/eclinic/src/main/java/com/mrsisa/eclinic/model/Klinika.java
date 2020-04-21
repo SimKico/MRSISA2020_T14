@@ -4,7 +4,9 @@
  * Purpose: Defines the Class Klinika
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import static javax.persistence.CascadeType.ALL;
 
 /** @pdOid a879aab1-3e55-40a1-9cfb-bd26efc9dec7 */
 public class Klinika {
@@ -24,6 +26,7 @@ public class Klinika {
    /** @pdRoleInfo migr=no name=Pregled assc=association11 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<Pregled> pregled;
    /** @pdRoleInfo migr=no name=AdminKlinike assc=association3 mult=1..* side=A */
+   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "adminKlinike")
    public AdminKlinike[] adminKlinike;
    
    
