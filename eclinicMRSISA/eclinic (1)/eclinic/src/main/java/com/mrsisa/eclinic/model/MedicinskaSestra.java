@@ -6,6 +6,10 @@
 package com.mrsisa.eclinic.model;
 import java.util.*;
 
-/** @pdOid 4ce9fbda-9909-4c8e-8574-fe59b4ca7e65 */
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("MS")
 public class MedicinskaSestra extends Korisnik {
 }

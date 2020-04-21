@@ -6,22 +6,105 @@
 package com.mrsisa.eclinic.model;
 import java.util.*;
 
-/** @pdOid 46306310-94bd-4f4e-85d3-f1f044684e7f */
-public class Korisnik {
-   /** @pdOid 7e0fc6ac-53ed-45f6-8618-461125a674c9 */
+import static javax.persistence.DiscriminatorType.STRING;
+import static javax.persistence.InheritanceType.SINGLE_TABLE;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="tabela_korisnika")
+//jedna tabela po hijerarhiji
+@Inheritance(strategy=SINGLE_TABLE)
+//diskriminaciona kolona - pomocu koje znamo je li doktor, med. sestra...
+@DiscriminatorColumn(name="type", discriminatorType=STRING)
+abstract class Korisnik {
+   
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   @Column(name="id", unique=true, nullable=false)
+   private Long id;
+	
+   @Column(name="aktivan", unique=false, nullable=false)
    private boolean aktivan;
-   /** @pdOid 13c9439a-fe4c-42a8-990c-c8e8f9da0973 */
+   
+   @Column(name="ime", unique=false, nullable=false)
    private String ime;
-   /** @pdOid ece066bf-9a91-431a-8a84-1727ef776b56 */
+   
+   @Column(name="prezime", unique=false, nullable=false)
    private String prezime;
    
-   /** @pdRoleInfo migr=no name=Prijava assc=association1 mult=1..1 type=Composition */
+   @OneToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name="prijava_id", referencedColumnName="eadresa")
    public Prijava prijava;
    
-   /** @pdOid 9ee47e41-7648-4f60-bd3c-a5d4841d3b78 */
+   
    public boolean prijava() {
       // TODO: implement
       return false;
    }
+
+
+	public Long getId() {
+		return id;
+	}
+	
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+	public boolean isAktivan() {
+		return aktivan;
+	}
+	
+	
+	public void setAktivan(boolean aktivan) {
+		this.aktivan = aktivan;
+	}
+	
+	
+	public String getIme() {
+		return ime;
+	}
+	
+	
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
+	
+	
+	public String getPrezime() {
+		return prezime;
+	}
+	
+	
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
+	}
+	
+	
+	public Prijava getPrijava() {
+		return prijava;
+	}
+	
+	
+	public void setPrijava(Prijava prijava) {
+		this.prijava = prijava;
+	}
+	   
+   
 
 }
