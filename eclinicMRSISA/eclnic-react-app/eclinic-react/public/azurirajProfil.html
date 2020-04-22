@@ -1,17 +1,21 @@
-<html>
-  <head>
-    <title>E-Clinic : Moj profil</title>
-  </head>
-  <body>
-    <script>
-      function azuriraj() {
-        return (window.location.href =
-       //   "http://localhost:8080/profilPacijenta/azurirajProfil");
-      }
-    </script>
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Moj profil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+        <div class = "wrapper">
+            <div class = "logo">
+                <img src="sign.png" alt="">
+            </div>
+        </div>
 
-    <table>
-      <tr>
+        <div class = "welcome-text">
+         
+          <table class = "table1">
+          <tr>
         <td class="labela" width="300px">Ime:</td>
         <td class="podaci">Snjezana</td>
       </tr>
@@ -50,18 +54,12 @@
         <td class="labela">E-mail adresa:</td>
         <td class="podaci">s.snjezana@outlook.com</td>
       </tr>
-
-      <tr>
-        <td>
-          <br />
-          <input
-            type="button"
-            name="Ažuriraj"
-            value="Ažuriraj"
-            onclick="azuriraj()"
-          />
-        </td>
-      </tr>
     </table>
-  </body>
+
+          <a href = "#">Odustani</a>
+          <a href = "#">Sačuvaj izmjene</a>
+          
+    </div>
+  </header>
+</body>
 </html>
