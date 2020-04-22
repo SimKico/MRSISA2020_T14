@@ -4,31 +4,53 @@
  * Purpose: Defines the Class ZahtjeviZaRegistraciju
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-/** @pdOid cfd58906-5c2d-403f-8742-279cd0f41d0b */
+@Entity
+@Table(name="zahtjevi_registracija")
 public class ZahtjeviZaRegistraciju {
-   /** @pdOid 3310a970-e9db-46e1-9506-65ad9baf2023 */
-   private boolean prihvacen;
-   /** @pdOid 382fe20f-0fcb-4de6-86ae-32abf359d14b */
+  
+   
+   
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   @Column(name="reg_id", unique=true, nullable=false)
    private int idZahtjeva;
-   /** @pdOid 30a791e8-1354-4075-8043-24314f69fa8d */
+   
+   @Column(name="eadresa", unique=true, nullable=false)
    private String eAdresa;
-   /** @pdOid db9a424b-18ab-4c6d-bdbb-c3bf33137340 */
+   
+   @Column(name="lozinka", unique=true, nullable=false)
    private String lozinka;
-   /** @pdOid c58a9039-9553-4edf-8a0b-6b8555acdafc */
+   
+   @Column(name="ime", unique=true, nullable=false)
    private String ime;
-   /** @pdOid f1ea0111-64e4-48f8-8a30-130ebe5162a8 */
+   
+   @Column(name="prezime", unique=true, nullable=false)
    private String prezime;
-   /** @pdOid 505ea040-cdcb-4d84-b10c-c9e493228e09 */
+   
+   @Column(name="jbo", unique=true, nullable=false)
    private String jbo;
-   /** @pdOid 457ed7dc-6c6e-4a74-a7fd-2a39ab0f0416 */
+   
+   @Column(name="adresa", unique=true, nullable=false)
    private String adresaPrebivalista;
-   /** @pdOid b3944a72-9fff-4e47-86d2-2cbc0ea96bc4 */
+   
+   @Column(name="grad", unique=true, nullable=false)
    private String grad;
-   /** @pdOid 14d32044-8555-4f87-911c-9870bbd47584 */
+   
+   @Column(name="drzava", unique=true, nullable=false)
    private String drzava;
-   /** @pdOid 6909ae88-14a5-4d6d-8d01-5e1b2e701a9b */
+   
+   @Column(name="broj_telefona", unique=true, nullable=false)
    private String brojTefefona;
+   
+   @Column(name="prihvacen", unique=true, nullable=false)
+   private boolean prihvacen;
+   
 
 }

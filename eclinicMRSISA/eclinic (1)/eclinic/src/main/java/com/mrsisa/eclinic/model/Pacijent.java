@@ -4,19 +4,41 @@
  * Purpose: Defines the Class Pacijent
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
-/** @pdOid fc011767-4f4c-4b79-9b74-ba22cca58e27 */
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+@DiscriminatorValue("P")
 public class Pacijent extends Korisnik {
-   /** @pdOid 5ae3462d-c27f-495b-a5b4-33a7a32bd5c5 */
+   
+   @Column(name="jbo", unique=false, nullable=false)
    private String jedBrojOsiguranika;
-   /** @pdOid 06f4e700-41c3-4500-a3c9-67f4965a36bf */
+   
+   @Column(name="broj_telefona", unique=false, nullable=false)
    private String brojTelefona;
-   /** @pdOid 9fc91d33-16c7-4ee1-9a2f-0732948af749 */
+   
+   @Column(name="adresa", unique=false, nullable=false)
    private String adresaPrebivalsta;
-   /** @pdOid a3503bee-40f6-4516-8041-8fa8a3332b51 */
+   
+   @Column(name="grad", unique=false, nullable=false)
    private String grad;
-   /** @pdOid 8c457ece-a39d-4f4b-88c2-7521ce764f9e */
+  
+   @Column(name="drzava", unique=false, nullable=false)
    private String drzava;
+   
+   @OneToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name="karton_id", referencedColumnName="karton_id")
+   public ZdravstveniKarton zdravstveniKarton;
+   
+   @OneToMany(fetch=FetchType.LAZY, mappedBy="pacijent")
+   private Set<Pregled> pregledi = new HashSet<Pregled>();
 
 }

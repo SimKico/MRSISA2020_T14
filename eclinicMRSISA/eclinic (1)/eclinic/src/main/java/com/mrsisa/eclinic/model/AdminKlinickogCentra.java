@@ -19,9 +19,9 @@ import static javax.persistence.CascadeType.ALL;;
 @DiscriminatorValue("AC")
 public class AdminKlinickogCentra extends Korisnik {
    
-//   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-//   @JoinColumn(name = "zahtjev_registraciju_id", referencedColumnName = "zahtjev_registraciju_id")
-//   public Set<ZahtjeviZaRegistraciju> zahtjeviZaRegistraciju = new HashSet<ZahtjeviZaRegistraciju>();
+   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
+   @JoinColumn(name = "reg_id")
+   public Set<ZahtjeviZaRegistraciju> zahtjeviZaRegistraciju = new HashSet<ZahtjeviZaRegistraciju>();
    
 //   
 //   public java.util.Collection<ZahtjeviZaRegistraciju> getZahtjeviZaRegistraciju() {

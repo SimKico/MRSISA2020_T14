@@ -4,13 +4,20 @@
  * Purpose: Defines the Class Dijagnoza
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-/** @pdOid 66fb2ee5-9c6b-44ad-ab86-3b222ca607a7 */
+@Entity
+@Table(name="dijagnoze")
 public class Dijagnoza {
-   /** @pdOid ba1f5992-eabc-4a89-bbc5-855e301b7d85 */
-   private String naziv;
-   /** @pdOid cb65004c-db8e-49ca-931c-ad066e846d39 */
+   
+   @Id
+   @Column(name="sifra", unique=false, nullable=false)
    private String sifra;
+   
+   @Column(name="naziv_dijagnoze", unique=false, nullable=false)
+   private String naziv;
 
 }

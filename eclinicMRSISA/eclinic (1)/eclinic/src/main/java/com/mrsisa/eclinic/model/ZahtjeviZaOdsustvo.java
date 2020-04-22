@@ -4,17 +4,45 @@
  * Purpose: Defines the Class ZahtjeviZaOdsustvo
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import java.util.Date;
 
-/** @pdOid ffe636a4-fcc2-429c-86ab-528e308a7f24 */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="zahtjevi_odsustava")
 public class ZahtjeviZaOdsustvo {
-   /** @pdOid 0f5ac338-d88d-4433-a693-7139cd31c4a7 */
+	
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   @Column(name="odsustvo_id", unique=true, nullable=false)
+   private Long id;
+   
+   @Column(name="pocetak", unique=false, nullable=false)
    private Date pocetak;
-   /** @pdOid b780d0b8-3a21-4dd8-8016-6a4c62999425 */
+  
+   @Column(name="kraj", unique=false, nullable=false)
    private Date kraj;
-   /** @pdOid 45a72fda-b93f-4cac-bddb-6777462771aa */
+   
+   @Column(name="tip_odsustva", unique=false, nullable=false)
    private Odsustvo tipOdsustva;
-   /** @pdOid dbf21a27-d084-436f-b049-d0e39e8280be */
+   
+   @Column(name="prihvacen", unique=false, nullable=false)
    private boolean prihvacen;
+   
+   @ManyToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name = "ljekar_id", referencedColumnName="id", nullable = false)
+   private Ljekar ljekar;
+   
+   @ManyToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name = "sestra_id", referencedColumnName="id", nullable = false)
+   private MedicinskaSestra sestra;
 
 }

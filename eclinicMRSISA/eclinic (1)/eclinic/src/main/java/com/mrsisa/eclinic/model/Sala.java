@@ -6,11 +6,11 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="tabela_sala")
+@Table(name="sale")
 public class Sala {
 
 	@Id
 	@Column(name="broj_sale", unique=true, nullable=false)
-   private int brojSale;
+    private int brojSale;
 
 }

@@ -4,16 +4,46 @@
  * Purpose: Defines the Class IzvjestajPregleda
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
-/** @pdOid 4240c0d2-69f6-4c4e-9143-625832f3b188 */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="izvjestaji_pregleda")
 public class IzvjestajPregleda {
-   /** @pdOid 154d6a62-e222-4ffa-b0f0-5511d4f1540d */
+   
+	
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   @Column(name="izvjestaj_id", unique=true, nullable=false)
+   private Long izvjestaj_id;
+	 
+   @Column(name="izvjestaj", unique=true, nullable=false)
    private String izvjestaj;
    
-   /** @pdRoleInfo migr=no name=Pregled assc=association30 mult=1..1 */
+   @OneToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name = "pregled_id", referencedColumnName="pregled_id")
    public Pregled pregled;
+   
+   @OneToMany(fetch = FetchType.LAZY, mappedBy = "izvjestajPregleda")
+   private Set<Recept> recepti = new HashSet<Recept>();
+   
    /** @pdRoleInfo migr=no name=Dijagnoza assc=association45 mult=1..1 */
-   public Dijagnoza dijagnoza;
+   //public Dijagnoza dijagnoza;
+   
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name="sifra", referencedColumnName="sifra")
+    public Dijagnoza dijagnoza;
 
 }

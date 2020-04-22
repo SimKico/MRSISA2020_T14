@@ -4,18 +4,45 @@
  * Purpose: Defines the Class ZahtjeviZaSale
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import java.util.Date;
 
-/** @pdOid 4e72ffb4-d39f-4946-9f5b-f414b2994a19 */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="zahtjevi_sala")
 public class ZahtjeviZaSale {
-   /** @pdOid 5f70130e-6017-4495-a311-e4518f3ab77d */
+	
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   @Column(name="zahtjev_sala_id", unique=true, nullable=false)
+   private Long id;
+	
+   @Column(name="datum", unique=false, nullable=false)
    private Date datum;
-   /** @pdOid 49c3a7ed-fb30-4489-b457-7a64afa6061c */
+   
+   @Column(name="satnica", unique=false, nullable=false)
    private String satnica;
-   /** @pdOid ef0f085f-0069-4578-887c-4806b56c647e */
+   
+   @Column(name="svrha", unique=false, nullable=false)
+   private String svrha;
+   
+   @Column(name="prihvacen", unique=false, nullable=false)
    private boolean prihvacen;
    
-   /** @pdRoleInfo migr=no name=Sala assc=association33 mult=1..1 */
+   @ManyToOne(fetch=FetchType.LAZY,optional = false)
+   @JoinColumn(name="broj_sale")
    public Sala sala;
+   
+   @ManyToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name = "ljekar_id", referencedColumnName="id")
+   private Ljekar ljekar;
 
 }
