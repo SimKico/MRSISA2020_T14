@@ -1,14 +1,16 @@
-/***********************************************************************
- * Module:  Sala.java
- * Author:  natas
- * Purpose: Defines the Class Sala
- ***********************************************************************/
 package com.mrsisa.eclinic.model;
-import java.util.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-/** @pdOid 806678b6-67b3-4f3d-b159-c7c8a81df461 */
+
+@Entity
+@Table(name="tabela_sala")
 public class Sala {
-   /** @pdOid 46af3855-c363-4979-b375-3730a4191101 */
+
+	@Id
+	@Column(name="broj_sale", unique=true, nullable=false)
    private int brojSale;
 
 }
