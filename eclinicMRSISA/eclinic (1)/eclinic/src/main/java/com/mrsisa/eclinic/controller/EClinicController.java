@@ -16,17 +16,25 @@ import org.springframework.web.servlet.ModelAndView;
 //@RequestMapping()
 public class EClinicController {
 
-//	@CrossOrigin(origins = "http://localhost:3000")
-//	@GetMapping(value = "/hello", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<String> sayHello() {
-//		return new ResponseEntity<String> ("EClinic", HttpStatus.OK);
+//	@SLOBO ovjde trebas dodati pocetnu stranicu, tj.prvu stranu koja ce se ikada prikazati
+	//to je vjerovatno stranica login.html
+	//znaci, samo return "login.html" ali prije tog moras da sve html stavis u templates
+//	@GetMapping("/")
+//	public String index()
+//	{
+//		return "";
 //	}
-//	
 	
 	@RequestMapping(value = "/profilPacijenta")
-	public ModelAndView getData(){
+	public ModelAndView getProfilPacijenta(){
 		ModelAndView newView = new ModelAndView();
 		newView.setViewName("profilPacijenta");
+			return newView;
+	}
+	@RequestMapping(value = "/azurirajProfil")
+	public ModelAndView getAzurirajPacijenta(){
+		ModelAndView newView = new ModelAndView();
+		newView.setViewName("/azurirajProfil");
 			return newView;
 	}
 	
