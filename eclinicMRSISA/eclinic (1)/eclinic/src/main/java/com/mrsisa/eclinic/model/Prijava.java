@@ -39,4 +39,29 @@ public class Prijava {
    @OneToOne(mappedBy="prijava")
    public Korisnik korisnik;
 
+public String geteAdresa() {
+	return eAdresa;
+}
+
+public void seteAdresa(String eAdresa) {
+	this.eAdresa = eAdresa;
+}
+
+public String getLozinka() {
+	return lozinka;
+}
+
+public void setLozinka(String lozinka) {
+	this.lozinka = lozinka;
+}
+
+public Korisnik getKorisnik() {
+	return korisnik;
+}
+
+public void setKorisnik(Korisnik korisnik) {
+	this.korisnik = korisnik;
+}
+
+   
 }

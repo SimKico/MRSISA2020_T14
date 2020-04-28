@@ -43,7 +43,64 @@ public class Operacija {
    @ManyToOne(fetch=FetchType.LAZY)
    @JoinColumn(name="karton_id", referencedColumnName="karton_id")
    public ZdravstveniKarton zdravstveniKarton;
+
+public String getIdOperacije() {
+	return idOperacije;
+}
+
+public void setIdOperacije(String idOperacije) {
+	this.idOperacije = idOperacije;
+}
+
+public Integer getTrajanje() {
+	return trajanje;
+}
+
+public void setTrajanje(Integer trajanje) {
+	this.trajanje = trajanje;
+}
+
+public String getTipOperacije() {
+	return tipOperacije;
+}
+
+public void setTipOperacije(String tipOperacije) {
+	this.tipOperacije = tipOperacije;
+}
+
+public String getVrijemePocetka() {
+	return vrijemePocetka;
+}
+
+public void setVrijemePocetka(String vrijemePocetka) {
+	this.vrijemePocetka = vrijemePocetka;
+}
+
+public Sala getSala() {
+	return sala;
+}
+
+public void setSala(Sala sala) {
+	this.sala = sala;
+}
+
+public Set<Ljekar> getLjekari() {
+	return ljekari;
+}
+
+public void setLjekari(Set<Ljekar> ljekari) {
+	this.ljekari = ljekari;
+}
+
+public ZdravstveniKarton getZdravstveniKarton() {
+	return zdravstveniKarton;
+}
+
+public void setZdravstveniKarton(ZdravstveniKarton zdravstveniKarton) {
+	this.zdravstveniKarton = zdravstveniKarton;
+}
 	
+   
 
 
 }

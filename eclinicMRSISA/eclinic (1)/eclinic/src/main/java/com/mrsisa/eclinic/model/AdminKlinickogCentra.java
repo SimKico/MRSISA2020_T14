@@ -22,46 +22,14 @@ public class AdminKlinickogCentra extends Korisnik {
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
    @JoinColumn(name = "reg_id")
    public Set<ZahtjeviZaRegistraciju> zahtjeviZaRegistraciju = new HashSet<ZahtjeviZaRegistraciju>();
+
+public Set<ZahtjeviZaRegistraciju> getZahtjeviZaRegistraciju() {
+	return zahtjeviZaRegistraciju;
+}
+
+public void setZahtjeviZaRegistraciju(Set<ZahtjeviZaRegistraciju> zahtjeviZaRegistraciju) {
+	this.zahtjeviZaRegistraciju = zahtjeviZaRegistraciju;
+}
    
-//   
-//   public java.util.Collection<ZahtjeviZaRegistraciju> getZahtjeviZaRegistraciju() {
-//      if (zahtjeviZaRegistraciju == null)
-//         zahtjeviZaRegistraciju = new HashSet<ZahtjeviZaRegistraciju>();
-//      return zahtjeviZaRegistraciju;
-//   }
-//   
-//   public java.util.Iterator getIteratorZahtjeviZaRegistraciju() {
-//      if (zahtjeviZaRegistraciju == null)
-//         zahtjeviZaRegistraciju = new HashSet<ZahtjeviZaRegistraciju>();
-//      return zahtjeviZaRegistraciju.iterator();
-//   }
-//   
-//   public void setZahtjeviZaRegistraciju(java.util.Collection<ZahtjeviZaRegistraciju> newZahtjeviZaRegistraciju) {
-//      removeAllZahtjeviZaRegistraciju();
-//      for (java.util.Iterator iter = newZahtjeviZaRegistraciju.iterator(); iter.hasNext();)
-//         addZahtjeviZaRegistraciju((ZahtjeviZaRegistraciju)iter.next());
-//   }
-//   
-//   public void addZahtjeviZaRegistraciju(ZahtjeviZaRegistraciju newZahtjeviZaRegistraciju) {
-//      if (newZahtjeviZaRegistraciju == null)
-//         return;
-//      if (this.zahtjeviZaRegistraciju == null)
-//         this.zahtjeviZaRegistraciju = new java.util.HashSet<ZahtjeviZaRegistraciju>();
-//      if (!this.zahtjeviZaRegistraciju.contains(newZahtjeviZaRegistraciju))
-//         this.zahtjeviZaRegistraciju.add(newZahtjeviZaRegistraciju);
-//   }
-//   
-//   public void removeZahtjeviZaRegistraciju(ZahtjeviZaRegistraciju oldZahtjeviZaRegistraciju) {
-//      if (oldZahtjeviZaRegistraciju == null)
-//         return;
-//      if (this.zahtjeviZaRegistraciju != null)
-//         if (this.zahtjeviZaRegistraciju.contains(oldZahtjeviZaRegistraciju))
-//            this.zahtjeviZaRegistraciju.remove(oldZahtjeviZaRegistraciju);
-//   }
-//   
-//   public void removeAllZahtjeviZaRegistraciju() {
-//      if (zahtjeviZaRegistraciju != null)
-//         zahtjeviZaRegistraciju.clear();
-//   }
 
 }

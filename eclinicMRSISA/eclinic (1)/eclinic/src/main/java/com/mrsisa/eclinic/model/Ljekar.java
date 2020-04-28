@@ -52,4 +52,78 @@ public class Ljekar extends Korisnik {
 	@JoinTable(name="operacije_ljekara", joinColumns =@JoinColumn(name="ljekar_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="operacija_id", referencedColumnName="operacija_id"))
 	private Set<Operacija> operacije = new HashSet<Operacija>();
 
+	public Specijalizacija getSpecijalizacija() {
+		return specijalizacija;
+	}
+
+	public void setSpecijalizacija(Specijalizacija specijalizacija) {
+		this.specijalizacija = specijalizacija;
+	}
+
+	public int getProsjecnaOcjena() {
+		return prosjecnaOcjena;
+	}
+
+	public void setProsjecnaOcjena(int prosjecnaOcjena) {
+		this.prosjecnaOcjena = prosjecnaOcjena;
+	}
+
+	public String getDodatneInfo() {
+		return dodatneInfo;
+	}
+
+	public void setDodatneInfo(String dodatneInfo) {
+		this.dodatneInfo = dodatneInfo;
+	}
+
+	public String getRadnoVrijeme() {
+		return radnoVrijeme;
+	}
+
+	public void setRadnoVrijeme(String radnoVrijeme) {
+		this.radnoVrijeme = radnoVrijeme;
+	}
+
+	public Set<Pregled> getPregledi() {
+		return pregledi;
+	}
+
+	public void setPregledi(Set<Pregled> pregledi) {
+		this.pregledi = pregledi;
+	}
+
+	public Set<ZahtjeviZaSale> getSale() {
+		return sale;
+	}
+
+	public void setSale(Set<ZahtjeviZaSale> sale) {
+		this.sale = sale;
+	}
+
+	public Set<ZahtjeviZaOdsustvo> getOdsustvo() {
+		return odsustvo;
+	}
+
+	public void setOdsustvo(Set<ZahtjeviZaOdsustvo> odsustvo) {
+		this.odsustvo = odsustvo;
+	}
+
+	public Klinika getKlinika() {
+		return klinika;
+	}
+
+	public void setKlinika(Klinika klinika) {
+		this.klinika = klinika;
+	}
+
+	public Set<Operacija> getOperacije() {
+		return operacije;
+	}
+
+	public void setOperacije(Set<Operacija> operacije) {
+		this.operacije = operacije;
+	}
+	
+	
+
 }

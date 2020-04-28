@@ -53,57 +53,78 @@ public class Pregled {
    @ManyToOne(fetch=FetchType.LAZY)
    @JoinColumn(name = "sifra_pregleda", referencedColumnName="sifra")
    public TipPregleda tipPregleda;
-//   
-//   public java.util.Collection<Sala> sala;
-//   
-//   
-//   /** @pdGenerated default getter */
-//   public java.util.Collection<Sala> getSala() {
-//      if (sala == null)
-//         sala = new java.util.HashSet<Sala>();
-//      return sala;
-//   }
-//   
-//   /** @pdGenerated default iterator getter */
-//   public java.util.Iterator getIteratorSala() {
-//      if (sala == null)
-//         sala = new java.util.HashSet<Sala>();
-//      return sala.iterator();
-//   }
-//   
-//   /** @pdGenerated default setter
-//     * @param newSala */
-//   public void setSala(java.util.Collection<Sala> newSala) {
-//      removeAllSala();
-//      for (java.util.Iterator iter = newSala.iterator(); iter.hasNext();)
-//         addSala((Sala)iter.next());
-//   }
-//   
-//   /** @pdGenerated default add
-//     * @param newSala */
-//   public void addSala(Sala newSala) {
-//      if (newSala == null)
-//         return;
-//      if (this.sala == null)
-//         this.sala = new java.util.HashSet<Sala>();
-//      if (!this.sala.contains(newSala))
-//         this.sala.add(newSala);
-//   }
-//   
-//   /** @pdGenerated default remove
-//     * @param oldSala */
-//   public void removeSala(Sala oldSala) {
-//      if (oldSala == null)
-//         return;
-//      if (this.sala != null)
-//         if (this.sala.contains(oldSala))
-//            this.sala.remove(oldSala);
-//   }
-//   
-//   /** @pdGenerated default removeAll */
-//   public void removeAllSala() {
-//      if (sala != null)
-//         sala.clear();
-//   }
 
+public Long getPregled_id() {
+	return pregled_id;
+}
+
+public void setPregled_id(Long pregled_id) {
+	this.pregled_id = pregled_id;
+}
+
+public Date getDatum() {
+	return datum;
+}
+
+public void setDatum(Date datum) {
+	this.datum = datum;
+}
+
+public int getPopust() {
+	return popust;
+}
+
+public void setPopust(int popust) {
+	this.popust = popust;
+}
+
+public Date getVrijemePocetka() {
+	return vrijemePocetka;
+}
+
+public void setVrijemePocetka(Date vrijemePocetka) {
+	this.vrijemePocetka = vrijemePocetka;
+}
+
+public StatusPregleda getStatus() {
+	return status;
+}
+
+public void setStatus(StatusPregleda status) {
+	this.status = status;
+}
+
+public Ljekar getLjekar() {
+	return ljekar;
+}
+
+public void setLjekar(Ljekar ljekar) {
+	this.ljekar = ljekar;
+}
+
+public Pacijent getPacijent() {
+	return pacijent;
+}
+
+public void setPacijent(Pacijent pacijent) {
+	this.pacijent = pacijent;
+}
+
+public Sala getSala() {
+	return sala;
+}
+
+public void setSala(Sala sala) {
+	this.sala = sala;
+}
+
+public TipPregleda getTipPregleda() {
+	return tipPregleda;
+}
+
+public void setTipPregleda(TipPregleda tipPregleda) {
+	this.tipPregleda = tipPregleda;
+}
+
+   
 }

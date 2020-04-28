@@ -38,8 +38,46 @@ public class TipPregleda {
    @OneToMany(fetch = FetchType.LAZY, mappedBy="tipPregleda")
    private Set<Pregled> pregledi = new HashSet<Pregled>();
 
+public Double getCijena() {
+	return cijena;
+}
+
+public void setCijena(Double cijena) {
+	this.cijena = cijena;
+}
+
+public String getSifra() {
+	return sifra;
+}
+
+public void setSifra(String sifra) {
+	this.sifra = sifra;
+}
+
+public int getTrajanje() {
+	return trajanje;
+}
+
+public void setTrajanje(int trajanje) {
+	this.trajanje = trajanje;
+}
+
+public Specijalizacija getTip() {
+	return tip;
+}
+
+public void setTip(Specijalizacija tip) {
+	this.tip = tip;
+}
+
+public Set<Pregled> getPregledi() {
+	return pregledi;
+}
+
+public void setPregledi(Set<Pregled> pregledi) {
+	this.pregledi = pregledi;
+}
+
    
-//   /** @pdRoleInfo migr=no name=Pregled assc=association4 mult=0..* side=A */
-//   public Pregled[] pregled;
 
 }

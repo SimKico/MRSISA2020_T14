@@ -26,4 +26,30 @@ public class MedicinskaSestra extends Korisnik {
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "sestra")
 	private Set<Recept> recepti = new HashSet<Recept>();
+
+	public Set<ZahtjeviZaOdsustvo> getOdsustvo() {
+		return odsustvo;
+	}
+
+	public void setOdsustvo(Set<ZahtjeviZaOdsustvo> odsustvo) {
+		this.odsustvo = odsustvo;
+	}
+
+	public Klinika getKlinika() {
+		return klinika;
+	}
+
+	public void setKlinika(Klinika klinika) {
+		this.klinika = klinika;
+	}
+
+	public Set<Recept> getRecepti() {
+		return recepti;
+	}
+
+	public void setRecepti(Set<Recept> recepti) {
+		this.recepti = recepti;
+	}
+	
+	
 }

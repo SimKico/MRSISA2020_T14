@@ -27,8 +27,24 @@ public class SifarnikLijekova {
     private Long sifLid;
 	
 	@OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-	@JoinColumn(name="sifra")
+	@JoinColumn(name="sif_lijek_id")
 	private Set<Lijek> lijekovi = new HashSet<Lijek>();
+
+	public Long getSifLid() {
+		return sifLid;
+	}
+
+	public void setSifLid(Long sifLid) {
+		this.sifLid = sifLid;
+	}
+
+	public Set<Lijek> getLijekovi() {
+		return lijekovi;
+	}
+
+	public void setLijekovi(Set<Lijek> lijekovi) {
+		this.lijekovi = lijekovi;
+	}
    
    
    

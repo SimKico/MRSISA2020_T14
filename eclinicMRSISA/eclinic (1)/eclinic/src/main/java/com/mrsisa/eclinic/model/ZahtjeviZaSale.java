@@ -45,4 +45,62 @@ public class ZahtjeviZaSale {
    @JoinColumn(name = "ljekar_id", referencedColumnName="id")
    private Ljekar ljekar;
 
+public Long getId() {
+	return id;
+}
+
+public void setId(Long id) {
+	this.id = id;
+}
+
+public Date getDatum() {
+	return datum;
+}
+
+public void setDatum(Date datum) {
+	this.datum = datum;
+}
+
+public String getSatnica() {
+	return satnica;
+}
+
+public void setSatnica(String satnica) {
+	this.satnica = satnica;
+}
+
+public String getSvrha() {
+	return svrha;
+}
+
+public void setSvrha(String svrha) {
+	this.svrha = svrha;
+}
+
+public boolean isPrihvacen() {
+	return prihvacen;
+}
+
+public void setPrihvacen(boolean prihvacen) {
+	this.prihvacen = prihvacen;
+}
+
+public Sala getSala() {
+	return sala;
+}
+
+public void setSala(Sala sala) {
+	this.sala = sala;
+}
+
+public Ljekar getLjekar() {
+	return ljekar;
+}
+
+public void setLjekar(Ljekar ljekar) {
+	this.ljekar = ljekar;
+}
+   
+   
+
 }

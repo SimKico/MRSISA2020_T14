@@ -38,12 +38,52 @@ public class KlinickiCentar {
    public SifarnikDijagnoza sifarnikDijagnoza;
    
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-	@JoinColumn(name="klinika_id")
+	@JoinColumn(name="kc_id")
 	private Set<Klinika> klinika = new HashSet<Klinika>();
    
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-   @JoinColumn(name="korisnik_id")
+   @JoinColumn(name="kc_id")
    private Set<Korisnik> korisnik = new HashSet<Korisnik>();
+
+public String getKCid() {
+	return KCid;
+}
+
+public void setKCid(String kCid) {
+	KCid = kCid;
+}
+
+public SifarnikLijekova getSifarnikLijekova() {
+	return sifarnikLijekova;
+}
+
+public void setSifarnikLijekova(SifarnikLijekova sifarnikLijekova) {
+	this.sifarnikLijekova = sifarnikLijekova;
+}
+
+public SifarnikDijagnoza getSifarnikDijagnoza() {
+	return sifarnikDijagnoza;
+}
+
+public void setSifarnikDijagnoza(SifarnikDijagnoza sifarnikDijagnoza) {
+	this.sifarnikDijagnoza = sifarnikDijagnoza;
+}
+
+public Set<Klinika> getKlinika() {
+	return klinika;
+}
+
+public void setKlinika(Set<Klinika> klinika) {
+	this.klinika = klinika;
+}
+
+public Set<Korisnik> getKorisnik() {
+	return korisnik;
+}
+
+public void setKorisnik(Set<Korisnik> korisnik) {
+	this.korisnik = korisnik;
+}
    
   
    

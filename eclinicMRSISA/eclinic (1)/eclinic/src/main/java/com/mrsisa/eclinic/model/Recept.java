@@ -36,4 +36,38 @@ public class Recept {
   @JoinColumn(name="izvjestaj_id", referencedColumnName="izvjestaj_id")
   private IzvjestajPregleda izvjestajPregleda;
 
+public Long getRecept_id() {
+	return recept_id;
+}
+
+public void setRecept_id(Long recept_id) {
+	this.recept_id = recept_id;
+}
+
+public Lijek getLijek() {
+	return lijek;
+}
+
+public void setLijek(Lijek lijek) {
+	this.lijek = lijek;
+}
+
+public MedicinskaSestra getSestra() {
+	return sestra;
+}
+
+public void setSestra(MedicinskaSestra sestra) {
+	this.sestra = sestra;
+}
+
+public IzvjestajPregleda getIzvjestajPregleda() {
+	return izvjestajPregleda;
+}
+
+public void setIzvjestajPregleda(IzvjestajPregleda izvjestajPregleda) {
+	this.izvjestajPregleda = izvjestajPregleda;
+}
+  
+  
+
 }

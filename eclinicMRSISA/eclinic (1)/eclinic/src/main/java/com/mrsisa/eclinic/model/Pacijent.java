@@ -41,4 +41,62 @@ public class Pacijent extends Korisnik {
    @OneToMany(fetch=FetchType.LAZY, mappedBy="pacijent")
    private Set<Pregled> pregledi = new HashSet<Pregled>();
 
+public String getJedBrojOsiguranika() {
+	return jedBrojOsiguranika;
+}
+
+public void setJedBrojOsiguranika(String jedBrojOsiguranika) {
+	this.jedBrojOsiguranika = jedBrojOsiguranika;
+}
+
+public String getBrojTelefona() {
+	return brojTelefona;
+}
+
+public void setBrojTelefona(String brojTelefona) {
+	this.brojTelefona = brojTelefona;
+}
+
+public String getAdresaPrebivalsta() {
+	return adresaPrebivalsta;
+}
+
+public void setAdresaPrebivalsta(String adresaPrebivalsta) {
+	this.adresaPrebivalsta = adresaPrebivalsta;
+}
+
+public String getGrad() {
+	return grad;
+}
+
+public void setGrad(String grad) {
+	this.grad = grad;
+}
+
+public String getDrzava() {
+	return drzava;
+}
+
+public void setDrzava(String drzava) {
+	this.drzava = drzava;
+}
+
+public ZdravstveniKarton getZdravstveniKarton() {
+	return zdravstveniKarton;
+}
+
+public void setZdravstveniKarton(ZdravstveniKarton zdravstveniKarton) {
+	this.zdravstveniKarton = zdravstveniKarton;
+}
+
+public Set<Pregled> getPregledi() {
+	return pregledi;
+}
+
+public void setPregledi(Set<Pregled> pregledi) {
+	this.pregledi = pregledi;
+}
+   
+   
+
 }

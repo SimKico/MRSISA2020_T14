@@ -46,4 +46,48 @@ public class IzvjestajPregleda {
    @JoinColumn(name="sifra", referencedColumnName="sifra")
     public Dijagnoza dijagnoza;
 
+public Long getIzvjestaj_id() {
+	return izvjestaj_id;
+}
+
+public void setIzvjestaj_id(Long izvjestaj_id) {
+	this.izvjestaj_id = izvjestaj_id;
+}
+
+public String getIzvjestaj() {
+	return izvjestaj;
+}
+
+public void setIzvjestaj(String izvjestaj) {
+	this.izvjestaj = izvjestaj;
+}
+
+public Pregled getPregled() {
+	return pregled;
+}
+
+public void setPregled(Pregled pregled) {
+	this.pregled = pregled;
+}
+
+public Set<Recept> getRecepti() {
+	return recepti;
+}
+
+public void setRecepti(Set<Recept> recepti) {
+	this.recepti = recepti;
+}
+
+public Dijagnoza getDijagnoza() {
+	return dijagnoza;
+}
+
+public void setDijagnoza(Dijagnoza dijagnoza) {
+	this.dijagnoza = dijagnoza;
+}
+   
+   
+   
+   
+
 }

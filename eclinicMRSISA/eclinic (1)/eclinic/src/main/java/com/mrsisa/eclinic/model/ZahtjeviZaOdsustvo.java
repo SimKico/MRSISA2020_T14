@@ -45,4 +45,62 @@ public class ZahtjeviZaOdsustvo {
    @JoinColumn(name = "sestra_id", referencedColumnName="id", nullable = false)
    private MedicinskaSestra sestra;
 
+public Long getId() {
+	return id;
+}
+
+public void setId(Long id) {
+	this.id = id;
+}
+
+public Date getPocetak() {
+	return pocetak;
+}
+
+public void setPocetak(Date pocetak) {
+	this.pocetak = pocetak;
+}
+
+public Date getKraj() {
+	return kraj;
+}
+
+public void setKraj(Date kraj) {
+	this.kraj = kraj;
+}
+
+public Odsustvo getTipOdsustva() {
+	return tipOdsustva;
+}
+
+public void setTipOdsustva(Odsustvo tipOdsustva) {
+	this.tipOdsustva = tipOdsustva;
+}
+
+public boolean isPrihvacen() {
+	return prihvacen;
+}
+
+public void setPrihvacen(boolean prihvacen) {
+	this.prihvacen = prihvacen;
+}
+
+public Ljekar getLjekar() {
+	return ljekar;
+}
+
+public void setLjekar(Ljekar ljekar) {
+	this.ljekar = ljekar;
+}
+
+public MedicinskaSestra getSestra() {
+	return sestra;
+}
+
+public void setSestra(MedicinskaSestra sestra) {
+	this.sestra = sestra;
+}
+   
+   
+
 }

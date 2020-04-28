@@ -13,4 +13,14 @@ public class Sala {
 	@Column(name="broj_sale", unique=true, nullable=false)
     private int brojSale;
 
+	public int getBrojSale() {
+		return brojSale;
+	}
+
+	public void setBrojSale(int brojSale) {
+		this.brojSale = brojSale;
+	}
+	
+	
+
 }

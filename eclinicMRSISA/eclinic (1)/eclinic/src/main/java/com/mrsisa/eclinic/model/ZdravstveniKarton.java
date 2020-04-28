@@ -51,8 +51,80 @@ public class ZdravstveniKarton {
    public Pacijent pacijent;
    
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-   @JoinColumn(name="izvjestaj_id")
+   @JoinColumn(name="karton_id")
    private Set<IzvjestajPregleda> izvjestajPregleda = new HashSet<IzvjestajPregleda>();
+
+public int getIdKartona() {
+	return idKartona;
+}
+
+public void setIdKartona(int idKartona) {
+	this.idKartona = idKartona;
+}
+
+public String getKrvnaGrupa() {
+	return krvnaGrupa;
+}
+
+public void setKrvnaGrupa(String krvnaGrupa) {
+	this.krvnaGrupa = krvnaGrupa;
+}
+
+public int getVisinaCm() {
+	return visinaCm;
+}
+
+public void setVisinaCm(int visinaCm) {
+	this.visinaCm = visinaCm;
+}
+
+public int getTezinaKg() {
+	return tezinaKg;
+}
+
+public void setTezinaKg(int tezinaKg) {
+	this.tezinaKg = tezinaKg;
+}
+
+public String getAlergije() {
+	return alergije;
+}
+
+public void setAlergije(String alergije) {
+	this.alergije = alergije;
+}
+
+public String getDioptrija() {
+	return dioptrija;
+}
+
+public void setDioptrija(String dioptrija) {
+	this.dioptrija = dioptrija;
+}
+
+public Set<Operacija> getOperacije() {
+	return operacije;
+}
+
+public void setOperacije(Set<Operacija> operacije) {
+	this.operacije = operacije;
+}
+
+public Pacijent getPacijent() {
+	return pacijent;
+}
+
+public void setPacijent(Pacijent pacijent) {
+	this.pacijent = pacijent;
+}
+
+public Set<IzvjestajPregleda> getIzvjestajPregleda() {
+	return izvjestajPregleda;
+}
+
+public void setIzvjestajPregleda(Set<IzvjestajPregleda> izvjestajPregleda) {
+	this.izvjestajPregleda = izvjestajPregleda;
+}
    
    
    

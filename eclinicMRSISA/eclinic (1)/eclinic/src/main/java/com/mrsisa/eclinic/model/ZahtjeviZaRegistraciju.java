@@ -51,6 +51,96 @@ public class ZahtjeviZaRegistraciju {
    
    @Column(name="prihvacen", unique=true, nullable=false)
    private boolean prihvacen;
+
+public int getIdZahtjeva() {
+	return idZahtjeva;
+}
+
+public void setIdZahtjeva(int idZahtjeva) {
+	this.idZahtjeva = idZahtjeva;
+}
+
+public String geteAdresa() {
+	return eAdresa;
+}
+
+public void seteAdresa(String eAdresa) {
+	this.eAdresa = eAdresa;
+}
+
+public String getLozinka() {
+	return lozinka;
+}
+
+public void setLozinka(String lozinka) {
+	this.lozinka = lozinka;
+}
+
+public String getIme() {
+	return ime;
+}
+
+public void setIme(String ime) {
+	this.ime = ime;
+}
+
+public String getPrezime() {
+	return prezime;
+}
+
+public void setPrezime(String prezime) {
+	this.prezime = prezime;
+}
+
+public String getJbo() {
+	return jbo;
+}
+
+public void setJbo(String jbo) {
+	this.jbo = jbo;
+}
+
+public String getAdresaPrebivalista() {
+	return adresaPrebivalista;
+}
+
+public void setAdresaPrebivalista(String adresaPrebivalista) {
+	this.adresaPrebivalista = adresaPrebivalista;
+}
+
+public String getGrad() {
+	return grad;
+}
+
+public void setGrad(String grad) {
+	this.grad = grad;
+}
+
+public String getDrzava() {
+	return drzava;
+}
+
+public void setDrzava(String drzava) {
+	this.drzava = drzava;
+}
+
+public String getBrojTefefona() {
+	return brojTefefona;
+}
+
+public void setBrojTefefona(String brojTefefona) {
+	this.brojTefefona = brojTefefona;
+}
+
+public boolean isPrihvacen() {
+	return prihvacen;
+}
+
+public void setPrihvacen(boolean prihvacen) {
+	this.prihvacen = prihvacen;
+}
+   
+   
    
 
 }
