@@ -13,14 +13,14 @@ public class EclinicApplication {
 		SpringApplication.run(EclinicApplication.class, args);
 	}
 	
-@Bean
-WebMvcConfigurer conf() {
-
-	return new WebMvcConfigurer() {
-		@Override
-		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-		}
-	};
-}
+//@Bean
+//WebMvcConfigurer conf() {
+//
+//	return new WebMvcConfigurer() {
+//		@Override
+//		public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//			registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+//		}
+//	};
+//}
 }
