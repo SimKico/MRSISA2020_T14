@@ -23,19 +23,17 @@ public class AdminKlinike extends Korisnik {
    @ManyToOne
    @JoinColumn(name = "klinika_id", referencedColumnName = "klinika_id", nullable = false)
    public Klinika klinika;
-//   
-//   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-//   @JoinColumn(name = "odsustvo_id", referencedColumnName = "odsustvo_id")
-//   public Set<ZahtjeviZaOdsustvo> zahtjeviZaOdsustvo = new HashSet<ZahtjeviZaOdsustvo>();
-//   
-	/*
-	 * @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-	 * 
-	 * @JoinColumn(name = "zahtjev_sala_id", referencedColumnName =
-	 * "zahtjev_sala_id") public Set<ZahtjeviZaSale> zahtjeviZaSale = new
-	 * HashSet<ZahtjeviZaSale>();
-	 */
-// 
+   
+   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
+   @JoinColumn(name = "id")
+   public Set<ZahtjeviZaOdsustvo> zahtjeviZaOdsustvo = new HashSet<ZahtjeviZaOdsustvo>();
+   
+	
+  @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
+  @JoinColumn(name = "id") 
+  public Set<ZahtjeviZaSale> zahtjeviZaSale = new HashSet<ZahtjeviZaSale>();
+ 
+
 
 public Klinika getKlinika() {
 	return klinika;
