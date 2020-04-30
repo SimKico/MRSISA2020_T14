@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#my-profile").click(function (event) {
+    $("#myProfile").on(function (event) {
 
         //stop submit the form, we will post it manually.
         event.preventDefault();
@@ -13,39 +13,20 @@ $(document).ready(function () {
 
 function mojKarton() {
 
-    var jbo = $("#jbo").val()
+	var jbo = 15;
+//    var jbo = $("#jbo").val()
 //    search["my-profile"] = $("#moj-karton").val();
 //    //search["email"] = $("#email").val();
 
-    $("#my-profile").prop("disabled", true);
+    $("#myProfile").prop("disabled", true);
 
     $.ajax({
-        type: "POST",
+        type: "GET",
         contentType: "application/json",
-        url: "/api/myProfile",
-        data: JSON.stringify({"jbo": jbo }),
+        url: "homepagePacijent1",
         dataType: "json",
-//        cache: false,
-//        timeout: 600000,
-        success: function (data) {
-
-//            var json = "<h4>Ajax Response</h4><pre>"
-//                + JSON.stringify(data, null, 4) + "</pre>";
-//            $('#feedback').html(json);
-//
-//            console.log("SUCCESS : ", data);
-//            $("#btn-search").prop("disabled", false);
-//
-//        },
-//        error: function (e) {
-//
-//            var json = "<h4>Ajax Response</h4><pre>"
-//                + e.responseText + "</pre>";
-//            $('#feedback').html(json);
-//
-//            console.log("ERROR : ", e);
-//            $("#btn-search").prop("disabled", false);
-
+        success: function (result) {
+        	location.href = "azurirajProfil.html";
         }
     });
 

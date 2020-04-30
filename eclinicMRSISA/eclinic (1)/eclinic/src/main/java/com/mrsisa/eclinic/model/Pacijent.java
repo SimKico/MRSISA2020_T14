@@ -19,14 +19,16 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("P")
 public class Pacijent extends Korisnik {
    
-   @Column(name="jbo", unique=false, nullable=false)
+ 
+
+@Column(name="jbo", unique=false, nullable=false)
    private String jedBrojOsiguranika;
    
    @Column(name="broj_telefona", unique=false, nullable=false)
    private String brojTelefona;
    
    @Column(name="adresa", unique=false, nullable=false)
-   private String adresaPrebivalsta;
+   private String adresaPrebivalista;
    
    @Column(name="grad", unique=false, nullable=false)
    private String grad;
@@ -57,12 +59,12 @@ public void setBrojTelefona(String brojTelefona) {
 	this.brojTelefona = brojTelefona;
 }
 
-public String getAdresaPrebivalsta() {
-	return adresaPrebivalsta;
+public String getAdresaPrebivalista() {
+	return adresaPrebivalista;
 }
 
 public void setAdresaPrebivalsta(String adresaPrebivalsta) {
-	this.adresaPrebivalsta = adresaPrebivalsta;
+	this.adresaPrebivalista = adresaPrebivalsta;
 }
 
 public String getGrad() {
@@ -97,6 +99,16 @@ public void setPregledi(Set<Pregled> pregledi) {
 	this.pregledi = pregledi;
 }
    
-   
+public Pacijent(String jedBrojOsiguranika, String brojTelefona, String adresaPrebivalsta, String grad,
+		String drzava, ZdravstveniKarton zdravstveniKarton, Set<Pregled> pregledi) {
+	super();
+	this.jedBrojOsiguranika = jedBrojOsiguranika;
+	this.brojTelefona = brojTelefona;
+	this.adresaPrebivalista = adresaPrebivalista;
+	this.grad = grad;
+	this.drzava = drzava;
+	this.zdravstveniKarton = zdravstveniKarton;
+	this.pregledi = pregledi;
+}
 
 }
