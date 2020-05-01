@@ -18,9 +18,32 @@
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+  
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ 
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+  <script type="text/javascript">
+  
+  function predjiNaProfil(){
+	  
+	  console.log("De nestoooo");
+	  $.ajax({
+			type: "GET",
+			url: "/profilAKC",
+			success: function(data){
+				console.log(data);
+			}
+		})
+}
+  </script>
+
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
   <!--banner-->
   <section id="banner" class="banner">
     <div class="bg-color">
@@ -57,9 +80,9 @@
 	<a href="register.html" style="color:black">Registruj se</a>
 	<a href="homepagePacijent1.html" >Pacijent</a>
   </div>
-
 </form>
     </div>
+    <input type="submit" onclick = "predjiNaProfil()">AKC</input>
   </section>
   <!--/ banner-->
 
@@ -78,12 +101,7 @@
     </div>
   </footer>
   <!--/ footer-->
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery.easing.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/custom.js"></script>
-  <script src="contactform/contactform.js"></script>
+  
 
 </body>
 
