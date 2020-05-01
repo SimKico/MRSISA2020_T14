@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,13 +19,14 @@ import com.mrsisa.eclinic.service.PacijentService;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("homepagePacijent1")
+@CrossOrigin("*")
 public class PacijentController {
 
 	@Autowired
 	private PacijentService pacijentService;
 
-	@RequestMapping(value = "homepagePacijent1", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/azurirajProfil1", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PacijentDTO> getHomepagePacijenta(@PathVariable Long id){
 		Pacijent pacijent = pacijentService.findOne(id);
 		
@@ -36,12 +38,17 @@ public class PacijentController {
 	}
 	
 	
-//	@GetMapping(value = "/homepagePacijent1", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<PacijentDTO> getHomepagePacijenta(){
-//		
-//		
-//		return new ResponseEntity<>(HttpStatus.OK);
-//	}
+	@RequestMapping(value = "")
+	@ResponseBody
+	public String prikaziProfil() {
+		return "homepagePacijent1";
+	}
+	
+	@RequestMapping(value = "/listaKlinika", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String azurirajProfil() {
+		System.out.println("nesto");
+		return "usla si na listuKlinika";
+	}
 	
 //	@RequestMapping(value = "/profilPacijenta")
 //	public ModelAndView getProfilPacijenta(){
