@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
 public class AdminKlinike extends Korisnik {
    
    @ManyToOne
-   @JoinColumn(name = "klinika_id", referencedColumnName = "klinika_id", nullable = false)
+   @JoinColumn(name = "klinika_id", referencedColumnName = "klinika_id")
    public Klinika klinika;
    
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)

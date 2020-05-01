@@ -24,9 +24,12 @@ import javax.persistence.Table;
 public class SifarnikDijagnoza {
 	
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="sif_dij_id", unique=true, nullable=false)
     private Long sifDid;
+	
+	 @Column(name="naziv_sifarnika", unique=true, nullable=false)
+	 private String naziv;
 	
 	@OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
 	@JoinColumn(name="sif_dij_id")

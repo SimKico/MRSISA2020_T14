@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class ZahtjeviZaOdsustvo {
 	
    @Id
-   @GeneratedValue(strategy=GenerationType.AUTO)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="odsustvo_id", unique=true, nullable=false)
    private Long id;
    

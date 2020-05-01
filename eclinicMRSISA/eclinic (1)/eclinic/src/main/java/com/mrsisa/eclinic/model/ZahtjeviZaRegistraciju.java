@@ -18,7 +18,7 @@ public class ZahtjeviZaRegistraciju {
    
    
    @Id
-   @GeneratedValue(strategy=GenerationType.AUTO)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="reg_id", unique=true, nullable=false)
    private int idZahtjeva;
    
