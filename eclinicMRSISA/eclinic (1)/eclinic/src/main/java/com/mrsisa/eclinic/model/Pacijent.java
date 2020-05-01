@@ -21,6 +21,10 @@ public class Pacijent extends Korisnik {
    
  
 
+public Pacijent() {
+		super();
+	}
+
 @Column(name="jbo", unique=true)
    private String jedBrojOsiguranika;
    

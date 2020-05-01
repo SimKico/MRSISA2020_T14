@@ -1,31 +1,53 @@
-//$(document).ready(function () {
+function predjiNaPacijenta(){
+	console.log("nesto");
+	$.post({
+		url: "/homepagePacijent1",
+		type: "GET",
+//		dataType: "json",
+//        crossDomain: true,
+		success: function (result) {
+			localStorage.setItem("ime", result.ime);
+			location.href = "homepagePacijent1.html" ;
+			console.log(ime);
+//			$("#ime").val(result.ime);
+//			$("#prezime").val(result.lastName);
+//			$("#adresa").val(result.adresaPrebivalista);
+//			$("#grad").val(result.grad);
+//			$("#drzava").val(result.drzava);
+//			$("#telefon").val(result.brojTelefona);
+//			$("#jbo").val(result.jedBrojOsiguranika);
+//			$("#email").val(result.email);
+		},
+		error: function(result) {
+			toastr.error("Something is wrong with your request.(get details)");
+		}
+    });	
+}
+
+function profilPacijenta(){
+	
+	console.log("nesto");
+	$.get({
+		url: "/homepagePacijent1/profilPacijent",
+		type: "GET",
+//		dataType: "json",
+//        crossDomain: true,
+		success: function (result) {
+//			localStorage.setItem(result);
 //
-//    $("#listaKlinika").on('click',function (event) {
-//
-//        //stop submit the form, we will post it manually.
-//        event.preventDefault();
-//
-//        getListaKlinika();
-//
-//    });
-//
-//});
-//
-//function getListaKlinika() {
-//
-//	
-//   $("#listaKlinika").prop("disabled", true);
-//
-//    $.ajax({
-//    	url: "/homepagePacijent1/listaKlinika",
-//        method: "GET",
-//        contentType: "application/json",
-//        
-//        dataType: "json",
-//        data: {}
-//        success: function (result) {
-//        	console.log(result);
-//        }
-//    });
-//
-//}
+//			localStorage.setItem("ime", result.ime);
+			location.href = "profilPacijent.html" ;
+//			$("#ime").val(localStorage.ime);
+//			$("#prezime").val(result.lastName);
+//			$("#adresa").val(result.adresaPrebivalista);
+//			$("#grad").val(result.grad);
+//			$("#drzava").val(result.drzava);
+//			$("#telefon").val(result.brojTelefona);
+//			$("#jbo").val(result.jedBrojOsiguranika);
+//			$("#email").val(result.email);
+		},
+		error: function(result) {
+			toastr.error("Something is wrong with your request.(get details)");
+		}
+    });	
+}

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,30 +20,49 @@ import com.mrsisa.eclinic.service.PacijentService;
 
 
 @RestController
-@RequestMapping("homepagePacijent1")
+@RequestMapping("/homepagePacijent1")
 @CrossOrigin("*")
 public class PacijentController {
 
 	@Autowired
 	private PacijentService pacijentService;
 
-	@RequestMapping(value = "/azurirajProfil1", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PacijentDTO> getHomepagePacijenta(@PathVariable Long id){
-		Pacijent pacijent = pacijentService.findOne(id);
+//	@RequestMapping(value = "/azurirajProfil1", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public ResponseEntity<PacijentDTO> getHomepagePacijenta(@PathVariable Long id){
+////		Pacijent pacijent = pacijentService.findOne(id);
+////		
+////		if(pacijent == null) {
+////			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+////		}
+//		
+//		return new ResponseEntity<>(new PacijentDTO(pacijent), HttpStatus.OK);
+//	}
 		
-		if(pacijent == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		
-		return new ResponseEntity<>(new PacijentDTO(pacijent), HttpStatus.OK);
-	}
-	
 	
 	@RequestMapping(value = "")
 	@ResponseBody
-	public String prikaziProfil() {
-		return "homepagePacijent1";
+	public ResponseEntity<PacijentDTO> getHomepagePacijent()
+	{
+		 PacijentDTO p = pacijentService.myDetails();
+		 return new ResponseEntity<>(p, HttpStatus.OK);
 	}
+//	public PacijentDTO getHomepagePacijent(){
+//		 PacijentDTO p = pacijentService.myDetails();
+//		 System.out.println("afda");
+//
+//			System.out.println("Profilpacijetn");
+//		  return p;
+//	}
+	
+	
+	@GetMapping(value = "/profilPacijent",  produces = MediaType.APPLICATION_JSON_VALUE)
+	public PacijentDTO getProfilPacijent(){
+		 PacijentDTO p = pacijentService.myDetails();
+		 System.out.println("afda");
+
+			System.out.println("Profilpacijetn");
+		  return p;
+	}	
 	
 	@RequestMapping(value = "/listaKlinika", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String azurirajProfil() {
