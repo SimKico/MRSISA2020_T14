@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
+<head >
+ <meta charset = "ISO-8859-1" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Medilab Free Bootstrap HTML5 Template</title>
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
@@ -20,12 +20,15 @@
   ======================================================= -->
   
  <script type="text/javascript" src="js/jquery.min.js"></script>
- 
+ <script src = "js/pacijentHomepage.js"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
-  <script src="contactform/contactform.js"></script>
+ 
   <script type="text/javascript">
+  
+ 
+  
   
   function predjiNaProfil(){
 	  
@@ -78,31 +81,16 @@
 
     <button type="submit" class="btn btn-appoint">Login</button>
 	<a href="register.html" style="color:black">Registruj se</a>
-	<a href="homepagePacijent1.html" >Pacijent</a>
+	
+<!-- <a href="/homepagePacijent1" style="color:black" id = "ha">Pacijent</a> -->	
+	
   </div>
 </form>
     </div>
     <input type="submit" onclick = "predjiNaProfil()">AKC</input>
-  </section>
-  <!--/ banner-->
-
-  <!--footer-->
-  <footer id="footer">
-    <div class="footer-line">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <div class="credits">
-              Ovo je prica o nama, ovo je prica o njoj
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!--/ footer-->
-  
-
-</body>
-
-</html>
+    
+   <input type="submit" onclick = " predjiNaPacijenta()" id= "ha">Pacijent</input> 
+ </form>
+ </section>
+ </body>
+ </html>

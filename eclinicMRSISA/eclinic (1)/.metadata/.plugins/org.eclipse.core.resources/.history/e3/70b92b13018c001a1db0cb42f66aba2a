@@ -17,11 +17,9 @@ public class PacijentDTO {
 	private Set<Pregled> pregledi;
 	private ZdravstveniKarton zdravstveniKarton;
 	private String brojTelefona;
-	private String email;
 	
 	public PacijentDTO(Pacijent pacijent) {
-		this(	pacijent.getPrijava().geteAdresa(),
-				pacijent.getIme(),
+		this(pacijent.getIme(),
 				pacijent.getPrezime(),
 				pacijent.getJedBrojOsiguranika(),
 				pacijent.getAdresaPrebivalista(),
@@ -37,12 +35,11 @@ public class PacijentDTO {
 		
 	}
 	
-	public PacijentDTO(String email, String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String grad, String drzava, Set<Pregled> pregledi,
+	public PacijentDTO(String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String grad, String drzava, Set<Pregled> pregledi,
 			ZdravstveniKarton zdravstveniKarton, String brojTelefona) {
 		super();
-		this.email = email;
-		this.ime = ime;
-		this.prezime = prezime;
+		this.setIme(ime);
+		this.setPrezime(prezime);
 		this.jedBrojOsiguranika = jedBrojOsiguranika;
 		this.adresaPrebivalista = adresaPrebivalista;
 		this.grad = grad;
@@ -122,14 +119,6 @@ public class PacijentDTO {
 
 	public void setBrojTelefona(String brojTelefona) {
 		this.brojTelefona = brojTelefona;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	

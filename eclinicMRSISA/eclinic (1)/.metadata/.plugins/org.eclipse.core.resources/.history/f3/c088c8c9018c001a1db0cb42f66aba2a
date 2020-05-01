@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ažuriraj profil</title>
+    <meta
+      name="description"
+      content="Free Bootstrap Theme by BootstrapMade.com"
+    />
+    <meta
+      name="keywords"
+      content="free website templates, free bootstrap themes, free template, free bootstrap, free website template"
+    />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal"
+    />
+    <!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src = "js/pacijentHomepage.js"></script>
+    <!-- =======================================================
+    Theme Name: Medilab
+    Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+  </head>
+
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!--banner-->
+    <section id="banner" class="banner">
+      <div class="bg-color">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="col-md-12">
+              <div class="navbar-header">
+                <button
+                  type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target="#myNavbar"
+                >
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"
+                  ><img
+                    src="img/logo.png"
+                    class="img-responsive"
+                    style="width: 140px; margin-top: -16px;"
+                /></a>
+              </div>
+             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                <ul class="nav navbar-nav">
+                  <li class="active">
+                    <a href="" id = "mojProfil"  onclick = "profilPacijenta()" >Moj profil</a>
+                  </li>
+                  <li class="active">
+                    <a href="#" id="mojKarton">Moj karton</a>
+                  </li>
+                  <li class="active">
+                    <a href="#" id="istorijaOperacija">Istorija operacija</a>
+                  </li>
+                  <li class="active">
+                    <a href="#" id="istorijaPregleda">istorija pregleda</a>
+                  </li>
+                  <li class="active">
+                    <a href="homepagePacijent1/listaKlinika" id="lk">Lista klinika</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="container">
+          <div class="row">
+            <div class="banner-info">
+              <div class="banner-logo text-center">
+                <!--<img src="../img/logo.png" class="img-responsive">  -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <form action="action_page.php" method="post">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 class="ser-title">PROFIL</h2>
+                <hr class="botm-line" />
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <h3>Licne informacije</h3>
+                <div class="space"></div>
+                <table class="table1">
+                  <tr>
+                    <td class="labela" width="300px">Ime:</td>
+                    <td class="podaci" id = "#ime"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela" width="300px">Prezime:</td>
+                    <td class="podaci" id = "prezime"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela"><br />Adresa prebivališta:</td>
+                    <td class="podaci" id = "adresa"><br /></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela">Mjesto stanovanja:</td>
+                    <td class="podaci" id = "grad"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela">Država:</td>
+                    <td class="podaci" id = "drzava"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela">Telefon:</td>
+                    <td class="podaci" id = "telefon">-</td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela"><br />Jedinstveni broj osiguranika:</td>
+                    <td class="podaci" id = "jbo"><br /></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela">E-mail adresa:</td>
+                    <td class="podaci" id = "email"></td>
+                  </tr>
+                </table>
+                <div class="space"></div>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  
+  
+  <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
+ </body>
+</html>

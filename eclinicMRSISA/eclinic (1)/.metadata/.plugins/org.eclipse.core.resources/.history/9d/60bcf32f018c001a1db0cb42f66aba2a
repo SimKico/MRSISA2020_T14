@@ -43,14 +43,14 @@ function profilPacijenta(){
 			localStorage.setItem("jbo", result.jedBrojOsiguranika);
 			localStorage.setItem("email", result.email);
 			location.href = "profilPacijent.html" ;
-			$("#ime").val(localStorage.getItem("ime"));
-			$("#prezime").val(result.lastName);
-			$("#adresa").val(result.adresaPrebivalista);
-			$("#grad").val(result.grad);
-			$("#drzava").val(result.drzava);
-			$("#telefon").val(result.brojTelefona);
-			$("#jbo").val(result.jedBrojOsiguranika);
-			$("#email").val(result.email);
+//			$("#ime").val(localStorage.ime);
+//			$("#prezime").val(result.lastName);
+//			$("#adresa").val(result.adresaPrebivalista);
+//			$("#grad").val(result.grad);
+//			$("#drzava").val(result.drzava);
+//			$("#telefon").val(result.brojTelefona);
+//			$("#jbo").val(result.jedBrojOsiguranika);
+//			$("#email").val(result.email);
 		},
 		error: function(result) {
 			toastr.error("Something is wrong with your request.(get details)");

@@ -20,7 +20,7 @@ public class PacijentDTO {
 	private String email;
 	
 	public PacijentDTO(Pacijent pacijent) {
-		this(	pacijent.getPrijava().geteAdresa(),
+		this(	pacijent.getPrijava().geteAdresa();
 				pacijent.getIme(),
 				pacijent.getPrezime(),
 				pacijent.getJedBrojOsiguranika(),

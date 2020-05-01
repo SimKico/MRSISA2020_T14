@@ -43,7 +43,7 @@ function profilPacijenta(){
 			localStorage.setItem("jbo", result.jedBrojOsiguranika);
 			localStorage.setItem("email", result.email);
 			location.href = "profilPacijent.html" ;
-			$("#ime").val(localStorage.getItem("ime"));
+			$("#ime").val(ime);
 			$("#prezime").val(result.lastName);
 			$("#adresa").val(result.adresaPrebivalista);
 			$("#grad").val(result.grad);
