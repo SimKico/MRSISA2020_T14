@@ -25,6 +25,7 @@ import javax.persistence.Table;
 public class KlinickiCentar {
 	
    @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
    @Column(name="kc_id", unique=true, nullable=false)
    private String KCid;
    

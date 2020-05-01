@@ -23,16 +23,16 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("LJ")
 public class Ljekar extends Korisnik {
    
-	@Column(name="specijalizacija", unique=false)
+	@Column(name="specijalizcija", unique=false, nullable=false)
    private Specijalizacija specijalizacija;
 	
-	@Column(name="ocjena", unique=false)
+	@Column(name="ocjena", unique=false, nullable=false)
    private int prosjecnaOcjena;
 	
-	@Column(name="info", unique=false)
+	@Column(name="info", unique=false, nullable=false)
    private String dodatneInfo;
    
-	@Column(name="radno_vrijeme", unique=false)
+	@Column(name="radno_vrijeme", unique=false, nullable=false)
    private String radnoVrijeme;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="ljekar")
@@ -45,7 +45,7 @@ public class Ljekar extends Korisnik {
 	private Set<ZahtjeviZaOdsustvo> odsustvo = new HashSet<ZahtjeviZaOdsustvo>();
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "klinika_id", referencedColumnName="klinika_id", nullable=true)
+	@JoinColumn(name = "klinika_id", referencedColumnName="klinika_id")
 	private Klinika klinika;
 	
 	@ManyToMany(fetch=FetchType.LAZY)

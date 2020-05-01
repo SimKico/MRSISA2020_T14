@@ -21,15 +21,15 @@ import javax.persistence.Table;
 public class Klinika {
 	
    @Id
-   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   @GeneratedValue(strategy=GenerationType.AUTO)
    @Column(name="klinika_id", unique=true, nullable=false)
    private Long id;
    
    @Column(name="naziv_klinike", unique=true, nullable=false)
-   private String naziv;
+   private int naziv;
    
    @Column(name="grad", unique=false, nullable=false)
-   private String grad;
+   private int grad;
    
    @Column(name="tip_klinike", unique=false, nullable=false)
    private int tipKlinike;

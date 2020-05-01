@@ -32,7 +32,7 @@ import javax.persistence.Table;
 abstract class Korisnik {
    
    @Id
-   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   @GeneratedValue(strategy=GenerationType.AUTO)
    @Column(name="id", unique=true, nullable=false)
    private Long id;
 	
@@ -44,9 +44,6 @@ abstract class Korisnik {
    
    @Column(name="prezime", unique=false, nullable=false)
    private String prezime;
-   
-   @Column(name="dodijeljena_lozinka", unique=false,columnDefinition = "boolean default false")
-	private boolean dodijeljenaLozinka;
    
    @OneToOne(fetch=FetchType.LAZY)
    @JoinColumn(name="prijava_id", referencedColumnName="eadresa")

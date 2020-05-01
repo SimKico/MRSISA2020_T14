@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Pregled {
    
    @Id
-   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   @GeneratedValue(strategy=GenerationType.AUTO)
    @Column(name="pregled_id", unique=true, nullable=false)
    private Long pregled_id;
    

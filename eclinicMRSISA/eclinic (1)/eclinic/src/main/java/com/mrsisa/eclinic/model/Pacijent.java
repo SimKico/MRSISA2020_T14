@@ -21,23 +21,23 @@ public class Pacijent extends Korisnik {
    
  
 
-@Column(name="jbo", unique=true)
+@Column(name="jbo", unique=false, nullable=false)
    private String jedBrojOsiguranika;
    
-   @Column(name="broj_telefona", unique=false)
+   @Column(name="broj_telefona", unique=false, nullable=false)
    private String brojTelefona;
    
-   @Column(name="adresa", unique=false)
+   @Column(name="adresa", unique=false, nullable=false)
    private String adresaPrebivalista;
    
-   @Column(name="grad", unique=false)
+   @Column(name="grad", unique=false, nullable=false)
    private String grad;
   
-   @Column(name="drzava", unique=false)
+   @Column(name="drzava", unique=false, nullable=false)
    private String drzava;
    
    @OneToOne(fetch=FetchType.LAZY)
-   @JoinColumn(name="karton_id", referencedColumnName="karton_id", nullable = true)
+   @JoinColumn(name="karton_id", referencedColumnName="karton_id")
    public ZdravstveniKarton zdravstveniKarton;
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="pacijent")

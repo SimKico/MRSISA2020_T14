@@ -25,7 +25,7 @@ import javax.persistence.Table;
 public class ZdravstveniKarton {
 	
    @Id
-   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   @GeneratedValue(strategy=GenerationType.AUTO)
    @Column(name="karton_id", unique=false, nullable=false)
    private int idKartona;
    
