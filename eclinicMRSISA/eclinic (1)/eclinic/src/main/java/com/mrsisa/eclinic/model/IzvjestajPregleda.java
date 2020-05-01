@@ -25,7 +25,7 @@ public class IzvjestajPregleda {
    
 	
    @Id
-   @GeneratedValue(strategy=GenerationType.AUTO)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="izvjestaj_id", unique=true, nullable=false)
    private Long izvjestaj_id;
 	 
