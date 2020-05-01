@@ -21,7 +21,7 @@ public class MedicinskaSestra extends Korisnik {
 	private Set<ZahtjeviZaOdsustvo> odsustvo = new HashSet<ZahtjeviZaOdsustvo>();
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "klinika_id", referencedColumnName="klinika_id")
+	@JoinColumn(name = "klinika_id", referencedColumnName="klinika_id", nullable=true)
 	private Klinika klinika;
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "sestra")
