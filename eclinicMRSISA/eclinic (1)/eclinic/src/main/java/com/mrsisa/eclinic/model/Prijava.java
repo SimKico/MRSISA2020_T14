@@ -38,6 +38,13 @@ public class Prijava {
    
    @OneToOne(mappedBy="prijava")
    public Korisnik korisnik;
+   
+   
+
+public Prijava() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 
 public String geteAdresa() {
 	return eAdresa;

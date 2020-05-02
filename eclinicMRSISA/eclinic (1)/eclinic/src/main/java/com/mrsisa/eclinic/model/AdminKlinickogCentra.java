@@ -34,6 +34,15 @@ public class AdminKlinickogCentra extends Korisnik {
    public void setZahtjeviZaRegistraciju(Set<ZahtjeviZaRegistraciju> zahtjeviZaRegistraciju) {
 		this.zahtjeviZaRegistraciju = zahtjeviZaRegistraciju;
    }
+
+	public boolean isPredefinisaniAdmin() {
+		return predefinisaniAdmin;
+	}
+	
+	public void setPredefinisaniAdmin(boolean predefinisaniAdmin) {
+		this.predefinisaniAdmin = predefinisaniAdmin;
+	}
+   
 	   
 	
 }

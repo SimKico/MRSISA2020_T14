@@ -53,10 +53,21 @@ abstract class Korisnik {
    public Prijava prijava;
    
    
+   
    public boolean prijava() {
       // TODO: implement
       return false;
    }
+
+   
+	public boolean isDodijeljenaLozinka() {
+	return dodijeljenaLozinka;
+}
+
+
+public void setDodijeljenaLozinka(boolean dodijeljenaLozinka) {
+	this.dodijeljenaLozinka = dodijeljenaLozinka;
+}
 
 
 	public Long getId() {

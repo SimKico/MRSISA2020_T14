@@ -25,7 +25,26 @@
     
     <script type="text/javascript">
   
-  
+    function addUser(){
+    	console.log("STAAA");
+		ime =  $("#ime").val();
+		prezime = $("#prezime").val();
+		eadresa = $("#eadresa").val();
+		lozinka = $("#lozinka").val();
+		console.log(ime, prezime, eadresa, lozinka);
+  		 $.ajax({
+ 			type: "POST",
+ 			url: "profilAKC/dodajAKC/",
+ 			data: JSON.stringify({ime: ime, prezime: prezime, eadresa: eadresa, lozinka: lozinka}),
+ 		    dataType: 'json',
+ 		    contentType:  "application/json",
+ 			success: function(data){
+ 				
+ 				console.log("JUHUUU");
+ 				console.log(data);
+ 			}
+ 		})
+  	}
   </script>
   </head>
 
@@ -89,19 +108,19 @@
                     <table class="">
                         <tr>
                           <td class="labela" width="300px">Ime:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci"><input type="text"  id="ime" /></td>
                         </tr>           
                         <tr>
                           <td class="labela" width="300px">Prezime:</td>
-                         <td class="podaci"><input type="text" /></td>
+                         <td class="podaci" ><input type="text" id="prezime"/></td>
                         </tr>         
                         <tr>
                           <td class="labela"  width="300px" >eAdresa:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci" ><input type="text" id="eadresa" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Dodijeljena lozinka:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci" ><input type="text" id="lozinka" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Klinički centar:</td>
@@ -110,7 +129,7 @@
                       <tr>
                       <td></td>
                       <td>
-                      	<a href="" class="btn btn-appoint">Dodaj administratora</a>
+                      	<a href="#" onclick = "addUser()" class="btn btn-appoint">Dodaj administratora</a>
                    		 <a href="profilAKC.html" class="btn btn-appoint">Odustani</a>
                    		 </td>
                     </tr>

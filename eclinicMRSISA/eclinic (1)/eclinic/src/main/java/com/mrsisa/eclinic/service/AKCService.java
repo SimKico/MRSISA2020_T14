@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.mrsisa.eclinic.dto.AKcDTO;
 import com.mrsisa.eclinic.model.AdminKlinickogCentra;
+import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.repository.AKcRepository;
 
 @Service
@@ -13,16 +14,17 @@ public class AKCService {
 	@Autowired
 	private AKcRepository akcRepository;
 	
-	public AKcDTO getAKCbyEmail(String eadresa) {
-		AdminKlinickogCentra akc = akcRepository.findOneByprijava_eAdresa(eadresa);
+	public AdminKlinickogCentra getAKCbyEmail(String eadresa) {
+		return akcRepository.findOneByprijava_eAdresa(eadresa);
 		
-		return new AKcDTO(akc);
 	}
 	
-	public AKcDTO getAKCbyIme(String ime) {
-		AdminKlinickogCentra akc = akcRepository.findOneByprijava_eAdresa(ime);
-		
-		return new AKcDTO(akc);
+	public AdminKlinickogCentra getAKCbyIme(String ime) {
+		return akcRepository.findOneByprijava_eAdresa(ime);
+	}
+	
+	public AdminKlinickogCentra save(AdminKlinickogCentra akc) {
+		return akcRepository.save(akc);
 	}
 	
 }

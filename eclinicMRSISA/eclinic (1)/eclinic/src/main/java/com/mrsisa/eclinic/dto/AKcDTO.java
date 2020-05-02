@@ -10,14 +10,16 @@ public class AKcDTO {
 	private String ime;
 	private String prezime;
 	private String eadresa;
+	private String lozinka;
 	//private Set<ZahtjeviZaRegistraciju> zahtjeviZaRegistraciju;
 	
 	
-	public AKcDTO(String ime, String prezime, String eadresa) {
+	public AKcDTO(String ime, String prezime, String eadresa, String lozinka) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
 		this.eadresa = eadresa;
+		this.lozinka = lozinka;
 		//this.zahtjeviZaRegistraciju = zahtjeviZaRegistraciju;
 	}
 	
@@ -25,6 +27,7 @@ public class AKcDTO {
 		this.ime = akc.getIme();
 		this.prezime=akc.getPrezime();
 		this.eadresa=akc.getPrijava().geteAdresa();
+		this.lozinka=akc.getPrijava().getLozinka();
 		//this.zahtjeviZaRegistraciju=akc.zahtjeviZaRegistraciju;
 	}
 	
@@ -46,6 +49,16 @@ public class AKcDTO {
 	public void setEadresa(String eadresa) {
 		this.eadresa = eadresa;
 	}
+
+	public String getLozinka() {
+		return lozinka;
+	}
+
+	public void setLozinka(String lozinka) {
+		this.lozinka = lozinka;
+	}
+	
+	
 //	public Set<ZahtjeviZaRegistraciju> getZahtjeviZaRegistraciju() {
 //		return zahtjeviZaRegistraciju;
 //	}
