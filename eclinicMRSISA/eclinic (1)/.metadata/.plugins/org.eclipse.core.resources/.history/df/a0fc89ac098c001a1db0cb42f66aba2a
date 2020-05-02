@@ -61,7 +61,7 @@ function popuni()
 			$("#adresa").append(localStorage.getItem('adr'));
 			$("#grad").append(localStorage.getItem('grad'));
 			$("#drzava").append(localStorage.getItem('drz'));
-			$("#telefon").val(localStorage.getItem('tel'));
+		//	$("#telefon").val(localStorage.getItem(''));
 			$("#jbo").append(localStorage.getItem('jbo'));
 			$("#email").append(localStorage.getItem('email'));
 	
