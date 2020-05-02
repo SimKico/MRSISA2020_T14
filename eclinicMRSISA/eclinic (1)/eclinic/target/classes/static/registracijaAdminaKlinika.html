@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Profil admina klinickog centra</title>
+    <title>Registracija administratora klinike</title>
     <meta
       name="description"
       content="Free Bootstrap Theme by BootstrapMade.com"
@@ -32,8 +32,8 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "MyFunction()">
   <!--banner-->
      <section id="banner" class="banner">
-      <div class="bg-color">
-        <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="bg-color" >
+        <nav class="navbar navbar-default navbar-fixed-top" class = "disabled">
           <div class="container">
             <div class="col-md-12">
               <div class="navbar-header">
@@ -57,19 +57,19 @@
               <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
                 
+<!--                   <li class="active"> -->
+<!--                     <a href="#" id="Registracija klinika">Registracija klinika</a> -->
+<!--                   </li> -->
                   <li class="active">
-                    <a href="registracijaKlinika.html" id="Registracija klinika">Registracija klinika</a>
+                    <a href="profilAKC.html" id ="Registracija admina klinike" >Vrati se na profil</a>
                   </li>
-                  <li class="active">
-                    <a href="registracijaAdminaKlinika.html" id ="Registracija admina klinike" >Registracija admina klinike</a>
-                  </li>
-                  <li class="active">
-                  <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a>
-                  </li>
-                  <li class="active">
-                  <a href="#" id = "Zahtjevi za registraciju">Zahtjevi za registraciju</a>
+<!--                   <li class="active"> -->
+<!--                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a> -->
+<!--                   </li> -->
+<!--                   <li class="active"> -->
+<!--                   <a href="#" id = "Zahtjevi za registraciju">Zahtjevi za registraciju</a> -->
                   
-                  </li>
+<!--                   </li> -->
                 </ul>
               </div>
             </div>
@@ -84,35 +84,38 @@
           </div>
         </div>
       </div>
-	  <form action="action_page.php" method="post">
-		<div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="ser-title">PROFIL</h2>
-            <hr class="botm-line" />
-          </div>
-          <div class="col-md-4 col-sm-4">
-            <h3>Licne informacije</h3>
-            <div class="space"></div>
-            <p id = "ime" >
-              <i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Ime: <br />
-            </p>
-            <p id = "prezime">
-            <i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Prezime: <br />
-            </p>
-            <div class="space"></div>
-            <p id = "eadresa">
-              <i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> Email: <br/>
-            </p>
-            <div class="space"></div>
-            <p>
-              <i class="fa fa-phone fa-fw pull-left fa-2x"></i>Uloga:<br />
-              Admin klinickog centra
-            </p>
-          </div>
-          </div>
-          </div>
-</form>
+	   <div class="text-center form-group">
+                 <h1 class="white">ADMINISTRATOR KLINIKE</h1> 
+                    <table class="">
+                        <tr>
+                          <td class="labela" width="300px">Ime:</td>
+                          <td class="podaci"><input type="text" /></td>
+                        </tr>           
+                        <tr>
+                          <td class="labela" width="300px">Prezime:</td>
+                         <td class="podaci"><input type="text" /></td>
+                        </tr>         
+                        <tr>
+                          <td class="labela"  width="300px" >eAdresa:</td>
+                          <td class="podaci"><input type="text" /></td>
+                        </tr>
+                        <tr>
+                          <td class="labela"  width="300px">Dodijeljena ozinka:</td>
+                          <td class="podaci"><input type="text" /></td>
+                        </tr>
+                        <tr>
+                          <td class="labela"  width="300px">Klinika:</td>
+                          <td class="podaci"><input type="text" /></td>
+                        </tr>
+                      <tr>
+                      <td></td>
+                      <td>
+                      	<a href="" class="btn btn-appoint">Sačuvaj izmjene</a>
+                   		 <a href="profilAKC.html" class="btn btn-appoint">Odustani</a>
+                   		 </td>
+                    </tr>
+                    </table>
+              </div>
     </div>
   </section>
   <!--/ banner-->
@@ -124,3 +127,5 @@
 
 </body>
 </html>
+
+
