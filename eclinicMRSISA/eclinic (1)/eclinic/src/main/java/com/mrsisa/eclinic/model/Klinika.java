@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name= "klinike")
 public class Klinika {
-	
-   @Id
+
+@Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="klinika_id", unique=true, nullable=false)
    private Long id;
@@ -57,6 +57,118 @@ public class Klinika {
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="klinika")
 	private Set<MedicinskaSestra> sestre = new HashSet<MedicinskaSestra>();
+
+   
+	
+   public Klinika() {
+		super();
+	}
+
+public Klinika(Long id, String naziv, String grad, int tipKlinike, int ocjenaKlinike, Set<Sala> sala,
+			Set<Pregled> pregled, Set<TipPregleda> tipoviPregleda, Set<AdminKlinike> adminKlinike, Set<Ljekar> ljekari,
+			Set<MedicinskaSestra> sestre) {
+		super();
+		this.id = id;
+		this.naziv = naziv;
+		this.grad = grad;
+		this.tipKlinike = tipKlinike;
+		this.ocjenaKlinike = ocjenaKlinike;
+		this.sala = sala;
+		this.pregled = pregled;
+		this.tipoviPregleda = tipoviPregleda;
+		this.adminKlinike = adminKlinike;
+		this.ljekari = ljekari;
+		this.sestre = sestre;
+	}
+
+   
+public Long getId() {
+	return id;
+}
+
+public void setId(Long id) {
+	this.id = id;
+}
+
+public String getNaziv() {
+	return naziv;
+}
+
+public void setNaziv(String naziv) {
+	this.naziv = naziv;
+}
+
+public String getGrad() {
+	return grad;
+}
+
+public void setGrad(String grad) {
+	this.grad = grad;
+}
+
+public int getTipKlinike() {
+	return tipKlinike;
+}
+
+public void setTipKlinike(int tipKlinike) {
+	this.tipKlinike = tipKlinike;
+}
+
+public int getOcjenaKlinike() {
+	return ocjenaKlinike;
+}
+
+public void setOcjenaKlinike(int ocjenaKlinike) {
+	this.ocjenaKlinike = ocjenaKlinike;
+}
+
+public Set<Sala> getSala() {
+	return sala;
+}
+
+public void setSala(Set<Sala> sala) {
+	this.sala = sala;
+}
+
+public Set<Pregled> getPregled() {
+	return pregled;
+}
+
+public void setPregled(Set<Pregled> pregled) {
+	this.pregled = pregled;
+}
+
+public Set<TipPregleda> getTipoviPregleda() {
+	return tipoviPregleda;
+}
+
+public void setTipoviPregleda(Set<TipPregleda> tipoviPregleda) {
+	this.tipoviPregleda = tipoviPregleda;
+}
+
+public Set<AdminKlinike> getAdminKlinike() {
+	return adminKlinike;
+}
+
+public void setAdminKlinike(Set<AdminKlinike> adminKlinike) {
+	this.adminKlinike = adminKlinike;
+}
+
+public Set<Ljekar> getLjekari() {
+	return ljekari;
+}
+
+public void setLjekari(Set<Ljekar> ljekari) {
+	this.ljekari = ljekari;
+}
+
+public Set<MedicinskaSestra> getSestre() {
+	return sestre;
+}
+
+public void setSestre(Set<MedicinskaSestra> sestre) {
+	this.sestre = sestre;
+}
    
 
 	}
