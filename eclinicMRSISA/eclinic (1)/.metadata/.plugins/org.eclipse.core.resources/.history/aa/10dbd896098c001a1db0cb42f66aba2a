@@ -58,11 +58,11 @@ function popuni()
 	
 			$("#ime").append(localStorage.getItem("ime"	));
 			$("#prezime").append(localStorage.getItem('prezime'));
-			$("#adresa").append(localStorage.getItem('adr'));
-			$("#grad").append(localStorage.getItem('grad'));
-			$("#drzava").append(localStorage.getItem('drz'));
-			$("#telefon").val(localStorage.getItem('tel'));
-			$("#jbo").append(localStorage.getItem('jbo'));
-			$("#email").append(localStorage.getItem('email'));
+			$("#adresa").val(localStorage.getItem('adr'));
+			$("#grad").val(localStorage.getItem('grad'));
+			$("#drzava").val(localStorage.getItem('drz'));
+		//	$("#telefon").val(localStorage.getItem(''));
+			$("#jbo").val(localStorage.getItem('jbo'));
+			$("#email").val(localStorage.getItem('email'));
 	
 	 }

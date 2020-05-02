@@ -43,26 +43,20 @@ function profilPacijenta(){
 			localStorage.setItem("jbo", result.jedBrojOsiguranika);
 			localStorage.setItem("email", result.email);
 			location.href = "profilPacijent.html" ;
+			console.log("fasdfas");
 	
+	//		console.log(localStorage.getItem('ime'));
+		//	$("#ime").text(localStorage.getItem('ime'));
+//			$("#prezime").val(result.lastName);
+//			$("#adresa").val(result.adresaPrebivalista);
+//			$("#grad").val(result.grad);
+//			$("#drzava").val(result.drzava);
+//			$("#telefon").val(result.brojTelefona);
+//			$("#jbo").val(result.jedBrojOsiguranika);
+//			$("#email").val(result.email);
 		},
 		error: function(result) {
 			toastr.error("Something is wrong with your request.(get details)");
 		}
     });	
 }
-
-function popuni()
-{
-	console.log("fasdfas");
-	
-	
-			$("#ime").append(localStorage.getItem("ime"	));
-			$("#prezime").append(localStorage.getItem('prezime'));
-			$("#adresa").append(localStorage.getItem('adr'));
-			$("#grad").append(localStorage.getItem('grad'));
-			$("#drzava").append(localStorage.getItem('drz'));
-			$("#telefon").val(localStorage.getItem('tel'));
-			$("#jbo").append(localStorage.getItem('jbo'));
-			$("#email").append(localStorage.getItem('email'));
-	
-	 }
