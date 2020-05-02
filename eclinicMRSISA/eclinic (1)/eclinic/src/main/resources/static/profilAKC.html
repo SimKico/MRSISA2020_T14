@@ -13,6 +13,7 @@
       content="free website templates, free bootstrap themes, free template, free bootstrap, free website template"
     />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src = "js/profilAKC.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -21,15 +22,14 @@
     <!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <!-- =======================================================
-    Theme Name: Medilab
-    Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
+    
+    <script type="text/javascript">
+  
+  
+  </script>
   </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "MyFunction()">
   <!--banner-->
      <section id="banner" class="banner">
       <div class="bg-color">
@@ -58,13 +58,16 @@
                 <ul class="nav navbar-nav">
                 
                   <li class="active">
-                    <a href="" id="Registracija klinika">Registracija klinika</a>
+                    <a href="#" id="Registracija klinika">Registracija klinika</a>
                   </li>
                   <li class="active">
                     <a href="#" id ="Registracija admina klinike" >Registracija admina klinike</a>
                   </li>
                   <li class="active">
                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a>
+                  </li>
+                  <li class="active">
+                  <a href="#" id = "Zahtjevi za registraciju">Zahtjevi za registraciju</a>
                   
                   </li>
                 </ul>
@@ -91,17 +94,15 @@
           <div class="col-md-4 col-sm-4">
             <h3>Licne informacije</h3>
             <div class="space"></div>
-            <p>
+            <p id = "ime" >
               <i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Ime: <br />
-              Markic
             </p>
+            <p id = "prezime">
             <i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Prezime: <br />
-              Maricic
             </p>
             <div class="space"></div>
-            <p>
-              <i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i
-              >emailadresa@nekaj.com
+            <p id = "eadresa">
+              <i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> Email: <br/>
             </p>
             <div class="space"></div>
             <p>
