@@ -43,8 +43,8 @@ public class PacijentController {
 	@ResponseBody
 	public ResponseEntity<PacijentDTO> getHomepagePacijent()
 	{
-		 PacijentDTO p = pacijentService.myDetails();
-		 return new ResponseEntity<>(p, HttpStatus.OK);
+		 Pacijent p = pacijentService.myDetails();
+		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
 	}
 //	public PacijentDTO getHomepagePacijent(){
 //		 PacijentDTO p = pacijentService.myDetails();
@@ -55,13 +55,10 @@ public class PacijentController {
 //	}
 	
 	
-	@GetMapping(value = "/profilPacijent",  produces = MediaType.APPLICATION_JSON_VALUE)
-	public PacijentDTO getProfilPacijent(){
-		 PacijentDTO p = pacijentService.myDetails();
-		 System.out.println("afda");
-
-			System.out.println("Profilpacijetn");
-		  return p;
+	@RequestMapping(value = "/profilPacijent")
+	public ResponseEntity<PacijentDTO>  getProfilPacijent(){
+		 Pacijent p = pacijentService.myDetails();
+		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
 	}	
 	
 	@RequestMapping(value = "/listaKlinika", produces = MediaType.APPLICATION_JSON_VALUE)

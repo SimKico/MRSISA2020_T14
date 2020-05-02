@@ -13,9 +13,9 @@ public class PacijentService {
 	@Autowired
 	private PacijentRepository pacijentRepository;
 	
-	public PacijentDTO myDetails() {
+	public Pacijent myDetails() {
 //		Pacijent pacijent = (Pacijent) 	
-		Pacijent pacijent = pacijentRepository.findOneByJedBrojOsiguranika("123456");
-		return new PacijentDTO(pacijent);
+		//Pacijent pacijent = pacijentRepository.findOneByJedBrojOsiguranika("123456");
+		return pacijentRepository.findOneByJedBrojOsiguranika("123456");
 	}
 }
