@@ -30,7 +30,7 @@
   ======================================================= -->
   </head>
 
-  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "popuni()">
     <!--banner-->
     <section id="banner" class="banner">
       <div class="bg-color">
@@ -58,7 +58,10 @@
              <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
                   <li class="active">
-                    <a href="" id = "mojProfil"  onclick = "profilPacijenta()" >Moj profil</a>
+                    <a href="" onclick ="prikaziHomepagePacijenta()">Početna strana</a>
+                  </li>
+                  <li class="active">
+                    <a href="" id = "mojProfil">Ažuriraj podatke</a>
                   </li>
                   <li class="active">
                     <a href="#" id="mojKarton">Moj karton</a>
@@ -70,7 +73,7 @@
                     <a href="#" id="istorijaPregleda">istorija pregleda</a>
                   </li>
                   <li class="active">
-                    <a href="homepagePacijent1/listaKlinika" id="lk">Lista klinika</a>
+                   <a href="" onclick = "prikaziListuKlinika()">Lista klinika</a>
                   </li>
                 </ul>
               </div>
@@ -95,6 +98,7 @@
               </div>
               <div class="col-md-4 col-sm-4">
                 <h3>Licne informacije</h3>
+                
                 <div class="space"></div>
                 <table class="table1">
                   <tr>
@@ -127,7 +131,7 @@
                     <td class="podaci" id = "telefon">-</td>
                   </tr>
 
-                  <tr>
+                  <tr>	
                     <td class="labela"><br />Jedinstveni broj osiguranika:</td>
                     <td class="podaci" id = "jbo"><br /></td>
                   </tr>
