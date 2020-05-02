@@ -37,8 +37,8 @@ public class PacijentDTO {
 		
 	}
 	
-	public PacijentDTO(String email, String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String brojTelefona , String drzava, Set<Pregled> pregledi,
-			ZdravstveniKarton zdravstveniKarton, String grad) {
+	public PacijentDTO(String email, String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String grad, String drzava, Set<Pregled> pregledi,
+			ZdravstveniKarton zdravstveniKarton, String brojTelefona) {
 		super();
 		this.email = email;
 		this.ime = ime;

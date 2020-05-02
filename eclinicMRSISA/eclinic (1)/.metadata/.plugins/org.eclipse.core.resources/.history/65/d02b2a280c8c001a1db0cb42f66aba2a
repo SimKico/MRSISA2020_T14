@@ -67,3 +67,8 @@ function popuni()
 			$("#email").append(localStorage.getItem('email'));
 	
 	 }
+
+function prikaziListuKlinika()
+{
+	
+	}

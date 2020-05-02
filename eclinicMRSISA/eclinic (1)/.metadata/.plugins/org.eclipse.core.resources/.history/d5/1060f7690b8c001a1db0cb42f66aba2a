@@ -42,7 +42,6 @@ function profilPacijenta(){
 			localStorage.setItem("drz", result.drzava);
 			localStorage.setItem("jbo", result.jedBrojOsiguranika);
 			localStorage.setItem("email", result.email);
-			localStorage.setItem("tel", result.brojTelefona)
 			location.href = "profilPacijent.html" ;
 	
 		},

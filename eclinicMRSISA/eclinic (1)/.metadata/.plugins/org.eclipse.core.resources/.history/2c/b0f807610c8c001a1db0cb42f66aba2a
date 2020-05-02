@@ -18,6 +18,12 @@ import javax.persistence.OneToOne;
 @Entity
 @DiscriminatorValue("P")
 public class Pacijent extends Korisnik {
+   
+ 
+
+public Pacijent() {
+		super();
+	}
 
 @Column(name="jbo", unique=true)
    private String jedBrojOsiguranika;
@@ -40,12 +46,6 @@ public class Pacijent extends Korisnik {
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="pacijent")
    private Set<Pregled> pregledi = new HashSet<Pregled>();
-
-  
-public Pacijent() {
-		super();
-	}
-
 
 public String getJedBrojOsiguranika() {
 	return jedBrojOsiguranika;
