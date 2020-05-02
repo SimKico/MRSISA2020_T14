@@ -1,6 +1,6 @@
 function prikaziHomepagePacijenta(){
 	console.log("nesto");
-	$.post({
+	$.ajax({
 		url: "/homepagePacijent1",
 		type: "GET",
 //		dataType: "json",
@@ -19,7 +19,7 @@ function prikaziHomepagePacijenta(){
 function profilPacijenta(){
 	
 	console.log("nesto");
-	$.get({
+	$.ajax({
 		url: "/homepagePacijent1/profilPacijent",
 		type: "GET",
 //		dataType: "json",
@@ -53,3 +53,42 @@ function popuni()
 			$("#email").append(localStorage.getItem('email'));
 	
  }
+
+function prikaziListuKlinika(){
+	console.log("nesto");
+	$.ajax({
+		url: "/homepagePacijent1/listaKlinika",
+		type: "GET",
+		success: function (result) {
+			localStorage.setItem("result", JSON.stringify(result));
+			location.href = "listaKlinika.html" ;
+		},
+		error: function(result) {
+			toastr.error("Something is wrong with your request.(get details)");
+		}
+    });	
+}
+
+function prikaziKlinike(){
+	
+	var retrivedData = localStorage.getItem('result');
+	console.log(retrivedData);
+	var retrivedJSON = JSON.parse(retrivedData);
+	console.log(retrivedJSON);
+	
+	var elements = retrivedJSON.length;
+	console.log(elements);
+	
+	var i = 0;
+	for(i; i<elements; i++){
+		$("#table1")
+		.append($("<tr>")
+				.append($("<td>")
+					.text(retrivedJSON[i].naziv))
+				.append($("<td>")
+					.text(retrivedJSON[i].grad))
+				.append($("<td>")
+					.text(retrivedJSON[i].tipKlinike))
+			);
+	}
+}

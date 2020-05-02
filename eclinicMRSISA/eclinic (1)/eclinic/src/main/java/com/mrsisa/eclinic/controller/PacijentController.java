@@ -1,5 +1,7 @@
 package com.mrsisa.eclinic.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,8 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.PacijentDTO;
+import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Pacijent;
+import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.PacijentService;
 
 
@@ -26,6 +31,9 @@ public class PacijentController {
 
 	@Autowired
 	private PacijentService pacijentService;
+	
+	@Autowired 
+	private KlinikaService klinikaService;
 
 //	@RequestMapping(value = "/azurirajProfil1", produces = MediaType.APPLICATION_JSON_VALUE)
 //	public ResponseEntity<PacijentDTO> getHomepagePacijenta(@PathVariable Long id){
@@ -39,46 +47,31 @@ public class PacijentController {
 //	}
 		
 	
-	@RequestMapping(value = "")
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<PacijentDTO> getHomepagePacijent()
 	{
 		 Pacijent p = pacijentService.myDetails();
 		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
 	}
-//	public PacijentDTO getHomepagePacijent(){
-//		 PacijentDTO p = pacijentService.myDetails();
-//		 System.out.println("afda");
-//
-//			System.out.println("Profilpacijetn");
-//		  return p;
-//	}
+
 	
-	
-	@RequestMapping(value = "/profilPacijent")
+	@RequestMapping(value = "/profilPacijent" ,  method = RequestMethod.GET)
 	public ResponseEntity<PacijentDTO>  getProfilPacijent(){
 		 Pacijent p = pacijentService.myDetails();
 		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
 	}	
 	
-	@RequestMapping(value = "/listaKlinika", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String azurirajProfil() {
+	@RequestMapping(value = "/listaKlinika",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Klinika>> getAllKlinika(){	
+		List<Klinika> listaKlinika = klinikaService.findAll();
 		System.out.println("nesto");
-		return "usla si na listuKlinika";
+		return new ResponseEntity<>(listaKlinika, HttpStatus.OK);
+
 	}
 	
-//	@RequestMapping(value = "/profilPacijenta")
-//	public ModelAndView getProfilPacijenta(){
-//		ModelAndView newView = new ModelAndView();
-//		newView.setViewName("profilPacijenta1");
-//			return newView;
-//	}
-	
-//	@RequestMapping(value = "/azurirajProfil")
-//	public ModelAndView getAzurirajPacijenta(){
-//		ModelAndView newView = new ModelAndView();
-//		newView.setViewName("/azurirajProfil");
-//			return newView;
-//	}
-//	
-}
+}	
+		
+		
+		
+		

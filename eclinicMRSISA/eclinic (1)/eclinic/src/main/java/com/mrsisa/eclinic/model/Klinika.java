@@ -20,6 +20,7 @@ import javax.persistence.Table;
 @Table(name= "klinike")
 public class Klinika {
 
+
 @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="klinika_id", unique=true, nullable=false)
@@ -63,8 +64,19 @@ public class Klinika {
    public Klinika() {
 		super();
 	}
+   
+   public Klinika(Long id, String naziv, String grad, int tipKlinike, int ocjenaKlinike) {
+		super();
+		this.id = id;
+		this.naziv = naziv;
+		this.grad = grad;
+		this.tipKlinike = tipKlinike;
+		this.ocjenaKlinike = ocjenaKlinike;
+	}
 
-public Klinika(Long id, String naziv, String grad, int tipKlinike, int ocjenaKlinike, Set<Sala> sala,
+   
+
+   public Klinika(Long id, String naziv, String grad, int tipKlinike, int ocjenaKlinike, Set<Sala> sala,
 			Set<Pregled> pregled, Set<TipPregleda> tipoviPregleda, Set<AdminKlinike> adminKlinike, Set<Ljekar> ljekari,
 			Set<MedicinskaSestra> sestre) {
 		super();
