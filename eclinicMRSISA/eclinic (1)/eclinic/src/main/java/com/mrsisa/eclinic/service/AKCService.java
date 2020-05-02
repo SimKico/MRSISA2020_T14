@@ -18,5 +18,11 @@ public class AKCService {
 		
 		return new AKcDTO(akc);
 	}
-
+	
+	public AKcDTO getAKCbyIme(String ime) {
+		AdminKlinickogCentra akc = akcRepository.findOneByprijava_eAdresa(ime);
+		
+		return new AKcDTO(akc);
+	}
+	
 }

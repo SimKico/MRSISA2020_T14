@@ -21,27 +21,12 @@
   
  <script type="text/javascript" src="js/jquery.min.js"></script>
  <script src = "js/pacijentHomepage.js"></script>
+ <script src = "js/profilAKC.js"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
  
-  <script type="text/javascript">
   
- 
-  
-  
-  function predjiNaProfil(){
-	  
-	  console.log("De nestoooo");
-	  $.ajax({
-			type: "GET",
-			url: "/profilAKC",
-			success: function(data){
-				console.log(data);
-			}
-		})
-}
-  </script>
 
 </head>
 
@@ -87,7 +72,7 @@
   </div>
 </form>
     </div>
-    <input type="submit" onclick = "predjiNaProfil()">AKC</input>
+    <input type="submit" onclick = "predjiNaProfil()">AKC
     
    <input type="submit" onclick = " predjiNaPacijenta()" id= "ha">Pacijent</input> 
  </form>
