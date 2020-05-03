@@ -13,7 +13,7 @@ import com.mrsisa.eclinic.model.TipPregleda;
 
 public class KlinikaDTO {
 
-	private Long id;
+	
 	private String naziv;
 	 private String grad;
 	 private int tipKlinike;
@@ -29,12 +29,9 @@ public class KlinikaDTO {
 		super();
 	}
 	
-	public KlinikaDTO(Long id, String naziv, String grad, int tipKlinike,
-			int ocjenaKlinike
-			) 
+	public KlinikaDTO(String naziv, String grad, int tipKlinike, int ocjenaKlinike) 
 	{
 		super();
-		this.id = id;
 		this.naziv = naziv;
 		this.grad = grad;
 		this.tipKlinike = tipKlinike;
@@ -44,20 +41,13 @@ public class KlinikaDTO {
 	 
 	public KlinikaDTO(Klinika klinika) {
 		this(
-				klinika.getId(),
 				klinika.getNaziv(),
 				klinika.getGrad(),
 				klinika.getTipKlinike(),
 				klinika.getOcjenaKlinike()
 			);
 	}
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 	public String getNaziv() {
 		return naziv;
 	}

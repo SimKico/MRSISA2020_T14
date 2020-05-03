@@ -24,7 +24,25 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
     <script type="text/javascript">
-  
+    function regKlinke(){
+    	console.log("REG KLinike");
+		naziv =  $("#naziv").val();
+		grad = $("#grad").val();
+		tip = $("#tip").val();
+		ocjena = 0;
+  		 $.ajax({
+ 			type: "POST",
+ 			url: "profilAKC/registrujKliniku/",
+ 			data: JSON.stringify({naziv: naziv, grad: grad, tipKlinike: tip, ocjenaKlinike: ocjena}),
+ 		    dataType: 'json',
+ 		    contentType:  "application/json",
+ 			success: function(data){
+ 				
+ 				console.log("JUHUUU");
+ 				console.log(data);
+ 			}
+ 		})
+  	}
   
   </script>
   </head>
@@ -89,15 +107,15 @@
                     <table class="">
                         <tr>
                           <td class="labela" width="300px">Naziv:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci"><input id = "naziv"  type="text" /></td>
                         </tr>           
                         <tr>
                           <td class="labela" width="300px">Grad:</td>
-                         <td class="podaci"><input type="text" /></td>
+                         <td class="podaci"><input id = "grad" type="text" /></td>
                         </tr>         
                         <tr>
                           <td class="labela"  width="300px" >Tip:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci"><input id = "tip" type="text" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Ocjena:</td>
@@ -106,7 +124,7 @@
                       <tr>
                       <td></td>
                       <td>
-                      	<a href="" class="btn btn-appoint">Registruj kliniku</a>
+                      	<a href="#" onclick = "regKlinke()" class="btn btn-appoint">Registruj kliniku</a>
                    		 <a href="profilAKC.html" class="btn btn-appoint">Odustani</a>
                    		 </td>
                     </tr>

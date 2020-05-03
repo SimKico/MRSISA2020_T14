@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mrsisa.eclinic.dto.KlinikaDTO;
+import com.mrsisa.eclinic.model.AdminKlinickogCentra;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.repository.KlinikaRepository;
 
@@ -21,6 +22,10 @@ public class KlinikaService {
 	
 	public Klinika findOneKlinkaByNaziv(String name)
 	{
-		return klinikaRepository.findOneByNaziv(name);
+		return klinikaRepository.findOneBynaziv(name);
+	}
+	
+	public Klinika save(Klinika klinika) {
+		return klinikaRepository.save(klinika);
 	}
 }

@@ -11,6 +11,9 @@ import com.mrsisa.eclinic.model.Klinika;
 
 public interface KlinikaRepository extends JpaRepository<Klinika, Long>{
 
-	Klinika findOneByNaziv(String naziv);
+	Klinika findOneBynaziv(String naziv);
+	
 	Page<Klinika> findAll(Pageable  pageable);
+	
+	
 }
