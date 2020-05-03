@@ -36,7 +36,7 @@ abstract class Korisnik {
    @Column(name="id", unique=true, nullable=false)
    private Long id;
 	
-   @Column(name="aktivan", unique=false, nullable=false)
+   @Column(name="aktivan", unique=false, nullable=false, columnDefinition = "boolean default false")
    private boolean aktivan;
    
    @Column(name="ime", unique=false, nullable=false)

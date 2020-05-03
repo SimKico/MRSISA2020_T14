@@ -24,12 +24,51 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
     <script type="text/javascript">
+    
+    function ucitajKlinike(){
+    	console.log("De nestoooo");
+  	  $.ajax({
+  			type: "GET",
+  			url: "/profilAKC/ucitajKlinike",
+  			success: function(data){
+  				console.log(data);
+  				console.log(data[0].naziv);
+  				$.each(data, function(key, value) {
+  					$('#nazivKlinike').append($('<option>', { 
+  				        value: key,
+  				        text : value.naziv 
+  				    }));
+  				});
+  		}
+  	  });
+    }
   
-  
+    function regAdminaKlinke(){
+    	console.log("REG KLinike");
+    	ime =  $("#ime").val();
+		prezime = $("#prezime").val();
+		eadresa = $("#eadresa").val();
+		lozinka = $("#lozinka").val();
+		nazivKlinike = $("#nazivKlinike option:selected").text();
+		console.log(nazivKlinike);
+		ocjena = 0;
+  		 $.ajax({
+ 			type: "POST",
+ 			url: "profilAKC/registrujAdminaKlinike/",
+ 			data: JSON.stringify({ime: ime, prezime: prezime, eadresa: eadresa, lozinka: lozinka, nazivKlinike: nazivKlinike}),
+ 		    dataType: 'json',
+ 		    contentType:  "application/json",
+ 			success: function(data){
+ 				
+ 				console.log("JUHUUU");
+ 				console.log(data);
+ 			}
+ 		})
+  	}
   </script>
   </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "MyFunction()">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "ucitajKlinike()">
   <!--banner-->
      <section id="banner" class="banner">
       <div class="bg-color" >
@@ -89,28 +128,28 @@
                     <table class="">
                         <tr>
                           <td class="labela" width="300px">Ime:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci"><input id = "ime" type="text" /></td>
                         </tr>           
                         <tr>
                           <td class="labela" width="300px">Prezime:</td>
-                         <td class="podaci"><input type="text" /></td>
+                         <td class="podaci"><input id = "prezime" type="text" /></td>
                         </tr>         
                         <tr>
                           <td class="labela"  width="300px" >eAdresa:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci"><input id = "eadresa" type="text" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Dodijeljena ozinka:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci"><input id = "lozinka" type="text" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Klinika:</td>
-                          <td class="podaci"><input type="text" /></td>
+                          <td class="podaci"><select id="nazivKlinike"></select></td>
                         </tr>
                       <tr>
                       <td></td>
                       <td>
-                      	<a href="" class="btn btn-appoint">Registruj administratora</a>
+                      	<a href="#" onclick = "regAdminaKlinke()" class="btn btn-appoint">Registruj administratora</a>
                    		 <a href="profilAKC.html" class="btn btn-appoint">Odustani</a>
                    		 </td>
                     </tr>
