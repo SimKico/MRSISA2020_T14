@@ -81,14 +81,18 @@ function prikaziKlinike(){
 		$("#table1")
 		.append($("<tr>")
 				.append($("<td>")
-					.text(retrivedJSON[i].naziv))
+						.append($("<a href >")
+								.text(retrivedJSON[i].naziv)
+									.append($("</a>"))))
 				.append($("<td>")
 					.text(retrivedJSON[i].grad))
 				.append($("<td>")
-					.text(retrivedJSON[i].tipKlinike))
+					.text(retrivedJSON[i].ocjenaKlinike))
 			);
 	}
 }
+
+
 //Azuriranje podataka pacijenta
 
 function prikaziAzuriranjePacijenta(){
@@ -136,18 +140,18 @@ function azurirajPodatke(){
 	grad = $("#grad").val();
 	drzava = $("#drzava").val();
 	telefon = $("#telefon").val();
+	jbo = localStorage.getItem("jbo");
 	console.log("nesto ba");
-	console.log(adresa, grad, drzava, telefon);	
+	console.log(adresa, grad, drzava, telefon, jbo);	
+		
 		 $.ajax({
 			type: "PUT",
-			url: "/homepagePacijent1/azurirajProfil1",
-			data: JSON.stringify({adresaPrebivalista: adresa, grad: grad, drzava: drzava, brojTelefona: telefon}),
+			url: "/homepagePacijent1/profilPacijent/azurirajProfil",
+			data: JSON.stringify({adresaPrebivalista: adresa, grad: grad, drzava: drzava, brojTelefona: telefon, jedBrojOsiguranika :jbo}),
 		    dataType: 'json',
 		    contentType:  "application/json",
 			success: function(data){
-				console.log(data);
 				profilPacijenta();
-				console.log(data);
 			}
 		 });
 }

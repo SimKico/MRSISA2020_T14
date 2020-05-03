@@ -53,6 +53,7 @@ public class PacijentController {
 		 Pacijent p = pacijentService.findOne("123456");
 		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
 	}	
+	
 	@RequestMapping(value = "/profilPacijent/azurirajPodatke" ,  method = RequestMethod.GET)
 	public ResponseEntity<PacijentDTO>  getPotatkePacijent(){
 		 Pacijent p = pacijentService.findOne("123456");
@@ -66,13 +67,15 @@ public class PacijentController {
 		return new ResponseEntity<>(listaKlinika, HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "/azurirajProfil1", consumes =  "application/json")
-	public ResponseEntity<PacijentDTO> updatePacijetnDTO(@RequestBody PacijentDTO pacijentDTO) {
+	@PutMapping(value = "/profilPacijent/azurirajProfil", consumes =  "application/json")
+	public ResponseEntity<PacijentDTO> updatePacijentDTO(@RequestBody PacijentDTO pacijentDTO) {
+		
 		System.out.println(pacijentDTO);
+		System.out.println(pacijentDTO.getJedBrojOsiguranika());
 		
-//		Pacijent pacijent = pacijentService.findOne(pacijentDTO.getJedBrojOsiguranika());
-		Pacijent pacijent = pacijentService.findOne("123456");
-		
+		Pacijent pacijent = pacijentService.findOne(pacijentDTO.getJedBrojOsiguranika());
+//		Pacijent pacijent = pacijentService.findOne("123456");
+		System.out.println(pacijent);
 		if (pacijent == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
