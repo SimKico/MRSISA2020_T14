@@ -51,7 +51,7 @@
 		var lozinka = $("#lozinka").val();
 		var nazivKlinike = $("#nazivKlinike option:selected").text();
 		ocjena = 0;
-		if(ime != "" & prezime != "" & eadresa != "" & lozinka != "" & nazivKlinike != "" )
+		if(ime != "" & prezime != "" & eadresa != "" & pattern.test(eadresa) & lozinka != "" & nazivKlinike != "" )
 		{
 			$.ajax({
 	 			type: "POST",
