@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ažuriraj profil</title>
+    <title>Homepage</title>
     <meta
       name="description"
       content="Free Bootstrap Theme by BootstrapMade.com"
@@ -21,12 +21,9 @@
     <!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-     <script src = "js/pacijentHomepage.js"></script>
-     <script src = "js/listaKlinika.js"></script>
-     
-      <script type="text/javascript">
-  
-  </script>
+    <script src="js/pacijentHomepage.js"></script>
+    <script src="js/listaKlinika.js"></script>
+    
     <!-- =======================================================
     Theme Name: Medilab
     Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -35,11 +32,24 @@
   ======================================================= -->
   </head>
 
-  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "popuniPodatkePacijentaAzuriranje()">
+  <body
+    id="myPage"
+    data-spy="scroll"
+    data-target=".navbar"
+    data-offset="60"
+    onload = "ucitajPodatkeKlinike()"
+  >
+
     <!--banner-->
     <section id="banner" class="banner">
+    
+
+
+  <!--/ service-->	
+    
       <div class="bg-color">
         <nav class="navbar navbar-default navbar-fixed-top">
+        
           <div class="container">
             <div class="col-md-12">
               <div class="navbar-header">
@@ -62,82 +72,52 @@
               </div>
               <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
-                  <li class="">
-                    <a >Moj profil</a>
+                  <li class="active">
+                    <a href="#" onclick = "profilPacijenta()">Moj profil</a>
                   </li>
                   <li class="active">
-                    <a href="#" id="mojKarton" >Moj karton</a>
+                    <a href="#" id="mojKarton">Moj karton</a>
                   </li>
                   <li class="active">
                     <a href="#" id="istorijaOperacija">Istorija operacija</a>
                   </li>
                   <li class="active">
-                    <a href="#" id="istorijaPregleda">Istorija pregleda</a>
+                    <a href="#" id="istorijaPregleda">istorija pregleda</a>
                   </li>
-                  <li class="active">
-                    <a href="#"  onclick = "prikaziListuKlinika()">Lista klinika</a>
+                  <li class="">
+                    <a id="lk"> Lista klinika </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </nav>
+        
         <div class="container">
           <div class="row">
+         
             <div class="banner-info">
-              <div class="banner-logo text-center">
-                <!-- <img src="img/logo.png" class="img-responsive" /> -->
-              </div>
-              <div class="text-center form-group"> 
-                    <table class="">
-                        <tr>
-                          <td class="labela" width="300px">Ime:</td>
-                          <td class="podaci" id = "ime"></td>
-                        </tr>
-              
-                        <tr>
-                          <td class="labela" width="300px">Prezime:</td>
-                          <td class="podaci" id = "prezime" ></td>
-                        </tr>
-              
-                        <tr>
-                          <td class="labela"><br />Adresa prebivališta:</td>
-                          <td class="podaci" ><br /><input type="text" id = "adresa" /></td>
-                        </tr>
-              
-                        <tr>
-                          <td class="labela">Opština stanovanja:</td>
-                          <td class="podaci"><input type="text" id =  "grad" /></td>
-                        </tr>
-              
-                        <tr>
-                          <td class="labela">Država:</td>
-                          <td class="podaci" ><input type="text" id= "drzava"/></td>
-                        </tr>
-              
-                        <tr>
-                          <td class="labela">Telefon:</td>
-                          <td class="podaci" > <input type="text" id = "telefon" /></td>
-                        </tr>
-              
-                        <tr>
-                          <td class="labela"><br />Jedinstveni broj osiguranika:</td>
-                          <td class="podaci" id = "jbo"><br /></td>
-                        </tr>
-              
-                        <tr>
-                          <td class="labela">E-mail adresa:</td>
-                          <td class="podaci" id = "email"></td>
-                        </tr>
-                      </table>
-                      <a href="#" class="btn btn-appoint" onclick ="azurirajPodatke()"
-                      >Sačuvaj izmjene</a
-                    >
-                    <a href="homepagePacijent1.html" class="btn btn-appoint"
-                    >Odustani</a
-                  >
-                </p>
-               
+              <div class="banner-text text-center">
+                
+                <table class="table1" id="table1" onclick = "klinika.html">
+                	<tr style = " background: rgba(12, 184, 182, 0.21)"  >
+                    <td class="labela" width="300px" id="naziv"></td>
+                    <td class="labela" width="300px" id="grad">  </td>
+                  	<td class="labela" width="300px" id="ocjena"> Ocjena naše klinike je   </td> 
+                  	<td class="labela" width="300px" id="tipPregleda"> Tipovi pregleda </td>
+                  	<td class="labela" width="300px" id="ljekari">Naši ljekari </td>
+                  </tr>
+                  <tr style = " background: rgba(12, 184, 182, 0.21)"  >
+                    <td class="labela" width="300px" id="naziv"  ></td>
+                    <td class="labela" width="300px" id="grad"> </td>
+                  	<td class="labela" width="300px" id="ocjena"></td> 
+                  	<td class="labela" width="300px" id="tipPregleda"></td>
+                  	<td class="labela" width="300px" id="ljekari"></td>
+                  </tr>
+           
+                  
+                </table>
+              <a href="#contact" class="btn btn-appoint">Zakaži pregled jednim klikom</a>
               </div>
               <div class="overlay-detail text-center">
                 <a href="#service"><i class="fa fa-angle-down"></i></a>
@@ -192,11 +172,5 @@
       </div>
     </footer>
        <!--/ footer-->
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="contactform/contactform.js"></script>
   </body>
 </html>

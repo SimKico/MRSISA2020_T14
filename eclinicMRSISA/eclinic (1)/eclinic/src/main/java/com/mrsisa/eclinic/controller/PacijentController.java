@@ -37,8 +37,6 @@ public class PacijentController {
 	@Autowired
 	private PacijentService pacijentService;
 	
-	@Autowired 
-	private KlinikaService klinikaService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ResponseBody
@@ -60,12 +58,7 @@ public class PacijentController {
 		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
 	}	
 	
-	@RequestMapping(value = "/listaKlinika",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Klinika>> getAllKlinika(){	
-		List<Klinika> listaKlinika = klinikaService.findAll();
-		System.out.println("nesto");
-		return new ResponseEntity<>(listaKlinika, HttpStatus.OK);
-	}
+
 	
 	@PutMapping(value = "/profilPacijent/azurirajProfil", consumes =  "application/json")
 	public ResponseEntity<PacijentDTO> updatePacijentDTO(@RequestBody PacijentDTO pacijentDTO) {
@@ -74,7 +67,7 @@ public class PacijentController {
 		System.out.println(pacijentDTO.getJedBrojOsiguranika());
 		
 		Pacijent pacijent = pacijentService.findOne(pacijentDTO.getJedBrojOsiguranika());
-//		Pacijent pacijent = pacijentService.findOne("123456");
+//		Pacijent pacijent = pacijentService.findOne"123456");
 		System.out.println(pacijent);
 		if (pacijent == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -51,46 +51,6 @@ function popuni()
 	
  }
 
-function prikaziListuKlinika(){
-	console.log("nesto");
-	$.ajax({
-		url: "/homepagePacijent1/listaKlinika",
-		type: "GET",
-		success: function (result) {
-			localStorage.setItem("result", JSON.stringify(result));
-			location.href = "listaKlinika.html" ;
-		},
-		error: function(result) {
-			toastr.error("Something is wrong with your request.(get details)");
-		}
-    });	
-}
-
-function prikaziKlinike(){
-	
-	var retrivedData = localStorage.getItem('result');
-	console.log(retrivedData);
-	var retrivedJSON = JSON.parse(retrivedData);
-	console.log(retrivedJSON);
-	
-	var elements = retrivedJSON.length;
-	console.log(elements);
-	
-	var i = 0;
-	for(i; i<elements; i++){
-		$("#table1")
-		.append($("<tr>")
-				.append($("<td>")
-						.append($("<a href >")
-								.text(retrivedJSON[i].naziv)
-									.append($("</a>"))))
-				.append($("<td>")
-					.text(retrivedJSON[i].grad))
-				.append($("<td>")
-					.text(retrivedJSON[i].ocjenaKlinike))
-			);
-	}
-}
 
 
 //Azuriranje podataka pacijenta
@@ -133,9 +93,8 @@ function popuniPodatkePacijentaAzuriranje(){
 
 function azurirajPodatke(){
 	
-	//TO DO: uvesti tokene nekakve, ili drugi nacin da se zna koji je korisnik prijavljen
-	// ili to rijesiti sto ce se u url-u stalno provlaciti {id}
-	console.log("azuriranje podataka pacijenta");
+
+	alert("Uspjesno ste azurirali podatke");
 	adresa =  $("#adresa").val();
 	grad = $("#grad").val();
 	drzava = $("#drzava").val();
@@ -152,6 +111,9 @@ function azurirajPodatke(){
 		    contentType:  "application/json",
 			success: function(data){
 				profilPacijenta();
+			},
+			error: function(result) {
+				toastr.error("Something is wrong with your request.(get details)");
 			}
 		 });
 }
