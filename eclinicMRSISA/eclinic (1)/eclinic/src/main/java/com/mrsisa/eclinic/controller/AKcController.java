@@ -20,11 +20,15 @@ import com.mrsisa.eclinic.dto.AdminKlinikeDTO;
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.model.AdminKlinickogCentra;
 import com.mrsisa.eclinic.model.AdminKlinike;
+import com.mrsisa.eclinic.model.KlinickiCentar;
 import com.mrsisa.eclinic.model.Klinika;
+import com.mrsisa.eclinic.model.Korisnik;
 import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.service.AKCService;
 import com.mrsisa.eclinic.service.AdminKlinikeService;
+import com.mrsisa.eclinic.service.KcService;
 import com.mrsisa.eclinic.service.KlinikaService;
+import com.mrsisa.eclinic.service.KorisnikService;
 import com.mrsisa.eclinic.service.PrijavaService;
 
 @RestController
@@ -39,12 +43,18 @@ public class AKcController {
 	
 	private AdminKlinikeService akService;
 	
+	private KcService kcService;
+	
+	private KorisnikService korisnikService;
+	
 	@Autowired
-	public AKcController(AKCService akcService, PrijavaService prijavaService, KlinikaService klinikaService, AdminKlinikeService akService) {
+	public AKcController(AKCService akcService, PrijavaService prijavaService, KlinikaService klinikaService, AdminKlinikeService akService, KcService kcService, KorisnikService korisnikService) {
 		this.akcService = akcService;
 		this.prijavaService = prijavaService;
 		this.klinikaService = klinikaService;
 		this.akService = akService;
+		this.kcService = kcService;
+		this.korisnikService = korisnikService;
 	}
 	
 	
@@ -57,38 +67,63 @@ public class AKcController {
 	}
 	
 	@PostMapping(value = "/dodajAKC", consumes =  "application/json")
-	public ResponseEntity<AKcDTO> saveAKC(@RequestBody AKcDTO akcdto) {
-		System.out.println(akcdto);
-		AdminKlinickogCentra akc = new AdminKlinickogCentra();
+	public ResponseEntity<AKcDTO> saveAKC(@RequestBody AKcDTO akcDto) {
 		
-		Prijava prijava = new Prijava();
-		prijava.seteAdresa(akcdto.getEadresa());
-		prijava.setLozinka(akcdto.getLozinka());
+        Korisnik korisnik = korisnikService.getKorisnikByEmail(akcDto.getEadresa());
 		
-		akc.setAktivan(false);
-		akc.setIme(akcdto.getIme());
-		akc.setPrezime(akcdto.getPrezime());
-		akc.setPrijava(prijava);
-		akc.setPredefinisaniAdmin(false);
-		akc.setDodijeljenaLozinka(true);
+		if(korisnik == null) {
+			AdminKlinickogCentra akc = new AdminKlinickogCentra();
+			
+			Prijava prijava = new Prijava();
+			prijava.seteAdresa(akcDto.getEadresa());
+			prijava.setLozinka(akcDto.getLozinka());
+			
+			KlinickiCentar kc = kcService.getKcByName("Eclinic");
+			
+			akc.setAktivan(false);
+			akc.setIme(akcDto.getIme());
+			akc.setPrezime(akcDto.getPrezime());
+			akc.setPrijava(prijava);
+			akc.setPredefinisaniAdmin(false);
+			akc.setDodijeljenaLozinka(true);
+			
+			
+			
+			prijava = prijavaService.save(prijava);
+			
+			kc.getKorisnik().add(akc);
+			akc = akcService.save(akc);
+			
+			return new ResponseEntity<AKcDTO>(akcDto, HttpStatus.CREATED);
+		}
+		else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		
-		prijava = prijavaService.save(prijava);
-		akc = akcService.save(akc);
-		return new ResponseEntity<AKcDTO>(akcdto, HttpStatus.CREATED);
 	}
 	
 	@PostMapping(value = "/registrujKliniku", consumes =  "application/json")
 	public ResponseEntity<KlinikaDTO> saveKlinika(@RequestBody KlinikaDTO klinikaDto) {
-		System.out.println(klinikaDto);
-		Klinika klinika = new Klinika();
-		klinika.setNaziv(klinikaDto.getNaziv());
-		klinika.setGrad(klinikaDto.getGrad());
-		klinika.setOcjenaKlinike(klinikaDto.getOcjenaKlinike());
-		klinika.setTipKlinike(klinikaDto.getTipKlinike());
 		
-		klinika = klinikaService.save(klinika);
-	
-		return new ResponseEntity<KlinikaDTO>(klinikaDto, HttpStatus.CREATED);
+		Klinika provjera = klinikaService.findOneKlinkaByNaziv(klinikaDto.getNaziv());
+		
+		if(provjera == null) {
+			Klinika klinika = new Klinika();
+			klinika.setNaziv(klinikaDto.getNaziv());
+			klinika.setGrad(klinikaDto.getGrad());
+			klinika.setOcjenaKlinike(klinikaDto.getOcjenaKlinike());
+			klinika.setTipKlinike(klinikaDto.getTipKlinike());
+			
+			KlinickiCentar kc = kcService.getKcByName("Eclinic");
+			
+			kc.getKlinika().add(klinika);
+			klinika = klinikaService.save(klinika);
+		
+			return new ResponseEntity<KlinikaDTO>(klinikaDto, HttpStatus.CREATED);
+		}else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
 	}
 	
 	@RequestMapping(value = "/ucitajKlinike",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -107,24 +142,40 @@ public class AKcController {
 	@PostMapping(value = "/registrujAdminaKlinike", consumes =  "application/json")
 	public ResponseEntity<AdminKlinikeDTO> saveAdminKl(@RequestBody AdminKlinikeDTO akDto) {
 		
-		Klinika klinika = klinikaService.findOneKlinkaByNaziv(akDto.getNazivKlinike());
+		Korisnik korisnik = korisnikService.getKorisnikByEmail(akDto.getEadresa());
 		
-		Prijava prijava = new Prijava();
-		prijava.seteAdresa(akDto.getEadresa());
-		prijava.setLozinka(akDto.getLozinka());
+		if(korisnik == null) {
+			
+			Klinika klinika = klinikaService.findOneKlinkaByNaziv(akDto.getNazivKlinike());
+			
+			Prijava prijava = new Prijava();
+			prijava.seteAdresa(akDto.getEadresa());
+			prijava.setLozinka(akDto.getLozinka());
+			
+			KlinickiCentar kc = kcService.getKcByName("Eclinic");
+			
+			
+			AdminKlinike ak = new AdminKlinike();
+			ak.setAktivan(false);
+			ak.setDodijeljenaLozinka(true);
+			ak.setIme(akDto.getIme());
+			ak.setPrezime(akDto.getPrezime());
+			ak.setPrijava(prijava);
+			ak.setKlinika(klinika);
+			
+			
+			
+			prijava = prijavaService.save(prijava);
+			
+			kc.getKorisnik().add(ak);
+			ak = akService.save(ak);
+			
+			return new ResponseEntity<AdminKlinikeDTO>(akDto, HttpStatus.CREATED);
+		}
+		else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		
-		AdminKlinike ak = new AdminKlinike();
-		ak.setAktivan(false);
-		ak.setDodijeljenaLozinka(true);
-		ak.setIme(akDto.getIme());
-		ak.setPrezime(akDto.getPrezime());
-		ak.setPrijava(prijava);
-		ak.setKlinika(klinika);
-		
-		prijava = prijavaService.save(prijava);
-		ak = akService.save(ak);
-		
-		return new ResponseEntity<AdminKlinikeDTO>(akDto, HttpStatus.CREATED);
 	}
 		
 	

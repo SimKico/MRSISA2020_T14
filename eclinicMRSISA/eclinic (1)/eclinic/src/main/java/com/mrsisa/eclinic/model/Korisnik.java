@@ -29,12 +29,15 @@ import javax.persistence.Table;
 @Inheritance(strategy=SINGLE_TABLE)
 //diskriminaciona kolona - pomocu koje znamo je li doktor, med. sestra...
 @DiscriminatorColumn(name="type", discriminatorType=STRING)
-abstract class Korisnik {
+public abstract class Korisnik {
    
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="id", unique=true, nullable=false)
    private Long id;
+   
+   @Column(name = "type", insertable = false, updatable = false)
+   private String tip;
 	
    @Column(name="aktivan", unique=false, nullable=false, columnDefinition = "boolean default false")
    private boolean aktivan;
@@ -65,9 +68,16 @@ abstract class Korisnik {
 }
 
 
-public void setDodijeljenaLozinka(boolean dodijeljenaLozinka) {
-	this.dodijeljenaLozinka = dodijeljenaLozinka;
-}
+	public void setDodijeljenaLozinka(boolean dodijeljenaLozinka) {
+		this.dodijeljenaLozinka = dodijeljenaLozinka;
+	}
+	
+	
+
+
+	public String getTip() {
+		return tip;
+	}
 
 
 	public Long getId() {
