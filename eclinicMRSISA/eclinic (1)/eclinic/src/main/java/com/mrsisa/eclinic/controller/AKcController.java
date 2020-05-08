@@ -23,13 +23,16 @@ import com.mrsisa.eclinic.model.AdminKlinike;
 import com.mrsisa.eclinic.model.KlinickiCentar;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Korisnik;
+import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Prijava;
+import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
 import com.mrsisa.eclinic.service.AKCService;
 import com.mrsisa.eclinic.service.AdminKlinikeService;
 import com.mrsisa.eclinic.service.KcService;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.KorisnikService;
 import com.mrsisa.eclinic.service.PrijavaService;
+import com.mrsisa.eclinic.service.ZahtjeviRegService;
 
 @RestController
 @RequestMapping("profilAKC")
@@ -47,14 +50,17 @@ public class AKcController {
 	
 	private KorisnikService korisnikService;
 	
+	private ZahtjeviRegService regService;
+	
 	@Autowired
-	public AKcController(AKCService akcService, PrijavaService prijavaService, KlinikaService klinikaService, AdminKlinikeService akService, KcService kcService, KorisnikService korisnikService) {
+	public AKcController(AKCService akcService, PrijavaService prijavaService, KlinikaService klinikaService, AdminKlinikeService akService, KcService kcService, KorisnikService korisnikService,  ZahtjeviRegService regService) {
 		this.akcService = akcService;
 		this.prijavaService = prijavaService;
 		this.klinikaService = klinikaService;
 		this.akService = akService;
 		this.kcService = kcService;
 		this.korisnikService = korisnikService;
+		this.regService = regService;
 	}
 	
 	
@@ -147,7 +153,7 @@ public class AKcController {
 		if(korisnik == null) {
 			
 			Klinika klinika = klinikaService.findOneKlinkaByNaziv(akDto.getNazivKlinike());
-			
+
 			Prijava prijava = new Prijava();
 			prijava.seteAdresa(akDto.getEadresa());
 			prijava.setLozinka(akDto.getLozinka());
@@ -176,6 +182,17 @@ public class AKcController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
+	}
+	
+
+	@RequestMapping(value = "/zahtjevi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<ZahtjeviZaRegistraciju>> getRegistrationRequests(){
+		
+		List<ZahtjeviZaRegistraciju> zahtjevi = new ArrayList<ZahtjeviZaRegistraciju>();
+		zahtjevi = regService.findAllUnaccepted(false);
+		
+		return new ResponseEntity<List<ZahtjeviZaRegistraciju>>(zahtjevi, HttpStatus.OK);
 	}
 		
 	
