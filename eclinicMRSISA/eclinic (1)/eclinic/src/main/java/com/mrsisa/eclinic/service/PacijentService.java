@@ -13,14 +13,9 @@ public class PacijentService {
 	@Autowired
 	private PacijentRepository pacijentRepository;
 	
-	public Pacijent findOne(String jedBrojOsiguranika) {
-		return pacijentRepository.findOneByJedBrojOsiguranika(jedBrojOsiguranika);
+	public Pacijent myDetails() {
+//		Pacijent pacijent = (Pacijent) 	
+		//Pacijent pacijent = pacijentRepository.findOneByJedBrojOsiguranika("123456");
+		return pacijentRepository.findOneByJedBrojOsiguranika("123456");
 	}
-
-	public Pacijent save(Pacijent pacijent) {
-		return pacijentRepository.save(pacijent);
-	}
-	
-	
-	
 }

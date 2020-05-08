@@ -40,13 +40,6 @@
  				
  				console.log("JUHUUU");
  				console.log(data);
- 				$("#naziv").val("");
- 				$("#grad").val("");
- 				$("#tip").val("");
- 			},
- 			error: function(data){
- 				alert("Klinika sa tim nazivom vec postoji.");
- 				$("#naziv").val("");
  			}
  		})
   	}
@@ -54,7 +47,7 @@
   </script>
   </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "MyFunction()">
   <!--banner-->
      <section id="banner" class="banner">
       <div class="bg-color" >
@@ -111,19 +104,18 @@
       </div>
 	   <div class="text-center form-group">
                 <h1 class="white">KLINIKA</h1> 
-                <form   onsubmit = "regKlinke(); return false">
                     <table class="">
                         <tr>
                           <td class="labela" width="300px">Naziv:</td>
-                          <td class="podaci"><input id = "naziv"  type="text" class="form-control br-radius-zero" required /></td>
+                          <td class="podaci"><input id = "naziv"  type="text" /></td>
                         </tr>           
                         <tr>
                           <td class="labela" width="300px">Grad:</td>
-                         <td class="podaci"><input id = "grad" type="text" class="form-control br-radius-zero" required/></td>
+                         <td class="podaci"><input id = "grad" type="text" /></td>
                         </tr>         
                         <tr>
                           <td class="labela"  width="300px" >Tip:</td>
-                          <td class="podaci"><input id = "tip" type="text" class="form-control br-radius-zero" required/></td>
+                          <td class="podaci"><input id = "tip" type="text" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Ocjena:</td>
@@ -132,12 +124,11 @@
                       <tr>
                       <td></td>
                       <td>
-                      	 <button type="submit" class="btn btn-appoint" >Registruj kliniku</button>
+                      	<a href="#" onclick = "regKlinke()" class="btn btn-appoint">Registruj kliniku</a>
                    		 <a href="profilAKC.html" class="btn btn-appoint">Odustani</a>
                    		 </td>
                     </tr>
                     </table>
-                    </form>
               </div>
     </div>
   </section>

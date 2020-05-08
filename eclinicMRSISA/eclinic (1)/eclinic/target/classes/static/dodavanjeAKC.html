@@ -25,39 +25,25 @@
     
     <script type="text/javascript">
   
-    function dodajAKC(){
-    	pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    function addUser(){
+    	console.log("STAAA");
 		ime =  $("#ime").val();
 		prezime = $("#prezime").val();
 		eadresa = $("#eadresa").val();
 		lozinka = $("#lozinka").val();
 		console.log(ime, prezime, eadresa, lozinka);
-		if(pattern.test(eadresa)){
-			 $.ajax({
-		 			type: "POST",
-		 			url: "profilAKC/dodajAKC/",
-		 			data: JSON.stringify({ime: ime, prezime: prezime, eadresa: eadresa, lozinka: lozinka}),
-		 		    dataType: 'json',
-		 		    contentType:  "application/json",
-		 			success: function(data){
-		 				
-		 				console.log("JUHUUU");
-		 				console.log(data);
-		 				$("#ime").val("");
-		 				$("#prezime").val("");
-		 				$("#eadresa").val("");
-		 				$("#lozinka").val("");
-		 			},
-		 			error: function(data){
-		 				alert("Admin sa eadresom: "+ eadresa + " vec postoji!");
-		 				$("#eadresa").val("");
-		 			
-		 			}
-		 		})
-		}else{
-			alert("eAdresa pogresno unesena!");
-		}
-  		
+  		 $.ajax({
+ 			type: "POST",
+ 			url: "profilAKC/dodajAKC/",
+ 			data: JSON.stringify({ime: ime, prezime: prezime, eadresa: eadresa, lozinka: lozinka}),
+ 		    dataType: 'json',
+ 		    contentType:  "application/json",
+ 			success: function(data){
+ 				
+ 				console.log("JUHUUU");
+ 				console.log(data);
+ 			}
+ 		})
   	}
   </script>
   </head>
@@ -119,23 +105,22 @@
       </div>
 	   <div class="text-center form-group">
                  <h1 class="white">ADMINISTRATOR KLINIČKOG CENTRA</h1> 
-                  <form   onsubmit = "dodajAKC();  return false">
                     <table class="">
                         <tr>
                           <td class="labela" width="300px">Ime:</td>
-                          <td class="podaci"><input type="text"  id="ime" class="form-control br-radius-zero" required /></td>
+                          <td class="podaci"><input type="text"  id="ime" /></td>
                         </tr>           
                         <tr>
                           <td class="labela" width="300px">Prezime:</td>
-                         <td class="podaci" ><input type="text" id="prezime" class="form-control br-radius-zero" required/></td>
+                         <td class="podaci" ><input type="text" id="prezime"/></td>
                         </tr>         
                         <tr>
                           <td class="labela"  width="300px" >eAdresa:</td>
-                          <td class="podaci" ><input type="text" id="eadresa" class="form-control br-radius-zero" required /></td>
+                          <td class="podaci" ><input type="text" id="eadresa" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Dodijeljena lozinka:</td>
-                          <td class="podaci" ><input type="text" id="lozinka" class="form-control br-radius-zero" required /></td>
+                          <td class="podaci" ><input type="text" id="lozinka" /></td>
                         </tr>
                         <tr>
                           <td class="labela"  width="300px">Klinički centar:</td>
@@ -144,12 +129,11 @@
                       <tr>
                       <td></td>
                       <td>
-                      <button type="submit" class="btn btn-appoint" >Dodaj administratora</button>
+                      	<a href="#" onclick = "addUser()" class="btn btn-appoint">Dodaj administratora</a>
                    		 <a href="profilAKC.html" class="btn btn-appoint">Odustani</a>
                    		 </td>
                     </tr>
                     </table>
-                   </form>
               </div>
     </div>
   </section>
