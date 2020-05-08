@@ -16,9 +16,9 @@ public class AdminKlinikeDTO {
 		private String eadresa;
 		private String lozinka;
 		private Long Id;
-		
+
 		public AdminKlinikeDTO() {
-			
+
 		}
 
 		public AdminKlinikeDTO(Klinika klinika, String prezime, String eadresa, String lozinka) {
@@ -28,7 +28,7 @@ public class AdminKlinikeDTO {
 			this.eadresa = eadresa;
 			this.lozinka = lozinka;
 		}
-		
+
 		public AdminKlinikeDTO(AdminKlinike ak) {
 			this.ime = ak.getIme();
 			this.prezime=ak.getPrezime();
@@ -84,5 +84,5 @@ public class AdminKlinikeDTO {
 			// TODO Auto-generated method stub
 			this.Id = Id;
 		}
-	   
+
 }
