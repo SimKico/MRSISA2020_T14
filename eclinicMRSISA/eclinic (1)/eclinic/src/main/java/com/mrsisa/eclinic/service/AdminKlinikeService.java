@@ -11,12 +11,18 @@ import com.mrsisa.eclinic.repository.AdminKlinikeRepository;
 public class AdminKlinikeService {
 
 	@Autowired
-	private AdminKlinikeRepository adminKlinikeRepository;
+	private AdminKlinikeRepository akRepository;
 
 	public AdminKlinike findOne(Long id) {
-		return adminKlinikeRepository.findOneById(id);
+		return akRepository.findOneByid(id);
 	}
+	
+	public AdminKlinike getAKbyIme(String ime) {
+		return akRepository.findOneByime(ime);
+	}
+	
 	public AdminKlinike save(AdminKlinike ak) {
-		return adminKlinikeRepository.save(ak);
+		return akRepository.save(ak);
 	}
+
 }

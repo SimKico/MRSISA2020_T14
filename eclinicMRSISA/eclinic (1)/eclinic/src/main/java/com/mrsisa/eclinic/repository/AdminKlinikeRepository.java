@@ -6,5 +6,8 @@ import com.mrsisa.eclinic.model.AdminKlinike;
 
 
 public interface AdminKlinikeRepository extends JpaRepository<AdminKlinike, Long> {
-	AdminKlinike findOneById(Long id);
+	
+	AdminKlinike findOneByid(Long id);
+	
+	AdminKlinike findOneByime(String ime);
 }

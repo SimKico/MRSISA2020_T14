@@ -56,6 +56,10 @@ values('pero@eclinic.com', 'peloz', 'Pero', 'Peric', '111111', 'Gavrila Principa
 insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
 values('boro@eclinic.com', 'boloz', 'Boro', 'Boric', '143355', 'Gajeva', 'Novi Sad', 'Srbija', '066558844' );
 
+insert into tabela_prijava(eadresa, lozinka)values('admink1@eclinic.com', 'pak');
+insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
+values('AK', false, 'Nikola', 'Nikic', false, false, null, null, null, null, null, null, null, null, null,'admink1@eclinic.com', 1,null, 'Eclinic');
+
 ----Dodavanje doktora--
 --insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
 --						values('LJ', true, 'Biljana', 'Maksimovic', false , false, null, '5', '8', 1, null,null,null, null, null, 'dr1@eclinic.com', 1,null, 'Eclinic');
