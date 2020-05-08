@@ -12,7 +12,7 @@ public class AdminKlinikeService {
 
 	@Autowired
 	private AdminKlinikeRepository adminKlinikeRepository;
-	
+
 	public AdminKlinike findOne(Long id) {
 		return adminKlinikeRepository.findOneById(id);
 	}

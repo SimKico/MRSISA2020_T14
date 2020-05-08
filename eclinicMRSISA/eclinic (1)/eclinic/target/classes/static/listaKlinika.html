@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/pacijentHomepage.js"></script>
+    <script src="js/listaKlinika.js"></script>
+    
     <!-- =======================================================
     Theme Name: Medilab
     Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -37,10 +39,17 @@
     data-offset="60"
     onload="prikaziKlinike()"
   >
+
     <!--banner-->
     <section id="banner" class="banner">
+    
+
+
+  <!--/ service-->	
+    
       <div class="bg-color">
         <nav class="navbar navbar-default navbar-fixed-top">
+        
           <div class="container">
             <div class="col-md-12">
               <div class="navbar-header">
@@ -83,23 +92,41 @@
             </div>
           </div>
         </nav>
+        
         <div class="container">
           <div class="row">
+         
             <div class="banner-info">
               <div class="banner-text text-center">
-                <table class="table1" id="table1">
-                  <tr>
-                    <td class="labela" width="300px" id="naziv">
-                      Naziv klinike
+                  <div class="col-sm-4">
+                  <table>
+                 	 <tr>
+                 		 <td>
+                 		<input type="date" id="start" name="trip-start" class="form-control"
+      							 value="2020-06-01"
+     							  min="2020-05-05" max="2018-12-31">
+                  		   	<input type="text" placeholder="tip pregleda" class="form-control" ></input>
+                 		 </td>
+                 	 </tr>
+                 	 <tr>
+                 	 <td>
+                 	  <button class = "btn btn-appoint" value = "Pretraga" name = "Pretraga">Pretraga</button> 
+                 	  </td>
+                 	  </tr>
+                  </table>
+                  	 
+                  	 
+    		    </div>
+                <table class="table1" id="table1" >
+                  <tr style = " background: rgba(12, 184, 182, 0.21)"  >
+                    <td class="labela" width="300px" id="naziv"  >
+                    <p>  Naziv klinike</p>
                     </td>
-                    <td class="labela" width="300px" id="grad">Grad</td>
-                    <td class="labela" width="300px" id="usluge">Usluge</td>
+                    <td class="labela" width="300px" id="grad"> <p>Grad</p></td>
+                  	<td class="labela" width="300px" id="ocjena"><p>Ocjena</p></td> 
                   </tr>
-              
                 </table>
-                <a href="#contact" class="btn btn-appoint"
-                  >Make an Appointment.</a
-                >
+              <!--  <a href="#contact" class="btn btn-appoint">Make an Appointment.</a> --> 
               </div>
               <div class="overlay-detail text-center">
                 <a href="#service"><i class="fa fa-angle-down"></i></a>
@@ -109,9 +136,50 @@
         </div>
       </div>
     </section>
-    <!--/ banner-->
-    <!--service-->
 
-    <!--/ footer-->
+    <!--footer-->
+    <footer id="footer">
+      <div class="top-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 marb20">
+              <div class="ftr-tle">
+                <!-- <h4 class="white no-padding">About Us</h4> -->
+              </div>
+              <!-- <div class="info-sec">
+                <p>
+                  Praesent convallis tortor et enim laoreet, vel consectetur
+                  purus latoque penatibus et dis parturient.
+                </p>
+              </div> -->
+            </div>
+            <div class="col-md-4 col-sm-4 marb20">
+             
+            </div>
+       
+          </div>
+        </div>
+      </div>
+      <div class="footer-line">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              © Copyright Medilab Theme. All Rights Reserved
+              <div class="credits">
+                <!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medilab
+              -->
+                Designed by
+                <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+       <!--/ footer-->
   </body>
 </html>

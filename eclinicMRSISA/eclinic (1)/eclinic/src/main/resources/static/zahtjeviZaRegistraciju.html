@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Profil admina klinickog centra</title>
+    <title>Obrada zahtjeva</title>
     <meta
       name="description"
       content="Free Bootstrap Theme by BootstrapMade.com"
@@ -23,17 +23,45 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
-    <script type="text/javascript">
-  
+     <script type="text/javascript">
+    function ispisiZahtjeve(){
+    	console.log("REG KLinike");
+  		 $.ajax({
+ 			type: "GET",
+ 			url: "profilAKC/zahtjevi",
+ 			success: function(data){
+ 				
+ 				console.log(data);
+ 				console.log("JUHUUU");
+ 				$.each(data, function(key, value) {
+  					$('.schedule-tab').append($('<div class="col-md-4 col-sm-4">')
+  									  .append($('<div class="medi-info">').append($('<h3>').text(value.ime + " " + value.prezime))
+							  											  .append($('<p>').text("Adresa: " + value.adresaPrebivalista ))
+							  											  .append($('<p>').text("Grad: " + value.grad +", "+value.drzava))
+							  											  .append($('<p>').text("Jedinstveni broj osiguranika: " + value.jbo))
+							  											  .append($('<p>').text("E-mail: " + value.eAdresa))
+							  											  .append($('<p>').text("Broj telefona: " + value.brojTelefona))
+							  											  .append($('<a href="#" class="medi-info-btn">PRIHVATI</a>'))
+							  											  .append($('<a href="#" class="medi-info-btn">ODBIJ</a>'))))
+  							
+  					
+  								  
+							
+  				});
+ 			},
+ 			error: function(data){
+ 				alert("Svi zahtjevi su prihvaceni");
+ 			}
+ 		})
+  	}
   
   </script>
-  </head>
-
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "MyFunction()">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "ispisiZahtjeve()">
   <!--banner-->
      <section id="banner" class="banner">
-      <div class="bg-color">
-        <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="bg-color" >
+        <nav class="navbar navbar-default navbar-fixed-top" class = "disabled">
           <div class="container">
             <div class="col-md-12">
               <div class="navbar-header">
@@ -57,19 +85,19 @@
               <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
                 
+<!--                   <li class="active"> -->
+<!--                     <a href="#" id="Registracija klinika">Registracija klinika</a> -->
+<!--                   </li> -->
                   <li class="active">
-                    <a href="registracijaKlinika.html" id="Registracija klinika">Registracija klinika</a>
+                    <a href="profilAKC.html" id ="Registracija admina klinike" >Vrati se na profil</a>
                   </li>
-                  <li class="active">
-                    <a href="registracijaAdminaKlinika.html" id ="Registracija admina klinike" >Registracija admina klinike</a>
-                  </li>
-                  <li class="active">
-                  <a href="dodavanjeAKC.html" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a>
-                  </li>
-                  <li class="active">
-                  <a href="zahtjeviZaRegistraciju.html" id = "Zahtjevi za registraciju">Zahtjevi za registraciju</a>
+<!--                   <li class="active"> -->
+<!--                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a> -->
+<!--                   </li> -->
+<!--                   <li class="active"> -->
+<!--                   <a href="#" id = "Zahtjevi za registraciju">Zahtjevi za registraciju</a> -->
                   
-                  </li>
+<!--                   </li> -->
                 </ul>
               </div>
             </div>
@@ -84,43 +112,17 @@
           </div>
         </div>
       </div>
-	  <form action="action_page.php" method="post">
-		<div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="ser-title">PROFIL</h2>
-            <hr class="botm-line" />
-          </div>
-          <div class="col-md-4 col-sm-4">
-            <h3>Licne informacije</h3>
-            <div class="space"></div>
-            <p id = "ime" >
-              <i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Ime: <br />
-            </p>
-            <p id = "prezime">
-            <i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Prezime: <br />
-            </p>
-            <div class="space"></div>
-            <p id = "eadresa">
-              <i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> Email: <br/>
-            </p>
-            <div class="space"></div>
-            <p>
-              <i class="fa fa-phone fa-fw pull-left fa-2x"></i>Uloga:<br />
-              Admin klinickog centra
-            </p>
-          </div>
-          </div>
-          </div>
-</form>
+	   <div class="container">
+      <div class="row">
+        <div class="schedule-tab">  
+        </div>
+      </div>
     </div>
   </section>
-  <!--/ banner-->
- <script src="js/jquery.min.js"></script>
+	<script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="contactform/contactform.js"></script>
-
 </body>
 </html>

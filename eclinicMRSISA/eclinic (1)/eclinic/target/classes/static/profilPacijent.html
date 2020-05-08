@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src = "js/pacijentHomepage.js"></script>
+    <script src = "js/listaKlinika.js"></script>
+    
     <!-- =======================================================
     Theme Name: Medilab
     Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -100,7 +102,7 @@
                 <h3>Licne informacije</h3>
                 
                 <div class="space"></div>
-                <table class="table1">
+                <table class="table1" style ="color:#fff	">
                   <tr>
                     <td class="labela" width="300px">Ime:</td>
                     <td class="podaci" id = "ime"></td>
@@ -128,7 +130,7 @@
 
                   <tr>
                     <td class="labela">Telefon:</td>
-                    <td class="podaci" id = "telefon">-</td>
+                    <td class="podaci" id = "telefon"></td>
                   </tr>
 
                   <tr>	
@@ -141,8 +143,8 @@
                     <td class="podaci" id = "email"></td>
                   </tr>
                 </table>
-                <a class="btn btn-appoint" href= "azurirajProfil1.html"
-                  >Ažuriraj profil </a
+                <a class="btn btn-appoint" onclick= "prikaziAzuriranjePacijenta()"
+                  > Ažuriraj profil </a
                 >
                 <div class="space"></div>
                 <p></p>
@@ -152,7 +154,50 @@
         </form>
       </div>
     </section>
-  
+      <!--footer-->
+    <footer id="footer">
+      <div class="top-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 marb20">
+              <div class="ftr-tle">
+                <!-- <h4 class="white no-padding">About Us</h4> -->
+              </div>
+              <!-- <div class="info-sec">
+                <p>
+                  Praesent convallis tortor et enim laoreet, vel consectetur
+                  purus latoque penatibus et dis parturient.
+                </p>
+              </div> -->
+            </div>
+            <div class="col-md-4 col-sm-4 marb20">
+             
+            </div>
+       
+          </div>
+        </div>
+      </div>
+      <div class="footer-line">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              © Copyright Medilab Theme. All Rights Reserved
+              <div class="credits">
+                <!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medilab
+              -->
+                Designed by
+                <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+       <!--/ footer-->
   
   <script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>

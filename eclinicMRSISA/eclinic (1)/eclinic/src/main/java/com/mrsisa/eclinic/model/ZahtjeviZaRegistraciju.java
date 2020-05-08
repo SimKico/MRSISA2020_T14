@@ -25,31 +25,31 @@ public class ZahtjeviZaRegistraciju {
    @Column(name="eadresa", unique=true, nullable=false)
    private String eAdresa;
    
-   @Column(name="lozinka", unique=true, nullable=false)
+   @Column(name="lozinka", nullable=false)
    private String lozinka;
    
-   @Column(name="ime", unique=true, nullable=false)
+   @Column(name="ime", nullable=false)
    private String ime;
    
-   @Column(name="prezime", unique=true, nullable=false)
+   @Column(name="prezime", nullable=false)
    private String prezime;
    
    @Column(name="jbo", unique=true, nullable=false)
    private String jbo;
    
-   @Column(name="adresa", unique=true, nullable=false)
+   @Column(name="adresa", nullable=false)
    private String adresaPrebivalista;
    
-   @Column(name="grad", unique=true, nullable=false)
+   @Column(name="grad", nullable=false)
    private String grad;
    
-   @Column(name="drzava", unique=true, nullable=false)
+   @Column(name="drzava", nullable=false)
    private String drzava;
    
    @Column(name="broj_telefona", unique=true, nullable=false)
-   private String brojTefefona;
+   private String brojTelefona;
    
-   @Column(name="prihvacen", unique=true, nullable=false)
+   @Column(name="prihvacen", nullable=false, columnDefinition = "boolean default false")
    private boolean prihvacen;
 
 public int getIdZahtjeva() {
@@ -124,12 +124,12 @@ public void setDrzava(String drzava) {
 	this.drzava = drzava;
 }
 
-public String getBrojTefefona() {
-	return brojTefefona;
+public String getBrojTelefona() {
+	return brojTelefona;
 }
 
-public void setBrojTefefona(String brojTefefona) {
-	this.brojTefefona = brojTefefona;
+public void setBrojTelefona(String brojTelefona) {
+	this.brojTelefona = brojTelefona;
 }
 
 public boolean isPrihvacen() {

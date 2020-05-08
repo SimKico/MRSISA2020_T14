@@ -3,8 +3,6 @@ function prikaziHomepagePacijenta(){
 	$.ajax({
 		url: "/homepagePacijent1",
 		type: "GET",
-//		dataType: "json",
-//        crossDomain: true,
 		success: function (result) {
 			localStorage.setItem("ime", result.ime);
 			location.href = "homepagePacijent1.html" ;
@@ -22,14 +20,13 @@ function profilPacijenta(){
 	$.ajax({
 		url: "/homepagePacijent1/profilPacijent",
 		type: "GET",
-//		dataType: "json",
-//        crossDomain: true,
 		success: function (result) {
 			localStorage.setItem("ime", result.ime);
 			localStorage.setItem("prezime", result.prezime);
 			localStorage.setItem("adr", result.adresaPrebivalista);
 			localStorage.setItem("grad", result.grad);
 			localStorage.setItem("drz", result.drzava);
+			localStorage.setItem("tel", result.brojTelefona);
 			localStorage.setItem("jbo", result.jedBrojOsiguranika);
 			localStorage.setItem("email", result.email);
 			location.href = "profilPacijent.html" ;
@@ -48,20 +45,32 @@ function popuni()
 			$("#adresa").append(localStorage.getItem('adr'));
 			$("#grad").append(localStorage.getItem('grad'));
 			$("#drzava").append(localStorage.getItem('drz'));
-			$("#telefon").val(localStorage.getItem('tel'));
+			$("#telefon").append(localStorage.getItem('tel'));
 			$("#jbo").append(localStorage.getItem('jbo'));
 			$("#email").append(localStorage.getItem('email'));
 	
  }
 
-function prikaziListuKlinika(){
+
+
+//Azuriranje podataka pacijenta
+
+function prikaziAzuriranjePacijenta(){
 	console.log("nesto");
 	$.ajax({
-		url: "/homepagePacijent1/listaKlinika",
+		url: "/homepagePacijent1/profilPacijent/azurirajPodatke",
 		type: "GET",
 		success: function (result) {
-			localStorage.setItem("result", JSON.stringify(result));
-			location.href = "listaKlinika.html" ;
+			console.log(result);
+			localStorage.setItem("ime", result.ime);
+			localStorage.setItem("prezime", result.prezime);
+			localStorage.setItem("adr", result.adresaPrebivalista);
+			localStorage.setItem("grad", result.grad);
+			localStorage.setItem("drz", result.drzava);
+			localStorage.setItem("tel", result.brojTelefona);
+			localStorage.setItem("jbo", result.jedBrojOsiguranika);
+			localStorage.setItem("email", result.email);
+			location.href = "azurirajProfil1.html" ;
 		},
 		error: function(result) {
 			toastr.error("Something is wrong with your request.(get details)");
@@ -69,26 +78,43 @@ function prikaziListuKlinika(){
     });	
 }
 
-function prikaziKlinike(){
-	
-	var retrivedData = localStorage.getItem('result');
-	console.log(retrivedData);
-	var retrivedJSON = JSON.parse(retrivedData);
-	console.log(retrivedJSON);
-	
-	var elements = retrivedJSON.length;
-	console.log(elements);
-	
-	var i = 0;
-	for(i; i<elements; i++){
-		$("#table1")
-		.append($("<tr>")
-				.append($("<td>")
-					.text(retrivedJSON[i].naziv))
-				.append($("<td>")
-					.text(retrivedJSON[i].grad))
-				.append($("<td>")
-					.text(retrivedJSON[i].tipKlinike))
-			);
-	}
+function popuniPodatkePacijentaAzuriranje(){
+	console.log("fasdfas");
+	console.log(localStorage.getItem('drz'));
+	$("#ime").append(localStorage.getItem("ime"));
+	$("#prezime").append(localStorage.getItem('prezime'));
+	$("#adresa").val(localStorage.getItem('adr'));
+	$("#grad").val(localStorage.getItem('grad'));
+	$("#drzava").val(localStorage.getItem('drz'));
+	$("#telefon").val(localStorage.getItem('tel'));
+	$("#jbo").append(localStorage.getItem('jbo'));
+	$("#email").append(localStorage.getItem('email'));
 }
+
+function azurirajPodatke(){
+	
+
+	alert("Uspjesno ste azurirali podatke");
+	adresa =  $("#adresa").val();
+	grad = $("#grad").val();
+	drzava = $("#drzava").val();
+	telefon = $("#telefon").val();
+	jbo = localStorage.getItem("jbo");
+	console.log("nesto ba");
+	console.log(adresa, grad, drzava, telefon, jbo);	
+		
+		 $.ajax({
+			type: "PUT",
+			url: "/homepagePacijent1/profilPacijent/azurirajProfil",
+			data: JSON.stringify({adresaPrebivalista: adresa, grad: grad, drzava: drzava, brojTelefona: telefon, jedBrojOsiguranika :jbo}),
+		    dataType: 'json',
+		    contentType:  "application/json",
+			success: function(data){
+				profilPacijenta();
+			},
+			error: function(result) {
+				toastr.error("Something is wrong with your request.(get details)");
+			}
+		 });
+}
+		 

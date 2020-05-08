@@ -20,7 +20,7 @@ public class AKCService {
 	}
 	
 	public AdminKlinickogCentra getAKCbyIme(String ime) {
-		return akcRepository.findOneByprijava_eAdresa(ime);
+		return akcRepository.findOneByime(ime);
 	}
 	
 	public AdminKlinickogCentra save(AdminKlinickogCentra akc) {
