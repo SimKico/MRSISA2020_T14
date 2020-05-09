@@ -27,7 +27,7 @@ public class Ljekar extends Korisnik {
    private Specijalizacija specijalizacija;
 	
 	@Column(name="ocjena", unique=false)
-   private int prosjecnaOcjena;
+   private Integer prosjecnaOcjena;
 	
 	@Column(name="info", unique=false)
    private String dodatneInfo;
@@ -60,11 +60,11 @@ public class Ljekar extends Korisnik {
 		this.specijalizacija = specijalizacija;
 	}
 
-	public int getProsjecnaOcjena() {
+	public Integer getProsjecnaOcjena() {
 		return prosjecnaOcjena;
 	}
 
-	public void setProsjecnaOcjena(int prosjecnaOcjena) {
+	public void setProsjecnaOcjena(Integer prosjecnaOcjena) {
 		this.prosjecnaOcjena = prosjecnaOcjena;
 	}
 
