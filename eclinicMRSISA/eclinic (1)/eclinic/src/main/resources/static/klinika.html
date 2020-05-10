@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/pacijentHomepage.js"></script>
     <script src="js/listaKlinika.js"></script>
-    
+
     <!-- =======================================================
     Theme Name: Medilab
     Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -37,19 +37,12 @@
     data-spy="scroll"
     data-target=".navbar"
     data-offset="60"
-    onload = "ucitajPodatkeKlinike()"
+    onload="ucitajPodatkeKlinike()"
   >
-
     <!--banner-->
     <section id="banner" class="banner">
-    
-
-
-  <!--/ service-->	
-    
       <div class="bg-color">
         <nav class="navbar navbar-default navbar-fixed-top">
-        
           <div class="container">
             <div class="col-md-12">
               <div class="navbar-header">
@@ -73,7 +66,7 @@
               <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
                   <li class="active">
-                    <a href="#" onclick = "profilPacijenta()">Moj profil</a>
+                    <a>Moj profil</a>
                   </li>
                   <li class="active">
                     <a href="#" id="mojKarton">Moj karton</a>
@@ -82,51 +75,90 @@
                     <a href="#" id="istorijaOperacija">Istorija operacija</a>
                   </li>
                   <li class="active">
-                    <a href="#" id="istorijaPregleda">istorija pregleda</a>
+                    <a href="#" id="istorijaPregleda">Istorija pregleda</a>
                   </li>
+
                   <li class="active">
-                    <a href = "#" onclick = "prikaziListuKlinika()"> Lista klinika </a>
+                    <a href="#" onclick="prikaziListuKlinika()"
+                      >Lista klinika</a
+                    >
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </nav>
-        
         <div class="container">
           <div class="row">
-         
             <div class="banner-info">
-              <div class="banner-text text-center">
-                
-                <table class="table1" id="table1" onclick = "klinika.html">
-                	<tr style = " background: rgba(12, 184, 182, 0.21)"  >
-                    <td class="labela" width="300px" id="naziv"></td>
-                    <td class="labela" width="300px" id="grad">  </td>
-                  	<td class="labela" width="300px" id="ocjena"> Ocjena naše klinike je   </td> 
-                  	<td class="labela" width="300px" id="tipPregleda"> Tipovi pregleda </td>
-                  	<td class="labela" width="300px" id="ljekari">Naši ljekari </td>
-                  </tr>
-                  <tr style = " background: rgba(12, 184, 182, 0.21)"  >
-                    <td class="labela" width="300px" id="naziv"  ></td>
-                    <td class="labela" width="300px" id="grad"> </td>
-                  	<td class="labela" width="300px" id="ocjena"></td> 
-                  	<td class="labela" width="300px" id="tipPregleda"></td>
-                  	<td class="labela" width="300px" id="ljekari"></td>
-                  </tr>
-           
-                  
-                </table>
-              <a href="#contact" class="btn btn-appoint">Zakaži pregled jednim klikom</a>
+              <div class="banner-logo text-center">
+                <div>
+                  <h1 class="white" id="naziv"></h1>
+                  <h2 class="white" id="grad"></h2>
+                  <h3 class="white" id="tipKlinike">Pruzamo usluge-</h3>
+                </div>
+
+                <!-- <img src="img/logo.png" class="img-responsive" /> -->
               </div>
-              <div class="overlay-detail text-center">
-                <a href="#service"><i class="fa fa-angle-down"></i></a>
+
+              <div class="collapse navbar-collapse">
+                <h1>
+                  <ui class="white">
+                    <li><a class="white" href="#service">Usluge-</a></li>
+                    <li><a class="white" href="#about">O nama-</a></li>
+                    <li class="white">
+                      <a class="white" href="#testimonial">Ocjena klinike</a>
+                    </li>
+                    <li class="white">
+                      <a class="white" href="#ljekari">Ljekari</a>
+                    </li>
+                    <li class="white">
+                      <a class="white" href="#contact">Kontakt-</a>
+                    </li>
+                  </ui>
+                </h1>
+                <br />
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!--/ banner-->
+
+    <!--doctor team-->
+    <section id="ljekari" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="ser-title">Naši ljekari</h2>
+            <hr class="botm-line" />
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <div id="tim-ljekara"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ doctor team-->
+
+    <!--testimonial-->
+    <section id="testimonial" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="ser-title" id="ocjena">
+              Pacijenti su ocijenili našu kliniku ocjenom
+            </h2>
+            <hr class="botm-line" />
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <!-- Ocijenite i vi -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ testimonial-->
 
     <!--footer-->
     <footer id="footer">
@@ -144,10 +176,7 @@
                 </p>
               </div> -->
             </div>
-            <div class="col-md-4 col-sm-4 marb20">
-             
-            </div>
-       
+            <div class="col-md-4 col-sm-4 marb20"></div>
           </div>
         </div>
       </div>
@@ -171,6 +200,6 @@
         </div>
       </div>
     </footer>
-       <!--/ footer-->
+    <!--/ footer-->
   </body>
 </html>

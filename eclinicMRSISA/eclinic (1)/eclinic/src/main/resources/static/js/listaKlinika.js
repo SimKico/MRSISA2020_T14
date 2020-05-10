@@ -6,9 +6,10 @@ function prikaziListuKlinika(){
 		success: function (result) {
 			localStorage.setItem("result", JSON.stringify(result));
 			location.href = "listaKlinika.html" ;
-		},
+		}
+	,
 		error: function(result) {
-			toastr.error("Something is wrong with your request.(get details)");
+			alert("Something is wrong with your request.(get details)");
 		}
     });	
 }
@@ -48,7 +49,8 @@ function prikaziKlinike(){
 			success: function (result) {
 				localStorage.setItem("klinikaPodaci", JSON.stringify(result));
 				location.href = "klinika.html" ;
-			},	
+			}
+				,	
 			error: function(result) {
 				toastr.error("Something is wrong with your request.(get details)");
 			}
@@ -64,8 +66,22 @@ function ucitajPodatkeKlinike(){
 	$("#naziv").append(klinikaPodaci.naziv);
 	$("#grad").append(klinikaPodaci.grad);
 	$("#ocjena").append(klinikaPodaci.ocjenaKlinike);
-	$("#tipPregleda").append(klinikaPodaci.tipoviPregleda);
-	$("#ljekari").append(klinikaPodaci.ljekari);
+	//TO DO iscitati iz baze sta znaci koji broj pregleda
+	$("#tipKlinike").append(klinikaPodaci.tipKlinike);
+	for(i in klinikaPodaci.ljekari)
+		{
+		//TO DO srediti izgled ocjene
+		var ocjena = klinikaPodaci.ljekari[i].prosjecnaOcjena? "(" +  klinikaPodaci.ljekari[i].prosjecnaOcjena + ")" : " ";
+		$("#tim-ljekara")
+			.append($("<h3>")
+					.append("dr " + klinikaPodaci.ljekari[i].ime + " "+ klinikaPodaci.ljekari[i].prezime + ocjena )
+			.append($("</h3>")))
+			.append($("<p>")
+					.append(klinikaPodaci.ljekari[i].specijalizacija)
+			.append($("</p>"))
+					);
+		console.log(klinikaPodaci.ljekari[i].ime);
+		}
 //	$("#telefon").append(localStorage.getItem('tel'));
 //	$("#jbo").append(localStorage.getItem('jbo'));
 //	$("#email").append(localStorage.getItem('email'));
