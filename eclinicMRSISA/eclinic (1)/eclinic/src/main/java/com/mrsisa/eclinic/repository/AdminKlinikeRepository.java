@@ -10,4 +10,6 @@ public interface AdminKlinikeRepository extends JpaRepository<AdminKlinike, Long
 	AdminKlinike findOneByid(Long id);
 	
 	AdminKlinike findOneByime(String ime);
+
+	AdminKlinike findOneByprijava_eAdresa(String email);
 }

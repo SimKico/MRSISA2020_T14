@@ -31,6 +31,7 @@ import com.mrsisa.eclinic.service.KlinikaService;
 @CrossOrigin("*")
 public class AdminKlinikeController {
 	
+	private AdminKlinike ulogovanAK;
 	@Autowired
 	private AdminKlinikeService adminKlinikeService;
 	
@@ -42,26 +43,38 @@ public class AdminKlinikeController {
 	@ResponseBody
 	public ResponseEntity<AdminKlinikeDTO> getHomepageAK()
 	{
-		 AdminKlinike adminKlinike = adminKlinikeService.findOne((long) 3);
+		 AdminKlinike adminKlinike = adminKlinikeService.getAKbyEadresa("admink1@eclinic.com");
+		 ulogovanAK = adminKlinike;
 		 return new ResponseEntity<>(new AdminKlinikeDTO(adminKlinike), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/mojProfil", consumes =  "application/json")
-	public ResponseEntity<AdminKlinikeDTO> saveAK(@RequestBody AdminKlinikeDTO akdto) {
-		AdminKlinike ak = new AdminKlinike();
-		ak.setAktivan(false);
-		ak.setIme(akdto.getIme());
-		ak.setPrezime(akdto.getPrezime());
-		ak.setId(akdto.getId());
+	public ResponseEntity<AdminKlinikeDTO> saveAK(@RequestBody AdminKlinikeDTO akDTO) {
+		/*
+		 * AdminKlinike ak = new AdminKlinike();
+		 * 
+		 * Prijava prijava = new Prijava(); prijava.seteAdresa(akDTO.getEadresa());
+		 * prijava.setLozinka(akDTO.getLozinka());
+		 * 
+		 * ak.setAktivan(false); ak.setIme(akDTO.getIme());
+		 * ak.setPrezime(akDTO.getPrezime()); ak.setPrijava(prijava);
+		 */
+		Prijava prijava = new Prijava();
+		prijava.seteAdresa(akDTO.getEadresa());
+		prijava.setLozinka(akDTO.getLozinka());
 		
-		ak = adminKlinikeService.save(ak);
-		return new ResponseEntity<AdminKlinikeDTO>(akdto, HttpStatus.CREATED);
+		ulogovanAK.setIme(akDTO.getIme());
+		ulogovanAK.setPrezime(akDTO.getPrezime());
+		ulogovanAK.setPrijava(prijava);
+		
+		ulogovanAK = adminKlinikeService.save(ulogovanAK);
+		return new ResponseEntity<AdminKlinikeDTO>(new AdminKlinikeDTO(ulogovanAK), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/mojProfil",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<AdminKlinikeDTO> getProfilAK(@RequestParam("id") Long id){
-		AdminKlinike adminKlinike = adminKlinikeService.findOne(id);
+	public ResponseEntity<AdminKlinikeDTO> getProfilAK(@RequestParam("eadresa") String eadresa){
+		AdminKlinike adminKlinike = adminKlinikeService.getAKbyEadresa(eadresa);
 		return new ResponseEntity<>(new AdminKlinikeDTO(adminKlinike), HttpStatus.OK);
 	}
 

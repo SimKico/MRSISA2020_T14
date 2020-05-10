@@ -13,8 +13,8 @@ public class AdminKlinikeService {
 	@Autowired
 	private AdminKlinikeRepository akRepository;
 
-	public AdminKlinike findOne(Long id) {
-		return akRepository.findOneByid(id);
+	public AdminKlinike getAKbyEadresa(String eadresa) {
+		return akRepository.findOneByprijava_eAdresa(eadresa);
 	}
 	
 	public AdminKlinike getAKbyIme(String ime) {
