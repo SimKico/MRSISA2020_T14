@@ -42,7 +42,7 @@
   											  									.append($('<tr>').append($('<td>').text(" eAdresa ")).append($('<td  id = "eadresa">').text(value.eAdresa)))
   											  									.append($('<tr>').append($('<td>').text(" Broj telefona: ")).append($('<td  id = "eadresa">').text(value.brojTelefona)))
   											  									  ))
-							  											  .append($('<a href="#" class="medi-info-btn">').text("PRIHVATI"))
+							  											  .append($('<a href="#" onclick = prihvatiZahtjev() class="medi-info-btn">').text("PRIHVATI"))
 							  											  .append(" ")
 							  											  .append($('<a href="#" onclick = odbijZahtjev() class="medi-info-btn">').text("ODBIJ")))
   							
@@ -66,6 +66,25 @@
     		data: {eadresa: eadresa},
     		success: function(){
     			alert("Zahtjev je izbrisan");
+    			$("#zahtjev").remove();
+    			
+    		},
+    		error: function(){
+ 				alert("Doslo je do greske");
+ 			}
+    		
+    	})
+    }
+    
+    function prihvatiZahtjev(){
+    	eadresa = $("#eadresa").text();
+    	console.log(eadresa);
+    	$.ajax({
+    		type : "PUT",
+    		url: "zahtjeviReg/prihvatanje",
+    		data: {eadresa: eadresa},
+    		success: function(){
+    			alert("Zahtjev je prihvacen");
     			$("#zahtjev").remove();
     			
     		},

@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,5 +47,21 @@ public class ZahtjeviRegController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@PutMapping(value = "/prihvatanje")
+	public ResponseEntity<Void> acceptReg(@RequestParam("eadresa") String eadresa) {
+
+		ZahtjeviZaRegistraciju zahtjev = regService.findOneByEmail(eadresa);
+
+		if(zahtjev == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		}
+		
+		zahtjev.setPrihvacen(true);
+		zahtjev = regService.save(zahtjev);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
 
 }
