@@ -20,7 +20,7 @@ public class ZahtjeviZaRegistraciju {
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="reg_id", unique=true, nullable=false)
-   private int idZahtjeva;
+   private Long idZahtjeva;
    
    @Column(name="eadresa", unique=true, nullable=false)
    private String eAdresa;
@@ -52,25 +52,25 @@ public class ZahtjeviZaRegistraciju {
    @Column(name="prihvacen", nullable=false, columnDefinition = "boolean default false")
    private boolean prihvacen;
 
-public int getIdZahtjeva() {
-	return idZahtjeva;
-}
-
-public void setIdZahtjeva(int idZahtjeva) {
-	this.idZahtjeva = idZahtjeva;
-}
-
-public String geteAdresa() {
-	return eAdresa;
-}
-
-public void seteAdresa(String eAdresa) {
-	this.eAdresa = eAdresa;
-}
-
-public String getLozinka() {
-	return lozinka;
-}
+	public Long getIdZahtjeva() {
+		return idZahtjeva;
+	}
+	
+	public void setIdZahtjeva(Long idZahtjeva) {
+		this.idZahtjeva = idZahtjeva;
+	}
+	
+	public String geteAdresa() {
+		return eAdresa;
+	}
+	
+	public void seteAdresa(String eAdresa) {
+		this.eAdresa = eAdresa;
+	}
+	
+	public String getLozinka() {
+		return lozinka;
+	}
 
 public void setLozinka(String lozinka) {
 	this.lozinka = lozinka;

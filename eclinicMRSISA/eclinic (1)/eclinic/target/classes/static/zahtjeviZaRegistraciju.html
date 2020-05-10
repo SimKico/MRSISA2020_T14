@@ -28,21 +28,23 @@
     	console.log("REG KLinike");
   		 $.ajax({
  			type: "GET",
- 			url: "profilAKC/zahtjevi",
+ 			url: "zahtjeviReg",
  			success: function(data){
  				
  				console.log(data);
  				console.log("JUHUUU");
  				$.each(data, function(key, value) {
-  					$('.schedule-tab').append($('<div class="col-md-4 col-sm-4">')
-  									  .append($('<div class="medi-info">').append($('<h3>').text(value.ime + " " + value.prezime))
-							  											  .append($('<p>').text("Adresa: " + value.adresaPrebivalista ))
-							  											  .append($('<p>').text("Grad: " + value.grad +", "+value.drzava))
-							  											  .append($('<p>').text("Jedinstveni broj osiguranika: " + value.jbo))
-							  											  .append($('<p>').text("E-mail: " + value.eAdresa))
-							  											  .append($('<p>').text("Broj telefona: " + value.brojTelefona))
-							  											  .append($('<a href="#" class="medi-info-btn">PRIHVATI</a>'))
-							  											  .append($('<a href="#" class="medi-info-btn">ODBIJ</a>'))))
+  					$('.schedule-tab')
+  									  .append($('<div class="medi-info" id = "zahtjev">').val(value.eAdresa).append($('<h3>').text(value.ime + " " + value.prezime))
+  											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
+  											  									.append($('<tr>').append($('<td style="width:250px">').text(" Adresa ")).append($('<td style="width:250px">').text(value.adresaPrebivalista + ", "  + value.grad +", "+value.drzava)))
+  											  									.append($('<tr>').append($('<td>').text(" Jedinstveni broj osiguranika ")).append($('<td>').text(value.jbo)))
+  											  									.append($('<tr>').append($('<td>').text(" eAdresa ")).append($('<td  id = "eadresa">').text(value.eAdresa)))
+  											  									.append($('<tr>').append($('<td>').text(" Broj telefona: ")).append($('<td  id = "eadresa">').text(value.brojTelefona)))
+  											  									  ))
+							  											  .append($('<a href="#" class="medi-info-btn">').text("PRIHVATI"))
+							  											  .append(" ")
+							  											  .append($('<a href="#" onclick = odbijZahtjev() class="medi-info-btn">').text("ODBIJ")))
   							
   					
   								  
@@ -54,6 +56,25 @@
  			}
  		})
   	}
+    
+    function odbijZahtjev(){
+    	eadresa = $("#eadresa").text();
+    	console.log(eadresa);
+    	$.ajax({
+    		type : "DELETE",
+    		url: "zahtjeviReg/odbijanje",
+    		data: {eadresa: eadresa},
+    		success: function(){
+    			alert("Zahtjev je izbrisan");
+    			$("#zahtjev").remove();
+    			
+    		},
+    		error: function(){
+ 				alert("Doslo je do greske");
+ 			}
+    		
+    	})
+    }
   
   </script>
 </head>
@@ -114,7 +135,10 @@
       </div>
 	   <div class="container">
       <div class="row">
-        <div class="schedule-tab">  
+        <div class="schedule-tab " > 
+        	<div class="medi-info">
+        	 <h3> <font size="+5">  Neobrađeni zahtjevi za registraciju: </font>   </h3>
+        	</div> 
         </div>
       </div>
     </div>

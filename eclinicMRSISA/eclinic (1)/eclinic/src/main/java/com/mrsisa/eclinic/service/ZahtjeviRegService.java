@@ -25,5 +25,15 @@ public class ZahtjeviRegService {
 	public ZahtjeviZaRegistraciju save(ZahtjeviZaRegistraciju zahtjev) {
 		return regRepository.save(zahtjev);
 	}
+	
+//	public void remove(String eadresa) {
+//		regRepository.deleteByeAdresa(eadresa);
+//	}
+	
+	public void remove(Long id) {
+		regRepository.deleteById(id);
+	}
+	
+
 
 }
