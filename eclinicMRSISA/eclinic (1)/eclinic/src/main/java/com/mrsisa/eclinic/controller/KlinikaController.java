@@ -60,8 +60,8 @@ public class KlinikaController {
 		for(Ljekar lj : ljekari) {
 			LjekarDTO ljekarDTO = new LjekarDTO();
 			
-			ljekarDTO.setIme(lj.getIme());System.out.println(lj.getIme());
-			ljekarDTO.setPrezime(lj.getIme());
+			ljekarDTO.setIme(lj.getIme());
+			ljekarDTO.setPrezime(lj.getPrezime());
 			ljekarDTO.setProsjecnaOcjena(lj.getProsjecnaOcjena());
 			ljekarDTO.setSpecijalizacija(lj.getSpecijalizacija());
 		//	ljekarDTO.setKlinika(klinika);
