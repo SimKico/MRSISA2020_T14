@@ -26,7 +26,7 @@ function prikaziKlinike(){
 	
 	var i = 0;
 	for(i; i<elements; i++){
-		var text  = ` <a href ="http://localhost:8080/klinika/${retrivedJSON[i].naziv}" id = "${retrivedJSON[i].naziv}">`
+		var text  = ` <a class = "white" href ="http://localhost:8080/klinika/${retrivedJSON[i].naziv}" id = "${retrivedJSON[i].naziv}">`
 		$("#table1")
 		.append($("<tr>")
 				.append($("<td>")
