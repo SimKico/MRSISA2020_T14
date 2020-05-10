@@ -18,6 +18,10 @@ public class ZahtjeviRegService {
 		return regRepository.findOneByeAdresa(email);
 	}
 	
+	public ZahtjeviZaRegistraciju findOneById(Long id) {
+		return regRepository.findOneByidZahtjeva(id);
+	}
+	
 	public List<ZahtjeviZaRegistraciju> findAllUnaccepted(boolean accepted) {
 		return regRepository.findAllByprihvacen(accepted);
 	}

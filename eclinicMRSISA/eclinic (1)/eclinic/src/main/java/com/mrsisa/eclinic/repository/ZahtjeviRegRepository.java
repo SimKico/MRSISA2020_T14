@@ -10,6 +10,8 @@ public interface ZahtjeviRegRepository extends JpaRepository<ZahtjeviZaRegistrac
 	
 	ZahtjeviZaRegistraciju findOneByeAdresa(String eadresa);
 	
+	ZahtjeviZaRegistraciju findOneByidZahtjeva(Long Id);
+	
 	void deleteByeAdresa(String eadresa);
 	
 	List<ZahtjeviZaRegistraciju> findAllByprihvacen(boolean prihvacen);
