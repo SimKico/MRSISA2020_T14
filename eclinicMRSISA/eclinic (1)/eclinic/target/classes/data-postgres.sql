@@ -2,6 +2,9 @@
 insert into sifarnik_dijagnoza(naziv_sifarnika)values('Sifarnik dijagnoza');
 --Dodavanje sifarnika lijekova--
 insert into sifarnik_lijekova(naziv_sifarnika)values('Sifarnik lijekova');
+
+
+
 --Dodavanje klinickog centra--
 insert into klinicki_centar(kc_id,sif_dij_id, sif_lijek_id)values('Eclinic',1, 1);
 --Dodavanje predefinisanog admina klinickog centra--
@@ -68,20 +71,12 @@ insert into tabela_prijava(eadresa, lozinka)values('admink1@eclinic.com', 'pak')
 insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
 values('AK', false, 'Nikola', 'Nikic', false, false, null, null, null, null, null, null, null, null, null,'admink1@eclinic.com', 1,null, 'Eclinic');
 
-----Dodavanje doktora--
---insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
---						values('LJ', true, 'Biljana', 'Maksimovic', false , false, null, '5', '8', 1, null,null,null, null, null, 'dr1@eclinic.com', 1,null, 'Eclinic');
---										
---			
+--Dodavanje tip_pregleda --
+insert into tip_pregleda(cijena, sifra, trajanje, tip)values(12.5, 'specoft',1,0);
+insert into tip_pregleda(cijena, sifra, trajanje, tip)values(12.5, 'specpulmo',1,1);
 
-----Dodavanje doktora--
---insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
---						values('LJ', true, 'Ratko', 'Nikolic', false, false, null, 4, null, 2, null,null,null, null, null, null, 1,null, 'Eclinic');
---						
-----Dodavanje doktora--
---insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
---						values('LJ', true, 'Gordana', 'Radic', false, false, null, 3, null, 1, null,null,null, null, null, null, 2,null, 'Eclinic');		
---						
-----Dodavanje doktora--
---insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
---						values('LJ', true, 'Miodrag', 'Rakic', false, false, null, 2, null, 5, null,null,null, null, null, null, 3,null, 'Eclinic');
+--Dodavanje pregleda--
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda)
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft');
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda)
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specpulmo');

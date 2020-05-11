@@ -95,28 +95,33 @@
         
         <div class="container">
           <div class="row">
-         
             <div class="banner-info">
               <div class="banner-text text-center">
                   <div class="col-sm-4">
-                  <table>
-                 	 <tr>
-                 		 <td>
-                 		<input type="date" id="start" name="trip-start" class="form-control"
-      							 value="2020-06-01"
-     							  min="2020-05-05" max="2018-12-31">
-                  		   	<input type="text" placeholder="tip pregleda" class="form-control" ></input>
-                 		 </td>
-                 	 </tr>
-                 	 <tr>
-                 	 <td>
-                 	  <button class = "btn btn-appoint" value = "Pretraga" name = "Pretraga">Pretraga</button> 
-                 	  </td>
-                 	  </tr>
-                  </table>
-                  	 
-                  	 
+                  
+                     <table >
+						<tr>
+							<td>Datum pregleda</td>
+							<td>
+								<input type="date" id="datum" class="form-control br-radius-zero"
+				      							 value="2020-06-01"
+				     							  min="2020-05-05" max="2020-12-31" required>
+				     		</td>
+						</tr>
+						<tr>
+							<td>Tip pregleda</td>
+							<td>
+								<input type="text" id = "tip" placeholder="kardiologija" class="form-control br-radius-zero" required>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td> <input type="submit" value = "Pretraga" class="btn btn-appoint" onclick = "pretraziPreglede()"></td>
+						</tr>
+					</table> 
+					
     		    </div>
+    		    
                 <table class="table1" id="table1" >
                   <tr style = " background: rgba(12, 184, 182, 0.21)"  >
                     <td class="labela" width="300px" id="naziv"  >

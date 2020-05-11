@@ -24,6 +24,7 @@ import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.LjekarService;
+import com.mrsisa.eclinic.service.PregledService;
 
 @RestController
 @RequestMapping("/klinika")
@@ -51,7 +52,7 @@ public class KlinikaController {
 		return new ResponseEntity<>(listaKlinikaDTO, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{naziv}",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "listaKlinika/{naziv}",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<KlinikaDTO> getKlinika(@PathVariable("naziv") String naziv){	
 		Klinika klinika = klinikaService.findOneKlinkaByNaziv(naziv);
 		Set<Ljekar> ljekari = klinika.getLjekari();
@@ -81,4 +82,7 @@ public class KlinikaController {
 //		}
 		return new ResponseEntity<>(klinikaDTO, HttpStatus.OK);
 	}
+	
+	
+
 }

@@ -40,11 +40,10 @@ function prikaziKlinike(){
 			);
 	}
 	
-	$(window).click(function(e){
+	$("#table1").click(function(e){
 		var name = e.target.id;
-	//	alert(e.target.id);
 		$.ajax({
-			url: "/klinika/" + name,
+			url: "/klinika/listaKlinika/" + name,
 			type: "GET",
 			success: function (result) {
 				localStorage.setItem("klinikaPodaci", JSON.stringify(result));
@@ -87,6 +86,28 @@ function ucitajPodatkeKlinike(){
 //	$("#email").append(localStorage.getItem('email'));
 }
 
+
+function pretraziPreglede(){
+	console.log("nestoPregledi");
+	
+	var tipPregleda = $("#tip").val();
+
+	var datumPregleda = $("#datum").val();
+	
+	console.log(tipPregleda, datumPregleda);
+	
+	$.ajax({
+		url: "/pregled/pretragaPregleda/" + tipPregleda + "/" + datumPregleda,
+		type: "GET",
+		success: function (result) {
+			console.log(result);
+		}
+	,
+		error: function(result) {
+			alert("Something is wrong with your request.(get details)");
+		}
+    });	
+}
 
 
 
