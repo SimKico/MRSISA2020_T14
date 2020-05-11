@@ -34,17 +34,17 @@
  				console.log(data);
  				console.log("JUHUUU");
  				$.each(data, function(key, value) {
-  					$('.schedule-tab')
-  									  .append($('<div class="medi-info" id = "zahtjev">').val(value.eAdresa).append($('<h3>').text(value.ime + " " + value.prezime))
+  					$('.schedule-tab').append($('<div id = "p'+ value.jbo +'"></div>')
+  									  .append($('<div class="medi-info">').append($('<h3>').text(value.ime + " " + value.prezime))
   											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
   											  									.append($('<tr>').append($('<td style="width:250px">').text(" Adresa ")).append($('<td style="width:250px">').text(value.adresaPrebivalista + ", "  + value.grad +", "+value.drzava)))
   											  									.append($('<tr>').append($('<td>').text(" Jedinstveni broj osiguranika ")).append($('<td>').text(value.jbo)))
-  											  									.append($('<tr>').append($('<td>').text(" eAdresa ")).append($('<td  id = "eadresa">').text(value.eAdresa)))
+  											  									.append($('<tr>').append($('<td>').text(" eAdresa ")).append($('<td >').text(value.eAdresa)))
   											  									.append($('<tr>').append($('<td>').text(" Broj telefona: ")).append($('<td  id = "eadresa">').text(value.brojTelefona)))
   											  									  ))
-							  											  .append($('<a href="#" onclick = prihvatiZahtjev() class="medi-info-btn">').text("PRIHVATI"))
+							  											  .append($('<a href="#" onclick = prihvatiZahtjev(this'+ ',p' + value.jbo + ') class="medi-info-btn">').text("PRIHVATI").attr("id", value.eAdresa))
 							  											  .append(" ")
-							  											  .append($('<a href="#" onclick = odbijZahtjev() class="medi-info-btn">').text("ODBIJ")))
+							  											  .append($('<a href="#" onclick = odbijZahtjev(this'+ ',p' + value.jbo + ')  id = "eadresa" class="medi-info-btn">').text("ODBIJ").attr("id", value.eAdresa))))
   							
   					
   								  
@@ -57,39 +57,44 @@
  		})
   	}
     
-    function odbijZahtjev(){
-    	eadresa = $("#eadresa").text();
+    function odbijZahtjev(data, identifier){
+    	console.log($(this));
+    	eadresa = $(data).attr("id");
     	console.log(eadresa);
     	$.ajax({
     		type : "DELETE",
     		url: "zahtjeviReg/odbijanje",
     		data: {eadresa: eadresa},
-    		success: function(){
-    			alert("Zahtjev je izbrisan");
-    			$("#zahtjev").remove();
+    		success: function(data){
+    			alert(data);
+    			identifier.remove();
     			
     		},
-    		error: function(){
- 				alert("Doslo je do greske");
+    		error: function(data){
+ 				alert(data.responseText);
+ 				identifier.remove();
  			}
     		
     	})
     }
     
-    function prihvatiZahtjev(){
-    	eadresa = $("#eadresa").text();
+    function prihvatiZahtjev(data, identifier){
+    	eadresa = $(data).attr("id");
     	console.log(eadresa);
     	$.ajax({
     		type : "PUT",
     		url: "zahtjeviReg/prihvatanje",
     		data: {eadresa: eadresa},
-    		success: function(){
-    			alert("Zahtjev je prihvacen");
-    			$("#zahtjev").remove();
+    		success: function(data){
+    			alert(data);
+    			identifier.remove();
+    			
     			
     		},
-    		error: function(){
- 				alert("Doslo je do greske");
+    		error: function(data){
+ 				alert(data.responseText);
+ 				identifier.remove();
+ 				
  			}
     		
     	})

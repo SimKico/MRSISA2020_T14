@@ -19,7 +19,13 @@ insert into tabela_prijava(eadresa, lozinka)values('pacijent1@eclinic.com', 'ppa
 insert into tabela_prijava(eadresa, lozinka)values('dr1@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
 						values('P', false, 'Snjezana', 'Simic', false, false, null, null, null, null, 'Hajduk Veljka bb', '066617528', 'Bosna', 'Derventa', '123456', 'pacijent1@eclinic.com', null,null, 'Eclinic');
-			
+
+insert into tabela_prijava(eadresa, lozinka)values('vaso@eclinic.com', 'valoz');
+
+insert into tabela_korisnika(type, prijava_id, kc_id, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('P', 'vaso@eclinic.com', 'Eclinic', 'Vaso', 'Vasic', '222222', 'Jevrjeska', 'Novi Sad', 'Srbija', '066553334' );
+
+
 --Dodavanje klinika--
 insert into klinike(grad, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
 values('Beograd', 'VMA', '4', 1, 'Eclinic');
@@ -67,6 +73,14 @@ values('pero@eclinic.com', 'peloz', 'Pero', 'Peric', '111111', 'Gavrila Principa
 insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
 values('boro@eclinic.com', 'boloz', 'Boro', 'Boric', '143355', 'Gajeva', 'Novi Sad', 'Srbija', '066558844' );
 
+insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('vaso@eclinic.com', 'boloz', 'Vaso', 'Vasic', '222222', 'Jevrjeska', 'Novi Sad', 'Srbija', '066553334' );
+
+insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('Rade@eclinic.com', 'boloz', 'Rade', 'Radic', '123456', 'Cara Dusana', 'Novi Sad', 'Srbija', '066599844' );
+
+
+--Admin klinike--
 insert into tabela_prijava(eadresa, lozinka)values('admink1@eclinic.com', 'pak');
 insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
 values('AK', false, 'Nikola', 'Nikic', false, false, null, null, null, null, null, null, null, null, null,'admink1@eclinic.com', 1,null, 'Eclinic');
