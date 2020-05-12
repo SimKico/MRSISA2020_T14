@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mrsisa.eclinic.model.Klinika;
+import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.repository.KlinikaRepository;
 
 @Service
@@ -25,5 +26,10 @@ public class KlinikaService {
 	
 	public Klinika save(Klinika klinika) {
 		return klinikaRepository.save(klinika);
+	}
+	
+	public List<Klinika> findAllByljekar(Ljekar ljekari){
+		return klinikaRepository.findAllByljekari(ljekari);
+		
 	}
 }
