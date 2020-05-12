@@ -59,6 +59,8 @@ public class Klinika {
    @OneToMany(fetch=FetchType.LAZY, mappedBy="klinika")
 	private Set<MedicinskaSestra> sestre = new HashSet<MedicinskaSestra>();
 
+   
+	
    public Klinika() {
 		super();
 	}
