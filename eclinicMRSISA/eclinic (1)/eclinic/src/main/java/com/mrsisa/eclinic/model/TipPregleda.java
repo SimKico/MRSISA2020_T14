@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name= "tip_pregleda")
@@ -34,7 +36,7 @@ public class TipPregleda {
 
    @Column(name="tip", unique=false, nullable=false)
    private Specijalizacija tip;
-   
+   @JsonManagedReference
    @OneToMany(fetch = FetchType.LAZY, mappedBy="tipPregleda")
    private Set<Pregled> pregledi = new HashSet<Pregled>();
 

@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.PregledDTO;
+import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Specijalizacija;
 import com.mrsisa.eclinic.model.TipPregleda;
+import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.PregledService;
 
 @RestController
@@ -30,29 +33,37 @@ public class PregledController {
 	@Autowired 
 	private PregledService pregledService;
 	
+	@Autowired
+	private KlinikaService klinikaService;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	//private Date dateNaissance;
 	
 	@RequestMapping(value ="/pretragaPregleda/{tipPregleda}/{datum}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<PregledDTO>> getPretragaPregleda(@PathVariable("tipPregleda") String tipPregleda,@PathVariable("datum") String datum) throws Exception{
+	public ResponseEntity<List<KlinikaDTO>> getPretragaPregleda(@PathVariable("tipPregleda") String tipPregleda,@PathVariable("datum") String datum) throws Exception{
 		System.out.println(Specijalizacija.valueOf(tipPregleda) + tipPregleda + datum);
 		Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(datum); 
+		
 		System.out.println(Specijalizacija.valueOf(tipPregleda) + tipPregleda +" " +date1);
-		List<PregledDTO> preglediDTO = pregledService.pretraziPreglede(date1, Specijalizacija.valueOf(tipPregleda));
 		
-//		List<PregledDTO> preglediDTO = new ArrayList<PregledDTO>();
 		
-//		for( Pregled pregled : pregledi) {
-//			PregledDTO pregledDTO = new PregledDTO(pregled);
+//		List<PregledDTO> preglediDTO = pregledService.pretraziPreglede(date1, Specijalizacija.valueOf(tipPregleda));
+		
+		List<KlinikaDTO> pregledi = pregledService.pretraziPreglede(date1, Specijalizacija.valueOf(tipPregleda));
+		
+//		int i=0;
+//		preglediDTO.getClass();
+//		for( PregledDTO pregled : preglediDTO) {
+////			List<Klinika> klinike = klinikaService.findAllByLjekar();		
+//			System.out.println("pregledi");
 //			System.out.println(pregled);
-//			preglediDTO.add(pregledDTO);
+//		
 //			
 //		}
-//		System.out.println(pregledi);
-		System.out.println(preglediDTO);
+//		
+//		KlinikaDTO klinikeDTO = new KlinikaDTO();
 		
-		//RESPONSE TREBA DA BUDU KLINIKE
 		
-		return new ResponseEntity<>(preglediDTO,HttpStatus.OK);
+		return new ResponseEntity<>(pregledi,HttpStatus.OK);
 	}
 }
