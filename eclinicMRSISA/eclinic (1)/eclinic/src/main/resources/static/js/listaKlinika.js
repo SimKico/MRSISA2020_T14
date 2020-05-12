@@ -101,6 +101,27 @@ function pretraziPreglede(){
 		type: "GET",
 		success: function (result) {
 			console.log(result);
+			var elements = result.length;
+			console.log(elements);
+			
+			$("#table1").find('tr').remove();
+			 
+			var i = 0;
+			for(i; i<elements; i++){
+				
+				var text  = ` <a class = "white" href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
+				$("#table1")
+				.append($("<tr>")
+						.append($("<td>")
+								.append($(text)
+										.text(result[i].naziv)
+											.append($("</a>"))))
+						.append($("<td>")
+							.text(result[i].grad))
+						.append($("<td>")
+							.text(result[i].ocjenaKlinike))
+					);
+			}
 		}
 	,
 		error: function(result) {
