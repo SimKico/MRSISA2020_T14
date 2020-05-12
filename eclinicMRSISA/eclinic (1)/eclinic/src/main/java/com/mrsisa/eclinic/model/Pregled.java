@@ -57,6 +57,7 @@ public class Pregled {
    @JsonBackReference
    public TipPregleda tipPregleda;
 
+   
 public Long getPregled_id() {
 	return pregled_id;
 }

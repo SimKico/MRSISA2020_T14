@@ -16,6 +16,7 @@ public class TipPregledaService {
 	@Autowired 
 	private TipPregledaRepository tipPregledaRepository;
 	
+	
 	public List<TipPregleda> getAllBySpecijalicazija(Specijalizacija tip){
 		return tipPregledaRepository.findAllBytip(tip);
 	}

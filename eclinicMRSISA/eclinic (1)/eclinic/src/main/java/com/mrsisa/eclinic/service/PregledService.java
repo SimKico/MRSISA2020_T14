@@ -28,7 +28,8 @@ public class PregledService {
 		System.out.println("rezultat::: " + pregled1);
 		List<PregledDTO> rezultatPretrage = new ArrayList<PregledDTO>();
 		for(Pregled pregled : pregled1) {
-			System.out.println("PRETLJA :::");
+			System.out.println("PRETLJA :::"); 
+			
 			System.out.println(pregled.getStatus());
 
 			System.out.println(pregled.getStatus().equals(StatusPregleda.slobodan));

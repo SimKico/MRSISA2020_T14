@@ -52,6 +52,7 @@ public class Ljekar extends Korisnik {
 	@JoinTable(name="operacije_ljekara", joinColumns =@JoinColumn(name="ljekar_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="operacija_id", referencedColumnName="operacija_id"))
 	private Set<Operacija> operacije = new HashSet<Operacija>();
 
+	
 	public Specijalizacija getSpecijalizacija() {
 		return specijalizacija;
 	}

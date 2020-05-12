@@ -45,7 +45,7 @@ public class Klinika {
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
    @JoinColumn(name = "pregled_id")
    private Set<Pregled> pregled = new HashSet<Pregled>();
-//  
+   
    @ManyToMany
    @JoinTable(name = "TipoviPregledaUKlinici", joinColumns = @JoinColumn(name = "klinika_id",referencedColumnName = "klinika_id"), inverseJoinColumns = @JoinColumn(name = "sifra", referencedColumnName = "sifra"))
    private Set<TipPregleda> tipoviPregleda = new HashSet<TipPregleda>();

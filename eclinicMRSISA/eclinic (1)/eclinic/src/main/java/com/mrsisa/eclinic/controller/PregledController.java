@@ -39,19 +39,8 @@ public class PregledController {
 		Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(datum); 
 		System.out.println(Specijalizacija.valueOf(tipPregleda) + tipPregleda +" " +date1);
 		List<PregledDTO> preglediDTO = pregledService.pretraziPreglede(date1, Specijalizacija.valueOf(tipPregleda));
-		
-//		List<PregledDTO> preglediDTO = new ArrayList<PregledDTO>();
-		
-//		for( Pregled pregled : pregledi) {
-//			PregledDTO pregledDTO = new PregledDTO(pregled);
-//			System.out.println(pregled);
-//			preglediDTO.add(pregledDTO);
-//			
-//		}
-//		System.out.println(pregledi);
+
 		System.out.println(preglediDTO);
-		
-		//RESPONSE TREBA DA BUDU KLINIKE
 		
 		return new ResponseEntity<>(preglediDTO,HttpStatus.OK);
 	}
