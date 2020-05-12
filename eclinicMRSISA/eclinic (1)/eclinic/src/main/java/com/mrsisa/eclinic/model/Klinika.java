@@ -16,8 +16,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name= "klinike")
 public class Klinika {
@@ -56,8 +54,7 @@ public class Klinika {
    private Set<AdminKlinike> adminKlinike = new HashSet<AdminKlinike>();
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="klinika")
-   @JsonManagedReference
-   private Set<Ljekar> ljekari = new HashSet<Ljekar>();
+	private Set<Ljekar> ljekari = new HashSet<Ljekar>();
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="klinika")
 	private Set<MedicinskaSestra> sestre = new HashSet<MedicinskaSestra>();

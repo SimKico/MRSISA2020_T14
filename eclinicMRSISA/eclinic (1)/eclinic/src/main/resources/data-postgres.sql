@@ -90,7 +90,7 @@ insert into tip_pregleda(cijena, sifra, trajanje, tip)values(12.5, 'specoft',1,0
 insert into tip_pregleda(cijena, sifra, trajanje, tip)values(12.5, 'specpulmo',1,1);
 
 --Dodavanje pregleda--
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
-			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft',4);
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
-			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specpulmo',5);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda)
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft');
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda)
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specpulmo');

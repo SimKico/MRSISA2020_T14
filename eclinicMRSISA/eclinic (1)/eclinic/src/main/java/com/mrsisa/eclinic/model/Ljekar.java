@@ -19,8 +19,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @DiscriminatorValue("LJ")
 public class Ljekar extends Korisnik {
@@ -38,7 +36,6 @@ public class Ljekar extends Korisnik {
    private String radnoVrijeme;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="ljekar")
-	 @JsonBackReference
 	private Set<Pregled> pregledi = new HashSet<Pregled>();
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="ljekar")
@@ -49,7 +46,6 @@ public class Ljekar extends Korisnik {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "klinika_id", referencedColumnName="klinika_id", nullable=true)
-	 @JsonBackReference
 	private Klinika klinika;
 	
 	@ManyToMany(fetch=FetchType.LAZY)

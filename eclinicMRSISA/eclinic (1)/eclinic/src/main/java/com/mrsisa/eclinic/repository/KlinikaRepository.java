@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.model.Klinika;
-import com.mrsisa.eclinic.model.Ljekar;
-import com.mrsisa.eclinic.model.Pregled;
 
 public interface KlinikaRepository extends JpaRepository<Klinika, Long>{
 
@@ -17,6 +15,5 @@ public interface KlinikaRepository extends JpaRepository<Klinika, Long>{
 	
 	Page<Klinika> findAll(Pageable  pageable);
 	
-	List<Klinika> findAllByljekari(Ljekar ljekari);
 	
 }
