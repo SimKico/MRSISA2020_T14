@@ -11,7 +11,7 @@ public class LjekarDTO {
 	private String ime;
 	private String prezime;
 	private Specijalizacija specijalizacija;
-	private Klinika klinika;
+	private String klinika;
 	private Integer prosjecnaOcjena;
 	
 	public LjekarDTO(Ljekar ljekar) {
@@ -19,7 +19,7 @@ public class LjekarDTO {
 		prezime = ljekar.getPrezime();
 		prosjecnaOcjena = ljekar.getProsjecnaOcjena();
 		specijalizacija = ljekar.getSpecijalizacija();
-		klinika = ljekar.getKlinika();
+		klinika = ljekar.getKlinika().getNaziv();
 	}
 	
 	public LjekarDTO() {
@@ -35,7 +35,7 @@ public class LjekarDTO {
 		this.prezime = prezime;
 		this.prosjecnaOcjena = prosjecnaOcjena;
 		this.specijalizacija = specijalizacija;
-		this.klinika = klinika;
+		this.klinika = klinika.getNaziv();
 	}
 	
 	public String getIme() {
@@ -56,10 +56,10 @@ public class LjekarDTO {
 	public void setSpecijalizacija(Specijalizacija specijalizacija) {
 		this.specijalizacija = specijalizacija;
 	}
-	public Klinika getKlinika() {
+	public String getKlinika() {
 		return klinika;
 	}
-	public void setKlinika(Klinika klinika) {
+	public void setKlinika(String klinika) {
 		this.klinika = klinika;
 	}
 
