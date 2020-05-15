@@ -22,12 +22,14 @@ import com.mrsisa.eclinic.model.Korisnik;
 import com.mrsisa.eclinic.model.Pacijent;
 import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
+import com.mrsisa.eclinic.model.ZdravstveniKarton;
 import com.mrsisa.eclinic.service.EmailService;
 import com.mrsisa.eclinic.service.KcService;
 import com.mrsisa.eclinic.service.KorisnikService;
 import com.mrsisa.eclinic.service.PacijentService;
 import com.mrsisa.eclinic.service.PrijavaService;
 import com.mrsisa.eclinic.service.ZahtjeviRegService;
+import com.mrsisa.eclinic.service.ZdravKartonService;
 
 @RestController
 @RequestMapping("zahtjeviReg")
@@ -50,6 +52,9 @@ public class ZahtjeviRegController {
 	
 	@Autowired
 	KcService kcService;
+	
+	@Autowired
+	ZdravKartonService zkService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -123,6 +128,7 @@ public class ZahtjeviRegController {
 		
 		KlinickiCentar kc = kcService.getKcByName("Eclinic");
 		Pacijent noviPacijent = new Pacijent(zahtjev);
+		ZdravstveniKarton zk = new ZdravstveniKarton();
 		
 		Prijava prijava = new Prijava();
 		prijava.seteAdresa(zahtjev.geteAdresa());
@@ -130,7 +136,9 @@ public class ZahtjeviRegController {
 		
 		
 		noviPacijent.setPrijava(prijava);
+		noviPacijent.setZdravstveniKarton(zk);
 		
+		zk = zkService.save(zk);
 		prijava = prijavaService.save(prijava);
 		kc.getKorisnik().add(noviPacijent);
 		noviPacijent = pacijentService.save(noviPacijent);
