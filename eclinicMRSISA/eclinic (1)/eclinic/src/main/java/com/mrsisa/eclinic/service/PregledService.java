@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.LjekarDTO;
 import com.mrsisa.eclinic.dto.PregledDTO;
+import com.mrsisa.eclinic.dto.TipPregledaDTO;
+import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Specijalizacija;
 import com.mrsisa.eclinic.model.StatusPregleda;
@@ -28,51 +30,43 @@ public class PregledService {
 	@Autowired
 	private KlinikaRepository klinikaRepository;
 
-	public List<KlinikaDTO> pretraziPreglede(Date datum, Specijalizacija tipPregleda) throws Exception{
-		System.out.println("iz pretraziPreglede  "+datum+tipPregleda);
+	public List<PregledDTO> pretraziPreglede(Date datum, Specijalizacija tipPregleda) throws Exception{
 		List<Pregled> pregled1 = pregledRepository.findAllBydatum(datum); 
-		System.out.println("rezultat::: " + pregled1);
+		System.out.println("preglediDTO find all by datum");
+		System.out.println(pregled1);
 		List<PregledDTO> rezultatPretrage = new ArrayList<PregledDTO>();
-		List<KlinikaDTO> klinikeDTO = new ArrayList<KlinikaDTO>();
 		for(Pregled pregled : pregled1) {
-			System.out.println("PRETLJA :::");
-			System.out.println(pregled.getStatus());
-
-			System.out.println(pregled.getStatus().equals(StatusPregleda.slobodan));
+			System.out.println("jedan od pregleda");
+			System.out.println(pregled);
 			if(pregled.getStatus().equals(StatusPregleda.slobodan)) {
-				System.out.println("Status pregleda::: ");
+				System.out.println("status pregleda");
 				System.out.println(pregled.getStatus());
-				System.out.println("tipPregleda:::");
-				System.out.println(pregled.getTipPregleda().getTip());
-
-				System.out.println(tipPregleda);
 				if(pregled.getTipPregleda().getTip().equals(tipPregleda)) {
-					System.out.println("u petlji:::");
-					System.out.println(pregled.getTipPregleda().getTip().equals(tipPregleda));
-					PregledDTO pregledDTO = new PregledDTO(pregled);
+					LjekarDTO ljekarDTO = new LjekarDTO(pregled.getLjekar());
+					TipPregledaDTO tipPregledaDTO = new TipPregledaDTO(pregled.getTipPregleda());
+					System.out.println(pregled.getLjekar().getKlinika().getAdresa());
+					PregledDTO pregledDTO = new PregledDTO(pregled,ljekarDTO,
+							tipPregledaDTO,
+							pregled.getLjekar().getKlinika().getAdresa(),
+							pregled.getLjekar().getKlinika().getGrad(),
+							pregled.getLjekar().getKlinika().getOcjenaKlinike()
+							);
+					System.out.println("pregledDTO");
+					System.out.println(pregledDTO);
 					Set<LjekarDTO> ljekari = new HashSet();
 					LjekarDTO ljekar = new LjekarDTO(pregled.getLjekar());
 					ljekari.add(ljekar);
-					//TO DO neki eror je kad stavim ljekare u konstruktor
-					KlinikaDTO klinikaDTO = new KlinikaDTO(pregled.getLjekar().getKlinika(), null);
-					klinikeDTO.add(klinikaDTO);
 					rezultatPretrage.add(pregledDTO);
 				}
-				System.out.println("izasao iz petlje:::");
-				System.out.println(rezultatPretrage);
+
 			}
-			System.out.println("izasao iz petlje2:::");
-			System.out.println(rezultatPretrage);
+
 		}
 		if (rezultatPretrage == null) {
             throw new Exception("Ne postoji trazeni pregled.");
         }
-		System.out.println("saf");
-		System.out.println(rezultatPretrage);
-		
-		
-		
-		return klinikeDTO;
+
+		return rezultatPretrage;
 	}
 
 }

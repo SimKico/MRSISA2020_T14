@@ -16,8 +16,9 @@ import com.mrsisa.eclinic.model.TipPregleda;
 public class KlinikaDTO {
      private String naziv;
 	 private String grad;
+	 private String adresa;
 	 private int tipKlinike;
-	 private int ocjenaKlinike;
+	 private double ocjenaKlinike;
 //	 private Set<Sala> sala = new HashSet<Sala>();
 //	 private Set<Pregled> pregled = new HashSet<Pregled>();
 //	 private Set<TipPregleda> tipoviPregleda = new HashSet<TipPregleda>();
@@ -29,12 +30,13 @@ public class KlinikaDTO {
 		super();
 	}
 	
-	public KlinikaDTO(String naziv, String grad, int tipKlinike, int ocjenaKlinike
+	public KlinikaDTO(String naziv, String grad,String adresa,  int tipKlinike, double ocjenaKlinike
 			, Set<LjekarDTO> ljekari
 			) {
 		super();
 		this.naziv = naziv;
 		this.grad = grad;
+		this.setAdresa(adresa);
 		this.tipKlinike = tipKlinike;
 		this.ocjenaKlinike = ocjenaKlinike;
 		this.ljekari = ljekari;
@@ -44,6 +46,7 @@ public class KlinikaDTO {
 		this(
 				klinika.getNaziv(),
 				klinika.getGrad(),
+				klinika.getAdresa(),
 				klinika.getTipKlinike(),
 				klinika.getOcjenaKlinike(),
 				ljekariDTO
@@ -68,10 +71,10 @@ public class KlinikaDTO {
 	public void setTipKlinike(int tipKlinike) {
 		this.tipKlinike = tipKlinike;
 	}
-	public int getOcjenaKlinike() {
+	public Double getOcjenaKlinike() {
 		return ocjenaKlinike;
 	}
-	public void setOcjenaKlinike(int ocjenaKlinike) {
+	public void setOcjenaKlinike(Double ocjenaKlinike) {
 		this.ocjenaKlinike = ocjenaKlinike;
 	}
 //	public Set<Sala> getSala() {
@@ -111,5 +114,13 @@ public class KlinikaDTO {
 //		this.sestre = sestre;
 //	}
 //	 
+
+	public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
+	}
 	 
 }

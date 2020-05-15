@@ -42,7 +42,6 @@ public class Pregled {
    
    @ManyToOne(fetch=FetchType.LAZY)
    @JoinColumn(name = "ljekar_id", referencedColumnName="id")
-   @JsonBackReference
    private Ljekar ljekar;
    
    @ManyToOne(fetch=FetchType.LAZY)
@@ -55,7 +54,6 @@ public class Pregled {
    
    @ManyToOne(fetch=FetchType.LAZY)
    @JoinColumn(name = "sifra_pregleda", unique = false, referencedColumnName="sifra")
-   @JsonBackReference
    public TipPregleda tipPregleda;
 
    

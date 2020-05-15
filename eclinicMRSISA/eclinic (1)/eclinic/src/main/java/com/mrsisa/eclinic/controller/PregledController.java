@@ -35,30 +35,20 @@ public class PregledController {
 	//private Date dateNaissance;
 	
 	@RequestMapping(value ="/pretragaPregleda/{tipPregleda}/{datum}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<KlinikaDTO>> getPretragaPregleda(@PathVariable("tipPregleda") String tipPregleda,@PathVariable("datum") String datum) throws Exception{
+	public ResponseEntity<List<PregledDTO>> getPretragaPregleda(@PathVariable("tipPregleda") String tipPregleda,@PathVariable("datum") String datum) throws Exception{
 		System.out.println(Specijalizacija.valueOf(tipPregleda) + tipPregleda + datum);
 		Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(datum); 
 		
 		System.out.println(Specijalizacija.valueOf(tipPregleda) + tipPregleda +" " +date1);
 		
-		
-//		List<PregledDTO> preglediDTO = pregledService.pretraziPreglede(date1, Specijalizacija.valueOf(tipPregleda));
-		
-		List<KlinikaDTO> pregledi = pregledService.pretraziPreglede(date1, Specijalizacija.valueOf(tipPregleda));
-		
-//		int i=0;
-//		preglediDTO.getClass();
-//		for( PregledDTO pregled : preglediDTO) {
-////			List<Klinika> klinike = klinikaService.findAllByLjekar();		
-//			System.out.println("pregledi");
-//			System.out.println(pregled);
-//		
-//			
-//		}
-//		
-//		KlinikaDTO klinikeDTO = new KlinikaDTO();
-		
-		
-		return new ResponseEntity<>(pregledi,HttpStatus.OK);
+		List<PregledDTO> preglediKlinike = pregledService.pretraziPreglede(date1, Specijalizacija.valueOf(tipPregleda));
+		System.out.println("pregledi klinike :");
+		System.out.println(preglediKlinike);
+		for(PregledDTO rezultat : preglediKlinike)
+		{
+//			System.out.println(rezultat.getLjekari());
+//			System.out.println(rezultat.getNaziv());
+		}
+		return new ResponseEntity<>(preglediKlinike, HttpStatus.OK);
 	}
 }

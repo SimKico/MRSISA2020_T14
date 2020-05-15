@@ -29,41 +29,50 @@ values('P', 'vaso@eclinic.com', 'Eclinic', 'Vaso', 'Vasic', '222222', 'Jevrjeska
 
 
 --Dodavanje klinika--
-insert into klinike(grad, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Beograd', 'VMA', '4', 1, 'Eclinic');
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Beograd','adr','VMA', '4', 1, 'Eclinic');
 
-insert into klinike(grad, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Banjaluka', 'UKC', '4', 2, 'Eclinic');
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Banjaluka','adr','UKC', '4', 2, 'Eclinic');
 
-insert into klinike(grad, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Sarajevo', 'Kosevo', '2', 3, 'Eclinic');
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Sarajevo','adr' ,'Kosevo', '2', 3, 'Eclinic');
 
-insert into klinike(grad, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Zagreb', 'Nasa Klinika', '5', 3, 'Eclinic');
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Zagreb','adr', 'Nasa Klinika', '5', 3, 'Eclinic');
 
-insert into klinike(grad, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Novi Sad', 'Klinika Svjetlost', '3', 3, 'Eclinic');
+insert into klinike(grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Novi Sad','adr' ,'Klinika Svjetlost', '3', 4, 'Eclinic');
+
+insert into klinike(grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Sarajevo','adr', 'Nova Bolnica', '4', 3, 'Eclinic');
+
+insert into klinike(grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Zagreb','adr', 'Dr Pavlovic', '5', 3, 'Eclinic');
+
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Novi Sad','adr', 'Klinika Diva', '3', 4, 'Eclinic');
 
 --Ljekari--
 insert into tabela_prijava(eadresa, lozinka)values('ljekar1@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id)
-values('LJ', 'Stojan', 'Mutikasa','Studirao u Beogradu.',5,'09:00-17:00',2, 'ljekar1@eclinic.com',1,null,'Eclinic' );
+values('LJ', 'Stojan', 'Mutikasa','Studirao u Beogradu.',5,'09:00-17:00',0, 'ljekar1@eclinic.com',1,null,'Eclinic' );
 
 insert into tabela_prijava(eadresa, lozinka)values('ljekar2@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id)
-values('LJ', 'Stanko', 'Stanic','Studirao u Novom Sadu.',5,'09:00-17:00',2, 'ljekar2@eclinic.com',2,null,'Eclinic' );
+values('LJ', 'Stanko', 'Stanic','Studirao u Novom Sadu.',5,'09:00-17:00',0, 'ljekar2@eclinic.com',2,null,'Eclinic' );
 
 insert into tabela_prijava(eadresa, lozinka)values('ljekar3@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id)
-values('LJ', 'Vladimir', 'Stojanovic','Studirao u Beogradu.',5,'09:00-17:00',3, 'ljekar3@eclinic.com',3,null,'Eclinic' );
+values('LJ', 'Vladimir', 'Stojanovic','Studirao u Beogradu.',5,'09:00-17:00',0, 'ljekar3@eclinic.com',3,null,'Eclinic' );
 
 insert into tabela_prijava(eadresa, lozinka)values('ljekar4@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id)
-values('LJ', 'Micomir', 'Perkovic','Studirao u Banjaluci.',5,'09:00-17:00',3, 'ljekar3@eclinic.com',4,null,'Eclinic' );
+values('LJ', 'Micomir', 'Perkovic','Studirao u Banjaluci.',5,'09:00-17:00',1, 'ljekar3@eclinic.com',4,null,'Eclinic' );
 
 insert into tabela_prijava(eadresa, lozinka)values('ljekar5@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id)
-values('LJ', 'Vladimir', 'Velimirovic','Studirao u Beogradu.',5,'09:00-17:00',3, 'ljekar3@eclinic.com',1,null,'Eclinic' );
+values('LJ', 'Vladimir', 'Velimirovic','Studirao u Beogradu.',5,'09:00-17:00',1, 'ljekar3@eclinic.com',1,null,'Eclinic' );
 
 --Zahtjevi za registraciju--
 insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
@@ -96,3 +105,12 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft',4);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id)
 			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specpulmo',5);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft',6);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft',7);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft',8);

@@ -102,25 +102,49 @@ function pretraziPreglede(){
 		success: function (result) {
 			console.log(result);
 			var elements = result.length;
+			location.href = " #doctor-team";
 			console.log(elements);
 			
-			$("#table1").find('tr').remove();
-			 
+//			$("#table2").find("tr").remove();
+			document.getElementById("table2").style.visibility = "visible";
 			var i = 0;
 			for(i; i<elements; i++){
-				
-				var text  = ` <a class = "white" href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
-				$("#table1")
+//				var num_of_doctors = result[i].ljekari.length;
+//				console.log("brroj ljekara" + num_of_doctors);
+
+				var text  = ` <a href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
+				var j = 0;
+				$("#table2")
 				.append($("<tr>")
 						.append($("<td>")
 								.append($(text)
-										.text(result[i].naziv)
+										.text(result[i].ljekarDTO.klinika)
 											.append($("</a>"))))
+						.append($("<td>")
+							.text(result[i].adresaKlinike))
 						.append($("<td>")
 							.text(result[i].grad))
 						.append($("<td>")
 							.text(result[i].ocjenaKlinike))
+						.append($("<td>")
+							.text(result[i].tipPregledaDTO.cijena + "€"))
 					);
+//				for(j; j<num_of_doctors; j++){
+//					var text  = ` <a href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
+//						$("#table2")
+//						.append($("<tr>")
+//								.append($("<td>")
+//												.text("dr " + result[i].ljekari[j].ime + " " + result[i].ljekari[j].prezime)
+//													)
+//								.append($("<td>")
+//									.text(result[i].naziv))
+//								.append($("<td>")
+//									.text(result[i].ljekari[j].prosjecnaOcjena))
+//									.append($("<td>")
+//									.text(result[i].ljekari[j].prosjecnaOcjena))
+//							);
+//				}
+
 			}
 		}
 	,

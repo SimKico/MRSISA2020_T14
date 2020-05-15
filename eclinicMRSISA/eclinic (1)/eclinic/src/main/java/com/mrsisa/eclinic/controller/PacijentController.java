@@ -43,19 +43,19 @@ public class PacijentController {
 	public ResponseEntity<PacijentDTO> getHomepagePacijent()
 	{
 		 Pacijent p = pacijentService.findOne("123456");
-		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
+		 return new ResponseEntity<>(new PacijentDTO(p,null), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/profilPacijent" ,  method = RequestMethod.GET)
 	public ResponseEntity<PacijentDTO>  getProfilPacijent(){
 		 Pacijent p = pacijentService.findOne("123456");
-		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
+		 return new ResponseEntity<>(new PacijentDTO(p,null), HttpStatus.OK);
 	}	
 	
 	@RequestMapping(value = "/profilPacijent/azurirajPodatke" ,  method = RequestMethod.GET)
 	public ResponseEntity<PacijentDTO>  getPotatkePacijent(){
 		 Pacijent p = pacijentService.findOne("123456");
-		 return new ResponseEntity<>(new PacijentDTO(p), HttpStatus.OK);
+		 return new ResponseEntity<>(new PacijentDTO(p,null), HttpStatus.OK);
 	}	
 	
 
@@ -80,7 +80,7 @@ public class PacijentController {
 		System.out.println("kao da je setovo");
 
 		pacijent = pacijentService.save(pacijent);
-		return new ResponseEntity<>(new PacijentDTO(pacijent), HttpStatus.OK);
+		return new ResponseEntity<>(new PacijentDTO(pacijent,null), HttpStatus.OK);
 	}
 	
 }	
