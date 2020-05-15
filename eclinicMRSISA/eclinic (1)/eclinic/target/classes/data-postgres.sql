@@ -14,16 +14,18 @@ values('AC', false, 'Marko', 'Maricic', false, true, null, null, null, null, nul
 
 
 --Dodavanje nekog pacijenta--
+insert into zdravstveni_karton (krvna_grupa) values (null);
 insert into tabela_prijava(eadresa, lozinka)values('pacijent1@eclinic.com', 'ppacijent');
 
 insert into tabela_prijava(eadresa, lozinka)values('dr1@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
-						values('P', false, 'Snjezana', 'Simic', false, false, null, null, null, null, 'Hajduk Veljka bb', '066617528', 'Bosna', 'Derventa', '123456', 'pacijent1@eclinic.com', null,null, 'Eclinic');
+						values('P', false, 'Snjezana', 'Simic', false, false, null, null, null, null, 'Hajduk Veljka bb', '066617528', 'Bosna', 'Derventa', '123456', 'pacijent1@eclinic.com', null,1, 'Eclinic');
 
+insert into zdravstveni_karton (krvna_grupa) values (null);
 insert into tabela_prijava(eadresa, lozinka)values('vaso@eclinic.com', 'valoz');
 
-insert into tabela_korisnika(type, prijava_id, kc_id, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
-values('P', 'vaso@eclinic.com', 'Eclinic', 'Vaso', 'Vasic', '222222', 'Jevrjeska', 'Novi Sad', 'Srbija', '066553334' );
+insert into tabela_korisnika(type, prijava_id, kc_id, ime, prezime, jbo, adresa, grad, drzava, broj_telefona, karton_id)
+values('P', 'vaso@eclinic.com', 'Eclinic', 'Vaso', 'Vasic', '222222', 'Jevrjeska', 'Novi Sad', 'Srbija', '066553334', 2 );
 
 
 --Dodavanje klinika--

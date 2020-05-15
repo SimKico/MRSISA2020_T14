@@ -29,19 +29,19 @@ public class ZdravstveniKarton {
    @Column(name="karton_id", unique=false, nullable=false)
    private int idKartona;
    
-   @Column(name="krvna_grupa", unique=false, nullable=false)
+   @Column(name="krvna_grupa", unique=false)
    private String krvnaGrupa;
 
-   @Column(name="visina", unique=false, nullable=false)
+   @Column(name="visina", unique=false)
    private int visinaCm;
  
-   @Column(name="tezina", unique=false, nullable=false)
+   @Column(name="tezina", unique=false)
    private int tezinaKg;
   
-   @Column(name="alergije", unique=false, nullable=false)
+   @Column(name="alergije", unique=false)
    private String alergije;
 
-   @Column(name="dioptrija", unique=false, nullable=false)
+   @Column(name="dioptrija", unique=false)
    private String dioptrija;
    
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "zdravstveniKarton")
