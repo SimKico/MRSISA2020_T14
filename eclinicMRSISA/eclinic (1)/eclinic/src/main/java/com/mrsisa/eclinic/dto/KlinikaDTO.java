@@ -21,7 +21,7 @@ public class KlinikaDTO {
 	 private double ocjenaKlinike;
 //	 private Set<Sala> sala = new HashSet<Sala>();
 //	 private Set<Pregled> pregled = new HashSet<Pregled>();
-//	 private Set<TipPregleda> tipoviPregleda = new HashSet<TipPregleda>();
+	 private Set<TipPregledaDTO> tipoviPregledaDTO = new HashSet<TipPregledaDTO>();
 //	 private Set<AdminKlinike> adminKlinike = new HashSet<AdminKlinike>();
 	 private Set<LjekarDTO> ljekari =  new HashSet<LjekarDTO>();
 //	 private Set<MedicinskaSestra> sestre = new HashSet<MedicinskaSestra>();
@@ -31,7 +31,7 @@ public class KlinikaDTO {
 	}
 	
 	public KlinikaDTO(String naziv, String grad,String adresa,  int tipKlinike, double ocjenaKlinike
-			, Set<LjekarDTO> ljekari
+			, Set<LjekarDTO> ljekari, Set<TipPregledaDTO> tipoviPregledaDTO
 			) {
 		super();
 		this.naziv = naziv;
@@ -40,16 +40,18 @@ public class KlinikaDTO {
 		this.tipKlinike = tipKlinike;
 		this.ocjenaKlinike = ocjenaKlinike;
 		this.ljekari = ljekari;
+		this.tipoviPregledaDTO = tipoviPregledaDTO;
 	}
 	 
-	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO) {
+	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO,Set<TipPregledaDTO> tipoviPregledaDTO) {
 		this(
 				klinika.getNaziv(),
 				klinika.getGrad(),
 				klinika.getAdresa(),
 				klinika.getTipKlinike(),
 				klinika.getOcjenaKlinike(),
-				ljekariDTO
+				ljekariDTO,
+				tipoviPregledaDTO
 			);
 	}
 
@@ -89,12 +91,12 @@ public class KlinikaDTO {
 //	public void setPregled(Set<Pregled> pregled) {
 //		this.pregled = pregled;
 //	}
-//	public Set<TipPregleda> getTipoviPregleda() {
-//		return tipoviPregleda;
-//	}
-//	public void setTipoviPregleda(Set<TipPregleda> tipoviPregleda) {
-//		this.tipoviPregleda = tipoviPregleda;
-//	}
+	public Set<TipPregledaDTO> getTipoviPregleda() {
+		return tipoviPregledaDTO;
+	}
+	public void setTipoviPregledaDTO(Set<TipPregledaDTO> tipoviPregledaDTO) {
+		this.tipoviPregledaDTO = tipoviPregledaDTO;
+	}
 //	public Set<AdminKlinike> getAdminKlinike() {
 //		return adminKlinike;
 //	}

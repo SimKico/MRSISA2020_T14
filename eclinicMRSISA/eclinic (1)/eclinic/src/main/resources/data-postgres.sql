@@ -30,13 +30,13 @@ values('P', 'vaso@eclinic.com', 'Eclinic', 'Vaso', 'Vasic', '222222', 'Jevrjeska
 
 --Dodavanje klinika--
 insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Beograd','adr','VMA', '4', 1, 'Eclinic');
+values('Beograd','adr','VMA', '4', 0, 'Eclinic');
 
 insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Banjaluka','adr','UKC', '4', 2, 'Eclinic');
+values('Banjaluka','adr','UKC', '4', 0, 'Eclinic');
 
 insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values('Sarajevo','adr' ,'Kosevo', '2', 3, 'Eclinic');
+values('Sarajevo','adr' ,'Kosevo', '2', 0, 'Eclinic');
 
 insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
 values('Zagreb','adr', 'Nasa Klinika', '5', 3, 'Eclinic');
@@ -114,3 +114,18 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
 			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '2001-09-28', 'specoft',8);
+			
+--zahtjevi za odsustvo--
+insert into zahtjevi_odsustava(kraj, pocetak, prihvacen, tip_odsustva, ljekar_id)
+						values('2001-08-28','2001-07-27',true, 0, 5);
+						
+insert into zahtjevi_odsustava(kraj, pocetak, prihvacen, tip_odsustva, ljekar_id)
+						values('2001-08-28','2001-07-29',true, 0, 6);
+						
+----tipovi pregleda u klinici--
+insert into tipovi_pregledauklinici(klinika_id,sifra)
+							values(1,'specoft');
+insert into tipovi_pregledauklinici(klinika_id,sifra)
+							values(2,'specoft');
+insert into tipovi_pregledauklinici(klinika_id,sifra)
+							values(3,'specoft');

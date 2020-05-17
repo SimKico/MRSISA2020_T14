@@ -43,7 +43,7 @@ public class PregledService {
 				System.out.println(pregled.getStatus());
 				if(pregled.getTipPregleda().getTip().equals(tipPregleda)) {
 					LjekarDTO ljekarDTO = new LjekarDTO(pregled.getLjekar());
-					TipPregledaDTO tipPregledaDTO = new TipPregledaDTO(pregled.getTipPregleda());
+					TipPregledaDTO tipPregledaDTO = new TipPregledaDTO(pregled.getTipPregleda(),(Set<PregledDTO>) pregled);
 					System.out.println(pregled.getLjekar().getKlinika().getAdresa());
 					PregledDTO pregledDTO = new PregledDTO(pregled,ljekarDTO,
 							tipPregledaDTO,
