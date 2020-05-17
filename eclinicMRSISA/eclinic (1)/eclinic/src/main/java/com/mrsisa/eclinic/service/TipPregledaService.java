@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mrsisa.eclinic.dto.TipPregledaDTO;
+import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Specijalizacija;
 import com.mrsisa.eclinic.model.TipPregleda;
 import com.mrsisa.eclinic.repository.PregledRepository;
@@ -20,4 +22,5 @@ public class TipPregledaService {
 	public List<TipPregleda> getAllBySpecijalicazija(Specijalizacija tip){
 		return tipPregledaRepository.findAllBytip(tip);
 	}
+
 }
