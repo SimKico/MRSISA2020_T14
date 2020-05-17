@@ -1,6 +1,5 @@
 package com.mrsisa.eclinic.dto;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import com.mrsisa.eclinic.model.Pregled;
@@ -13,34 +12,34 @@ public class TipPregledaDTO {
 	private String sifra;
 	private int trajanje;
 	private Specijalizacija specijalizacija;
-	private Set<PregledDTO> preglediDTO = new HashSet<PregledDTO>();
+//	private Set<PregledDTO> preglediDTO;
 	
 	public TipPregledaDTO() {
 		super();
 	}
 	
 	public TipPregledaDTO(Double cijena, String sifra, int trajanje, Specijalizacija specijalizacija
-			,
-			Set<PregledDTO> preglediDTO
+//			,
+//			Set<PregledDTO> preglediDTO
 			) {
 		super();
 		this.cijena = cijena;
 		this.sifra = sifra;
 		this.trajanje = trajanje;
 		this.specijalizacija = specijalizacija;
-		this.preglediDTO = preglediDTO;
+//		this.preglediDTO = preglediDTO;
 	}
 
 	public TipPregledaDTO(TipPregleda tipPregleda
-			, Set<PregledDTO> preglediDTO
+//			, Set<PregledDTO> preglediDTO
 			) {
 		this(
 				tipPregleda.getCijena(),
 				tipPregleda.getSifra(),
 				tipPregleda.getTrajanje(),
 				tipPregleda.getTip()
-				,
-				preglediDTO
+//				,
+//				preglediDTO
 				);
 		
 	}
@@ -69,11 +68,11 @@ public class TipPregledaDTO {
 	public void setSpecijalizacija(Specijalizacija specijalizacija) {
 		this.specijalizacija = specijalizacija;
 	}
-	public Set<PregledDTO> getPreglediDTO() {
-		return preglediDTO;
-	}
-	public void setPreglediDTO(Set<PregledDTO> preglediDTO) {
-		this.preglediDTO = preglediDTO;
-	}
+//	public Set<PregledDTO> getPreglediDTO() {
+//		return preglediDTO;
+//	}
+//	public void setPreglediDTO(Set<PregledDTO> preglediDTO) {
+//		this.preglediDTO = preglediDTO;
+//	}
 //	
 }

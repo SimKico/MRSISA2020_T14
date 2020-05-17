@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mrsisa.eclinic.dto.AKcDTO;
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.LjekarDTO;
-import com.mrsisa.eclinic.dto.TipPregledaDTO;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.service.KlinikaService;
@@ -45,9 +44,7 @@ public class KlinikaController {
 		List<KlinikaDTO> listaKlinikaDTO = new ArrayList<KlinikaDTO>();
 		
 		for(Klinika k : listaKlinika) {
-			List<TipPregledaDTO> tipoviPregledaDTO = new ArrayList<TipPregledaDTO>();
-			
-			KlinikaDTO klinikaDTO = new KlinikaDTO(k, null,null);
+			KlinikaDTO klinikaDTO = new KlinikaDTO(k, null);
 			listaKlinikaDTO.add(klinikaDTO);	
 		}
 		
@@ -74,7 +71,7 @@ public class KlinikaController {
 		}
 		
 		//klinika.setLjekari(ljekari);
-		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO,null);
+		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO);
 		System.out.println(klinika.getId());
 		System.out.println(klinika.getLjekari());
 		System.out.println(ljekariDTO);

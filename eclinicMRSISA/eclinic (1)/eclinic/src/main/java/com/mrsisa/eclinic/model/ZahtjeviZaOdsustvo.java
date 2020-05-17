@@ -42,7 +42,7 @@ public class ZahtjeviZaOdsustvo {
    private Ljekar ljekar;
    
    @ManyToOne(fetch=FetchType.LAZY)
-   @JoinColumn(name = "sestra_id", referencedColumnName="id", nullable = true)
+   @JoinColumn(name = "sestra_id", referencedColumnName="id", nullable = false)
    private MedicinskaSestra sestra;
 
 public Long getId() {

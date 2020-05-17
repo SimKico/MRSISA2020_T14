@@ -118,19 +118,17 @@ function pretraziPreglede(){
 				.append($("<tr>")
 						.append($("<td>")
 								.append($(text)
-										.text(result[i].naziv)
+										.text(result[i].ljekarDTO.klinika)
 											.append($("</a>"))))
 						.append($("<td>")
-							.text(result[i].adresa))
+							.text(result[i].adresaKlinike))
 						.append($("<td>")
 							.text(result[i].grad))
 						.append($("<td>")
 							.text(result[i].ocjenaKlinike))
 						.append($("<td>")
-							.text(result[i].tipoviPregleda[0].cijena + "€"))
+							.text(result[i].tipPregledaDTO.cijena + "€"))
 					);
-				
-//TO DO ZA VISE TIPOVA PREGLEDA				
 //				for(j; j<num_of_doctors; j++){
 //					var text  = ` <a href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
 //						$("#table2")
@@ -154,7 +152,6 @@ function pretraziPreglede(){
 			alert("Something is wrong with your request.(get details)");
 		}
     });	
-
 }
 
 

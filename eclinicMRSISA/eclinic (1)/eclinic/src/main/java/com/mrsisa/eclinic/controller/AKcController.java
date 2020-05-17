@@ -138,7 +138,7 @@ public class AKcController {
 		List<KlinikaDTO> klinike = new ArrayList<KlinikaDTO>();
 		
 		for(Klinika klinika : listaKlinika) {
-			klinike.add(new KlinikaDTO(klinika, null,null));
+			klinike.add(new KlinikaDTO(klinika, null));
 		}
 		
 		return new ResponseEntity<>(klinike, HttpStatus.OK);
