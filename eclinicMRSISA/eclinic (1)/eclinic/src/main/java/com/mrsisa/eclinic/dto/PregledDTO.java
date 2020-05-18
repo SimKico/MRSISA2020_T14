@@ -2,10 +2,8 @@ package com.mrsisa.eclinic.dto;
 
 import java.util.Date;
 
-import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.StatusPregleda;
-import com.mrsisa.eclinic.model.TipPregleda;
 
 
 public class PregledDTO {
@@ -18,10 +16,10 @@ public class PregledDTO {
 	private String adresaKlinike;
 	private String grad;
 	private	Double ocjenaKlinike;
-
+	private PacijentDTO pacijentDTO;
 	
 	public PregledDTO(Pregled pregled, LjekarDTO ljekarDTO, TipPregledaDTO tipPregledaDTO
-			, String adresaKlinike, String grad, Double ocjenaKlinike
+			, String adresaKlinike, String grad, Double ocjenaKlinike, PacijentDTO pacijentDTO
 			) {
 		this(
 				pregled.getDatum(),
@@ -31,11 +29,12 @@ public class PregledDTO {
 				tipPregledaDTO, 
 				adresaKlinike,
 				grad,
-				ocjenaKlinike
+				ocjenaKlinike,
+				pacijentDTO
 				);
 	}
 	public PregledDTO(Date datum, String vrijemePocetka, StatusPregleda status, LjekarDTO ljekarDTO,
-			TipPregledaDTO tipPregledaDTO, String adresaKlinike,String grad, Double ocjenaKlinike) {
+			TipPregledaDTO tipPregledaDTO, String adresaKlinike,String grad, Double ocjenaKlinike, PacijentDTO pacijentDTO) {
 		super();
 		this.datum = datum;
 		this.vrijemePocetka = vrijemePocetka;
@@ -45,9 +44,17 @@ public class PregledDTO {
 		this.setAdresaKlinike(adresaKlinike);
 		this.setGrad(grad);
 		this.setOcjenaKlinike(ocjenaKlinike);
+		this.setPacijentDTO(pacijentDTO);
 	}
+	
+	
 
-
+	public PacijentDTO getPacijentDTO() {
+		return pacijentDTO;
+	}
+	public void setPacijentDTO(PacijentDTO pacijentDTO) {
+		this.pacijentDTO = pacijentDTO;
+	}
 	public Date getDatum() {
 		return datum;
 	}

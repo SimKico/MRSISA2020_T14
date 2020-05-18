@@ -119,7 +119,7 @@ public class ZahtjeviRegController {
 		ZahtjeviZaRegistraciju zahtjev = regService.findOneById((long) id);
 
 		if(zahtjev == null) {
-			return new ResponseEntity<>("Zahtjev je već prihvaćen!", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("Zahtjev je već obrađen!", HttpStatus.NOT_FOUND);
 		}
 		
 		if(!zahtjev.isPrihvacen()) {

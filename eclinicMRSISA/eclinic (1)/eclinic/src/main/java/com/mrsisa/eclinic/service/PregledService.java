@@ -49,7 +49,8 @@ public class PregledService {
 							tipPregledaDTO,
 							pregled.getLjekar().getKlinika().getAdresa(),
 							pregled.getLjekar().getKlinika().getGrad(),
-							pregled.getLjekar().getKlinika().getOcjenaKlinike()
+							pregled.getLjekar().getKlinika().getOcjenaKlinike(),
+							null
 							);
 					System.out.println("pregledDTO");
 					System.out.println(pregledDTO);

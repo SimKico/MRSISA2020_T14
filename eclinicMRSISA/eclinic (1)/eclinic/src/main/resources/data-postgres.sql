@@ -114,6 +114,21 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
 			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '12:00', 'specoft',8);
+
+--Dodavanje pregleda--
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon May 18 00:00:00 CEST 2020', 0,1, '18:00', 'specoft',4, 1, 2);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
+			values('Mon May 18 00:00:00 CEST 2020', 0,1, '19:00', 'specoft',5, 2, 3);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon May 18 00:00:00 CEST 2020', 0,1, '20:00', 'specoft',6, 3, 2);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon May 18 00:00:00 CEST 2020', 0,1, '21:00', 'specoft',7, 4, 3);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon May 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',8, 1, 2);
 			
 --zahtjevi za odsustvo--
 insert into zahtjevi_odsustava(kraj, pocetak, prihvacen, tip_odsustva, ljekar_id)
