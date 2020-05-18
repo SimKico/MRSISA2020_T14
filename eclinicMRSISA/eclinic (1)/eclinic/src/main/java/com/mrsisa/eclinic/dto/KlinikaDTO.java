@@ -18,9 +18,9 @@ public class KlinikaDTO {
 	 private String grad;
 	 private int tipKlinike;
 	 private int ocjenaKlinike;
-//	 private Set<Sala> sala = new HashSet<Sala>();
+	 private Set<Sala> sale = new HashSet<Sala>();
 //	 private Set<Pregled> pregled = new HashSet<Pregled>();
-//	 private Set<TipPregleda> tipoviPregleda = new HashSet<TipPregleda>();
+	 private Set<TipPregledaDTO> tipoviPregleda = new HashSet<TipPregledaDTO>();
 //	 private Set<AdminKlinike> adminKlinike = new HashSet<AdminKlinike>();
 	 private Set<LjekarDTO> ljekari =  new HashSet<LjekarDTO>();
 //	 private Set<MedicinskaSestra> sestre = new HashSet<MedicinskaSestra>();
@@ -38,6 +38,19 @@ public class KlinikaDTO {
 		this.tipKlinike = tipKlinike;
 		this.ocjenaKlinike = ocjenaKlinike;
 		this.ljekari = ljekari;
+	}
+	
+	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO, Set<Sala> sale, Set<TipPregledaDTO> tipoviPregleda)
+	{
+		this(
+				klinika.getNaziv(),
+				klinika.getGrad(),
+				klinika.getTipKlinike(),
+				klinika.getOcjenaKlinike(),
+				ljekariDTO
+			);
+		this.sale = sale;
+		this.setTipoviPregleda(tipoviPregleda);
 	}
 	 
 	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO) {
@@ -74,12 +87,12 @@ public class KlinikaDTO {
 	public void setOcjenaKlinike(int ocjenaKlinike) {
 		this.ocjenaKlinike = ocjenaKlinike;
 	}
-//	public Set<Sala> getSala() {
-//		return sala;
-//	}
-//	public void setSala(Set<Sala> sala) {
-//		this.sala = sala;
-//	}
+	public Set<Sala> getSale() {
+		return sale;
+	}
+	public void setSale(Set<Sala> sale) {
+		this.sale= sale;
+	}
 //	public Set<Pregled> getPregled() {
 //		return pregled;
 //	}
@@ -111,5 +124,13 @@ public class KlinikaDTO {
 //		this.sestre = sestre;
 //	}
 //	 
+
+	public Set<TipPregledaDTO> getTipoviPregleda() {
+		return tipoviPregleda;
+	}
+
+	public void setTipoviPregleda(Set<TipPregledaDTO> tipoviPregleda) {
+		this.tipoviPregleda = tipoviPregleda;
+	}
 	 
 }

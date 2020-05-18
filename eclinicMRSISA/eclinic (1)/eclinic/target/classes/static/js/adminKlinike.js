@@ -40,8 +40,6 @@ function dobrodoslica(){
 }
  
  function upisiProfilAK(){
-	  console.log("usao u upis imena");
-	  console.log(localStorage.getItem("ime"));
 	  var ime = $('#ime');
       ime.val(localStorage.getItem("ime")); 
 	  var prezime = $('#prezime');
@@ -57,7 +55,7 @@ function sacuvajIzmene(){
 	var eadresa = $('#eadresa').val();
 	var lozinka = 'admin';
 	  		 $.ajax({
- 			type: "POST",
+ 			type: "PUT",
  			url: "adminKlinikeHomepage/mojProfil",
  			data: JSON.stringify({ime: ime, prezime: prezime, eadresa: eadresa, lozinka: lozinka}),
  		    dataType: 'json',
@@ -69,4 +67,24 @@ function sacuvajIzmene(){
  			}
  		})
 	window.alert("uspesno izmenjeni podaci");
+}
+
+function dobaviKliniku(){
+		console.log("dobaviKliniku()");
+	$.ajax({
+		url: "adminKlinikeHomepage/profilKlinike",
+		type: "GET",
+		success: function (data) {
+			console.log("usao u prikaz klinike.");
+			//localStorage.setItem("nazivKlinike", data.naziv);
+			//localStorage.setItem("adresaKlinike", data.grad);
+			console.log(data.naziv);
+
+			
+
+		},
+		error: function(data) {
+			console.log("Something is wrong with your request. -- dobaviKliniku()");
+		}
+    });	
 }

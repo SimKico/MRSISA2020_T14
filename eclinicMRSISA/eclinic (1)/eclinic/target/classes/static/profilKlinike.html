@@ -34,7 +34,7 @@
     <script src="js/custom.js"></script>
     <script src="contactform/contactform.js"></script>
 	<script src="js/adminKlinike.js"></script>
-  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="dobaviKliniku()">
     <!--banner-->
     <section id="banner" class="banner">
       <div class="bg-color">
@@ -102,17 +102,17 @@
                     <table class="">
                         <tr>
                           <td class="labela" width="300px">Naziv klinike:</td>
-                          <td class="podaci"><br /><input type="text" /></td>
+                          <td class="podaci"><br /><input type="text" id="nazivKlinike"/></td>
                         </tr>
               
                         <tr>
                           <td class="labela" width="300px">Adresa:</td>
-                          <td class="podaci"><br /><input type="text" /></td>
+                          <td class="podaci"><br /><input type="text" id="adresaKlinike"/></td>
                         </tr>
               
                         <tr>
                           <td class="labela"><br />Opis:</td>
-                          <td class="podaci"><br /><input type="text" /></td>
+                          <td class="podaci"><br /><input type="text" id="opisKlinike"/></td>
                         </tr>
       
                       </table>
