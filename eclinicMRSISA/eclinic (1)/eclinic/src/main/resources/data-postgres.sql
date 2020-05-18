@@ -68,11 +68,11 @@ values('LJ', 'Vladimir', 'Stojanovic','Studirao u Beogradu.',5,'09:00-17:00',0, 
 
 insert into tabela_prijava(eadresa, lozinka)values('ljekar4@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id)
-values('LJ', 'Micomir', 'Perkovic','Studirao u Banjaluci.',5,'09:00-17:00',1, 'ljekar3@eclinic.com',4,null,'Eclinic' );
+values('LJ', 'Micomir', 'Perkovic','Studirao u Banjaluci.',5,'09:00-17:00',1, 'ljekar4@eclinic.com',4,null,'Eclinic' );
 
 insert into tabela_prijava(eadresa, lozinka)values('ljekar5@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id)
-values('LJ', 'Vladimir', 'Velimirovic','Studirao u Beogradu.',5,'09:00-17:00',1, 'ljekar3@eclinic.com',1,null,'Eclinic' );
+values('LJ', 'Vladimir', 'Velimirovic','Studirao u Beogradu.',5,'09:00-17:00',1, 'ljekar5@eclinic.com',1,null,'Eclinic' );
 
 --Zahtjevi za registraciju--
 insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
