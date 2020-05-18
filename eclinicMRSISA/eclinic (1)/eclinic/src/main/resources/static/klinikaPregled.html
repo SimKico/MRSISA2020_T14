@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Homepage</title>
+    <meta
+      name="description"
+      content="Free Bootstrap Theme by BootstrapMade.com"
+    />
+    <meta
+      name="keywords"
+      content="free website templates, free bootstrap themes, free template, free bootstrap, free website template"
+    />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal"
+    />
+    <!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/pacijentHomepage.js"></script>
+    <script src="js/listaKlinika.js"></script>
+
+    <!-- =======================================================
+    Theme Name: Medilab
+    Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+  </head>
+
+  <body
+    id="myPage"
+    data-spy="scroll"
+    data-target=".navbar"
+    data-offset="60"
+    onload="ucitajPodatkeKlinike()"
+  >
+    <!--banner-->
+    <section id="banner" class="banner">
+      <div class="bg-color">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="col-md-12">
+              <div class="navbar-header">
+                <button
+                  type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target="#myNavbar"
+                >
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"
+                  ><img
+                    src="img/logo.png"
+                    class="img-responsive"
+                    style="width: 140px; margin-top: -16px;"
+                /></a>
+              </div>
+              <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                <ul class="nav navbar-nav">
+                  <li class="active">
+                    <a href = "#" onclick = "profilPacijenta()" >Moj profil</a>
+                  </li>
+                  <li class="active">
+                    <a href="#" id="mojKarton">Moj karton</a>
+                  </li>
+                  <li class="active">
+                    <a href="#" id="istorijaOperacija">Istorija operacija</a>
+                  </li>
+                  <li class="active">
+                    <a href="#" id="istorijaPregleda">Istorija pregleda</a>
+                  </li>
+
+                  <li class="active">
+                    <a href="#" onclick="prikaziListuKlinika()"
+                      >Lista klinika</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="container">
+          <div class="row">
+            <div class="banner-info">
+              <div class="banner-logo text-center">
+                <div>
+                  <h1 class="white" id="naziv"></h1>
+                  <h2 class="white" id="grad"></h2>
+                  <h3 class="white" id="tipKlinike">Pruzamo usluge-</h3>
+                </div>
+
+                <!-- <img src="img/logo.png" class="img-responsive" /> -->
+              </div>
+
+              <div class="collapse navbar-collapse">
+                <h1>
+                  <ui class="white">
+                    <li><a class="white" href="#service">Usluge-</a></li>
+                    <li><a class="white" href="#about">O nama-</a></li>
+                    <li class="white">
+                      <a class="white" href="#testimonial">Ocjena klinike</a>
+                    </li>
+                    <li class="white">
+                      <a class="white" href="#ljekari">Ljekari</a>
+                    </li>
+                    <li class="white">
+                      <a class="white" href="#contact">Kontakt-</a>
+                    </li>
+                  </ui>
+                </h1>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ banner-->
+
+    <!--doctor team-->
+    <section id="ljekari" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="ser-title">Naši ljekari</h2>
+            <hr class="botm-line" />
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <div id="tim-ljekara"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ doctor team-->
+
+    <!--testimonial-->
+    <section id="testimonial" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="ser-title" id="ocjena">
+              Pacijenti su ocijenili našu kliniku ocjenom
+            </h2>
+            <hr class="botm-line" />
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <!-- Ocijenite i vi -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ testimonial-->
+
+    <!--footer-->
+    <footer id="footer">
+      <div class="top-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 marb20">
+              <div class="ftr-tle">
+                <!-- <h4 class="white no-padding">About Us</h4> -->
+              </div>
+              <!-- <div class="info-sec">
+                <p>
+                  Praesent convallis tortor et enim laoreet, vel consectetur
+                  purus latoque penatibus et dis parturient.
+                </p>
+              </div> -->
+            </div>
+            <div class="col-md-4 col-sm-4 marb20"></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-line">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              © Copyright Medilab Theme. All Rights Reserved
+              <div class="credits">
+                <!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medilab
+              -->
+                Designed by
+                <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--/ footer-->
+  </body>
+</html>

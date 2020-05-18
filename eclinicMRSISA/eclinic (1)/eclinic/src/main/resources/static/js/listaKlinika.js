@@ -149,7 +149,7 @@ function klinikaZaPregled(){
 			url: "/pregled/pretragaPregleda/" + tipPregleda + "/" + datumPregleda + "/" + naziv,
 			type: "GET",
 			success: function (result) {	
-				localStorage.setItem("klinikaZaPregledPodaci", JSON.stringify(result));
+				localStorage.setItem("klinikaPodaci", JSON.stringify(result));
 				location.href = "klinikaPregled.html" ;
 				console.log("usaosi");
 			}

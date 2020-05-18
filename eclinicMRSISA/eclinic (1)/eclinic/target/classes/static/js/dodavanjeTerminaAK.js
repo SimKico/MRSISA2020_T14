@@ -26,11 +26,15 @@ function popuniFormuTermina(){
 	
 	var i = 0;
 	var tipPregledaLista = $("#tipPregledaLista"); 
-	$('#tipPregledaLista').val('koji kurac vise');
+	$('#tipPregledaLista').val('mogao bi da proradis');
 	tipPregledaLista.append("<li>novi element</li>");
 	for(i; i < klinikaJSON.tipoviPregleda.length; i++){
 		tipPregledaLista.append("<li>novi element</li>");
 		window.alert(klinikaJSON.tipoviPregleda[i].specijalizacija);
 	}
 	
+}
+
+function ajsad(){
+	$('#odabraniLekar').val('ok');
 }
