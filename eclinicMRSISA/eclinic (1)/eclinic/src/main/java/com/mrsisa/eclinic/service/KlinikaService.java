@@ -59,7 +59,7 @@ public class KlinikaService {
 				System.out.println(pregled.getCijena());
 				
 			}
-			KlinikaDTO klinikaDTO = new KlinikaDTO(klinika,null, tipoviPregledaDTO);
+			KlinikaDTO klinikaDTO = new KlinikaDTO(klinika,null, tipoviPregledaDTO,null);
 			klinikeDTO.add(klinikaDTO);
 		}
 		

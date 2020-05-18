@@ -20,10 +20,7 @@ function prikaziKlinike(){
 	console.log(retrivedData);
 	var retrivedJSON = JSON.parse(retrivedData);
 	console.log(retrivedJSON);
-	
 	var elements = retrivedJSON.length;
-
-	
 	var i = 0;
 	for(i; i<elements; i++){
 		var text  = ` <a class = "white" href ="http://localhost:8080/klinika/${retrivedJSON[i].naziv}" id = "${retrivedJSON[i].naziv}">`
@@ -81,6 +78,7 @@ function ucitajPodatkeKlinike(){
 					);
 		console.log(klinikaPodaci.ljekari[i].ime);
 		}
+	
 //	$("#telefon").append(localStorage.getItem('tel'));
 //	$("#jbo").append(localStorage.getItem('jbo'));
 //	$("#email").append(localStorage.getItem('email'));

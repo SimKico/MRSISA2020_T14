@@ -49,6 +49,9 @@ public class PregledDTO {
 	
 	
 
+	public PregledDTO() {
+		// TODO Auto-generated constructor stub
+	}
 	public PacijentDTO getPacijentDTO() {
 		return pacijentDTO;
 	}

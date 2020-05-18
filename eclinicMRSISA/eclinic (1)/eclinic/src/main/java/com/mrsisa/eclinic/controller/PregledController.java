@@ -164,7 +164,7 @@ public class PregledController {
 		}
 		
 		//klinika.setLjekari(ljekari);
-		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO,null);
+		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO,null, null);
 		System.out.println(klinika.getId());
 		System.out.println(klinika.getLjekari());
 		System.out.println(ljekariDTO);
