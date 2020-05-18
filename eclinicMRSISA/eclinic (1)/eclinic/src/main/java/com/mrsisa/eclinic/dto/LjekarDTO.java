@@ -10,7 +10,7 @@ import com.mrsisa.eclinic.model.Ljekar;
 
 public class LjekarDTO {
 
-	
+	private String eadresa;
 	private String ime;
 	private String prezime;
 	private Specijalizacija specijalizacija;
@@ -26,6 +26,7 @@ public class LjekarDTO {
 		specijalizacija = ljekar.getSpecijalizacija();
 		klinika = ljekar.getKlinika().getNaziv();
 		setRadnoVrijeme(ljekar.getRadnoVrijeme());
+		eadresa = ljekar.getPrijava().geteAdresa();
 	}
 	public LjekarDTO(Ljekar ljekar, List<String> slobodniTermini1) {
 		ime = ljekar.getIme();
@@ -35,6 +36,7 @@ public class LjekarDTO {
 		klinika = ljekar.getKlinika().getNaziv();
 		setRadnoVrijeme(ljekar.getRadnoVrijeme());
 		slobodniTermini = slobodniTermini1;
+		eadresa = ljekar.getPrijava().geteAdresa();
 	}
 	
 	public LjekarDTO() {
@@ -100,5 +102,13 @@ public class LjekarDTO {
 	public void setSlobodniTermini(List<String> slobodniTermini) {
 		this.slobodniTermini = slobodniTermini;
 	}
+	public String getEadresa() {
+		return eadresa;
+	}
+	public void setEadresa(String eadresa) {
+		this.eadresa = eadresa;
+	}
+	
+	
 	
 }
