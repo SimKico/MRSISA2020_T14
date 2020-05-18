@@ -31,4 +31,8 @@ public class LjekarService {
 	public List<String> slobodniTermini(Date date1, Long id) {
 		return ljekarRepository.slobodniTermini(date1, id);
 	}
+	
+	public Ljekar findOneByEmail(String email) {
+		return ljekarRepository.findOneByprijava_eAdresa(email);
+	}
 }

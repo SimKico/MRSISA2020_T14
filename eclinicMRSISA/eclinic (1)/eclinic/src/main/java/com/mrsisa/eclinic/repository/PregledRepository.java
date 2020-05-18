@@ -12,4 +12,5 @@ import com.mrsisa.eclinic.model.TipPregleda;
 public interface PregledRepository extends JpaRepository<Pregled, Long> {
 	List<Pregled> findAllBydatum(Date datum);
 	List<Pregled> findAllBytipPregleda(TipPregleda tip);
+	List<Pregled> findAllByljekar_id(Long id);
 }

@@ -68,5 +68,8 @@ public class PregledService {
 
 		return rezultatPretrage;
 	}
-
+	
+	public List<Pregled> getAllByLjekarId(Long id){
+		return pregledRepository.findAllByljekar_id(id);
+	}
 }

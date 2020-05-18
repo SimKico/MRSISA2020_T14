@@ -26,4 +26,7 @@ public interface LjekarRepository extends JpaRepository<Ljekar, Long>{
 			" ", nativeQuery = true)
 	List<String> slobodniTermini(Date date1, Long id);
 	
+	
+	Ljekar findOneByprijava_eAdresa(String eadresa);
+	
 	}
