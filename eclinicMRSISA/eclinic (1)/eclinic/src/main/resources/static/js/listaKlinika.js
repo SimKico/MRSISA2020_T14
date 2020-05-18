@@ -177,30 +177,61 @@ function ucitajPodatkeKlinikeZaPregled(){
 		console.log(br_pregleda);
 		var j= 0;
 			var text = `<select id = "termin">`;
+			var appoint  = `<button value="${klinikaPodaciZaPregled.ljekari[i].eadresa}" onclick = "potvrdiZakazivanje()" class="btn">Zakažite pregled </a>`;
+			
 			console.log("usao");
 			$("#table1")
 			.append($("<tr>")
 					.append($("<td>")
-						.text(klinikaPodaciZaPregled.ljekari[i].ime))		
+						.text("dr " + klinikaPodaciZaPregled.ljekari[i].ime))		
 					.append($("<td>")
 						.text(klinikaPodaciZaPregled.ljekari[i].prezime))	
 					.append($("<td>")
 						.text(klinikaPodaciZaPregled.ljekari[i].prosjecnaOcjena))
 					.append($(text))
+					.append($(appoint))
+				
 				);
 			for(j; j<br_pregleda;j++){
+				
 				$("#termin")
 					.append($("<option>")
-									.text(klinikaPodaciZaPregled.ljekari[i].slobodniTermini[j])
-								
+									.text(klinikaPodaciZaPregled.ljekari[i].slobodniTermini[j])	
 									);
 									
 			}
-	
 	}
-	
-	
+	$("button").click(function() {
+		 var fired_button = $(this).val();
+		 localStorage.setItem("emailLjekara",fired_button);
+	   
+	});
+
 }
 
+
+function potvrdiZakazivanje(){
+	confirm("Potvrdite zakazivanje!");
+	var vrijemePregleda =  	$("#termin option:selected" ).text();
+	console.log(vrijemePregleda);
+	var emailLjekara = localStorage.getItem('emailLjekara');
+	console.log(emailLjekara);
+	var tipPregleda = localStorage.getItem('tipPregleda');
+	var datumPregleda = localStorage.getItem('datumPregleda');
+	
+	$.ajax({
+		url: "/pregled/zakaziPregled",
+		type: "POST",
+		data: {tipPregleda : tipPregleda, datumPregleda: datumPregleda, emailLjekara: emailLjekara, vrijemePregleda : vrijemePregleda},
+		success: function (result) {
+			console.log(result);
+			alert("Uspjesno ste zakazali pregled. Hvala Vam na povjerenju.");
+		}
+	,
+		error: function(result) {
+			alert("Something is wrong with your request.(get details)");
+		}
+    });	
+}
 
 

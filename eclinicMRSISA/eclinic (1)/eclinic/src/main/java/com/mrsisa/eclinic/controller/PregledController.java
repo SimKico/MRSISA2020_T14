@@ -15,18 +15,27 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.LjekarDTO;
 import com.mrsisa.eclinic.dto.PregledDTO;
 import com.mrsisa.eclinic.model.Klinika;
+import com.mrsisa.eclinic.model.Korisnik;
 import com.mrsisa.eclinic.model.Ljekar;
+import com.mrsisa.eclinic.model.Pacijent;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Specijalizacija;
+import com.mrsisa.eclinic.model.StatusPregleda;
 import com.mrsisa.eclinic.model.TipPregleda;
+import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
+import com.mrsisa.eclinic.repository.TipPregledaRepository;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.LjekarService;
 import com.mrsisa.eclinic.service.PregledService;
@@ -42,6 +51,8 @@ public class PregledController {
 	private KlinikaService klinikaService;
 	@Autowired 
 	private LjekarService ljekarService;
+	@Autowired 
+	private TipPregledaRepository tipPregledaRepository;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	//private Date dateNaissance;
@@ -146,6 +157,7 @@ public class PregledController {
 				System.out.println(termini);
 				System.out.println(slobodniTermini);
 				ljekarDTO.setSlobodniTermini(slobodniTermini);
+				ljekarDTO.setEadresa(lj.getPrijava().geteAdresa());
 				ljekariDTO.add(ljekarDTO);
 			}
 
@@ -162,6 +174,29 @@ public class PregledController {
 //			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //		}
 		return new ResponseEntity<>(klinikaDTO, HttpStatus.OK);
+	}
+	
+	
+	@PostMapping(value = "/zakaziPregled" )
+	public ResponseEntity<String> zakaziPregled(@RequestParam String tipPregleda, @RequestParam String datumPregleda, @RequestParam String emailLjekara,@RequestParam String vrijemePregleda ) throws ParseException {
+		System.out.println("alkgasdkg;laksdg0");
+		System.out.println(tipPregleda);
+		System.out.println(datumPregleda);
+		System.out.println(emailLjekara);
+		System.out.println(vrijemePregleda);
+		Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(datumPregleda); 
+		
+		Ljekar lj = ljekarService.findOneByEmail(emailLjekara);
+		TipPregleda tipP = tipPregledaRepository.findOneBytip(Specijalizacija.valueOf(tipPregleda));
+		Pregled zakazaniPregled = new Pregled();
+		zakazaniPregled.setStatus(StatusPregleda.zakazan);
+		zakazaniPregled.setLjekar(lj);
+		zakazaniPregled.setTipPregleda(tipP);
+		zakazaniPregled.setVrijemePocetka(vrijemePregleda);
+		zakazaniPregled.setDatum(date1);
+		zakazaniPregled = pregledService.save(zakazaniPregled);
+		
+		return new ResponseEntity<>("Pregled je dodan!",HttpStatus.CREATED);
 	}
 	
 }

@@ -27,8 +27,8 @@ public class PregledService {
 	
 	@Autowired 
 	private PregledRepository pregledRepository;
-	@Autowired
-	private KlinikaRepository klinikaRepository;
+//	@Autowired
+//	private KlinikaRepository klinikaRepository;
 
 	public List<PregledDTO> pretraziPreglede(Date datum, Specijalizacija tipPregleda) throws Exception{
 		List<Pregled> pregled1 = pregledRepository.findAllBydatum(datum); 
@@ -73,4 +73,10 @@ public class PregledService {
 	public List<Pregled> getAllByLjekarId(Long id){
 		return pregledRepository.findAllByljekar_id(id);
 	}
+
+	public Pregled save(Pregled zakazaniPregled) {
+		// TODO Auto-generated method stub
+		return pregledRepository.save(zakazaniPregled);
+	}
+	
 }
