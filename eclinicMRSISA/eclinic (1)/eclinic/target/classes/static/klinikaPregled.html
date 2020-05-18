@@ -37,7 +37,7 @@
     data-spy="scroll"
     data-target=".navbar"
     data-offset="60"
-    onload="ucitajPodatkeKlinike()"
+    onload="ucitajPodatkeKlinikeZaPregled()"	
   >
     <!--banner-->
     <section id="banner" class="banner">
@@ -84,14 +84,11 @@
                     >
                   </li>
                 </ul>
-              </div>
+              
             </div>
           </div>
-        </nav>
-        <div class="container">
-          <div class="row">
-            <div class="banner-info">
-              <div class="banner-logo text-center">
+          </div>
+                  <div class="banner-logo text-center">
                 <div>
                   <h1 class="white" id="naziv"></h1>
                   <h2 class="white" id="grad"></h2>
@@ -100,46 +97,28 @@
 
                 <!-- <img src="img/logo.png" class="img-responsive" /> -->
               </div>
-
-              <div class="collapse navbar-collapse">
-                <h1>
-                  <ui class="white">
-                    <li><a class="white" href="#service">Usluge-</a></li>
-                    <li><a class="white" href="#about">O nama-</a></li>
-                    <li class="white">
-                      <a class="white" href="#testimonial">Ocjena klinike</a>
-                    </li>
-                    <li class="white">
-                      <a class="white" href="#ljekari">Ljekari</a>
-                    </li>
-                    <li class="white">
-                      <a class="white" href="#contact">Kontakt-</a>
-                    </li>
-                  </ui>
-                </h1>
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+         
+        </nav>
+      
     </section>
     <!--/ banner-->
 
     <!--doctor team-->
-    <section id="ljekari" class="section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="ser-title">Naši ljekari</h2>
-            <hr class="botm-line" />
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-6">
-            <div id="tim-ljekara"></div>
-          </div>
-        </div>
+    <section id="doctor-team" class = "section-padding" >
+    <div   class="container" >
+          <table id="table1">
+                  <tr style = " background: rgba(12, 184, 182, 0.21)"  >
+                    <td class="labela" width="300px" id="ime"><p>Ime</p></td> 
+                    <td class="labela" width="300px" id="prezime"> <p>Prezime</p></td>
+                  	<td class="labela" width="300px" id="ocjenaLjekara"><p>Prosječna ocjena ljekara</p></td> 
+                  	<td class="labela" width="300px" id="termini"><p>Termini kada možete zakazati pregled</p></td>
+                  </tr>
+                  </tr>
+          </table>
+        
       </div>
-    </section>
+    </div>
+  </section>
     <!--/ doctor team-->
 
     <!--testimonial-->

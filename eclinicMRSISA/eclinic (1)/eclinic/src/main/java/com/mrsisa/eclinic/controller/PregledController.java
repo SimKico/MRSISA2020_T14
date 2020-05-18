@@ -136,8 +136,9 @@ public class PregledController {
 							System.out.println("zauzet");
 						}
 						else
-						{
-							slobodniTermini.add(t);
+						{	
+							String konacanTermin = t.split(",")[0];
+							slobodniTermini.add(konacanTermin);
 						}
 					
 				}

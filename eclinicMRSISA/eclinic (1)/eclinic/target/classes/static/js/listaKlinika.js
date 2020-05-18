@@ -149,7 +149,7 @@ function klinikaZaPregled(){
 			url: "/pregled/pretragaPregleda/" + tipPregleda + "/" + datumPregleda + "/" + naziv,
 			type: "GET",
 			success: function (result) {	
-				localStorage.setItem("klinikaPodaci", JSON.stringify(result));
+				localStorage.setItem("klinikaPodaciZaPregled", JSON.stringify(result));
 				location.href = "klinikaPregled.html" ;
 				console.log("usaosi");
 			}
@@ -161,7 +161,46 @@ function klinikaZaPregled(){
 	});
 }
 
-
+function ucitajPodatkeKlinikeZaPregled(){
+	var klinikaPodaciZaPregled = localStorage.getItem('klinikaPodaciZaPregled');
+	var klinikaPodaciZaPregled = JSON.parse(klinikaPodaciZaPregled);
+	console.log(klinikaPodaciZaPregled);
+	$("#naziv").append(klinikaPodaciZaPregled.naziv);
+	$("#grad").append(klinikaPodaciZaPregled.grad);
+	$("#ocjena").append(klinikaPodaciZaPregled.ocjenaKlinike);
+	$("#tipKlinike").append(klinikaPodaciZaPregled.tipKlinike);
+	for(i in klinikaPodaciZaPregled.ljekari)
+	{
+	//TO DO srediti izgled ocjene
+		var prosjecnaOcjena = klinikaPodaciZaPregled.ljekari[i].prosjecnaOcjena? "(" +  klinikaPodaciZaPregled.ljekari[i].prosjecnaOcjena + ")" : " ";
+		var br_pregleda = klinikaPodaciZaPregled.ljekari[i].slobodniTermini.length;
+		console.log(br_pregleda);
+		var j= 0;
+			var text = `<select id = "termin">`;
+			console.log("usao");
+			$("#table1")
+			.append($("<tr>")
+					.append($("<td>")
+						.text(klinikaPodaciZaPregled.ljekari[i].ime))		
+					.append($("<td>")
+						.text(klinikaPodaciZaPregled.ljekari[i].prezime))	
+					.append($("<td>")
+						.text(klinikaPodaciZaPregled.ljekari[i].prosjecnaOcjena))
+					.append($(text))
+				);
+			for(j; j<br_pregleda;j++){
+				$("#termin")
+					.append($("<option>")
+									.text(klinikaPodaciZaPregled.ljekari[i].slobodniTermini[j])
+								
+									);
+									
+			}
+	
+	}
+	
+	
+}
 
 
 
