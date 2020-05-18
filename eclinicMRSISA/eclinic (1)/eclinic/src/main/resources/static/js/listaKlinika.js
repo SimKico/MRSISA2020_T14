@@ -78,6 +78,23 @@ function ucitajPodatkeKlinike(){
 					);
 		console.log(klinikaPodaci.ljekari[i].ime);
 		}
+	for(j in klinikaPodaci.pregled){
+		$("#table1")
+		.append($("<tr>")
+				.append($("<td>")
+								.text("dr " + klinikaPodaci.pregled[j].ljekarDTO.ime +klinikaPodaci.pregled[j].ljekarDTO.prezime))		
+				.append($("<td>")
+					.text(klinikaPodaci.pregled[j].datum))
+				.append($("<td>")
+					.text(klinikaPodaci.pregled[j].vrijemePocetka + "h"))
+				.append($("<td>")
+					.text(klinikaPodaci.pregled[j].tipPregledaDTO.specijalizacija))
+				.append($("<td>")
+					.text(klinikaPodaci.pregled[j].tipPregledaDTO.cijena + "€"))
+				.append($("<td>")
+					.text("nema"))
+			);
+	}
 	
 //	$("#telefon").append(localStorage.getItem('tel'));
 //	$("#jbo").append(localStorage.getItem('jbo'));
