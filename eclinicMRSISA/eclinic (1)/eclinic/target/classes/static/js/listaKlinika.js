@@ -105,14 +105,14 @@ function pretraziPreglede(){
 			location.href = " #doctor-team";
 			console.log(elements);
 			
-//			$("#table2").find("tr").remove();
+//			$("#table2").find("tr").find("td").remove();
 			document.getElementById("table2").style.visibility = "visible";
 			var i = 0;
 			for(i; i<elements; i++){
-//				var num_of_doctors = result[i].ljekari.length;
-//				console.log("brroj ljekara" + num_of_doctors);
 
-				var text  = ` <a href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
+				localStorage.setItem("datumPregleda",datumPregleda);
+				localStorage.setItem("tipPregleda",tipPregleda);
+				var text  = ` <a  onclick = "klinikaZaPregled()" id = "${result[i].naziv}">`
 				var j = 0;
 				$("#table2")
 				.append($("<tr>")
@@ -129,24 +129,7 @@ function pretraziPreglede(){
 						.append($("<td>")
 							.text(result[i].tipoviPregleda[0].cijena + "€"))
 					);
-				
-//TO DO ZA VISE TIPOVA PREGLEDA				
-//				for(j; j<num_of_doctors; j++){
-//					var text  = ` <a href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
-//						$("#table2")
-//						.append($("<tr>")
-//								.append($("<td>")
-//												.text("dr " + result[i].ljekari[j].ime + " " + result[i].ljekari[j].prezime)
-//													)
-//								.append($("<td>")
-//									.text(result[i].naziv))
-//								.append($("<td>")
-//									.text(result[i].ljekari[j].prosjecnaOcjena))
-//									.append($("<td>")
-//									.text(result[i].ljekari[j].prosjecnaOcjena))
-//							);
-//				}
-
+//TO DO ZA VISE TIPOVA PREGLEDA			
 			}
 		}
 	,
@@ -154,9 +137,29 @@ function pretraziPreglede(){
 			alert("Something is wrong with your request.(get details)");
 		}
     });	
-
+	
 }
 
+function klinikaZaPregled(){
+	$("#table2").click(function(e){
+		var tipPregleda = localStorage.getItem('tipPregleda');
+		var datumPregleda = localStorage.getItem('datumPregleda');
+		var naziv = e.target.id;
+		$.ajax({
+			url: "/pregled/pretragaPregleda/" + tipPregleda + "/" + datumPregleda + "/" + naziv,
+			type: "GET",
+			success: function (result) {	
+				localStorage.setItem("klinikaZaPregledPodaci", JSON.stringify(result));
+				location.href = "klinikaPregled.html" ;
+				console.log("usaosi");
+			}
+				,	
+			error: function(result) {
+				toastr.error("Something is wrong with your request.(get details)");
+			}
+		});
+	});
+}
 
 
 

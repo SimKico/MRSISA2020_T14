@@ -11,7 +11,7 @@ import com.mrsisa.eclinic.model.TipPregleda;
 public class PregledDTO {
 	
 	private Date datum;
-	private Date vrijemePocetka;
+	private String vrijemePocetka;
 	private StatusPregleda status;
 	private LjekarDTO ljekarDTO;
 	private TipPregledaDTO tipPregledaDTO;
@@ -34,7 +34,7 @@ public class PregledDTO {
 				ocjenaKlinike
 				);
 	}
-	public PregledDTO(Date datum, Date vrijemePocetka, StatusPregleda status, LjekarDTO ljekarDTO,
+	public PregledDTO(Date datum, String vrijemePocetka, StatusPregleda status, LjekarDTO ljekarDTO,
 			TipPregledaDTO tipPregledaDTO, String adresaKlinike,String grad, Double ocjenaKlinike) {
 		super();
 		this.datum = datum;
@@ -56,11 +56,11 @@ public class PregledDTO {
 		this.datum = datum;
 	}
 
-	public Date getVrijemePocetka() {
+	public String getVrijemePocetka() {
 		return vrijemePocetka;
 	}
 
-	public void setVrijemePocetka(Date vrijemePocetka) {
+	public void setVrijemePocetka(String vrijemePocetka) {
 		this.vrijemePocetka = vrijemePocetka;
 	}
 
