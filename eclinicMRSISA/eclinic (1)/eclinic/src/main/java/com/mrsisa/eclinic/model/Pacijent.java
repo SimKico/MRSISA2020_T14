@@ -46,6 +46,16 @@ public Pacijent() {
 		super();
 	}
 
+public Pacijent(ZahtjeviZaRegistraciju zahtjev) {
+	this.jedBrojOsiguranika = zahtjev.getJbo();
+	this.brojTelefona = zahtjev.getBrojTelefona();
+	this.drzava = zahtjev.getDrzava();
+	this.grad = zahtjev.getGrad();
+	this.adresaPrebivalista = this.getAdresaPrebivalista();
+	this.setIme(zahtjev.getIme());
+	this.setPrezime(zahtjev.getPrezime());
+}
+
 
 public String getJedBrojOsiguranika() {
 	return jedBrojOsiguranika;

@@ -4,7 +4,7 @@
  * Purpose: Defines the Class Ljekar
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,6 +36,7 @@ public class Ljekar extends Korisnik {
    private String radnoVrijeme;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="ljekar")
+	 @JsonBackReference
 	private Set<Pregled> pregledi = new HashSet<Pregled>();
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="ljekar")
@@ -46,12 +47,14 @@ public class Ljekar extends Korisnik {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "klinika_id", referencedColumnName="klinika_id", nullable=true)
+	 @JsonBackReference
 	private Klinika klinika;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="operacije_ljekara", joinColumns =@JoinColumn(name="ljekar_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="operacija_id", referencedColumnName="operacija_id"))
 	private Set<Operacija> operacije = new HashSet<Operacija>();
 
+	
 	public Specijalizacija getSpecijalizacija() {
 		return specijalizacija;
 	}

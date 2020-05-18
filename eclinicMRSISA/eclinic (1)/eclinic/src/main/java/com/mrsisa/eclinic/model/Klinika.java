@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name= "klinike")
 public class Klinika {
@@ -31,12 +33,15 @@ public class Klinika {
    
    @Column(name="grad", unique=false, nullable=false)
    private String grad;
+
+   @Column(name="adresa", unique=false, nullable=false)
+   private String adresa;
    
    @Column(name="tip_klinike", unique=false, nullable=false)
    private int tipKlinike;
    
    @Column(name="ocjena_klinike", unique=false, nullable=false)
-   private int ocjenaKlinike;
+   private double ocjenaKlinike;
    
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
    @JoinColumn(name = "broj_sale")
@@ -45,7 +50,7 @@ public class Klinika {
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
    @JoinColumn(name = "pregled_id")
    private Set<Pregled> pregled = new HashSet<Pregled>();
-//  
+   
    @ManyToMany
    @JoinTable(name = "TipoviPregledaUKlinici", joinColumns = @JoinColumn(name = "klinika_id",referencedColumnName = "klinika_id"), inverseJoinColumns = @JoinColumn(name = "sifra", referencedColumnName = "sifra"))
    private Set<TipPregleda> tipoviPregleda = new HashSet<TipPregleda>();
@@ -54,35 +59,36 @@ public class Klinika {
    private Set<AdminKlinike> adminKlinike = new HashSet<AdminKlinike>();
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="klinika")
+   @JsonManagedReference
 	private Set<Ljekar> ljekari = new HashSet<Ljekar>();
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="klinika")
 	private Set<MedicinskaSestra> sestre = new HashSet<MedicinskaSestra>();
 
-   
-	
    public Klinika() {
 		super();
 	}
    
-   public Klinika(Long id, String naziv, String grad, int tipKlinike, int ocjenaKlinike) {
+   public Klinika(Long id, String naziv, String grad, String adresa, int tipKlinike, double ocjenaKlinike) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
 		this.grad = grad;
+		this.adresa = adresa;
 		this.tipKlinike = tipKlinike;
 		this.ocjenaKlinike = ocjenaKlinike;
 	}
 
    
 
-   public Klinika(Long id, String naziv, String grad, int tipKlinike, int ocjenaKlinike, Set<Sala> sala,
+   public Klinika(Long id, String naziv, String grad, String adresa, int tipKlinike, double ocjenaKlinike, Set<Sala> sala,
 			Set<Pregled> pregled, Set<TipPregleda> tipoviPregleda, Set<AdminKlinike> adminKlinike, Set<Ljekar> ljekari,
 			Set<MedicinskaSestra> sestre) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
 		this.grad = grad;
+		this.adresa = adresa;
 		this.tipKlinike = tipKlinike;
 		this.ocjenaKlinike = ocjenaKlinike;
 		this.sala = sala;
@@ -118,6 +124,14 @@ public void setGrad(String grad) {
 	this.grad = grad;
 }
 
+public String getAdresa() {
+	return adresa;
+}
+
+public void setAdresa(String adresa) {
+	this.adresa = adresa;
+}
+
 public int getTipKlinike() {
 	return tipKlinike;
 }
@@ -126,11 +140,11 @@ public void setTipKlinike(int tipKlinike) {
 	this.tipKlinike = tipKlinike;
 }
 
-public int getOcjenaKlinike() {
+public double getOcjenaKlinike() {
 	return ocjenaKlinike;
 }
 
-public void setOcjenaKlinike(int ocjenaKlinike) {
+public void setOcjenaKlinike(double ocjenaKlinike) {
 	this.ocjenaKlinike = ocjenaKlinike;
 }
 

@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="pregledi")
 public class Pregled {
@@ -51,9 +53,10 @@ public class Pregled {
    private Sala sala;
    
    @ManyToOne(fetch=FetchType.LAZY)
-   @JoinColumn(name = "sifra_pregleda", referencedColumnName="sifra")
+   @JoinColumn(name = "sifra_pregleda", unique = false, referencedColumnName="sifra")
    public TipPregleda tipPregleda;
 
+   
 public Long getPregled_id() {
 	return pregled_id;
 }

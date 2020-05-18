@@ -18,14 +18,14 @@ public class EmailService {
 	ZahtjeviRegService regService;
 	
 	@Async
-	public void sendDenialEmail(String email) {
+	public void sendDenialEmail(String email, String reason) {
 		
 		//ZahtjeviZaRegistraciju zahtjev = regService.findOneByEmail(email);
 		
 		SimpleMailMessage message = new SimpleMailMessage(); 
         message.setTo("kovacevic.natasa.95@gmail.com"); 
         message.setSubject("Eclinic - Zahtjev za registraciju"); 
-        message.setText("Odbijen vam je zahtjev za registraciju.");
+        message.setText("Odbijen vam je zahtjev za registraciju." + reason);
         emailSender.send(message);
 	}
 	

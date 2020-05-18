@@ -14,12 +14,12 @@ public class PacijentDTO {
 	private String adresaPrebivalista;
 	private String grad;
 	private String drzava;
-	private Set<Pregled> pregledi;
-	private ZdravstveniKarton zdravstveniKarton;
+	private Set<PregledDTO> preglediDTO;
+//	private ZdravstveniKartonDTO zdravstveniKartonDTO;
 	private String brojTelefona;
 	private String email;
 	
-	public PacijentDTO(Pacijent pacijent) {
+	public PacijentDTO(Pacijent pacijent, Set<PregledDTO> preglediDTO) {
 		this(	pacijent.getPrijava().geteAdresa(),
 				pacijent.getIme(),
 				pacijent.getPrezime(),
@@ -27,18 +27,15 @@ public class PacijentDTO {
 				pacijent.getAdresaPrebivalista(),
 				pacijent.getBrojTelefona(),
 				pacijent.getDrzava(),
-				pacijent.getPregledi(),
-				pacijent.getZdravstveniKarton(),
-				pacijent.getGrad()
+				pacijent.getGrad(),
+				preglediDTO
 				);
 	}
 	
-	public PacijentDTO() {
-		
-	}
 	
-	public PacijentDTO(String email, String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String brojTelefona , String drzava, Set<Pregled> pregledi,
-			ZdravstveniKarton zdravstveniKarton, String grad) {
+	
+	public PacijentDTO(String email, String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String brojTelefona , String drzava,
+			 String grad, Set<PregledDTO> preglediDTO) {
 		super();
 		this.email = email;
 		this.ime = ime;
@@ -47,9 +44,9 @@ public class PacijentDTO {
 		this.adresaPrebivalista = adresaPrebivalista;
 		this.grad = grad;
 		this.drzava = drzava;
-		this.pregledi = pregledi;
-		this.zdravstveniKarton = zdravstveniKarton;
+	//	this.zdravstveniKarton = zdravstveniKarton;
 		this.brojTelefona = brojTelefona;
+		this.preglediDTO = preglediDTO;
 	}
 
 	public String getIme() {
@@ -76,13 +73,13 @@ public class PacijentDTO {
 		return drzava;
 	}
 
-	public Set<Pregled> getPregledi() {
-		return pregledi;
+	public Set<PregledDTO> getPregledi() {
+		return preglediDTO;
 	}
 
-	public ZdravstveniKarton getZdravstveniKarton() {
-		return zdravstveniKarton;
-	}
+//	public ZdravstveniKarton getZdravstveniKarton() {
+//		return zdravstveniKarton;
+//	}
 
 	public String getBrojTelefona() {
 		return brojTelefona;
@@ -112,13 +109,13 @@ public class PacijentDTO {
 		this.drzava = drzava;
 	}
 
-	public void setPregledi(Set<Pregled> pregledi) {
-		this.pregledi = pregledi;
+	public void setPregledi(Set<PregledDTO> preglediDTO) {
+		this.preglediDTO = preglediDTO;
 	}
 
-	public void setZdravstveniKarton(ZdravstveniKarton zdravstveniKarton) {
-		this.zdravstveniKarton = zdravstveniKarton;
-	}
+//	public void setZdravstveniKarton(ZdravstveniKarton zdravstveniKarton) {
+//		this.zdravstveniKarton = zdravstveniKarton;
+//	}
 
 	public void setBrojTelefona(String brojTelefona) {
 		this.brojTelefona = brojTelefona;

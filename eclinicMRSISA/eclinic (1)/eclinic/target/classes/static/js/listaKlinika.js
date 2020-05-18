@@ -40,11 +40,10 @@ function prikaziKlinike(){
 			);
 	}
 	
-	$(window).click(function(e){
+	$("#table1").click(function(e){
 		var name = e.target.id;
-	//	alert(e.target.id);
 		$.ajax({
-			url: "/klinika/" + name,
+			url: "/klinika/listaKlinika/" + name,
 			type: "GET",
 			success: function (result) {
 				localStorage.setItem("klinikaPodaci", JSON.stringify(result));
@@ -87,6 +86,76 @@ function ucitajPodatkeKlinike(){
 //	$("#email").append(localStorage.getItem('email'));
 }
 
+
+function pretraziPreglede(){
+	console.log("nestoPregledi");
+	
+	var tipPregleda = $("#tip").val();
+
+	var datumPregleda = $("#datum").val();
+	
+	console.log(tipPregleda, datumPregleda);
+	
+	$.ajax({
+		url: "/pregled/pretragaPregleda/" + tipPregleda + "/" + datumPregleda,
+		type: "GET",
+		success: function (result) {
+			console.log(result);
+			var elements = result.length;
+			location.href = " #doctor-team";
+			console.log(elements);
+			
+//			$("#table2").find("tr").remove();
+			document.getElementById("table2").style.visibility = "visible";
+			var i = 0;
+			for(i; i<elements; i++){
+//				var num_of_doctors = result[i].ljekari.length;
+//				console.log("brroj ljekara" + num_of_doctors);
+
+				var text  = ` <a href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
+				var j = 0;
+				$("#table2")
+				.append($("<tr>")
+						.append($("<td>")
+								.append($(text)
+										.text(result[i].naziv)
+											.append($("</a>"))))
+						.append($("<td>")
+							.text(result[i].adresa))
+						.append($("<td>")
+							.text(result[i].grad))
+						.append($("<td>")
+							.text(result[i].ocjenaKlinike))
+						.append($("<td>")
+							.text(result[i].tipoviPregleda[0].cijena + "€"))
+					);
+				
+//TO DO ZA VISE TIPOVA PREGLEDA				
+//				for(j; j<num_of_doctors; j++){
+//					var text  = ` <a href ="http://localhost:8080/klinika/${result[i].naziv}" id = "${result[i].naziv}">`
+//						$("#table2")
+//						.append($("<tr>")
+//								.append($("<td>")
+//												.text("dr " + result[i].ljekari[j].ime + " " + result[i].ljekari[j].prezime)
+//													)
+//								.append($("<td>")
+//									.text(result[i].naziv))
+//								.append($("<td>")
+//									.text(result[i].ljekari[j].prosjecnaOcjena))
+//									.append($("<td>")
+//									.text(result[i].ljekari[j].prosjecnaOcjena))
+//							);
+//				}
+
+			}
+		}
+	,
+		error: function(result) {
+			alert("Something is wrong with your request.(get details)");
+		}
+    });	
+
+}
 
 
 
