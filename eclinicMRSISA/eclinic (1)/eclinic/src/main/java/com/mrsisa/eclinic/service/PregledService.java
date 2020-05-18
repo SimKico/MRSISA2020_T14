@@ -78,5 +78,10 @@ public class PregledService {
 		// TODO Auto-generated method stub
 		return pregledRepository.save(zakazaniPregled);
 	}
+
+	public Pregled getOneByid(Long pregled_id) {
+		
+		return pregledRepository.getOne(pregled_id);
+	}
 	
 }

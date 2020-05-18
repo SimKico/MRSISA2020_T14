@@ -17,11 +17,13 @@ public class PregledDTO {
 	private String grad;
 	private	Double ocjenaKlinike;
 	private PacijentDTO pacijentDTO;
+	private Long id;
 	
 	public PregledDTO(Pregled pregled, LjekarDTO ljekarDTO, TipPregledaDTO tipPregledaDTO
 			, String adresaKlinike, String grad, Double ocjenaKlinike, PacijentDTO pacijentDTO
 			) {
 		this(
+				pregled.getPregled_id(),
 				pregled.getDatum(),
 				pregled.getVrijemePocetka(),
 				pregled.getStatus(),
@@ -33,9 +35,10 @@ public class PregledDTO {
 				pacijentDTO
 				);
 	}
-	public PregledDTO(Date datum, String vrijemePocetka, StatusPregleda status, LjekarDTO ljekarDTO,
+	public PregledDTO(Long id, Date datum, String vrijemePocetka, StatusPregleda status, LjekarDTO ljekarDTO,
 			TipPregledaDTO tipPregledaDTO, String adresaKlinike,String grad, Double ocjenaKlinike, PacijentDTO pacijentDTO) {
 		super();
+		this.setId(id);
 		this.datum = datum;
 		this.vrijemePocetka = vrijemePocetka;
 		this.status = status;
@@ -114,6 +117,12 @@ public class PregledDTO {
 	}
 	public void setGrad(String grad) {
 		this.grad = grad;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 

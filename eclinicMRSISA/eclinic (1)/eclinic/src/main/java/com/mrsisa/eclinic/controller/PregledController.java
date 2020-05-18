@@ -199,4 +199,17 @@ public class PregledController {
 		return new ResponseEntity<>("Pregled je dodan!",HttpStatus.CREATED);
 	}
 	
+	@PutMapping(value = "/zakaziBrzi" )
+	public ResponseEntity<String> zakaziBrzi(@RequestParam String id ) throws ParseException {
+		System.out.println("alkgasdkg;laksdg0");
+		System.out.println(id);
+		Long id_pregleda = Long.parseLong(id);
+		Pregled p = pregledService.getOneByid(id_pregleda);
+		p.setStatus(StatusPregleda.zakazan);
+		p = pregledService.save(p);
+		System.out.println(p);
+		
+		return new ResponseEntity<>("Pregled je zabiljezen!",HttpStatus.OK);
+	}
+	
 }

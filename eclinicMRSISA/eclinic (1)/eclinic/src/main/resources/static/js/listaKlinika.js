@@ -79,10 +79,11 @@ function ucitajPodatkeKlinike(){
 		console.log(klinikaPodaci.ljekari[i].ime);
 		}
 	for(j in klinikaPodaci.pregled){
+		var appoint  = `<button value="${klinikaPodaci.pregled[j].id}" onclick = "zakaziBrziPregled()" class="btn">Zakažite pregled </a>`;
 		$("#table1")
 		.append($("<tr>")
 				.append($("<td>")
-								.text("dr " + klinikaPodaci.pregled[j].ljekarDTO.ime +klinikaPodaci.pregled[j].ljekarDTO.prezime))		
+					.text("dr " + klinikaPodaci.pregled[j].ljekarDTO.ime +klinikaPodaci.pregled[j].ljekarDTO.prezime))		
 				.append($("<td>")
 					.text(klinikaPodaci.pregled[j].datum))
 				.append($("<td>")
@@ -93,12 +94,14 @@ function ucitajPodatkeKlinike(){
 					.text(klinikaPodaci.pregled[j].tipPregledaDTO.cijena + "€"))
 				.append($("<td>")
 					.text("nema"))
+					.append($(appoint))
 			);
 	}
-	
-//	$("#telefon").append(localStorage.getItem('tel'));
-//	$("#jbo").append(localStorage.getItem('jbo'));
-//	$("#email").append(localStorage.getItem('email'));
+	$("button").click(function() {
+		 var fired_button = $(this).val();
+		 localStorage.setItem("sifra_pregleda",fired_button);
+		 console.log(fired_button);
+	});
 }
 
 
@@ -193,7 +196,6 @@ function ucitajPodatkeKlinikeZaPregled(){
 		var j= 0;
 			var text = `<select id = "termin">`;
 			var appoint  = `<button value="${klinikaPodaciZaPregled.ljekari[i].eadresa}" onclick = "potvrdiZakazivanje()" class="btn">Zakažite pregled </a>`;
-			
 			console.log("usao");
 			$("#table1")
 			.append($("<tr>")
@@ -226,7 +228,7 @@ function ucitajPodatkeKlinikeZaPregled(){
 
 
 function potvrdiZakazivanje(){
-	confirm("Potvrdite zakazivanje!");
+	confirm("Sigurno želite da zakažete pregled?");
 	var vrijemePregleda =  	$("#termin option:selected" ).text();
 	console.log(vrijemePregleda);
 	var emailLjekara = localStorage.getItem('emailLjekara');
@@ -248,5 +250,22 @@ function potvrdiZakazivanje(){
 		}
     });	
 }
-
+function zakaziBrziPregled(){
+	confirm("Sigurno želite da zakažete pregled?")
+	var id = localStorage.getItem('sifra_pregleda');
+	$.ajax({
+		url: "/pregled/zakaziBrzi",
+		type: "PUT",
+		data: {id : id },
+		success: function (result) {
+			console.log(result);
+			alert("Uspjesno ste zakazali pregled. Hvala Vam na povjerenju.");
+		}
+	,
+		error: function(result) {
+			alert("Something is wrong with your request.(get details)");
+		}
+    });	
+	
+}
 

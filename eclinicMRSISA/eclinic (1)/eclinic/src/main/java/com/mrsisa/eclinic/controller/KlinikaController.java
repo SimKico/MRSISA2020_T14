@@ -79,6 +79,7 @@ public class KlinikaController {
 					pregledDTO.setVrijemePocetka(p.getVrijemePocetka());
 					TipPregledaDTO tipPregledaDTO = new TipPregledaDTO(p.getTipPregleda(),null);
 					pregledDTO.setTipPregledaDTO(tipPregledaDTO);
+					pregledDTO.setId(p.getPregled_id());
 					preglediDTO.add(pregledDTO);
 				}
 			
