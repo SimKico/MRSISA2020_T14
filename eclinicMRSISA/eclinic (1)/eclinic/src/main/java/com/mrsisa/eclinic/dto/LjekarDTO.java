@@ -35,7 +35,7 @@ public class LjekarDTO {
 		this.prezime = prezime;
 		this.prosjecnaOcjena = prosjecnaOcjena;
 		this.specijalizacija = specijalizacija;
-		this.klinika = klinika.getNaziv();
+		this.klinika = nazivKlinike;
 	}
 	
 	public String getIme() {

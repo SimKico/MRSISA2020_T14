@@ -1,4 +1,4 @@
-package com.mrsisa.eclinic.dto;
+	package com.mrsisa.eclinic.dto;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -43,18 +43,7 @@ public class KlinikaDTO {
 		this.tipoviPregledaDTO = tipoviPregledaDTO;
 	}
 	
-	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO, Set<Sala> sale, Set<TipPregledaDTO> tipoviPregleda)
-	{
-		this(
-				klinika.getNaziv(),
-				klinika.getGrad(),
-				klinika.getTipKlinike(),
-				klinika.getOcjenaKlinike(),
-				ljekariDTO
-			);
-		this.sale = sale;
-		this.setTipoviPregleda(tipoviPregleda);
-	}
+
 	 
 	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO,Set<TipPregledaDTO> tipoviPregledaDTO) {
 		this(
@@ -92,12 +81,12 @@ public class KlinikaDTO {
 	public void setOcjenaKlinike(Double ocjenaKlinike) {
 		this.ocjenaKlinike = ocjenaKlinike;
 	}
-	public Set<Sala> getSale() {
-		return sale;
-	}
-	public void setSale(Set<Sala> sale) {
-		this.sale= sale;
-	}
+//	public Set<Sala> getSale() {
+//		return sale;
+//	}
+//	public void setSale(Set<Sala> sale) {
+//		this.sale= sale;
+//	}
 //	public Set<Pregled> getPregled() {
 //		return pregled;
 //	}
@@ -130,12 +119,12 @@ public class KlinikaDTO {
 //	}
 //	 
 
-	public Set<TipPregledaDTO> getTipoviPregleda() {
-		return tipoviPregleda;
-	}
-
-	public void setTipoviPregleda(Set<TipPregledaDTO> tipoviPregleda) {
-		this.tipoviPregleda = tipoviPregleda;
+//	public Set<TipPregledaDTO> getTipoviPregleda() {
+//		return tipoviPregleda;
+//	}
+//
+//	public void setTipoviPregleda(Set<TipPregledaDTO> tipoviPregleda) {
+//		this.tipoviPregleda = tipoviPregleda;
 	public String getAdresa() {
 		return adresa;
 	}

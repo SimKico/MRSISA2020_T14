@@ -103,7 +103,7 @@ public class AdminKlinikeController {
 		
 		System.out.println("************\n************\n" + ljekariDTO.size());		
 
-		return new ResponseEntity<>(new KlinikaDTO(klinika, ljekariDTO), HttpStatus.OK);
+		return new ResponseEntity<>(new KlinikaDTO(klinika, ljekariDTO,null), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/dodavanjeTermina", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -125,14 +125,14 @@ public class AdminKlinikeController {
 					ljekariDTO.add(new LjekarDTO(ljekar));
 			}
 			for (TipPregleda tp : klinika.getTipoviPregleda()) {
-				tipoviPregledaDTO.add(new TipPregledaDTO(tp));
+//				tipoviPregledaDTO.add(new TipPregledaDTO(tp));
 			}
 			
 		}
 		System.out.println("*********\n Broj lekara direktno preko klinike: " + klinika.getLjekari().size());
 		System.out.println("********\n BROJ TIPOVA PREGLEDA:"+klinika.getTipoviPregleda().size());
 
-		return new ResponseEntity<>(new KlinikaDTO(klinika, ljekariDTO, klinika.getSala(), tipoviPregledaDTO), HttpStatus.OK);
+		return new ResponseEntity<>(new KlinikaDTO(klinika, ljekariDTO,tipoviPregledaDTO), HttpStatus.OK);
 	}
 	 
 
