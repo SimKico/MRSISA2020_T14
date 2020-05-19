@@ -58,6 +58,33 @@ public class KlinikaDTO {
 				preglediDTO
 			);
 	}
+	
+	public KlinikaDTO(String naziv, String grad,String adresa,  int tipKlinike, double ocjenaKlinike
+			, Set<LjekarDTO> ljekari, Set<TipPregledaDTO> tipoviPregledaDTO
+			) {
+		super();
+		this.naziv = naziv;
+		this.grad = grad;
+		this.setAdresa(adresa);
+		this.tipKlinike = tipKlinike;
+		this.ocjenaKlinike = ocjenaKlinike;
+		this.ljekari = ljekari;
+		this.tipoviPregledaDTO = tipoviPregledaDTO;
+	}
+	
+	
+	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO,Set<TipPregledaDTO> tipoviPregledaDTO) {
+		this(
+				klinika.getNaziv(),
+				klinika.getGrad(),
+				klinika.getAdresa(),
+				klinika.getTipKlinike(),
+				klinika.getOcjenaKlinike(),
+				ljekariDTO,
+				tipoviPregledaDTO
+			);
+	}
+
 
 	public String getNaziv() {
 		return naziv;

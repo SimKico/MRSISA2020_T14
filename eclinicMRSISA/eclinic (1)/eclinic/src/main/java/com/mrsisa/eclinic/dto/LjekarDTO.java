@@ -18,6 +18,7 @@ public class LjekarDTO {
 	private Integer prosjecnaOcjena;
 	private String radnoVrijeme;
 	private List<String> slobodniTermini;
+	private Long id;
 	
 	public LjekarDTO(Ljekar ljekar) {
 		ime = ljekar.getIme();
@@ -27,6 +28,7 @@ public class LjekarDTO {
 		klinika = ljekar.getKlinika().getNaziv();
 		setRadnoVrijeme(ljekar.getRadnoVrijeme());
 		eadresa = ljekar.getPrijava().geteAdresa();
+		id = ljekar.getId();
 	}
 	public LjekarDTO(Ljekar ljekar, List<String> slobodniTermini1) {
 		ime = ljekar.getIme();
@@ -107,6 +109,12 @@ public class LjekarDTO {
 	}
 	public void setEadresa(String eadresa) {
 		this.eadresa = eadresa;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	
