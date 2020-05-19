@@ -125,7 +125,7 @@ public class AdminKlinikeController {
 					ljekariDTO.add(new LjekarDTO(ljekar));
 			}
 			for (TipPregleda tp : klinika.getTipoviPregleda()) {
-//				tipoviPregledaDTO.add(new TipPregledaDTO(tp));
+				tipoviPregledaDTO.add(new TipPregledaDTO(tp));
 			}
 			
 		}
