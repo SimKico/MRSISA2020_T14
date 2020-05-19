@@ -35,7 +35,7 @@ public class Pregled {
    private int popust;
    
    @Column(name="vrijeme_pocetka", unique=false, nullable=false)
-   private Date vrijemePocetka;
+   private String vrijemePocetka;
    
    @Column(name="status", unique=false, nullable=false)
    private StatusPregleda status;
@@ -81,11 +81,11 @@ public void setPopust(int popust) {
 	this.popust = popust;
 }
 
-public Date getVrijemePocetka() {
+public String getVrijemePocetka() {
 	return vrijemePocetka;
 }
 
-public void setVrijemePocetka(Date vrijemePocetka) {
+public void setVrijemePocetka(String vrijemePocetka) {
 	this.vrijemePocetka = vrijemePocetka;
 }
 

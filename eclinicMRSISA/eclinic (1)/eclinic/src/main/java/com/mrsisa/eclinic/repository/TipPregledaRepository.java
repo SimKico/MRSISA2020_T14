@@ -12,5 +12,7 @@ import com.mrsisa.eclinic.model.TipPregleda;
 public interface TipPregledaRepository extends JpaRepository<TipPregleda, Long>   {
 	List<TipPregleda> findAllBytip(Specijalizacija tip);
 //	List<TipPregleda> findAllByklinika(String klinika);
+
+	TipPregleda findOneBytip(Specijalizacija tip);
 	
 }

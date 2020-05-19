@@ -49,6 +49,21 @@ public class PacijentDTO {
 		this.preglediDTO = preglediDTO;
 	}
 
+	public PacijentDTO(Pacijent pacijent) {
+		super();
+		this.email = pacijent.getPrijava().geteAdresa();
+		this.ime = pacijent.getIme();
+		this.prezime = pacijent.getPrezime();
+		this.jedBrojOsiguranika = pacijent.getJedBrojOsiguranika();
+		this.adresaPrebivalista = pacijent.getAdresaPrebivalista();
+		this.grad = pacijent.getGrad();
+		this.drzava = pacijent.getDrzava();
+	//	this.zdravstveniKarton = zdravstveniKarton;
+		this.brojTelefona = pacijent.getBrojTelefona();
+	}
+
+
+
 	public String getIme() {
 		return ime;
 	}

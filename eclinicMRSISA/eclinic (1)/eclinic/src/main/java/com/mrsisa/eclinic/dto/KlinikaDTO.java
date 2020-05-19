@@ -20,7 +20,7 @@ public class KlinikaDTO {
 	 private int tipKlinike;
 	 private double ocjenaKlinike;
 //	 private Set<Sala> sala = new HashSet<Sala>();
-//	 private Set<Pregled> pregled = new HashSet<Pregled>();
+	 private Set<PregledDTO> preglediDTO = new HashSet<PregledDTO>();
 	 private Set<TipPregledaDTO> tipoviPregledaDTO = new HashSet<TipPregledaDTO>();
 //	 private Set<AdminKlinike> adminKlinike = new HashSet<AdminKlinike>();
 	 private Set<LjekarDTO> ljekari =  new HashSet<LjekarDTO>();
@@ -31,7 +31,7 @@ public class KlinikaDTO {
 	}
 	
 	public KlinikaDTO(String naziv, String grad,String adresa,  int tipKlinike, double ocjenaKlinike
-			, Set<LjekarDTO> ljekari, Set<TipPregledaDTO> tipoviPregledaDTO
+			, Set<LjekarDTO> ljekari, Set<TipPregledaDTO> tipoviPregledaDTO, Set<PregledDTO> preglediDTO
 			) {
 		super();
 		this.naziv = naziv;
@@ -41,11 +41,12 @@ public class KlinikaDTO {
 		this.ocjenaKlinike = ocjenaKlinike;
 		this.ljekari = ljekari;
 		this.tipoviPregledaDTO = tipoviPregledaDTO;
+		this.preglediDTO = preglediDTO;
 	}
 	
 
 	 
-	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO,Set<TipPregledaDTO> tipoviPregledaDTO) {
+	public KlinikaDTO(Klinika klinika, Set<LjekarDTO> ljekariDTO,Set<TipPregledaDTO> tipoviPregledaDTO, Set<PregledDTO> preglediDTO) {
 		this(
 				klinika.getNaziv(),
 				klinika.getGrad(),
@@ -53,7 +54,8 @@ public class KlinikaDTO {
 				klinika.getTipKlinike(),
 				klinika.getOcjenaKlinike(),
 				ljekariDTO,
-				tipoviPregledaDTO
+				tipoviPregledaDTO,
+				preglediDTO
 			);
 	}
 
@@ -87,12 +89,12 @@ public class KlinikaDTO {
 //	public void setSale(Set<Sala> sale) {
 //		this.sale= sale;
 //	}
-//	public Set<Pregled> getPregled() {
-//		return pregled;
-//	}
-//	public void setPregled(Set<Pregled> pregled) {
-//		this.pregled = pregled;
-//	}
+	public Set<PregledDTO> getPregled() {
+		return preglediDTO;
+	}
+	public void setPregled(Set<PregledDTO> preglediDTO) {
+		this.preglediDTO = preglediDTO;
+	}
 	public Set<TipPregledaDTO> getTipoviPregleda() {
 		return tipoviPregledaDTO;
 	}

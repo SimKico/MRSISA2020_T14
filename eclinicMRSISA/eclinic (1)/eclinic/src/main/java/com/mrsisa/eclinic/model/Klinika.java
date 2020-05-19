@@ -48,7 +48,7 @@ public class Klinika {
    private Set<Sala> sala = new HashSet<Sala>();
   
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-   @JoinColumn(name = "pregled_id")
+   @JoinColumn(name = "klinika_id")
    private Set<Pregled> pregled = new HashSet<Pregled>();
    
    @ManyToMany

@@ -22,5 +22,8 @@ public class TipPregledaService {
 	public List<TipPregleda> getAllBySpecijalicazija(Specijalizacija tip){
 		return tipPregledaRepository.findAllBytip(tip);
 	}
-
+	
+	public TipPregleda getOneBySpecijalizacija(Specijalizacija tip) {
+		return tipPregledaRepository.findOneBytip(tip);
+	}
 }

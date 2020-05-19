@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mrsisa.eclinic.dto.AKcDTO;
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.LjekarDTO;
+import com.mrsisa.eclinic.dto.PregledDTO;
 import com.mrsisa.eclinic.dto.TipPregledaDTO;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Ljekar;
+import com.mrsisa.eclinic.model.Pregled;
+import com.mrsisa.eclinic.model.StatusPregleda;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.LjekarService;
 import com.mrsisa.eclinic.service.PregledService;
@@ -37,6 +40,9 @@ public class KlinikaController {
 
 	@Autowired 
 	private LjekarService ljekarService;
+
+	@Autowired 
+	private PregledService pregledService;
 	
 	@RequestMapping(value = "/listaKlinika",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<KlinikaDTO>> getAllKlinika(){	
@@ -47,7 +53,7 @@ public class KlinikaController {
 		for(Klinika k : listaKlinika) {
 			List<TipPregledaDTO> tipoviPregledaDTO = new ArrayList<TipPregledaDTO>();
 			
-			KlinikaDTO klinikaDTO = new KlinikaDTO(k, null,null);
+			KlinikaDTO klinikaDTO = new KlinikaDTO(k, null,null,null);
 			listaKlinikaDTO.add(klinikaDTO);	
 		}
 		
@@ -60,21 +66,34 @@ public class KlinikaController {
 		Klinika klinika = klinikaService.findOneKlinkaByNaziv(naziv);
 		Set<Ljekar> ljekari = klinika.getLjekari();
 		Set<LjekarDTO> ljekariDTO = new HashSet<>();
+		Set<PregledDTO> preglediDTO = new HashSet<>();
 		
 		for(Ljekar lj : ljekari) {
 			LjekarDTO ljekarDTO = new LjekarDTO();
+			List<Pregled> preglediLjekara = pregledService.getAllByLjekarId(lj.getId());
+			for(Pregled p: preglediLjekara) {
+				if(p.getStatus().equals(StatusPregleda.slobodan)) {
+					PregledDTO pregledDTO = new PregledDTO();
+					pregledDTO.setDatum(p.getDatum());
+					pregledDTO.setLjekarDTO(ljekarDTO);
+					pregledDTO.setVrijemePocetka(p.getVrijemePocetka());
+					TipPregledaDTO tipPregledaDTO = new TipPregledaDTO(p.getTipPregleda(),null);
+					pregledDTO.setTipPregledaDTO(tipPregledaDTO);
+					pregledDTO.setId(p.getPregled_id());
+					preglediDTO.add(pregledDTO);
+				}
 			
+			}
 			ljekarDTO.setIme(lj.getIme());
 			ljekarDTO.setPrezime(lj.getPrezime());
 			ljekarDTO.setProsjecnaOcjena(lj.getProsjecnaOcjena());
 			ljekarDTO.setSpecijalizacija(lj.getSpecijalizacija());
-		//	ljekarDTO.setKlinika(klinika);
-			
 			ljekariDTO.add(ljekarDTO);
 		}
+
 		
 		//klinika.setLjekari(ljekari);
-		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO,null);
+		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO,null,preglediDTO);
 		System.out.println(klinika.getId());
 		System.out.println(klinika.getLjekari());
 		System.out.println(ljekariDTO);

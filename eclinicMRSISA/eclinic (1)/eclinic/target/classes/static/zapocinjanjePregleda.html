@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dijagnoze</title>
+    <title>Pregledi ljekara</title>
     <meta
       name="description"
       content="Free Bootstrap Theme by BootstrapMade.com"
@@ -23,33 +23,62 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
-    <script type="text/javascript">
-     function dodavanjeDijagnoze(){
-    	 dijagnoza = $("#dijagnoza").val();
-    	 $.ajax({
-    		 type: "POST",
- 			url: "sifarnik/dijagnoza",
- 			data: JSON.stringify({dijagnoza: dijagnoza}),
- 		    dataType: 'json',
- 		    contentType:  "application/json",
- 			success: function(data){
- 				alert(data.msg);
- 				console.log("JUHUUU");
+     <script type="text/javascript">
+     
+     function ucitajLjekare() {
+ 		$.ajax({
+ 			type : "GET",
+ 			url : "/ljekar/ucitaj",
+ 			success : function(data) {
  				console.log(data);
- 				$("#dijagnoza").val("");
- 				
- 			},
- 			error: function(data){
- 				alert(data.responseText);
- 				$("#dijagnoza").val("");
+ 				console.log(data[0].naziv);
+ 				$.each(data, function(key, value) {
+ 					$('#ljekari').append($('<option>', {
+ 						value : value.eadresa,
+ 						text : value.ime + " " + value.prezime
+ 					}));
+ 				});
  			}
-    	 })
-     }
+ 		});
+ 	}
+     
+    function prikaziPreglede(){
+    	console.log("Usli smo u f-ju");
+    	eadresa = $("#ljekari option:selected").val();
+    	console.log(eadresa);
+    	$.ajax({
+ 			type : "GET",
+ 			url : "/ljekar/pregledi",
+ 			data: {eadresa: eadresa},
+ 			success : function(data) {
+ 				console.log(data);
+ 				$.each(data, function(key, value) {
+  					$('.schedule-tab').append($('<div id = "p'+ value.jbo +'"></div>')
+  									  .append($('<div class="medi-info">').append($('<h3>').text(value.pacijentDTO.ime + " " + value.pacijentDTO.ime))
+  											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
+  											  									.append($('<tr>').append($('<td style="width:250px">').text(" Jedinstveni broj osiguranika  ")).append($('<td style="width:250px">').text( value.pacijentDTO.jedBrojOsiguranika)))
+  											  									.append($('<tr>').append($('<td>').text(" Tip pregleda ")).append($('<td>').text(value.tipPregledaDTO.specijalizacija)))
+  											  									.append($('<tr>').append($('<td>').text(" Vrijeme pocetka ")).append($('<td >').text(value.vrijemePocetka)))
+  											  									.append($('<tr>').append($('<td>').text(" Trajanje: ")).append($('<td>').text(value.tipPregledaDTO.trajanje + " sat/a")))
+  											  									  ))
+							  											  .append($('<a href="#" onclick = prihvatiZahtjev(this'+ ',p' + value.jbo + ') class="medi-info-btn">').text("ZAPOCNI").attr("id", value.pacijentDTO.eadresa))
+							  											  .append(" ")
+							  											  .append($('<a href="#" onclick = odbijZahtjev(this'+ ',p' + value.jbo + ')  id = "eadresa" class="medi-info-btn">').text("OTKAZI").attr("id", value.pacijentDTO.eadresa))))
+  							
+  					
+  								  
+							
+  				});
+ 			},
+ 			error: function(data) {
+ 				console.log("Error");
+ 			}
+ 		});
+    }
    
   </script>
-  </head>
-
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "ucitajLjekare()">
   <!--banner-->
      <section id="banner" class="banner">
       <div class="bg-color" >
@@ -104,33 +133,35 @@
           </div>
         </div>
       </div>
-	   <div class="text-center form-group" class="container">
-                 <h1 class="white">DIJAGNOZA</h1>
-                 <form onsubmit = "dodavanjeDijagnoze(); return false">
+      <div class="text-center form-group" class="container">
+                 <form onSubmit = "prikaziPreglede(); return false">
                     <table class="">
-                        <tr>
-                          <td class="labela" width="300px">Naziv dijagnoze:</td>
-                          <td class="podaci"><input id = "dijagnoza" type="text" class="form-control br-radius-zero" required /></td>
-                        </tr>           
-                      <tr>
-                      <td></td>
-                      <td>
-                       <button type="submit" class="btn btn-appoint" >Upiši u šifarnik</button>
-                   		 <a href="profilAKC.html" class="btn btn-appoint">Odustani</a>
-                   		 </td>
-                    </tr>
-                    </table>
+						<tr>
+							<td class="labela">Ljekari:</td>
+							<td class="podaci"><select id="ljekari"></select></td>
+							<td>
+								<button type="submit" class="btn btn-appoint">Izaberi
+									ljekara</button>
+							</td>
+							<td></td>
+						</tr>
+					</table>
                     </form> 
               </div>
+	   <div class="container">
+      <div class="row">
+        <div class="schedule-tab " > 
+        	<div class="medi-info">
+        	 <h3> <font size="+3"> Neodržani pregledi: </font>   </h3>
+        	</div> 
+        </div>
+      </div>
     </div>
   </section>
-  <!--/ banner-->
- <script src="js/jquery.min.js"></script>
+	<script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="contactform/contactform.js"></script>
-
 </body>
 </html>
-

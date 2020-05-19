@@ -1,6 +1,9 @@
 package com.mrsisa.eclinic.service;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Tuple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +27,12 @@ public class LjekarService {
 //	}
 	public Ljekar findOne(Long id) {
 		return ljekarRepository.findById(id).orElseGet(null);
+	}
+	public List<String> slobodniTermini(Date date1, Long id) {
+		return ljekarRepository.slobodniTermini(date1, id);
+	}
+	
+	public Ljekar findOneByEmail(String email) {
+		return ljekarRepository.findOneByprijava_eAdresa(email);
 	}
 }
