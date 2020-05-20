@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -61,13 +62,13 @@ public class PacijentController {
 
 	
 	@PutMapping(value = "/profilPacijent/azurirajProfil", consumes =  "application/json")
-	public ResponseEntity<PacijentDTO> updatePacijentDTO(@RequestBody PacijentDTO pacijentDTO) {
+	public ResponseEntity<PacijentDTO> updatePacijentDTO(@RequestBody	 PacijentDTO pacijentDTO) {
 		
 		System.out.println(pacijentDTO);
 		System.out.println(pacijentDTO.getJedBrojOsiguranika());
 		
-		Pacijent pacijent = pacijentService.findOne(pacijentDTO.getJedBrojOsiguranika());
-//		Pacijent pacijent = pacijentService.findOne"123456");
+//		Pacijent pacijent = pacijentService.findOne(pacijentDTO.getJedBrojOsiguranika());
+		Pacijent pacijent = pacijentService.findOne("123456");
 		System.out.println(pacijent);
 		if (pacijent == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -80,7 +81,8 @@ public class PacijentController {
 		System.out.println("kao da je setovo");
 
 		pacijent = pacijentService.save(pacijent);
-		return new ResponseEntity<>(new PacijentDTO(pacijent,null), HttpStatus.OK);
+		return new ResponseEntity<>(new PacijentDTO(pacijent), HttpStatus.OK);
+
 	}
 	
 }	

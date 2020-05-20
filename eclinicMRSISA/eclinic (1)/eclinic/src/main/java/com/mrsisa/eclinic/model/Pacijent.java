@@ -114,7 +114,7 @@ public void setPregledi(Set<Pregled> pregledi) {
 }
    
 public Pacijent(String jedBrojOsiguranika, String brojTelefona, String adresaPrebivalsta, String grad,
-		String drzava, ZdravstveniKarton zdravstveniKarton, Set<Pregled> pregledi) {
+		String drzava, ZdravstveniKarton zdravstveniKarton, Set<Pregled> pregledi, String adresaPrebivalista) {
 	super();
 	this.jedBrojOsiguranika = jedBrojOsiguranika;
 	this.brojTelefona = brojTelefona;

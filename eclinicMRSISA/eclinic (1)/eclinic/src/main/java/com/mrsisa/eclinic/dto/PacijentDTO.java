@@ -8,6 +8,10 @@ import com.mrsisa.eclinic.model.ZdravstveniKarton;
 
 public class PacijentDTO {
 
+	public PacijentDTO() {
+		super();
+	}
+
 	private String ime;
 	private String prezime;
 	private String jedBrojOsiguranika;
@@ -32,6 +36,19 @@ public class PacijentDTO {
 				);
 	}
 	
+	
+
+	public PacijentDTO( String jedBrojOsiguranika, String adresaPrebivalista, String brojTelefona , String drzava,
+			 String grad) {
+		super();
+	
+		this.adresaPrebivalista = adresaPrebivalista;
+		this.grad = grad;
+		this.drzava = drzava;
+	//	this.zdravstveniKarton = zdravstveniKarton;
+		this.brojTelefona = brojTelefona;
+//		this.preglediDTO = preglediDTO;
+	}
 	
 	
 	public PacijentDTO(String email, String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String brojTelefona , String drzava,

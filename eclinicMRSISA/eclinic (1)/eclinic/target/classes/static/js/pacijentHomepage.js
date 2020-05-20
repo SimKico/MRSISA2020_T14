@@ -21,6 +21,7 @@ function profilPacijenta(){
 		url: "/homepagePacijent1/profilPacijent",
 		type: "GET",
 		success: function (result) {
+			console.log(result);
 			localStorage.setItem("ime", result.ime);
 			localStorage.setItem("prezime", result.prezime);
 			localStorage.setItem("adr", result.adresaPrebivalista);
@@ -29,7 +30,7 @@ function profilPacijenta(){
 			localStorage.setItem("tel", result.brojTelefona);
 			localStorage.setItem("jbo", result.jedBrojOsiguranika);
 			localStorage.setItem("email", result.email);
-			location.href = "profilPacijent.html" ;
+			location.href = "profilPacijent.html";
 		},
 		error: function(result) {
 			toastr.error("Something is wrong with your request.(get details)");
@@ -62,6 +63,7 @@ function prikaziAzuriranjePacijenta(){
 		type: "GET",
 		success: function (result) {
 			console.log(result);
+			console.log("fgdagadfgdf");
 			localStorage.setItem("ime", result.ime);
 			localStorage.setItem("prezime", result.prezime);
 			localStorage.setItem("adr", result.adresaPrebivalista);
@@ -70,6 +72,7 @@ function prikaziAzuriranjePacijenta(){
 			localStorage.setItem("tel", result.brojTelefona);
 			localStorage.setItem("jbo", result.jedBrojOsiguranika);
 			localStorage.setItem("email", result.email);
+	
 			location.href = "azurirajProfil1.html" ;
 		},
 		error: function(result) {
@@ -79,8 +82,7 @@ function prikaziAzuriranjePacijenta(){
 }
 
 function popuniPodatkePacijentaAzuriranje(){
-	console.log("fasdfas");
-	console.log(localStorage.getItem('drz'));
+	
 	$("#ime").append(localStorage.getItem("ime"));
 	$("#prezime").append(localStorage.getItem('prezime'));
 	$("#adresa").val(localStorage.getItem('adr'));
@@ -92,24 +94,24 @@ function popuniPodatkePacijentaAzuriranje(){
 }
 
 function azurirajPodatke(){
-	
-
-	alert("Uspjesno ste azurirali podatke");
 	adresa =  $("#adresa").val();
 	grad = $("#grad").val();
 	drzava = $("#drzava").val();
 	telefon = $("#telefon").val();
 	jbo = localStorage.getItem("jbo");
 	console.log("nesto ba");
-	console.log(adresa, grad, drzava, telefon, jbo);	
+	console.log(adresa, grad, drzava, telefon, jbo);
+	
 		
 		 $.ajax({
 			type: "PUT",
 			url: "/homepagePacijent1/profilPacijent/azurirajProfil",
 			data: JSON.stringify({adresaPrebivalista: adresa, grad: grad, drzava: drzava, brojTelefona: telefon, jedBrojOsiguranika :jbo}),
-		    dataType: 'json',
+//		    dataType: 'json',
 		    contentType:  "application/json",
-			success: function(data){
+			success: function(result){
+
+				alert("Uspjesno ste azurirali podatke");
 				profilPacijenta();
 			},
 			error: function(result) {
