@@ -230,19 +230,22 @@ function ucitajPodatkeKlinikeZaPregled(){
 function potvrdiZakazivanje(){
 	confirm("Sigurno želite da zakažete pregled?");
 	var vrijemePregleda =  	$("#termin option:selected" ).text();
-	console.log(vrijemePregleda);
+
 	var emailLjekara = localStorage.getItem('emailLjekara');
-	console.log(emailLjekara);
+	
 	var tipPregleda = localStorage.getItem('tipPregleda');
 	var datumPregleda = localStorage.getItem('datumPregleda');
+	var klinikaPodaciZaPregled = localStorage.getItem('klinikaPodaciZaPregled');
+	var klinikaPodaciZaPregled = JSON.parse(klinikaPodaciZaPregled);
+
+	var klinika = klinikaPodaciZaPregled.naziv;
 	
 	$.ajax({
 		url: "/pregled/zakaziPregled",
 		type: "POST",
-		data: {tipPregleda : tipPregleda, datumPregleda: datumPregleda, emailLjekara: emailLjekara, vrijemePregleda : vrijemePregleda},
+		data: {tipPregleda : tipPregleda, datumPregleda: datumPregleda, emailLjekara: emailLjekara, vrijemePregleda : vrijemePregleda, klinika: klinika},
 		success: function (result) {
-			console.log(result);
-			alert("Uspjesno ste zakazali pregled. Hvala Vam na povjerenju.");
+			alert("Zahtjev za pregled je poslat. Dobicete odgovor u sto kracem roku. Hvala Vam na povjerenju!");
 		}
 	,
 		error: function(result) {
@@ -259,7 +262,7 @@ function zakaziBrziPregled(){
 		data: {id : id },
 		success: function (result) {
 			console.log(result);
-			alert("Uspjesno ste zakazali pregled. Hvala Vam na povjerenju.");
+			alert("Zahtjev za pregled je poslat. Dobicete odgovor u sto kracem roku. Hvala Vam na povjerenju!");
 		}
 	,
 		error: function(result) {

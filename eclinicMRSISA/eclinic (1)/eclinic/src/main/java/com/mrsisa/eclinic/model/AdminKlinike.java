@@ -33,6 +33,10 @@ public class AdminKlinike extends Korisnik {
   @JoinColumn(name = "id") 
   public Set<ZahtjeviZaSale> zahtjeviZaSale = new HashSet<ZahtjeviZaSale>();
  
+  @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
+  @JoinColumn(name = "id") 
+  public Set<ZahtjeviZaPregled> zahtjeviZaPregled = new HashSet<ZahtjeviZaPregled>();
+ 
 
 
 public Klinika getKlinika() {

@@ -34,11 +34,14 @@ import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Specijalizacija;
 import com.mrsisa.eclinic.model.StatusPregleda;
 import com.mrsisa.eclinic.model.TipPregleda;
+import com.mrsisa.eclinic.model.ZahtjeviZaPregled;
 import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
 import com.mrsisa.eclinic.repository.TipPregledaRepository;
+import com.mrsisa.eclinic.service.EmailService;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.LjekarService;
 import com.mrsisa.eclinic.service.PregledService;
+import com.mrsisa.eclinic.service.ZahtjeviPregledService;
 
 @RestController
 @RequestMapping("/pregled")
@@ -47,12 +50,21 @@ public class PregledController {
 	
 	@Autowired 
 	private PregledService pregledService;
+	
 	@Autowired 
 	private KlinikaService klinikaService;
+	
 	@Autowired 
 	private LjekarService ljekarService;
+	
 	@Autowired 
 	private TipPregledaRepository tipPregledaRepository;
+	
+	@Autowired
+	private EmailService emailService;
+	
+	@Autowired 
+	private ZahtjeviPregledService zahtjeviZaPregledService;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	//private Date dateNaissance;
@@ -178,23 +190,23 @@ public class PregledController {
 	
 	
 	@PostMapping(value = "/zakaziPregled" )
-	public ResponseEntity<String> zakaziPregled(@RequestParam String tipPregleda, @RequestParam String datumPregleda, @RequestParam String emailLjekara,@RequestParam String vrijemePregleda ) throws ParseException {
-		System.out.println("alkgasdkg;laksdg0");
-		System.out.println(tipPregleda);
-		System.out.println(datumPregleda);
-		System.out.println(emailLjekara);
-		System.out.println(vrijemePregleda);
+	public ResponseEntity<String> zakaziPregled(@RequestParam String tipPregleda, @RequestParam String datumPregleda, @RequestParam String emailLjekara,@RequestParam String vrijemePregleda, @RequestParam String klinika ) throws ParseException {
+		
 		Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(datumPregleda); 
 		
 		Ljekar lj = ljekarService.findOneByEmail(emailLjekara);
-		TipPregleda tipP = tipPregledaRepository.findOneBytip(Specijalizacija.valueOf(tipPregleda));
-		Pregled zakazaniPregled = new Pregled();
-		zakazaniPregled.setStatus(StatusPregleda.zakazan);
-		zakazaniPregled.setLjekar(lj);
-		zakazaniPregled.setTipPregleda(tipP);
-		zakazaniPregled.setVrijemePocetka(vrijemePregleda);
-		zakazaniPregled.setDatum(date1);
-		zakazaniPregled = pregledService.save(zakazaniPregled);
+		Klinika kl = klinikaService.findOneKlinkaByNaziv(klinika);
+//		TipPregleda tipP = tipPregledaRepository.findOneBytip(Specijalizacija.valueOf(tipPregleda));
+		ZahtjeviZaPregled zakaziPregled = new ZahtjeviZaPregled();
+		//TO DO poslati zahjtev za pregled administratoru klinike
+		
+		zakaziPregled.setDatum(date1);
+		zakaziPregled.setLjekar(lj.getPrijava().geteAdresa());
+		zakaziPregled.setTipPregleda(tipPregleda);
+		zakaziPregled.setSatnica(vrijemePregleda);
+//		zakaziPregled.setPrihvacen(false);
+		zakaziPregled = zahtjeviZaPregledService.save(zakaziPregled);
+		emailService.requestPregledEmail(tipPregleda, datumPregleda, emailLjekara, vrijemePregleda,kl);
 		
 		return new ResponseEntity<>("Pregled je dodan!",HttpStatus.CREATED);
 	}
@@ -205,11 +217,15 @@ public class PregledController {
 		System.out.println(id);
 		Long id_pregleda = Long.parseLong(id);
 		Pregled p = pregledService.getOneByid(id_pregleda);
-		p.setStatus(StatusPregleda.zakazan);
-		p = pregledService.save(p);
-		System.out.println(p);
+		String email = p.getLjekar().getPrijava().geteAdresa();
+		emailService.requestBrziPregledEmail(p.getTipPregleda(), p.getDatum(),email , p.getVrijemePocetka(), p.getLjekar().getKlinika());
 		
-		return new ResponseEntity<>("Pregled je zabiljezen!",HttpStatus.OK);
+		//TO DO poslati zahtjev administratoru klinike za pregled
+//		p.setStatus(StatusPregleda.zakazan);
+//		p = pregledService.save(p);
+//		System.out.println(p);
+		
+		return new ResponseEntity<>("Zahtjev za pregled je poslat. Dobicete odgovor u sto kracem roku. Hvala Vam na povjerenju!",HttpStatus.OK);
 	}
 	
 }

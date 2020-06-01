@@ -18,6 +18,7 @@ import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Specijalizacija;
 import com.mrsisa.eclinic.model.StatusPregleda;
 import com.mrsisa.eclinic.model.TipPregleda;
+import com.mrsisa.eclinic.model.ZahtjeviZaPregled;
 import com.mrsisa.eclinic.repository.KlinikaRepository;
 import com.mrsisa.eclinic.repository.PregledRepository;
 import com.mrsisa.eclinic.repository.TipPregledaRepository;
@@ -74,14 +75,11 @@ public class PregledService {
 		return pregledRepository.findAllByljekar_id(id);
 	}
 
-	public Pregled save(Pregled zakazaniPregled) {
-		// TODO Auto-generated method stub
-		return pregledRepository.save(zakazaniPregled);
-	}
 
 	public Pregled getOneByid(Long pregled_id) {
 		
 		return pregledRepository.getOne(pregled_id);
 	}
-	
+
+
 }
