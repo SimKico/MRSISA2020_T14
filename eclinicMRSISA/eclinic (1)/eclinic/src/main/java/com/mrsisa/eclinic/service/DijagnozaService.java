@@ -1,5 +1,7 @@
 package com.mrsisa.eclinic.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class DijagnozaService {
 	
 	public Dijagnoza findDijagnozaByName(String dijagnoza) {
 		return dijagnozaRepository.findOneBynaziv(dijagnoza);
+	}
+	
+	public List<Dijagnoza> findAll() {
+		return dijagnozaRepository.findAll();
 	}
 	
 	public Dijagnoza save(Dijagnoza dijagnoza) {

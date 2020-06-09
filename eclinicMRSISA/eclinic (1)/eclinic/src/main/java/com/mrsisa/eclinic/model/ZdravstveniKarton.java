@@ -27,7 +27,7 @@ public class ZdravstveniKarton {
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="karton_id", unique=false, nullable=false)
-   private int idKartona;
+   private Long idKartona;
    
    @Column(name="krvna_grupa", unique=false)
    private String krvnaGrupa;
@@ -54,11 +54,11 @@ public class ZdravstveniKarton {
    @JoinColumn(name="karton_id")
    private Set<IzvjestajPregleda> izvjestajPregleda = new HashSet<IzvjestajPregleda>();
 
-public int getIdKartona() {
+public Long getIdKartona() {
 	return idKartona;
 }
 
-public void setIdKartona(int idKartona) {
+public void setIdKartona(Long idKartona) {
 	this.idKartona = idKartona;
 }
 

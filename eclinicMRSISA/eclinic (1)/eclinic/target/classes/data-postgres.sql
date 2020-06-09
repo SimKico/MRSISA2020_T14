@@ -14,14 +14,14 @@ values('AC', false, 'Marko', 'Maricic', false, true, null, null, null, null, nul
 
 
 --Dodavanje nekog pacijenta--
-insert into zdravstveni_karton (krvna_grupa) values (null);
+insert into zdravstveni_karton (krvna_grupa, alergije, dioptrija, visina, tezina) values ('AB', null, null, 0, 0);
 insert into tabela_prijava(eadresa, lozinka)values('pacijent1@eclinic.com', 'ppacijent');
 
 insert into tabela_prijava(eadresa, lozinka)values('dr1@eclinic.com', 'pljekar');
 insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
 						values('P', false, 'Snjezana', 'Simic', false, false, null, null, null, null, 'Hajduk Veljka bb', '066617528', 'Bosna', 'Derventa', '123456', 'pacijent1@eclinic.com', null,1, 'Eclinic');
 
-insert into zdravstveni_karton (krvna_grupa) values (null);
+insert into zdravstveni_karton (krvna_grupa, alergije, dioptrija, visina, tezina) values ('A', null, null, 0, 0);
 insert into tabela_prijava(eadresa, lozinka)values('vaso@eclinic.com', 'valoz');
 
 insert into tabela_korisnika(type, prijava_id, kc_id, ime, prezime, jbo, adresa, grad, drzava, broj_telefona, karton_id)
@@ -109,32 +109,33 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 			values('Mon Jun 04 00:00:00 CEST 2020', 0,0, '11:00', 'specoft',5);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
 			values('Mon Jun 05 00:00:00 CEST 2020', 0,0, '11:00', 'specoft',6);
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id)
-			values('Mon Jun 02 00:00:00 CEST 2020', 0,1, '08:00', 'specpulmo',7);
-			
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
-			values('Mon Jun 01 00:00:00 CEST 2020', 0,1, '11:00', 'specpulmo',7);
-			
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id)
+--			values('Mon Jun 02 00:00:00 CEST 2020', 0,1, '08:00', 'specpulmo',7);
+--			
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
+--			values('Mon Jun 01 00:00:00 CEST 2020', 0,1, '11:00', 'specpulmo',7);
+--			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
 			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '07:00', 'specoft',6);
 			
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
-			values('Mon Jun 01 00:00:00 CEST 2020', 0,1, '12:00', 'specpulmo',8);
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
+--			values('Mon Jun 01 00:00:00 CEST 2020', 0,1, '12:00', 'specpulmo',8);
 
---Dodavanje pregleda--
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',4, 1, 2);
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,0, '19:00', 'specoft',5, 2, 3);
+----Dodavanje pregleda--
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+--			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',4, 1, 2);
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
+--			values('Mon May 18 00:00:00 CEST 2020', 0,0, '19:00', 'specoft',5, 2, 3);
+--			
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+--			values('Mon May 18 00:00:00 CEST 2020', 0,0, '20:00', 'specpulmo',7, 1, 2);
+--			
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+--			values('Mon May 18 00:00:00 CEST 2020', 0,0, '21:00', 'specpulmo',8, 2, 3);
+--			
+--insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+--			values('Mon May 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',6, 1, 2);
 			
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,0, '20:00', 'specpulmo',7, 1, 2);
-			
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,0, '21:00', 'specpulmo',8, 2, 3);
-			
-insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',6, 1, 2);
 			
 --zahtjevi za odsustvo--
 insert into zahtjevi_odsustava(kraj, pocetak, prihvacen, tip_odsustva, ljekar_id)
@@ -150,3 +151,27 @@ insert into tipovi_pregledauklinici(klinika_id,sifra)
 							values(2,'specoft');
 insert into tipovi_pregledauklinici(klinika_id,sifra)
 							values(2,'specpulmo');
+							
+--Dodavanje pregleda--
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon Jun 18 00:00:00 CEST 2020', 0,1, '18:00', 'specoft',4, 1, 2);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
+			values('Mon Jun 18 00:00:00 CEST 2020', 0,1, '19:00', 'specoft',5, 2, 3);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon Jun 18 00:00:00 CEST 2020', 0,1, '20:00', 'specoft',6, 3, 2);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon Jun 18 00:00:00 CEST 2020', 0,1, '21:00', 'specoft',7, 4, 3);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Mon Jun 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',8, 1, 2);
+			
+--Dodavanje lijekova--
+insert into lijekovi(naziv_lijeka, sif_lijek_id) values ('Ibuprofen', 1);
+insert into lijekovi(naziv_lijeka, sif_lijek_id) values ('Paracetamol', 1);
+insert into lijekovi(naziv_lijeka, sif_lijek_id) values ('Hemomicin', 1);
+			
+--Dodavanje dijagnoza--
+insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala sinusa', 1);
+insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala grla', 1);

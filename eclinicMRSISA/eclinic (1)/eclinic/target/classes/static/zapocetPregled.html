@@ -25,10 +25,11 @@
     
      <script type="text/javascript">
      
-    
+     
+     
   </script>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "ucitajLjekare()">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="onLoadFunction()">
   <!--banner-->
      <section id="banner" class="banner">
       <div class="bg-color" >
@@ -59,8 +60,8 @@
 <!--                   <li class="active"> -->
 <!--                     <a href="#" id="Registracija klinika">Registracija klinika</a> -->
 <!--                   </li> -->
-                  <li class="active">
-                    <a href="profilAKC.html" id ="Registracija admina klinike" >Vrati se na profil</a>
+                  <li>
+                    <a href="#">Vrati se na profil</a>
                   </li>
 <!--                   <li class="active"> -->
 <!--                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a> -->
@@ -84,20 +85,57 @@
         </div>
       </div>
       <div class="text-center form-group" class="container">
-      			<h3 class="white">NEODRZANI PREGLEDI</h3>
-                 <form onSubmit = "prikaziPreglede(); return false">
+      		<div class="col-md-4 col-sm-4">
+							<h3>Pacijent</h3>
+							<div class="space"></div>
+							<p id="ime">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Ime: <br />
+							</p>
+							<p id="prezime">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Prezime: <br />
+							</p>
+							<p id="jbo">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Jedinstveni broj osiguranika: <br />
+							</p>
+							<p id="krvnaGrupa">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Krvna grupa: 
+							</p>
+							<p id="visina">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Visina (cm): 
+							</p>
+							<p id="tezina">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Težina (kg): 
+							</p>
+							<p id="dioptrija">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Dioptrija: 
+							</p>
+							<p id="alergije">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Alergije: 
+							</p>
+						</div>
+                <form   onsubmit = "regKlinke(); return false">
+                    <h2 class="white">IZVJEŠTAJ</h2><br/>
                     <table class="">
-						<tr>
-							<td class="labela">Ljekari:</td>
-							<td class="podaci"><select id="ljekari"></select></td>
-							<td>
-								<button type="submit" class="btn btn-appoint">Izaberi
-									ljekara</button>
-							</td>
-							<td></td>
-						</tr>
-					</table>
-                    </form> 
+                        <tr>
+                          <td class="labela" width="500px">Izvještaj:</td>
+                          <td class="podaci" width="500px"><textarea style="height:300px"id = "izvjestaj" class="form-control br-radius-zero" required ></textarea></textarea></td>
+                        </tr>           
+                        <tr>
+                          <td class="labela" width="300px">Dijagnoza:</td>
+                          <td class="podaci"><select id="dijagnoza"  style="width:500px"></select></td>
+                        </tr>         
+                        <tr>
+                          <td class="labela"  width="300px" >Lijek:</td>
+                          <td class="podaci"><select id="lijek" style="width:500px" multiple></select></td>
+                        </tr>
+                      <tr>
+                      <td></td>
+                      <td>
+                      	 <button type="submit" class="btn btn-appoint" >Završi pregled</button>
+                   		 </td>
+                    </tr>
+                    </table>
+                    </form>
               </div>
 	   <div class="container">
       <div class="row">

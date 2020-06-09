@@ -19,11 +19,11 @@ public class PacijentDTO {
 	private String grad;
 	private String drzava;
 	private Set<PregledDTO> preglediDTO;
-//	private ZdravstveniKartonDTO zdravstveniKartonDTO;
+	private ZdravstveniKartonDTO zdravstveniKartonDTO;
 	private String brojTelefona;
 	private String email;
 	
-	public PacijentDTO(Pacijent pacijent, Set<PregledDTO> preglediDTO) {
+	public PacijentDTO(Pacijent pacijent, Set<PregledDTO> preglediDTO, ZdravstveniKartonDTO zkDTO) {
 		this(	pacijent.getPrijava().geteAdresa(),
 				pacijent.getIme(),
 				pacijent.getPrezime(),
@@ -32,7 +32,8 @@ public class PacijentDTO {
 				pacijent.getBrojTelefona(),
 				pacijent.getDrzava(),
 				pacijent.getGrad(),
-				preglediDTO
+				preglediDTO,
+				zkDTO
 				);
 	}
 	
@@ -52,7 +53,7 @@ public class PacijentDTO {
 	
 	
 	public PacijentDTO(String email, String ime, String prezime, String jedBrojOsiguranika, String adresaPrebivalista, String brojTelefona , String drzava,
-			 String grad, Set<PregledDTO> preglediDTO) {
+			 String grad, Set<PregledDTO> preglediDTO,  ZdravstveniKartonDTO zkDTO) {
 		super();
 		this.email = email;
 		this.ime = ime;
@@ -61,7 +62,7 @@ public class PacijentDTO {
 		this.adresaPrebivalista = adresaPrebivalista;
 		this.grad = grad;
 		this.drzava = drzava;
-	//	this.zdravstveniKarton = zdravstveniKarton;
+		this.zdravstveniKartonDTO = zkDTO;
 		this.brojTelefona = brojTelefona;
 		this.preglediDTO = preglediDTO;
 	}

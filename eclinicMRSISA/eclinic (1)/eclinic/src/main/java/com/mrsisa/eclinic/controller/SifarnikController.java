@@ -1,16 +1,23 @@
 package com.mrsisa.eclinic.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mrsisa.eclinic.dto.DijagnozaDTO;
+import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.LijekDTO;
 import com.mrsisa.eclinic.model.Dijagnoza;
+import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Lijek;
 import com.mrsisa.eclinic.model.SifarnikDijagnoza;
 import com.mrsisa.eclinic.model.SifarnikLijekova;
@@ -70,6 +77,34 @@ public class SifarnikController {
 		
 		return new ResponseEntity<>("{\"msg\":\"Dijagnoza je upisana u šifarnik.\"}",HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value="/ucitajDijagnoze",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<DijagnozaDTO>> getAllDijagnoze(){	
+		List<Dijagnoza> listaDijagnoza = dijagnozaService.findAll();
+		List<DijagnozaDTO> dijagnoze = new ArrayList<DijagnozaDTO>();
+		
+		for(Dijagnoza dijagnoza : listaDijagnoza) {
+			dijagnoze.add(new DijagnozaDTO(dijagnoza.getNaziv()));
+		}
+		
+		return new ResponseEntity<>(dijagnoze, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value="/ucitajLijekove", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<LijekDTO>> getAllLijekovi(){
+		List<Lijek> listaLijekova = lijekService.findAll();
+		List<LijekDTO> lijekovi = new ArrayList<LijekDTO>();
+		
+		for(Lijek lijek : listaLijekova) {
+			lijekovi.add(new LijekDTO(lijek.getNaziv()));
+		}
+		
+		return new ResponseEntity<>(lijekovi, HttpStatus.OK);
+	}
+	
+	
+	
 	
 
 }

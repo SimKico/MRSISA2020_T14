@@ -1,5 +1,7 @@
 package com.mrsisa.eclinic.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class LijekService {
 	
 	public Lijek findLijekByName(String lijek) {
 		return lijekRepository.findOneBynaziv(lijek);
+	}
+	
+	public List<Lijek> findAll(){
+		return lijekRepository.findAll();
 	}
 	
 	public Lijek save(Lijek lijek) {

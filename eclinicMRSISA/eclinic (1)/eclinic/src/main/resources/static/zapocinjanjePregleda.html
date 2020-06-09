@@ -13,7 +13,7 @@
       content="free website templates, free bootstrap themes, free template, free bootstrap, free website template"
     />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src = "js/profilAKC.js"></script>
+    <script src = "js/izvjestajPregleda.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -25,57 +25,7 @@
     
      <script type="text/javascript">
      
-     function ucitajLjekare() {
- 		$.ajax({
- 			type : "GET",
- 			url : "/ljekar/ucitaj",
- 			success : function(data) {
- 				console.log(data);
- 				console.log(data[0].naziv);
- 				$.each(data, function(key, value) {
- 					$('#ljekari').append($('<option>', {
- 						value : value.eadresa,
- 						text : value.ime + " " + value.prezime
- 					}));
- 				});
- 			}
- 		});
- 	}
-     
-    function prikaziPreglede(){
-    	console.log("Usli smo u f-ju");
-    	eadresa = $("#ljekari option:selected").val();
-    	console.log(eadresa);
-    	$.ajax({
- 			type : "GET",
- 			url : "/ljekar/pregledi",
- 			data: {eadresa: eadresa},
- 			success : function(data) {
- 				console.log(data);
- 				$.each(data, function(key, value) {
-  					$('.schedule-tab').append($('<div id = "p'+ value.jbo +'"></div>')
-  									  .append($('<div class="medi-info">').append($('<h3>').text(value.pacijentDTO.ime + " " + value.pacijentDTO.ime))
-  											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
-  											  									.append($('<tr>').append($('<td style="width:250px">').text(" Jedinstveni broj osiguranika  ")).append($('<td style="width:250px">').text( value.pacijentDTO.jedBrojOsiguranika)))
-  											  									.append($('<tr>').append($('<td>').text(" Tip pregleda ")).append($('<td>').text(value.tipPregledaDTO.specijalizacija)))
-  											  									.append($('<tr>').append($('<td>').text(" Vrijeme pocetka ")).append($('<td >').text(value.vrijemePocetka)))
-  											  									.append($('<tr>').append($('<td>').text(" Trajanje: ")).append($('<td>').text(value.tipPregledaDTO.trajanje + " sat/a")))
-  											  									  ))
-							  											  .append($('<a href="#" onclick = prihvatiZahtjev(this'+ ',p' + value.jbo + ') class="medi-info-btn">').text("ZAPOCNI").attr("id", value.pacijentDTO.eadresa))
-							  											  .append(" ")
-							  											  .append($('<a href="#" onclick = odbijZahtjev(this'+ ',p' + value.jbo + ')  id = "eadresa" class="medi-info-btn">').text("OTKAZI").attr("id", value.pacijentDTO.eadresa))))
-  							
-  					
-  								  
-							
-  				});
- 			},
- 			error: function(data) {
- 				console.log("Error");
- 			}
- 		});
-    }
-   
+    
   </script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "ucitajLjekare()">
@@ -134,6 +84,7 @@
         </div>
       </div>
       <div class="text-center form-group" class="container">
+      			<h3 class="white">NEODRZANI PREGLEDI</h3>
                  <form onSubmit = "prikaziPreglede(); return false">
                     <table class="">
 						<tr>
@@ -151,9 +102,7 @@
 	   <div class="container">
       <div class="row">
         <div class="schedule-tab " > 
-        	<div class="medi-info">
-        	 <h3> <font size="+3"> Neodržani pregledi: </font>   </h3>
-        	</div> 
+        	
         </div>
       </div>
     </div>
