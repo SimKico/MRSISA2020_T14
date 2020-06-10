@@ -22,7 +22,7 @@ public class Recept {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name="recept_id", unique=true, nullable=false)
-   private Long recept_id;
+   private Long receptId;
   
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="lijek", referencedColumnName="naziv_lijeka")
@@ -35,13 +35,24 @@ public class Recept {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="izvjestaj_id", referencedColumnName="izvjestaj_id")
   private IzvjestajPregleda izvjestajPregleda;
+  
+  
+
+public Recept() {
+	super();
+	
+}
+
+public void setReceptId(Long receptId) {
+	this.receptId = receptId;
+}
 
 public Long getRecept_id() {
-	return recept_id;
+	return receptId;
 }
 
 public void setRecept_id(Long recept_id) {
-	this.recept_id = recept_id;
+	this.receptId = recept_id;
 }
 
 public Lijek getLijek() {

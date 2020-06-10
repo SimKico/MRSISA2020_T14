@@ -27,7 +27,7 @@ public class IzvjestajPregleda {
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="izvjestaj_id", unique=true, nullable=false)
-   private Long izvjestaj_id;
+   private Long izvjestajId;
 	 
    @Column(name="izvjestaj", unique=true, nullable=false)
    private String izvjestaj;
@@ -47,11 +47,11 @@ public class IzvjestajPregleda {
     public Dijagnoza dijagnoza;
 
 public Long getIzvjestaj_id() {
-	return izvjestaj_id;
+	return izvjestajId;
 }
 
 public void setIzvjestaj_id(Long izvjestaj_id) {
-	this.izvjestaj_id = izvjestaj_id;
+	this.izvjestajId = izvjestaj_id;
 }
 
 public String getIzvjestaj() {

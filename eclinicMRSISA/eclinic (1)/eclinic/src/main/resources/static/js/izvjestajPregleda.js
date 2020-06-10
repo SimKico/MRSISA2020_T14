@@ -57,6 +57,7 @@ function zapocniPregled (data, identifier){
     	window.location = "zapocetPregled.html" ;
     }
 
+
 function onLoadFunction(){
 	  zdravstveniKarton();
 	  ucitajDijagnoze();
@@ -108,6 +109,7 @@ function zdravstveniKarton(){
 			data: {idPregleda: idPregleda},
 			success: function(data){
 				console.log(data);
+				localStorage.setItem("jbo", data.jboPacijenta);
 				$('#ime').append(data.imePacijenta);
 				$('#prezime').append(data.prezimePacijenta);
 				$('#jbo').append(data.jboPacijenta);
@@ -119,6 +121,44 @@ function zdravstveniKarton(){
 			}
 	  }); 
 }
+
+function izvjestajPregleda(){
+	izvjestaj = $('#izvjestaj').val();
+	jbo = localStorage.getItem("jbo");
+	pregledId = localStorage.getItem("idPregleda");
+	dijagnoza = $("#dijagnoza option:selected").text();
+	lijekovi = [];
+    $( "#lijek option:selected" ).each(function() {
+    	lijekovi.push( $( this ).text());
+      });
+	console.log(jbo);
+	console.log(izvjestaj);
+	console.log(dijagnoza);
+	console.log(pregledId);
+	console.log(lijekovi);
+	data = {
+			"izvjestaj" : izvjestaj,
+			"pacijentJbo" : jbo,
+			"pregledId" : pregledId,
+			"dijagnozaDTO" : dijagnoza,
+			"lijekovi" : lijekovi
+	};
+	
+	console.log(data);
+	 $.ajax({
+			type: "POST",
+			url: "/zdravKarton/izvjestajPregleda",
+			data : JSON.stringify(data),
+			dataType: 'json',
+ 		    contentType:  "application/json",
+			success: function(data){
+				console.log(data);
+			}
+	  }); 
+	
+	
+}
+
 
 
    

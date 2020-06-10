@@ -26,7 +26,7 @@ public class Pregled {
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="pregled_id", unique=true, nullable=false)
-   private Long pregled_id;
+   private Long pregledId;
    
    @Column(name="datum_pregleda", unique=false, nullable=false)
    private Date datum;
@@ -58,11 +58,11 @@ public class Pregled {
 
    
 public Long getPregled_id() {
-	return pregled_id;
+	return pregledId;
 }
 
 public void setPregled_id(Long pregled_id) {
-	this.pregled_id = pregled_id;
+	this.pregledId = pregled_id;
 }
 
 public Date getDatum() {

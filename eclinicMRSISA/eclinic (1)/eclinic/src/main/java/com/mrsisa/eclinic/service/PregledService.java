@@ -80,6 +80,10 @@ public class PregledService {
 		
 		return pregledRepository.getOne(pregled_id);
 	}
+	
+	public Pregled save(Pregled pregled) {
+		return pregledRepository.save(pregled);
+	}
 
 
 }

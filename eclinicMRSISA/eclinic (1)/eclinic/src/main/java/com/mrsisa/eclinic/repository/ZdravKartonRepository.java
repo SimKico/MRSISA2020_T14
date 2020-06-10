@@ -7,5 +7,7 @@ import com.mrsisa.eclinic.model.ZdravstveniKarton;
 public interface ZdravKartonRepository extends JpaRepository<ZdravstveniKarton, Long>{
 	
 	ZdravstveniKarton findOneByidKartona(Long id);
+	
+	
 
 }

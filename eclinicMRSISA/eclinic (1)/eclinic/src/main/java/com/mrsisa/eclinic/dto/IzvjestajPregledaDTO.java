@@ -8,7 +8,7 @@ public class IzvjestajPregledaDTO {
 	
 	private String izvjestaj;
 	private DijagnozaDTO dijagnozaDTO;
-	private Set<ReceptDTO> receptDTO;
+	private Set<String> lijekovi;
 	private Long pregledId;
 	private String pacijentJbo;
 	
@@ -17,25 +17,43 @@ public class IzvjestajPregledaDTO {
 		super();
 	}
 	
-	public IzvjestajPregledaDTO(IzvjestajPregleda izvjestajPregleda,DijagnozaDTO dijagnozaDTO, Set<ReceptDTO> receptDTO, String jbo) {
+	public IzvjestajPregledaDTO(IzvjestajPregleda izvjestajPregleda,DijagnozaDTO dijagnozaDTO, Set<String> lijekovi, String jbo) {
 		
 		this.izvjestaj = izvjestajPregleda.getIzvjestaj();
 		this.dijagnozaDTO = dijagnozaDTO;
-		this.receptDTO = receptDTO;
+		this.lijekovi = lijekovi;
 		this.pregledId = izvjestajPregleda.getPregled().getPregled_id();
 		this.pacijentJbo = jbo;
 		
 	}
 	
-	public IzvjestajPregledaDTO(String izvjestaj, String jbo, Long pregledId, DijagnozaDTO dijagnozaDTO, Set<ReceptDTO> receptDTO) {
+	public IzvjestajPregledaDTO(String izvjestaj, String jbo, Long pregledId, DijagnozaDTO dijagnozaDTO, Set<String> lijekovi) {
 		super();
 		this.izvjestaj = izvjestaj;
 		this.dijagnozaDTO = dijagnozaDTO;
-		this.receptDTO = receptDTO;
+		this.lijekovi = lijekovi;
 		this.pacijentJbo = jbo;
 		this.pregledId = pregledId;
 	}
+	
+	
 
+
+	public Long getPregledId() {
+		return pregledId;
+	}
+
+	public void setPregledId(Long pregledId) {
+		this.pregledId = pregledId;
+	}
+
+	public String getPacijentJbo() {
+		return pacijentJbo;
+	}
+
+	public void setPacijentJbo(String pacijentJbo) {
+		this.pacijentJbo = pacijentJbo;
+	}
 
 	public String getIzvjestaj() {
 		return izvjestaj;
@@ -51,11 +69,11 @@ public class IzvjestajPregledaDTO {
 	public void setDijagnozaDTO(DijagnozaDTO dijagnozaDTO) {
 		this.dijagnozaDTO = dijagnozaDTO;
 	}
-	public Set<ReceptDTO> getReceptDTO() {
-		return receptDTO;
+	public Set<String> getLijekovi() {
+		return lijekovi;
 	}
-	public void setReceptDTO(Set<ReceptDTO> receptDTO) {
-		this.receptDTO = receptDTO;
+	public void setReceptDTO(Set<String> lijekovi) {
+		this.lijekovi = lijekovi;
 	}
 	
 	
