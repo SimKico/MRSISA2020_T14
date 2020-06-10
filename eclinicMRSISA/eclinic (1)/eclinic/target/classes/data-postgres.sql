@@ -92,9 +92,9 @@ values('Rade@eclinic.com', 'boloz', 'Rade', 'Radic', '123456', 'Cara Dusana', 'N
 
 
 ----Admin klinike--
---insert into tabela_prijava(eadresa, lozinka)values('admink1@eclinic.com', 'pak');
---insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
---values('AK', false, 'Nikola', 'Nikic', false, false, null, null, null, null, null, null, null, null, null,'admink1@eclinic.com', 1,null, 'Eclinic');
+insert into tabela_prijava(eadresa, lozinka)values('admink1@eclinic.com', 'pak');
+insert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
+values('AK', false, 'Nikola', 'Nikic', false, false, null, null, null, null, null, null, null, null, null,'admink1@eclinic.com', 1,null, 'Eclinic');
 
 --Dodavanje tip_pregleda --
 insert into tip_pregleda(cijena, sifra, trajanje, tip)values(12.5, 'specoft',1,0);
@@ -175,3 +175,12 @@ insert into lijekovi(naziv_lijeka, sif_lijek_id) values ('Hemomicin', 1);
 --Dodavanje dijagnoza--
 insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala sinusa', 1);
 insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala grla', 1);
+
+--Dodavanje sala--
+insert into sale values (1, 1);
+insert into sale values (2, 2);
+insert into sale values (3, 3);
+insert into sale values (4, 4);
+insert into sale values (5, 5);
+insert into sale values (6, 1);
+insert into sale values (7, 1);

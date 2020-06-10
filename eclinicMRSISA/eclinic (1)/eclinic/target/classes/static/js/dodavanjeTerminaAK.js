@@ -1,6 +1,7 @@
   $(function(){
 
-    $("#odabraniLekar").on('click', 'li a', function(){
+    $("#odabraniLekar").on('click', 'li a', function(e){
+		e.preventDefault();
       $("#lekarBtn:first-child").text($(this).text());
       $("#lekarBtn:first-child").val($(this).text());
 	  promenaLekara();
@@ -15,7 +16,8 @@ function promenaLekara(){
 
   $(function(){
 
-    $("#odabranaSala").on('click', 'li a', function(){
+    $("#odabranaSala").on('click', 'li a', function(e){
+		e.preventDefault();
       $("#salaBtn:first-child").text($(this).text());
       $("#salaBtn:first-child").val($(this).text());
    });
@@ -29,7 +31,8 @@ function promenaSale(){
 
   $(function(){
 
-    $("#tipPregledaLista").on('click', 'li a', function(){
+    $("#tipPregledaLista").on('click', 'li a', function(e){
+		e.preventDefault();
       $("#tipPregledaBtn:first-child").text($(this).text());
       $("#tipPregledaBtn:first-child").val($(this).text());
    });
@@ -43,7 +46,8 @@ function promenaTipaPreglead(){
 
   $(function(){
 
-    $("#vremePocetka").on('click', 'li a', function(){
+    $("#vremePocetka").on('click', 'li a', function(e){
+		e.preventDefault();
       $("#vremeBtn:first-child").text($(this).text());
       $("#vremeBtn:first-child").val($(this).text());
    });
@@ -94,9 +98,10 @@ function popuniFormuTermina(){
 	lekar.append(`<li id="${klinikaJSON.ljekari[i].id}"><a href="#">Dr. ${klinikaJSON.ljekari[i].ime} ${klinikaJSON.ljekari[i].prezime} (${klinikaJSON.ljekari[i].specijalizacija})</a></li>`);
 	}
 	//dodavanje sala
-	for(i=0;i < klinikaJSON.sala.length; i++){
-	sala.append(`<li><a href="#">Sala broj ${klinikaJSON.sala[i].broj}</a></li>`);
+	for(i=0;i < klinikaJSON.sale.length; i++){
+	sala.append(`<li><a href="#">Sala broj ${klinikaJSON.sale[i].brojSale}</a></li>`);
 	}
+	console.log("broj sala u klinici:" + klinikaJSON.sala.length);
 	
 }
 

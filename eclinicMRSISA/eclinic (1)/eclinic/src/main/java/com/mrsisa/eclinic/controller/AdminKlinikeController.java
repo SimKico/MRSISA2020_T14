@@ -1,5 +1,6 @@
 package com.mrsisa.eclinic.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,10 +26,12 @@ import com.mrsisa.eclinic.model.AdminKlinike;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Prijava;
+import com.mrsisa.eclinic.model.Sala;
 import com.mrsisa.eclinic.model.TipPregleda;
 import com.mrsisa.eclinic.service.AdminKlinikeService;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.LjekarService;
+import com.mrsisa.eclinic.service.SalaService;
 
 @RestController
 @RequestMapping("/adminKlinikeHomepage")
@@ -43,6 +46,9 @@ public class AdminKlinikeController {
 
 	@Autowired
 	private KlinikaService klinikaService;
+	
+	@Autowired 
+	private SalaService salaService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ResponseBody
@@ -114,6 +120,9 @@ public class AdminKlinikeController {
 		List<Klinika> sveKlinike = klinikaService.findAll();
 		Klinika klinika = null;
 		List<Ljekar> ljekari = ljekariService.findAll();
+		List<Sala> sale = salaService.findAll();
+		Set<Sala> pronadjeneSale = new HashSet<Sala>();
+		
 
 		for (Klinika k : sveKlinike) {
 			if(k.getId() == ulogovanAK.getKlinika().getId())
@@ -127,12 +136,25 @@ public class AdminKlinikeController {
 			for (TipPregleda tp : klinika.getTipoviPregleda()) {
 				tipoviPregledaDTO.add(new TipPregledaDTO(tp, null));
 			}
+			for (Sala sala : sale) {
+				if(sala.getKlinika().getId() != klinika.getId())
+				{
+					pronadjeneSale.add(sala);
+					System.out.println("PRONADJENA SALA: \n" + sala.getBrojSale());
+					
+				}
+				
+			}
+
 			
 		}
 		System.out.println("*********\n Broj lekara direktno preko klinike: " + klinika.getLjekari().size());
 		System.out.println("********\n BROJ TIPOVA PREGLEDA:"+klinika.getTipoviPregleda().size());
+		System.out.println("********\n BROJ SALA:"+sale.size());
+		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO,tipoviPregledaDTO,null);
+		klinikaDTO.setSale(pronadjeneSale);
 
-		return new ResponseEntity<>(new KlinikaDTO(klinika, ljekariDTO,tipoviPregledaDTO,null), HttpStatus.OK);
+		return new ResponseEntity<>(klinikaDTO, HttpStatus.OK);
 	}
 	 
 

@@ -19,10 +19,7 @@
     });	
 }
 function dobrodoslica(){
-			console.log(data.ime)
-			var paragraph = document.getElementById("dobrodoslica");
-			var text = document.createTextNode(data.ime);
-			paragraph.appendChild(text);
+			console.log(localStorage.getItem("ime"))
 }
  
 

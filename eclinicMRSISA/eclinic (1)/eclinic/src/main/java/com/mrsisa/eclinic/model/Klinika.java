@@ -43,8 +43,9 @@ public class Klinika {
    @Column(name="ocjena_klinike", unique=false, nullable=false)
    private double ocjenaKlinike;
    
-   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-   @JoinColumn(name = "broj_sale")
+   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "klinika")
+   @JsonManagedReference
+   //@JoinColumn(name = "broj_sale")
    private Set<Sala> sala = new HashSet<Sala>();
   
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)

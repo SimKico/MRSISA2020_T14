@@ -19,7 +19,7 @@ public class KlinikaDTO {
 	 private String adresa;
 	 private int tipKlinike;
 	 private double ocjenaKlinike;
-//	 private Set<Sala> sala = new HashSet<Sala>();
+	 private Set<Sala> sale = new HashSet<Sala>();
 	 private Set<PregledDTO> preglediDTO = new HashSet<PregledDTO>();
 	 private Set<TipPregledaDTO> tipoviPregledaDTO = new HashSet<TipPregledaDTO>();
 //	 private Set<AdminKlinike> adminKlinike = new HashSet<AdminKlinike>();
@@ -110,12 +110,12 @@ public class KlinikaDTO {
 	public void setOcjenaKlinike(Double ocjenaKlinike) {
 		this.ocjenaKlinike = ocjenaKlinike;
 	}
-//	public Set<Sala> getSale() {
-//		return sale;
-//	}
-//	public void setSale(Set<Sala> sale) {
-//		this.sale= sale;
-//	}
+	public Set<Sala> getSale() {
+		return sale;
+	}
+	public void setSale(Set<Sala> sale) {
+		this.sale= sale;
+	}
 	public Set<PregledDTO> getPregled() {
 		return preglediDTO;
 	}
