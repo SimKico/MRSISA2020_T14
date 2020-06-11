@@ -43,7 +43,7 @@
   				});
  			},
  			error: function(data) {
- 				console.log("Error");
+ 				$('.schedule-tab').append($('<h3 class="white">').text("Nemate zakazanih pregleda"));
  			}
  		});
     	
@@ -52,6 +52,7 @@
     
     
 function zapocniPregled (data, identifier){
+		
     	idPregleda = $(data).attr("id");
     	localStorage.setItem("idPregleda", idPregleda);
     	window.location = "zapocetPregled.html" ;
@@ -157,6 +158,45 @@ function izvjestajPregleda(){
 	  }); 
 	
 	
+}
+
+function prikaziPolja(){
+	if($('#pregled').is(':hidden'))
+		$('#pregled').prop('hidden', false);
+	else
+		$('#pregled').prop('hidden', true);
+}
+
+function zakaziPregled(){
+	datum = $('#datum').val();
+	popust = $('#popust').val();
+	popust = popust == "" ? "0" : popust;
+	vrijemePocetka = $('#pocetak option:selected').text();
+	idTekucegPregleda = localStorage.getItem("idPregleda");
+	data = {
+		"datum": datum,
+		"popust": popust,
+		"vrijemePocetka" : vrijemePocetka,
+		"idTekucegPregleda": idTekucegPregleda
+	};
+	console.log(data);
+	$.ajax({
+		type: "POST",
+		url: "/pregled/noviPregled",
+		data : JSON.stringify(data),
+		dataType: 'json',
+		contentType:  "application/json",
+		success: function(data){
+			
+			console.log(data);
+		},
+		error(data){
+			console.log(data);
+			alert("Postoji vec zakazan pregled datuma " + datum + " sa vremenom pocetka u " + vrijemePocetka);
+		}
+  }); 
+	
+	$('#pregled').prop('hidden', true);
 }
 
 

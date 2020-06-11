@@ -25,17 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.LjekarDTO;
-import com.mrsisa.eclinic.dto.PregledDTO;
+import com.mrsisa.eclinic.dto.ZakaziPregledDTO;
 import com.mrsisa.eclinic.model.Klinika;
-import com.mrsisa.eclinic.model.Korisnik;
 import com.mrsisa.eclinic.model.Ljekar;
-import com.mrsisa.eclinic.model.Pacijent;
+import com.mrsisa.eclinic.model.Operacija;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Specijalizacija;
 import com.mrsisa.eclinic.model.StatusPregleda;
-import com.mrsisa.eclinic.model.TipPregleda;
 import com.mrsisa.eclinic.model.ZahtjeviZaPregled;
-import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
 import com.mrsisa.eclinic.repository.TipPregledaRepository;
 import com.mrsisa.eclinic.service.EmailService;
 import com.mrsisa.eclinic.service.KlinikaService;
@@ -226,6 +223,42 @@ public class PregledController {
 //		System.out.println(p);
 		
 		return new ResponseEntity<>("Zahtjev za pregled je poslat. Dobicete odgovor u sto kracem roku. Hvala Vam na povjerenju!",HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/noviPregled", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ZakaziPregledDTO> zakaziPregled(@RequestBody ZakaziPregledDTO zpDTO){
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Pregled tekuci = pregledService.getOneByid(zpDTO.getIdTekucegPregleda());
+		Klinika klinika = klinikaService.findOneKlinkaByNaziv(tekuci.getLjekar().getKlinika().getNaziv());
+		List<Pregled> preglediLjekara = pregledService.getAllByLjekarId(tekuci.getLjekar().getId());
+		for(Pregled p : preglediLjekara) {
+			System.out.print(formatter.format(p.getDatum()));
+			if(p.getStatus() == StatusPregleda.zakazan) {
+				if(formatter.format(p.getDatum()).equals(formatter.format(zpDTO.getDatum())) && p.getVrijemePocetka().equals(zpDTO.getVrijemePocetka())) {
+					System.out.print("ISTI SUUUU");
+					return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+				}
+			}
+			else if(p.getStatus() == StatusPregleda.slobodan) {
+				p.setStatus(StatusPregleda.zakazan);
+				p.setPacijent(tekuci.getPacijent());
+				p = pregledService.save(p);
+				return new ResponseEntity<>(zpDTO,HttpStatus.CREATED);
+			}
+		}
+		Pregled novi = new Pregled();
+		novi.setDatum(zpDTO.getDatum());
+		novi.setVrijemePocetka(zpDTO.getVrijemePocetka());
+		novi.setStatus(StatusPregleda.zakazan);
+		novi.setPopust(zpDTO.getPopust());
+		novi.setPacijent(tekuci.getPacijent());
+		novi.setLjekar(tekuci.getLjekar());
+		novi.setTipPregleda(tekuci.getTipPregleda());
+		klinika.getPregled().add(novi);
+		novi = pregledService.save(novi);
+		return new ResponseEntity<>(zpDTO,HttpStatus.CREATED);
+		
 	}
 	
 }

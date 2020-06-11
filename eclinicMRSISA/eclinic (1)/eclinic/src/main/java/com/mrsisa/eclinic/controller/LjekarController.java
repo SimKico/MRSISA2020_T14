@@ -1,6 +1,8 @@
 package com.mrsisa.eclinic.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,31 +21,31 @@ import com.mrsisa.eclinic.dto.TipPregledaDTO;
 import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.StatusPregleda;
-import com.mrsisa.eclinic.repository.LjekarRepository;
-import com.mrsisa.eclinic.repository.PacijentRepository;
-import com.mrsisa.eclinic.repository.PregledRepository;
-import com.mrsisa.eclinic.repository.ZdravKartonRepository;
+import com.mrsisa.eclinic.service.LjekarService;
+import com.mrsisa.eclinic.service.PacijentService;
+import com.mrsisa.eclinic.service.PregledService;
+import com.mrsisa.eclinic.service.ZdravKartonService;
 
 @RestController
 @RequestMapping("/ljekar")
 public class LjekarController {
 	
 	@Autowired
-	LjekarRepository ljekarRepository;
+	LjekarService ljekarService;
 	
 	@Autowired 
-	PregledRepository pregledRepository;
+	PregledService pregledService;
 	
 	@Autowired
-	ZdravKartonRepository zdravKartonRepository;
+	ZdravKartonService zdravKartonService;
 	
 	@Autowired
-	PacijentRepository pacijentRepository;
+	PacijentService pacijentService;
 	
 	@RequestMapping(value = "/ucitaj",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<LjekarDTO>> getLjekar(){	
 		
-		List<Ljekar> ljekari = ljekarRepository.findAll();
+		List<Ljekar> ljekari = ljekarService.findAll();
 		List<LjekarDTO> ljekariDTO = new ArrayList<LjekarDTO>();
 		
 		for(Ljekar lj : ljekari) {
@@ -56,11 +58,20 @@ public class LjekarController {
 	@RequestMapping(value = "/pregledi",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PregledDTO>> getPregledi(@RequestParam("eadresa") String eadresa){	
 		
-		Ljekar ljekar = ljekarRepository.findOneByprijava_eAdresa(eadresa);
+		Ljekar ljekar = ljekarService.findOneByEmail(eadresa);
 		List<PregledDTO> pregledi = new ArrayList<PregledDTO>();
-		
+		List<Pregled> preg = pregledService.getAllByLjekarId(ljekar.getId());
+		for(Pregled p : preg) {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = new Date();
+			System.out.print(date);
+			if(p.getDatum().before(date)) {
+				pregledService.remove(p);
+			}
+		}
 		for (Pregled p : ljekar.getPregledi()) {
 			if(p.getStatus() == StatusPregleda.zakazan) {
+				System.out.print(p.getDatum());
 				LjekarDTO lj = new LjekarDTO(p.getLjekar());
 				TipPregledaDTO tp = new TipPregledaDTO(p.getTipPregleda(), null);
 				PacijentDTO pac = new PacijentDTO(p.getPacijent());
@@ -71,7 +82,9 @@ public class LjekarController {
 			}
 		}
 		
-		
+		if(pregledi.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity<>(pregledi, HttpStatus.OK);
 	}
 	

@@ -1,154 +1,184 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pregledi ljekara</title>
-    <meta
-      name="description"
-      content="Free Bootstrap Theme by BootstrapMade.com"
-    />
-    <meta
-      name="keywords"
-      content="free website templates, free bootstrap themes, free template, free bootstrap, free website template"
-    />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src = "js/izvjestajPregleda.js"></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal"
-    />
-    <!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    
-     <script type="text/javascript">
-     
-     
-     
-  </script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pregledi ljekara</title>
+<meta name="description"
+	content="Free Bootstrap Theme by BootstrapMade.com" />
+<meta name="keywords"
+	content="free website templates, free bootstrap themes, free template, free bootstrap, free website template" />
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/izvjestajPregleda.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal" />
+<!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script type="text/javascript">
+	
+</script>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="onLoadFunction()">
-  <!--banner-->
-     <section id="banner" class="banner">
-      <div class="bg-color" >
-        <nav class="navbar navbar-default navbar-fixed-top" class = "disabled">
-          <div class="container">
-            <div class="col-md-12">
-              <div class="navbar-header">
-                <button
-                  type="button"
-                  class="navbar-toggle"
-                  data-toggle="collapse"
-                  data-target="#myNavbar"
-                >
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"
-                  ><img
-                    src="img/logo.png"
-                    class="img-responsive"
-                    style="width: 140px; margin-top: -16px;"
-                /></a>
-              </div>
-              <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-                <ul class="nav navbar-nav">
-                
-<!--                   <li class="active"> -->
-<!--                     <a href="#" id="Registracija klinika">Registracija klinika</a> -->
-<!--                   </li> -->
-                  <li>
-                    <a href="#">Vrati se na profil</a>
-                  </li>
-<!--                   <li class="active"> -->
-<!--                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a> -->
-<!--                   </li> -->
-<!--                   <li class="active"> -->
-<!--                   <a href="#" id = "Zahtjevi za registraciju">Zahtjevi za registraciju</a> -->
-                  
-<!--                   </li> -->
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-      <div class="container">
-        <div class="row">
-          <div class="banner-info">
-            <div class="banner-logo text-center">
-              <!--<img src="../img/logo.png" class="img-responsive">  -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center form-group" class="container">
-      		<div class="col-md-4 col-sm-4">
-							<h3>Pacijent</h3>
-							<div class="space"></div>
-							<p id="ime">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Ime: <br />
-							</p>
-							<p id="prezime">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Prezime: <br />
-							</p>
-							<p id="jbo">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Jedinstveni broj osiguranika: <br />
-							</p>
-							<p id="krvnaGrupa">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Krvna grupa: 
-							</p>
-							<p id="visina">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Visina (cm): 
-							</p>
-							<p id="tezina">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Težina (kg): 
-							</p>
-							<p id="dioptrija">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Dioptrija: 
-							</p>
-							<p id="alergije">
-								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Alergije: 
-							</p>
+<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60" onload="onLoadFunction()">
+	<!--banner-->
+	<section id="banner" class="banner">
+		<div class="bg-color">
+			<nav class="navbar navbar-default navbar-fixed-top" class="disabled">
+				<div class="container">
+					<div class="col-md-12">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#"><img
+								src="img/logo.png" class="img-responsive"
+								style="width: 140px; margin-top: -16px;" /></a>
 						</div>
-                <form   onsubmit = "izvjestajPregleda(); return false">
-                    <h2 class="white">IZVJEŠTAJ</h2><br/>
-                    <table class="">
-                        <tr>
-                          <td class="labela" width="500px">Izvještaj:</td>
-                          <td class="podaci" width="500px"><textarea style="height:300px"id = "izvjestaj" class="form-control br-radius-zero" required ></textarea></textarea></td>
-                        </tr>           
-                        <tr>
-                          <td class="labela" width="300px">Dijagnoza:</td>
-                          <td class="podaci"><select id="dijagnoza"  style="width:500px"></select></td>
-                        </tr>         
-                        <tr>
-                          <td class="labela"  width="300px" >Lijek:</td>
-                          <td class="podaci"><select id="lijek" style="width:500px" multiple></select></td>
-                        </tr>
-                      <tr>
-                      <td></td>
-                      <td>
-                      	 <button type="submit" class="btn btn-appoint" >Završi pregled</button>
-                   		 </td>
-                    </tr>
-                    </table>
-                    </form>
-              </div>
-	   <div class="container">
-      <div class="row">
-        <div class="schedule-tab " > 
-        	
-        </div>
-      </div>
-    </div>
-  </section>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+
+								<!--                   <li class="active"> -->
+								<!--                     <a href="#" id="Registracija klinika">Registracija klinika</a> -->
+								<!--                   </li> -->
+								<li><a href="#">Vrati se na profil</a></li>
+								<!--                   <li class="active"> -->
+								<!--                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a> -->
+								<!--                   </li> -->
+								<!--                   <li class="active"> -->
+								<!--                   <a href="#" id = "Zahtjevi za registraciju">Zahtjevi za registraciju</a> -->
+
+								<!--                   </li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="container">
+				<div class="row">
+					<div class="banner-info">
+						<div class="banner-logo text-center">
+							<!--<img src="../img/logo.png" class="img-responsive">  -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div hidden="true" id="pregled" class="container">
+						<form onsubmit="zakaziPregled(); return false">
+							<h2 class="white">NOVI PREGLED</h2>
+							<br />
+							<table class="">
+								<tr>
+									<td class="labela" width="300px">Datum:</td>
+									<td class="podaci" width="300px"><input style="width: 135px" type="date"
+										id="datum" required></td>
+								</tr>
+								<tr>
+									<td class="labela" width="300px">Vrijeme pocetka:</td>
+									<td class="podaci" width="300px"><select id="pocetak"
+										style="width: 135px">
+											<option value=1>07:00</option>
+											<option value=2>08:00</option>
+											<option value=3>09:00</option>
+											<option value=4>11:00</option>
+											<option value=5>12:00</option>
+											<option value=6>13:00</option>
+											<option value=7>14:00</option>
+											<option value=8>15:00</option>
+											<option value=9>16:00</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td class="labela" width="300px">Popust:</td>
+									<td class="podaci" width="300px"><input type="number"
+										min="0" max="30" step=5 id="popust" style="width: 135px"></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>
+										<button type="submit" class="btn btn-appoint">Zakaži
+											pregled</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+			<div class="text-center form-group" class="container">
+			<div class = "container" align="left"><button  class="btn btn-appoint" onClick="prikaziPolja()">NOVI PREGLED</button></div>
+				<div class="col-md-4 col-sm-4">
+					<h3>Pacijent</h3>
+					<div class="space"></div>
+					<p id="ime">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Ime: <br />
+					</p>
+					<p id="prezime">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Prezime: <br />
+					</p>
+					<p id="jbo">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Jedinstveni
+						broj osiguranika: <br />
+					</p>
+					<p id="krvnaGrupa">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Krvna grupa:
+					</p>
+					<p id="visina">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Visina (cm):
+					</p>
+					<p id="tezina">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Težina (kg):
+					</p>
+					<p id="dioptrija">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Dioptrija:
+					</p>
+					<p id="alergije">
+						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Alergije:
+					</p>
+				</div>
+				<form onsubmit="izvjestajPregleda(); return false">
+					<h2 class="white">IZVJEŠTAJ</h2>
+					<br />
+					<table class="">
+						<tr>
+							<td class="labela" width="500px">Izvještaj:</td>
+							<td class="podaci" width="500px"><textarea
+									style="height: 300px" id="izvjestaj"
+									class="form-control br-radius-zero" required></textarea>
+								</td>
+						</tr>
+						<tr>
+							<td class="labela" width="300px">Dijagnoza:</td>
+							<td class="podaci"><select id="dijagnoza"
+								style="width: 500px"></select></td>
+						</tr>
+						<tr>
+							<td class="labela" width="300px">Lijek:</td>
+							<td class="podaci"><select id="lijek" style="width: 500px"
+								multiple></select></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<button type="submit" class="btn btn-appoint">Završi
+									pregled</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="schedule-tab "></div>
+					
+				</div>
+			</div>
+	</section>
 	<script src="js/jquery.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="contactform/contactform.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="contactform/contactform.js"></script>
 </body>
 </html>
