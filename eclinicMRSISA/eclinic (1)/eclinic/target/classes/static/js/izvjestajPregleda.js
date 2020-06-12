@@ -33,7 +33,7 @@
   											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
   											  									.append($('<tr>').append($('<td style="width:250px">').text(" Jedinstveni broj osiguranika  ")).append($('<td style="width:250px">').text( value.pacijentDTO.jedBrojOsiguranika)))
   											  									.append($('<tr>').append($('<td>').text(" Tip pregleda ")).append($('<td>').text(value.tipPregledaDTO.specijalizacija)))
-  											  									.append($('<tr>').append($('<td>').text(" Vrijeme pocetka ")).append($('<td >').text(value.vrijemePocetka)))
+  											  									.append($('<tr>').append($('<td>').text(" Vrijeme početka ")).append($('<td >').text(value.vrijemePocetka)))
   											  									.append($('<tr>').append($('<td>').text(" Trajanje: ")).append($('<td>').text(value.tipPregledaDTO.trajanje + " sat/a")))
   											  									.append($('<tr>').append($('<td>').text(" Klinika: ")).append($('<td>').text(value.ljekarDTO.klinika)))
   											  									  ))
@@ -55,7 +55,21 @@ function zapocniPregled (data, identifier){
 		
     	idPregleda = $(data).attr("id");
     	localStorage.setItem("idPregleda", idPregleda);
-    	window.location = "zapocetPregled.html" ;
+    	$.ajax({
+			type: "GET",
+			url: "/ljekar/zapocni",
+			data: {id: idPregleda},
+			success: function(data){
+				console.log(data);
+				
+				window.location = "zapocetPregled.html" ;
+			},
+			error: function(data){
+				console.log(data);
+				alert(data.responseText);
+			}
+	  }); 
+    	
     }
 
 

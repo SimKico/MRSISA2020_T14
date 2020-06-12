@@ -278,5 +278,7 @@ public class PregledController {
 		return new ResponseEntity<>(zpDTO, HttpStatus.CREATED);
 
 	}
+	
+	
 
 }

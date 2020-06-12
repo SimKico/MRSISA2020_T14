@@ -1,6 +1,8 @@
 package com.mrsisa.eclinic.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,16 +61,17 @@ public class LjekarController {
 	}
 	
 	@RequestMapping(value = "/pregledi",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<PregledDTO>> getPregledi(@RequestParam("eadresa") String eadresa){	
+	public ResponseEntity<List<PregledDTO>> getPregledi(@RequestParam("eadresa") String eadresa) throws ParseException{	
 		
 		Ljekar ljekar = ljekarService.findOneByEmail(eadresa);
 		List<PregledDTO> pregledi = new ArrayList<PregledDTO>();
 		List<Pregled> preg = pregledService.getAllByLjekarId(ljekar.getId());
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		for(Pregled p : preg) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = new Date();
 			System.out.print(date);
-			if(p.getDatum().before(date)) {
+			if(sdf.parse(sdf.format((p.getDatum()))).before(sdf.parse(sdf.format(date)))) {
 				pregledService.remove(p);
 			}
 		}
@@ -89,6 +92,29 @@ public class LjekarController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(pregledi, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/zapocni",  method = RequestMethod.GET)
+	public ResponseEntity<String> checkStart(@RequestParam("id") String id) throws ParseException{	
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Pregled pregled = pregledService.getOneByid(Long.parseLong(id));
+		
+		LocalTime pocetak = LocalTime.parse(pregled.getVrijemePocetka());
+		LocalTime kraj = pocetak.plusHours(pregled.getTipPregleda().getTrajanje());
+		LocalTime trenutno = LocalTime.now();
+		
+		Date danas = new Date();
+		
+		if(sdf.parse(sdf.format(danas)).before(sdf.parse(sdf.format(pregled.getDatum())))) {
+			return new ResponseEntity<>("Pregled nije na današnji dan.", HttpStatus.BAD_REQUEST);
+		}
+		else if(trenutno.isBefore(pocetak) || trenutno.isAfter(kraj)) {
+			return new ResponseEntity<>("Pregled se još ne može započeti.", HttpStatus.BAD_REQUEST);
+		}
+		System.out.print(id);
+		return new ResponseEntity<>("Uspjeh", HttpStatus.OK);
 	}
 	
 	
