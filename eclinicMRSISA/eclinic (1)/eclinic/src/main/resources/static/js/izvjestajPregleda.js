@@ -187,16 +187,15 @@ function zakaziPregled(){
 		dataType: 'json',
 		contentType:  "application/json",
 		success: function(data){
-			
 			console.log(data);
+			$('#pregled').prop('hidden', true);
 		},
 		error(data){
 			console.log(data);
-			alert("Postoji vec zakazan pregled datuma " + datum + " sa vremenom pocetka u " + vrijemePocetka);
+			alert("Postoji vec zakazan pregled datuma " + datum + " u vrijeme " + vrijemePocetka);
 		}
   }); 
 	
-	$('#pregled').prop('hidden', true);
 }
 
 

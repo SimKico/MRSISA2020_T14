@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import com.mrsisa.eclinic.dto.LjekarDTO;
 import com.mrsisa.eclinic.dto.PacijentDTO;
 import com.mrsisa.eclinic.dto.PregledDTO;
 import com.mrsisa.eclinic.dto.TipPregledaDTO;
+import com.mrsisa.eclinic.dto.ZakaziPregledDTO;
 import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.StatusPregleda;
@@ -87,5 +90,6 @@ public class LjekarController {
 		}
 		return new ResponseEntity<>(pregledi, HttpStatus.OK);
 	}
+	
 	
 }

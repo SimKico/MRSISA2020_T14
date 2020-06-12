@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mrsisa.eclinic.dto.IzvjestajPregledaDTO;
+import com.mrsisa.eclinic.dto.ZakaziPregledDTO;
 import com.mrsisa.eclinic.dto.ZdravstveniKartonDTO;
 import com.mrsisa.eclinic.model.Dijagnoza;
 import com.mrsisa.eclinic.model.IzvjestajPregleda;
@@ -104,7 +105,6 @@ public class ZdravstveniKartonContoller {
 		ip = ipService.save(ip);
 		return new ResponseEntity<>(ipDTO,HttpStatus.OK);
 	}
-	
 	
 	
 }
