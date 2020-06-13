@@ -1,8 +1,14 @@
 package com.mrsisa.eclinic.dto;
 
+import com.mrsisa.eclinic.model.Lijek;
+
 public class LijekDTO {
 	
 	String lijek;
+	
+	public LijekDTO(Lijek lijek){
+		this.lijek = lijek.getNaziv();
+	}
 	
 	public LijekDTO(){
 		

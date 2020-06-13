@@ -20,12 +20,12 @@ import javax.persistence.Table;
 public class Recept {
   
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   @Column(name="recept_id", unique=true, nullable=false)
    private Long receptId;
   
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name="lijek", referencedColumnName="naziv_lijeka")
+  @JoinColumn(name="lijek", referencedColumnName="sifra_lijeka")
    public Lijek lijek;
   
   @ManyToOne(fetch = FetchType.LAZY)

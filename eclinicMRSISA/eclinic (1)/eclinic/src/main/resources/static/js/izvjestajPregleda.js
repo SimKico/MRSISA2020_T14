@@ -168,6 +168,7 @@ function izvjestajPregleda(){
  		    contentType:  "application/json",
 			success: function(data){
 				console.log(data);
+				window.location = "zapocinjanjePregleda.html"
 			}
 	  }); 
 	

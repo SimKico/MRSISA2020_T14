@@ -111,7 +111,7 @@ public class LjekarController {
 			return new ResponseEntity<>("Pregled nije na današnji dan.", HttpStatus.BAD_REQUEST);
 		}
 		else if(trenutno.isBefore(pocetak) || trenutno.isAfter(kraj)) {
-			return new ResponseEntity<>("Pregled se još ne može započeti.", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Pregled se ne može započeti. Ili je prošlo vrijeme održavanja ili nije još vrijeme održavanja.", HttpStatus.BAD_REQUEST);
 		}
 		System.out.print(id);
 		return new ResponseEntity<>("Uspjeh", HttpStatus.OK);
