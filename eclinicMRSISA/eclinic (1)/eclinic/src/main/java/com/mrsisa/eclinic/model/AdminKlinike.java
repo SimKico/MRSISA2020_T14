@@ -6,7 +6,9 @@
 package com.mrsisa.eclinic.model;
 import static javax.persistence.CascadeType.ALL;
 
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
@@ -19,7 +21,9 @@ import javax.persistence.OneToMany;
 @Entity
 @DiscriminatorValue("AK")
 public class AdminKlinike extends Korisnik {
-   
+
+	private static final long serialVersionUID = 1L;
+
    @ManyToOne
    @JoinColumn(name = "klinika_id", referencedColumnName = "klinika_id")
    public Klinika klinika;
@@ -37,6 +41,21 @@ public class AdminKlinike extends Korisnik {
   @JoinColumn(name = "id") 
   public Set<ZahtjeviZaPregled> zahtjeviZaPregled = new HashSet<ZahtjeviZaPregled>();
  
+  public AdminKlinike(Long id, String tip, boolean aktivan, String ime, String prezime, boolean dodijeljenaLozinka,
+			Prijava prijava, boolean enabled, Date lastPasswordResetDate, List<Authority> authorities, Klinika klinika,
+			Set<ZahtjeviZaOdsustvo> zahtjeviZaOdsustvo, Set<ZahtjeviZaSale> zahtjeviZaSale,
+			Set<ZahtjeviZaPregled> zahtjeviZaPregled) {
+		super( aktivan, ime, prezime, dodijeljenaLozinka, prijava, enabled, lastPasswordResetDate, authorities, prijava.geteAdresa(),prijava.getLozinka());
+		this.klinika = klinika;
+		this.zahtjeviZaOdsustvo = zahtjeviZaOdsustvo;
+		this.zahtjeviZaSale = zahtjeviZaSale;
+		this.zahtjeviZaPregled = zahtjeviZaPregled;
+	}
+
+
+public AdminKlinike() {
+	// TODO Auto-generated constructor stub
+}
 
 
 public Klinika getKlinika() {

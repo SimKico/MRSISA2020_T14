@@ -9,6 +9,7 @@ import static javax.persistence.CascadeType.ALL;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,10 +34,10 @@ public class ZdravstveniKarton {
    private String krvnaGrupa;
 
    @Column(name="visina", unique=false)
-   private int visinaCm;
+   private Integer visinaCm;
  
    @Column(name="tezina", unique=false)
-   private int tezinaKg;
+   private Integer tezinaKg;
   
    @Column(name="alergije", unique=false)
    private String alergije;

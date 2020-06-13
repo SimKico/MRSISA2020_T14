@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("MS")
 public class MedicinskaSestra extends Korisnik {
 	
+	private static final long serialVersionUID = 1L;
+
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="sestra")
 	private Set<ZahtjeviZaOdsustvo> odsustvo = new HashSet<ZahtjeviZaOdsustvo>();
 	
@@ -50,6 +52,13 @@ public class MedicinskaSestra extends Korisnik {
 	public void setRecepti(Set<Recept> recepti) {
 		this.recepti = recepti;
 	}
-	
+	public MedicinskaSestra( boolean aktivan, String ime, String prezime,
+			boolean dodijeljenaLozinka, Prijava prijava, boolean enabled, Date lastPasswordResetDate,
+			List<Authority> authorities, Set<ZahtjeviZaOdsustvo> odsustvo, Klinika klinika, Set<Recept> recepti) {
+		super(aktivan, ime, prezime, dodijeljenaLozinka, prijava, enabled, lastPasswordResetDate, authorities,prijava.geteAdresa(),prijava.getLozinka());
+		this.odsustvo = odsustvo;
+		this.klinika = klinika;
+		this.recepti = recepti;
+	}
 	
 }

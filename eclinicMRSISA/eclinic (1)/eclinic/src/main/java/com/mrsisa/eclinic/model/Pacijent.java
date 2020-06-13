@@ -4,9 +4,12 @@
  * Purpose: Defines the Class Pacijent
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -19,7 +22,13 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("P")
 public class Pacijent extends Korisnik {
 
-@Column(name="jbo", unique=true)
+	public Pacijent() {
+		super();
+	}
+
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="jbo", unique=true)
    private String jedBrojOsiguranika;
    
    @Column(name="broj_telefona", unique=false)
@@ -34,18 +43,27 @@ public class Pacijent extends Korisnik {
    @Column(name="drzava", unique=false)
    private String drzava;
    
-   @OneToOne(fetch=FetchType.LAZY)
+   @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name="karton_id", referencedColumnName="karton_id", nullable = true)
    public ZdravstveniKarton zdravstveniKarton;
    
    @OneToMany(fetch=FetchType.LAZY, mappedBy="pacijent")
    private Set<Pregled> pregledi = new HashSet<Pregled>();
 
-  
-public Pacijent() {
-		super();
+	public Pacijent( boolean aktivan, String ime, String prezime, boolean dodijeljenaLozinka,
+			Prijava prijava, boolean enabled, Date lastPasswordResetDate, List<Authority> authorities,
+			String jedBrojOsiguranika, String brojTelefona, String adresaPrebivalista, String grad, String drzava,
+			ZdravstveniKarton zdravstveniKarton, Set<Pregled> pregledi) {
+		super(aktivan, ime, prezime, dodijeljenaLozinka, prijava, enabled, lastPasswordResetDate, authorities,prijava.geteAdresa(), prijava.getLozinka());
+		this.jedBrojOsiguranika = jedBrojOsiguranika;
+		this.brojTelefona = brojTelefona;
+		this.adresaPrebivalista = adresaPrebivalista;
+		this.grad = grad;
+		this.drzava = drzava;
+		this.zdravstveniKarton = zdravstveniKarton;
+		this.pregledi = pregledi;
 	}
-
+	
 public Pacijent(ZahtjeviZaRegistraciju zahtjev) {
 	this.jedBrojOsiguranika = zahtjev.getJbo();
 	this.brojTelefona = zahtjev.getBrojTelefona();
@@ -54,6 +72,7 @@ public Pacijent(ZahtjeviZaRegistraciju zahtjev) {
 	this.adresaPrebivalista = this.getAdresaPrebivalista();
 	this.setIme(zahtjev.getIme());
 	this.setPrezime(zahtjev.getPrezime());
+	
 }
 
 

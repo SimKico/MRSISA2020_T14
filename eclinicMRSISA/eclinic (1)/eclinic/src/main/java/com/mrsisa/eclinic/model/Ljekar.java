@@ -5,7 +5,10 @@
  ***********************************************************************/
 package com.mrsisa.eclinic.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -23,6 +26,9 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("LJ")
 public class Ljekar extends Korisnik {
    
+
+	private static final long serialVersionUID = 1L;
+
 	@Column(name="specijalizacija", unique=false)
    private Specijalizacija specijalizacija;
 	
@@ -126,7 +132,24 @@ public class Ljekar extends Korisnik {
 	public void setOperacije(Set<Operacija> operacije) {
 		this.operacije = operacije;
 	}
-	
-	
+	public Ljekar( boolean aktivan, String ime, String prezime, boolean dodijeljenaLozinka,
+			Prijava prijava, boolean enabled, Date lastPasswordResetDate, List<Authority> authorities,
+			Specijalizacija specijalizacija, Integer prosjecnaOcjena, String dodatneInfo, String radnoVrijeme,
+			Set<Pregled> pregledi, Set<ZahtjeviZaSale> sale, Set<ZahtjeviZaOdsustvo> odsustvo, Klinika klinika,
+			Set<Operacija> operacije) {
+		super(aktivan, ime, prezime, dodijeljenaLozinka, prijava, enabled, lastPasswordResetDate, authorities,prijava.geteAdresa(), prijava.getLozinka());
+		this.specijalizacija = specijalizacija;
+		this.prosjecnaOcjena = prosjecnaOcjena;
+		this.dodatneInfo = dodatneInfo;
+		this.radnoVrijeme = radnoVrijeme;
+		this.pregledi = pregledi;
+		this.sale = sale;
+		this.odsustvo = odsustvo;
+		this.klinika = klinika;
+		this.operacije = operacije;
+	}
 
+	public Ljekar() {
+		super();
+	}
 }
