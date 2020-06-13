@@ -6,7 +6,7 @@ public class ReceptDTO {
 	
 	String lijek;
 	String eadresaMedSestre;
-	Long idRecepta;
+	String idRecepta;
 	
 	public ReceptDTO() {
 		super();
@@ -16,14 +16,14 @@ public class ReceptDTO {
 		super();
 		this.lijek = r.getLijek().getNaziv();
 		this.eadresaMedSestre = r.getSestra().getPrijava().geteAdresa();
-		this.idRecepta = r.getRecept_id();
+		this.idRecepta = Long.toString(r.getRecept_id());
 	}
 	
 	public ReceptDTO(String lijek, String eadresaMedSestre, Long idRecepta) {
 		super();
 		this.lijek = lijek;
 		this.eadresaMedSestre = eadresaMedSestre;
-		this.idRecepta = idRecepta;
+		this.idRecepta = Long.toString(idRecepta);
 	}
 
 
@@ -43,6 +43,16 @@ public class ReceptDTO {
 	public void setEadresaMedSestre(String eadresaMedSestre) {
 		this.eadresaMedSestre = eadresaMedSestre;
 	}
+
+	public String getIdRecepta() {
+		return idRecepta;
+	}
+
+	public void setIdRecepta(String idRecepta) {
+		this.idRecepta = idRecepta;
+	}
+	
+	
 	
 	
 }

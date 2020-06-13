@@ -36,15 +36,15 @@
  				console.log("JUHUUU");
  				index = 0;
  				$.each(data, function(key, value) {
-  					$('.schedule-tab').append($('<div id = '+value.idRecepta+'></div>')
+  					$('.schedule-tab').append($('<div id ="r'+value.idRecepta+'"></div>')
   									  .append($('<div class="medi-info">').append($('<h3>').text("Recept"))
   											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
   											  									.append($('<tr>').append($('<td style="width:250px">').text(" Lijek ")).append($('<td style="width:250px">').text(value.lijek)))
   											  									
   											  									  ))
-							  											  .append($('<a href="#" onclick = ovjeriRecept(this,'+value.idRecepta+ ') class="medi-info-btn">').text("OVJERI").attr("id", value.idRecepta))))
+							  											  .append($('<a href="#" onclick = ovjeriRecept(this,r'+value.idRecepta+ ') class="medi-info-btn">').text("OVJERI").attr("id", value.idRecepta))))
 							  											  
-  					
+							  											
   								  
 							
   				});
@@ -59,23 +59,32 @@
     function ovjeriRecept(data, identifier){
     	idRecepta = $(data).attr("id");
     	console.log(idRecepta);
-//     	$.ajax({
-//     		type : "PUT",
-//     		url: "zahtjeviReg/prihvatanje",
-//     		data: {eadresa: eadresa},
-//     		success: function(data){
-//     			alert(data);
-//     			identifier.remove();
+    	eadresa = localStorage.getItem("eadresa");
+    	console.log(eadresa);
+    	data = {
+    			"lijek" : null,
+    			"eadresaMedSestre" : eadresa,
+    			"idRecepta" : idRecepta
+    	};
+    	$.ajax({
+    		type : "PUT",
+    		url: "sestra/ovjera",
+    		data: JSON.stringify(data),
+    		contentType: "application/json",
+    		success: function(data){
+    			alert(data);
+    			identifier.remove();
     			
     			
-//     		},
-//     		error: function(data){
-//  				alert(data.responseText);
-//  				identifier.remove();
+    		},
+    		error: function(data){
+    			console.log(data);
+ 				alert(data.responseText);
+ 				//identifier.remove();
  				
-//  			}
+ 			}
     		
-//     	})
+    	})
     }
   
   </script>

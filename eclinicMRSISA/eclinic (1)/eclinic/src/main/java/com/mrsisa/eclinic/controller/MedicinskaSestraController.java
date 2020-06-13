@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,7 +47,7 @@ public class MedicinskaSestraController {
 		
 		for(Recept r : recepti) {
 			System.out.print(r.getIzvjestajPregleda().getIzvjestaj_id());
-			if((r.getIzvjestajPregleda().getPregled().getLjekar().getKlinika().getNaziv()).equals(ms.getKlinika().getNaziv()))
+			if((r.getIzvjestajPregleda().getPregled().getLjekar().getKlinika().getNaziv()).equals(ms.getKlinika().getNaziv()) && (r.getSestra() == null))
 				receptiDTO.add(new ReceptDTO(r.getLijek().getNaziv(), null, r.getRecept_id()));
 		}
 		
@@ -53,6 +56,17 @@ public class MedicinskaSestraController {
 		}
 		
 		return new ResponseEntity<List<ReceptDTO>>(receptiDTO, HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/ovjera", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ReceptDTO> recept(@RequestBody ReceptDTO receptDTO){
+		
+		Recept recept = receptService.findOneById(Long.parseLong(receptDTO.getIdRecepta()));
+		MedicinskaSestra sestra = msService.findByEmail(receptDTO.getEadresaMedSestre());
+		recept.setSestra(sestra);
+		recept = receptService.save(recept);
+		
+		return new ResponseEntity<>(receptDTO, HttpStatus.OK);
 	}
 	
 
