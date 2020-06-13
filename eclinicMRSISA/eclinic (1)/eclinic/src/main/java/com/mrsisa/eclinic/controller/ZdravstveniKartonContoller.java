@@ -1,5 +1,8 @@
 package com.mrsisa.eclinic.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -85,26 +88,29 @@ public class ZdravstveniKartonContoller {
 		
 		Dijagnoza dijagnoza = dijagnozaService.findDijagnozaByName(ipDTO.getDijagnozaDTO().getDijagnoza());
 		ZdravstveniKarton zk = zkService.findZkById(pregled.getPacijent().getZdravstveniKarton().getIdKartona());
+		Set<Recept> recepti = new HashSet<Recept>();
 		
 		IzvjestajPregleda ip = new IzvjestajPregleda();
 		ip.setDijagnoza(dijagnoza);
 		ip.setPregled(pregled);
 		ip.setIzvjestaj(ipDTO.getIzvjestaj());
+		ip.setRecepti(recepti);
 		
+		
+		
+		zk.getIzvjestajPregleda().add(ip);
+		ip = ipService.save(ip);
 		
 		for(String l : ipDTO.getLijekovi()) {		
 			Lijek lijek = lijekService.findLijekByName(l);
 			Recept recept = new Recept();
 			recept.setLijek(lijek);
-			ip.getRecepti().add(recept);
+			recept.setIzvjestajPregleda(ip);
 			recept = receptService.save(recept);
 		}
 		
-		zk.getIzvjestajPregleda().add(ip);
-		ip = ipService.save(ip);
 		return new ResponseEntity<>(ipDTO,HttpStatus.OK);
 	}
-	
 	
 	
 }

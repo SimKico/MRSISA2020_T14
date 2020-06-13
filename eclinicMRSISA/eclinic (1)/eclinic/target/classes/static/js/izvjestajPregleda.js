@@ -33,7 +33,7 @@
   											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
   											  									.append($('<tr>').append($('<td style="width:250px">').text(" Jedinstveni broj osiguranika  ")).append($('<td style="width:250px">').text( value.pacijentDTO.jedBrojOsiguranika)))
   											  									.append($('<tr>').append($('<td>').text(" Tip pregleda ")).append($('<td>').text(value.tipPregledaDTO.specijalizacija)))
-  											  									.append($('<tr>').append($('<td>').text(" Vrijeme pocetka ")).append($('<td >').text(value.vrijemePocetka)))
+  											  									.append($('<tr>').append($('<td>').text(" Vrijeme početka ")).append($('<td >').text(value.vrijemePocetka)))
   											  									.append($('<tr>').append($('<td>').text(" Trajanje: ")).append($('<td>').text(value.tipPregledaDTO.trajanje + " sat/a")))
   											  									.append($('<tr>').append($('<td>').text(" Klinika: ")).append($('<td>').text(value.ljekarDTO.klinika)))
   											  									  ))
@@ -43,7 +43,7 @@
   				});
  			},
  			error: function(data) {
- 				console.log("Error");
+ 				$('.schedule-tab').append($('<h3 class="white">').text("Nemate zakazanih pregleda"));
  			}
  		});
     	
@@ -52,9 +52,24 @@
     
     
 function zapocniPregled (data, identifier){
+		
     	idPregleda = $(data).attr("id");
     	localStorage.setItem("idPregleda", idPregleda);
-    	window.location = "zapocetPregled.html" ;
+    	$.ajax({
+			type: "GET",
+			url: "/ljekar/zapocni",
+			data: {id: idPregleda},
+			success: function(data){
+				console.log(data);
+				
+				window.location = "zapocetPregled.html" ;
+			},
+			error: function(data){
+				console.log(data);
+				alert(data.responseText);
+			}
+	  }); 
+    	
     }
 
 
@@ -153,9 +168,48 @@ function izvjestajPregleda(){
  		    contentType:  "application/json",
 			success: function(data){
 				console.log(data);
+				window.location = "zapocinjanjePregleda.html"
 			}
 	  }); 
 	
+	
+}
+
+function prikaziPolja(){
+	if($('#pregled').is(':hidden'))
+		$('#pregled').prop('hidden', false);
+	else
+		$('#pregled').prop('hidden', true);
+}
+
+function zakaziPregled(){
+	datum = $('#datum').val();
+	popust = $('#popust').val();
+	popust = popust == "" ? "0" : popust;
+	vrijemePocetka = $('#pocetak option:selected').text();
+	idTekucegPregleda = localStorage.getItem("idPregleda");
+	data = {
+		"datum": datum,
+		"popust": popust,
+		"vrijemePocetka" : vrijemePocetka,
+		"idTekucegPregleda": idTekucegPregleda
+	};
+	console.log(data);
+	$.ajax({
+		type: "POST",
+		url: "/pregled/noviPregled",
+		data : JSON.stringify(data),
+		dataType: 'json',
+		contentType:  "application/json",
+		success: function(data){
+			console.log(data);
+			$('#pregled').prop('hidden', true);
+		},
+		error(data){
+			console.log(data);
+			alert("Postoji vec zakazan pregled datuma " + datum + " u vrijeme " + vrijemePocetka);
+		}
+  }); 
 	
 }
 

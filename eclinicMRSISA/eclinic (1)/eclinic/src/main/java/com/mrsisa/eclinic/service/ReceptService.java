@@ -22,6 +22,10 @@ public class ReceptService {
 		return receptRepository.findAllByIzvjestajPregleda_izvjestajId(id);
 	}
 	
+	public List<Recept> findAll(){
+		return receptRepository.findAll();
+	}
+	
 	public Recept save(Recept recept) {
 		return receptRepository.save(recept);
 	}

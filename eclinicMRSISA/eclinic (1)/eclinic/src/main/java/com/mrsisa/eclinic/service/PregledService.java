@@ -84,6 +84,10 @@ public class PregledService {
 	public Pregled save(Pregled pregled) {
 		return pregledRepository.save(pregled);
 	}
+	
+	public void remove(Pregled pregled) {
+		pregledRepository.delete(pregled);
+	}
 
 
 }

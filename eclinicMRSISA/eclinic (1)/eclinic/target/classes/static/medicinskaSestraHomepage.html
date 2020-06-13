@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homepage medicinske sestre</title>
+<meta name="description"
+	content="Free Bootstrap Theme by BootstrapMade.com" />
+<meta name="keywords"
+	content="free website templates, free bootstrap themes, free template, free bootstrap, free website template" />
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/profilAKC.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal" />
+<!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script type="text/javascript">
+	
+	function ucitaj(){
+		console.log("nesto");
+		$.ajax({
+			type: "GET",
+			url: "/sestra/info",
+			data: {eadresa: "medicinskaSestra1@eclinic.com"},
+			success: function(data){
+				console.log(data);
+				localStorage.setItem("eadresa", data.eadresa);
+				localStorage.setItem("ime", data.ime);
+				localStorage.setItem("prezime", data.prezime);
+				localStorage.setItem("klinika", data.nazivKlinike);
+				 $("#ime").append(localStorage.getItem("ime"));
+				  $("#prezime").append(localStorage.getItem("prezime"));
+				  $("#eadresa").append(localStorage.getItem("eadresa"));
+				  $("#klinika").append(localStorage.getItem("klinika"));
+
+				
+			}
+		})
+	}
+	
+</script>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60" onLoad="ucitaj()">
+	<!--banner-->
+	<section id="banner" class="banner">
+		<div class="bg-color">
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container">
+					<div class="col-md-12">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/"><img src="img/logo.png"
+								class="img-responsive" style="width: 140px; margin-top: -16px;" /></a>
+						</div>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href=""
+									id="Registracija klinika">Profil</a></li>
+								<li class="active"><a href=""
+									id="Registracija admina klinike">Radni kalendar
+										</a></li>
+								<li class="active"><a href="dodavanjeAKC.html"
+									id="Dodavanje admina klinickog centra">Zahtjev za odsustvo</a></li>
+								<li class="active"><a href=""
+									id="Zahtjevi za registraciju">Pacijenti klinike</a></li>
+								<li class="active"><a href="ovjeravanjeRecepata.html"
+									id="Zahtjevi za registraciju">Ovjera recepata</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="container">
+				<div class="row">
+					<div class="banner-info">
+						<div class="banner-logo text-center">
+							<!--<img src="../img/logo.png" class="img-responsive">  -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<form action="action_page.php" method="post">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-4">
+							<h3>Lične informacije</h3>
+							<div class="space"></div>
+							<p id="ime">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Ime: <br />
+							</p>
+							<p id="prezime">
+								<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Prezime: <br />
+							</p>
+							<p id="eadresa">
+								<i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> Email: <br />
+							</p>
+							<p id="klinika">
+								<i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> Klinika: <br />
+							</p>
+							<div class="space"></div>
+							<p>
+								<i class="fa fa-phone fa-fw pull-left fa-2x"></i>Uloga:<br />
+								Medicinska Sestra
+							</p>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+	<!--/ banner-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="contactform/contactform.js"></script>
+
+</body>
+</html>
