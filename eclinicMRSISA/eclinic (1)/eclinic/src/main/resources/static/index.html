@@ -23,6 +23,8 @@
  <script src = "js/pacijentHomepage.js"></script>
  <script src = "js/profilAKC.js"></script>
  <script src = "js/adminKlinike.js"></script>
+ 
+ <script src = "js/logovanje.js"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
@@ -57,18 +59,15 @@
           </div>
         </div>
       </div>
-	  <form action="action_page.php" method="post">
-  <div class="container">
-    <input type="text" placeholder="Enter Username" class="form-control br-radius-zero" name="uname" required>
-	<p></p>
-    <input type="password" placeholder="Enter Password" class="form-control br-radius-zero" name="psw" required>
 
-    <button type="submit" class="btn btn-appoint">Login</button>
-	<a href="register.html" style="color:black">Registruj se</a>
-	
-	
+  <div class="container">
+    <input type="text" placeholder="Unesite e-mail" class="form-control br-radius-zero" id="email" required>
+	<p></p>
+    <input type="password" placeholder="Unesite sifru" class="form-control br-radius-zero" id="lozinka" required>	
+    <input type="submit" value = "Prijava" class="btn btn-appoint" onclick = "logovanje()"/>
+    <input type="submit" value = "Registracija" class="btn btn-appoint" />
   </div>
-</form>
+
     </div>
 	<input type="submit" value = "AK" onclick = "prikaziHomepageAK()"/>
     <input type="submit" value = "AKC" onclick = "predjiNaProfil()"/>
