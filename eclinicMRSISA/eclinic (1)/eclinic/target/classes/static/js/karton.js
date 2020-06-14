@@ -157,3 +157,24 @@ function ucitajPodatkePregledaPacijenta(){
 	});
 	
 }
+
+
+function otkaziPregled(){
+	confirm("Sigurno želite da zakažete pregled?")
+	var id = localStorage.getItem('idPregleda');
+	$.ajax({
+		url: "/pregled/otkaziPregled/" + email,
+		type: "PUT",
+		data: {id : id },
+		headers: { "Authorization": "Bearer " + token},
+		success: function (result) {
+			console.log(result);
+			alert("Otkazali ste pregled!");
+			istorijaPregleda();
+		}
+	,
+		error: function(result) {
+			alert("Something is wrong with your request.(get details)");
+		}
+    });	
+}

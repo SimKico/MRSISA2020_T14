@@ -223,6 +223,22 @@ public class PregledController {
 				"Zahtjev za pregled je poslat. Dobicete odgovor u sto kracem roku. Hvala Vam na povjerenju!",
 				HttpStatus.OK);
 	}
+	@PutMapping(value = "/otkaziPregled/{email}")
+	public ResponseEntity<String> otkaziPregled(@RequestParam String id) throws ParseException {
+		System.out.println("alkgasdkg;laksdg0");
+		System.out.println(id);
+		Long id_pregleda = Long.parseLong(id);
+		Pregled p = pregledService.getOneByid(id_pregleda);
+		
+		p.setStatus(StatusPregleda.slobodan);
+		p.setPacijent(null);
+		p = pregledService.save(p);
+		System.out.println(p);
+
+		return new ResponseEntity<>(
+				"Otkazali ste pregled.",
+				HttpStatus.OK);
+	}
 
 	@PostMapping(value = "/noviPregled", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
