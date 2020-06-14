@@ -79,8 +79,10 @@ public class ZdravstveniKartonContoller {
 	    
 	    for(IzvjestajPregleda ip : zk.getIzvjestajPregleda()) {
 			
-	    	System.out.print(ip.getIzvjestaj());
-			zkDTO.getIzvjestajPregledaDTO().add(new IzvjestajPregledaDTO(ip));	  
+	    	if(ip.getPregled().getLjekar().getId() == pregled.getLjekar().getId()) {
+	    		System.out.print(ip.getIzvjestaj());
+				zkDTO.getIzvjestajPregledaDTO().add(new IzvjestajPregledaDTO(ip));	
+	    	}  
 	    }
 
 		return new ResponseEntity<ZdravstveniKartonDTO>(zkDTO, HttpStatus.OK);
