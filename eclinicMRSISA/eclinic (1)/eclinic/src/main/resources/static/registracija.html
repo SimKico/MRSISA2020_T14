@@ -24,6 +24,7 @@
  <script src = "js/profilAKC.js"></script>
  <script src = "js/adminKlinike.js"></script>
  
+ <script src = "js/registracija.js"></script>
  <script src = "js/logovanje.js"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -66,22 +67,24 @@
                 <h1>Registracija </h1>
                 <div style="float: left; width: 40%;">
                     <label> Ime: </label>
-                    <input type="text" class="form-control" id="firstName" required>
+                    <input type="text" class="form-control" id="ime" required>
                     <label> Email: </label>
-                    <input type="email" class="form-control" id="email" required>
+                    <input type="text" class="form-control" id="email" required>
                     <label> Grad: </label>
-                    <input type="text" class="form-control" id="address" required>
+                    <input type="text" class="form-control" id="grad" required>
+                      <label> Adresa: </label>
+                    <input type="text" class="form-control" id="adresa" required>
                     <label>Jedinstveni maticni broj:</label>
-                    <input type="text" class="form-control" id="address" required>
+                    <input type="text" class="form-control" id="jbo" required>
               <label> Drzava: </label>
-                    <input type="text" class="form-control" id="address" required>
+                    <input type="text" class="form-control" id="drzava" required>
                 </div>
                 <div style="float: right; width: 50%;">
                     <label> Prezime </label>
-                    <input type="text" class="form-control" id="lastName" required>
+                    <input type="text" class="form-control" id="prezime" required>
                     
                     <label> Telefon: </label>
-                    <input type="text" class="form-control" id="phone" required>
+                    <input type="text" class="form-control" id="telefon" required>
                     
                     
                     <label> Lozinka: </label>
@@ -89,7 +92,10 @@
                     <label> Potvrdite lozinku: </label>
                     <input type="password" class="form-control" id="confirmPassword" required>
                     <br>
-                <input type="submit" class="btn btn-primary" value="Registracija" onclick = "registracija()" > 
+                        <a href="" onclick="registracija()"
+                      >Registracija</a
+                    >
+              
                 <br>
                 Ukoliko imate nalog <a href="index.html">prijavite se </a>        
                 </div>

@@ -15,9 +15,8 @@ import javax.persistence.Table;
 @Table(name="zahtjevi_registracija")
 public class ZahtjeviZaRegistraciju {
   
-   
-   
-   @Id
+
+@Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="reg_id", unique=true, nullable=false)
    private Long idZahtjeva;
@@ -51,6 +50,27 @@ public class ZahtjeviZaRegistraciju {
    
    @Column(name="prihvacen", nullable=false, columnDefinition = "boolean default false")
    private boolean prihvacen;
+   
+
+public ZahtjeviZaRegistraciju(Long idZahtjeva, String eAdresa, String lozinka, String ime, String prezime,
+			String jbo, String adresaPrebivalista, String grad, String drzava, String brojTelefona, boolean prihvacen) {
+		super();
+		this.idZahtjeva = idZahtjeva;
+		this.eAdresa = eAdresa;
+		this.lozinka = lozinka;
+		this.ime = ime;
+		this.prezime = prezime;
+		this.jbo = jbo;
+		this.adresaPrebivalista = adresaPrebivalista;
+		this.grad = grad;
+		this.drzava = drzava;
+		this.brojTelefona = brojTelefona;
+		this.prihvacen = prihvacen;
+	}
+
+   public ZahtjeviZaRegistraciju() {
+		super();
+	}
 
 	public Long getIdZahtjeva() {
 		return idZahtjeva;

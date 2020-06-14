@@ -1,5 +1,7 @@
 package com.mrsisa.eclinic.controller;
 
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +24,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mrsisa.eclinic.dto.AKcDTO;
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.PacijentDTO;
+
+import com.mrsisa.eclinic.dto.ZahtjeviZaReigstracijuDTO;
 import com.mrsisa.eclinic.model.AdminKlinickogCentra;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Pacijent;
 import com.mrsisa.eclinic.model.Prijava;
+import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
+import com.mrsisa.eclinic.repository.ZahtjeviRegRepository;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.PacijentService;
+import com.mrsisa.eclinic.service.ZahtjeviRegService;
 
 
 @RestController
@@ -37,6 +44,9 @@ public class PacijentController {
 
 	@Autowired
 	private PacijentService pacijentService;
+	@Autowired
+	private ZahtjeviRegService regService;
+
 	
 	@RequestMapping(value = "/{email}", method = RequestMethod.GET)
 	@ResponseBody
@@ -49,7 +59,6 @@ public class PacijentController {
 	}
 
 	@RequestMapping(value = "/profilPacijent/{email}" ,  method = RequestMethod.GET)
-
 	@PreAuthorize("hasRole('PACIENT')")
 	public ResponseEntity<PacijentDTO>  getProfilPacijent(@PathVariable("email") String email){
 		System.out.println(email);
@@ -67,7 +76,6 @@ public class PacijentController {
 	
 
 	@PutMapping(value = "/profilPacijent/azurirajProfil/{email}", consumes =  "application/json")
-
 	@PreAuthorize("hasRole('PACIENT')")
 	public ResponseEntity<PacijentDTO> updatePacijentDTO(@PathVariable("email") String email,@RequestBody	 PacijentDTO pacijentDTO) {
 		
@@ -87,8 +95,29 @@ public class PacijentController {
 
 		pacijent = pacijentService.save(pacijent);
 		return new ResponseEntity<>(new PacijentDTO(pacijent), HttpStatus.OK);
-
 	}
+	@PostMapping(value = "/registracija") 
+	public ResponseEntity<String> getRegistrationRequests(@RequestBody ZahtjeviZaReigstracijuDTO podaci)throws ParseException{
+		System.out.println("usao u reg");
+		System.out.println(podaci.geteAdresa());
+		ZahtjeviZaRegistraciju zahtjev = new ZahtjeviZaRegistraciju();
+		zahtjev.setIme(podaci.getIme());
+		zahtjev.setPrezime(podaci.getPrezime());
+		zahtjev.setGrad(podaci.getGrad());
+		zahtjev.setBrojTelefona(podaci.getBrojTelefona());
+		zahtjev.setJbo(podaci.getJbo());
+		zahtjev.setLozinka(podaci.getLozinka());
+		zahtjev.setAdresaPrebivalista(podaci.getAdresaPrebivalista());
+		zahtjev.seteAdresa(podaci.geteAdresa());
+		zahtjev.setDrzava(podaci.getDrzava());
+//		zahtjev.setPrihvacen(false);
+		System.out.println(zahtjev);
+		
+		zahtjev = regService.save(zahtjev);
+		
+		return new ResponseEntity<>("Zahjev je poslat.", HttpStatus.CREATED);
+	}
+
 	
 }	
 		
