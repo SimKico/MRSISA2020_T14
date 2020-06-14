@@ -2,9 +2,9 @@
 
 Raspodjela posla:
 
- 1. Student Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs 
- 2. Student Zelić Slobodan SW/5-2017 slobodan.zelic@uns.ac.rs 
- 3. Student Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs 
+ 1. Student --- Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs 
+ 2. Student --- Zelić Slobodan SW/5-2017 slobodan.zelic@uns.ac.rs 
+ 3. Student --- Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs 
 
 UPUTSTVO ZA INSTALACIJU I POKRETANJE PROJEKTA
 
