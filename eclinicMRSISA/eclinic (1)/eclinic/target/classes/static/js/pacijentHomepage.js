@@ -118,6 +118,8 @@ function azurirajPodatke(){
 		 $.ajax({
 			type: "PUT",
 			url: "/homepagePacijent1/profilPacijent/azurirajProfil/" + email,
+
+			headers: { "Authorization": "Bearer " + token},
 			data: JSON.stringify({adresaPrebivalista: adresa, grad: grad, drzava: drzava, brojTelefona: telefon, jedBrojOsiguranika :jbo}),
 //		    dataType: 'json',
 		    contentType:  "application/json",

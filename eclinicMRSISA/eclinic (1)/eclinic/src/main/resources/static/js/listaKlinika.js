@@ -7,6 +7,8 @@ function prikaziListuKlinika(){
 	$.ajax({
 		url: "/klinika/listaKlinika",
 		type: "GET",
+
+		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			localStorage.setItem("result", JSON.stringify(result));
 			location.href = "listaKlinika.html" ;
@@ -121,6 +123,8 @@ function pretraziPreglede(){
 	$.ajax({
 		url: "/pregled/pretragaPregleda/" + tipPregleda + "/" + datumPregleda,
 		type: "GET",
+
+		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			console.log(result);
 			var elements = result.length;
@@ -245,8 +249,10 @@ function potvrdiZakazivanje(){
 	var klinika = klinikaPodaciZaPregled.naziv;
 	
 	$.ajax({
-		url: "/pregled/zakaziPregled",
+		url: "/pregled/zakaziPregled/"+ email,
 		type: "POST",
+
+		headers: { "Authorization": "Bearer " + token},
 		data: {tipPregleda : tipPregleda, datumPregleda: datumPregleda, emailLjekara: emailLjekara, vrijemePregleda : vrijemePregleda, klinika: klinika},
 		success: function (result) {
 			alert("Zahtjev za pregled je poslat. Dobicete odgovor u sto kracem roku. Hvala Vam na povjerenju!");
@@ -261,8 +267,10 @@ function zakaziBrziPregled(){
 	confirm("Sigurno želite da zakažete pregled?")
 	var id = localStorage.getItem('sifra_pregleda');
 	$.ajax({
-		url: "/pregled/zakaziBrzi",
+		url: "/pregled/zakaziBrzi/"+email,
 		type: "PUT",
+
+		headers: { "Authorization": "Bearer " + token},
 		data: {id : id },
 		success: function (result) {
 			console.log(result);

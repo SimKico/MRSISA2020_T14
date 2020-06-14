@@ -31,9 +31,6 @@ function registracija(){
                 location.replace("/");
             }
            
-        
-          
-   
         });
           
       }

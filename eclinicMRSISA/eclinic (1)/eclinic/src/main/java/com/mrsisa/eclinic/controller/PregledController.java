@@ -180,8 +180,9 @@ public class PregledController {
 		return new ResponseEntity<>(klinikaDTO, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/zakaziPregled")
-	public ResponseEntity<String> zakaziPregled(@RequestParam String tipPregleda, @RequestParam String datumPregleda,
+	@PostMapping(value = "/zakaziPregled/{email}")
+	@PreAuthorize("hasRole('PACIENT')")
+	public ResponseEntity<String> zakaziPregled(@PathVariable("email") String email,@RequestParam String tipPregleda, @RequestParam String datumPregleda,
 			@RequestParam String emailLjekara, @RequestParam String vrijemePregleda, @RequestParam String klinika)
 			throws ParseException {
 
@@ -199,21 +200,29 @@ public class PregledController {
 		zakaziPregled.setSatnica(vrijemePregleda);
 //		zakaziPregled.setPrihvacen(false);
 		zakaziPregled = zahtjeviZaPregledService.save(zakaziPregled);
-		emailService.requestPregledEmail(tipPregleda, datumPregleda, emailLjekara, vrijemePregleda, kl);
+		emailService.requestPregledEmail(tipPregleda, datumPregleda, emailLjekara, vrijemePregleda, kl,email);
 
 		return new ResponseEntity<>("Pregled je dodan!", HttpStatus.CREATED);
 	}
 
-	@PutMapping(value = "/zakaziBrzi")
-	public ResponseEntity<String> zakaziBrzi(@RequestParam String id) throws ParseException {
-		System.out.println("alkgasdkg;laksdg0");
-		System.out.println(id);
+	@PutMapping(value = "/zakaziBrzi/{email}")
+	@PreAuthorize("hasRole('PACIENT')")
+	public ResponseEntity<String> zakaziBrzi(@PathVariable("email") String email,@RequestParam String id) throws ParseException {
+		System.out.println("idemo");
 		Long id_pregleda = Long.parseLong(id);
 		Pregled p = pregledService.getOneByid(id_pregleda);
-		String email = p.getLjekar().getPrijava().geteAdresa();
-		emailService.requestBrziPregledEmail(p.getTipPregleda(), p.getDatum(), email, p.getVrijemePocetka(),
-				p.getLjekar().getKlinika());
+		String emailLjekara = p.getLjekar().getPrijava().geteAdresa();
+		emailService.requestBrziPregledEmail(p.getTipPregleda(), p.getDatum(), emailLjekara, p.getVrijemePocetka(),
+				p.getLjekar().getKlinika(), email);
+		ZahtjeviZaPregled zakaziPregled = new ZahtjeviZaPregled();
+		// TO DO poslati zahjtev za pregled administratoru klinike
 
+		zakaziPregled.setDatum(p.getDatum());
+		zakaziPregled.setLjekar(p.getLjekar().getEmail());
+		zakaziPregled.setTipPregleda(p.getTipPregleda().getTip().toString());
+		zakaziPregled.setSatnica(p.getVrijemePocetka());
+//		zakaziPregled.setPrihvacen(false);
+		zakaziPregled = zahtjeviZaPregledService.save(zakaziPregled);
 		// TO DO poslati zahtjev administratoru klinike za pregled
 //		p.setStatus(StatusPregleda.zakazan);
 //		p = pregledService.save(p);
@@ -224,6 +233,7 @@ public class PregledController {
 				HttpStatus.OK);
 	}
 	@PutMapping(value = "/otkaziPregled/{email}")
+	@PreAuthorize("hasRole('PACIENT')")
 	public ResponseEntity<String> otkaziPregled(@RequestParam String id) throws ParseException {
 		System.out.println("alkgasdkg;laksdg0");
 		System.out.println(id);
