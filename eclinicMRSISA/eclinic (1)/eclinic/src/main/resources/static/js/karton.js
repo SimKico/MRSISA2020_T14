@@ -94,28 +94,66 @@ function ucitajPodatkePregledaPacijenta(){
 	console.log(podaciPregledaPacijenta);
 	
 	for( i in podaciPregledaPacijenta){
-		$("#table2")
-		.append($("<tr>")
-				.append($("<td>")
-								.text(podaciPregledaPacijenta[i].tipPregledaDTO.specijalizacija))
-//									
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].ljekarDTO.klinika))
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].ocjenaKlinike))
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].adresaKlinike))
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].grad))
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].datum))
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].vrijemePocetka))
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].status))
-				.append($("<td>")
-					.text(podaciPregledaPacijenta[i].tipPregledaDTO.cijena + "€"))
-			);
+		if(podaciPregledaPacijenta[i].status == "odrzan"){
+			$("#table2")
+			.append($("<tr>")
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].tipPregledaDTO.specijalizacija))
+//										
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].ljekarDTO.klinika))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].ocjenaKlinike))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].adresaKlinike))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].grad))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].datum))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].vrijemePocetka))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].status))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].tipPregledaDTO.cijena + "€"))
+				
+				);
+		}
+		else if(podaciPregledaPacijenta[i].status == "zakazan")
+			{
+			var appoint  = `<button value="${podaciPregledaPacijenta[i].id}" onclick = "otkaziPregled()" class="btn btn-appoint">Otkažite pregled </a>`;
+			$("#table1")
+			.append($("<tr>")
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].tipPregledaDTO.specijalizacija))
+//										
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].ljekarDTO.klinika))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].ocjenaKlinike))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].adresaKlinike))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].grad))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].datum))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].vrijemePocetka))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].status))
+					.append($("<td>")
+						.text(podaciPregledaPacijenta[i].tipPregledaDTO.cijena + "€"))
+						.append($("<td>")
+					.text("otkazi"))
+						.append($(appoint))
+							
+				);
+			}
 	}
+	$("button").click(function() {
+		 var fired_button = $(this).val();
+		 localStorage.setItem("idPregleda",fired_button);
+	   
+	});
 	
 }
