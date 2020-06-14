@@ -2,9 +2,11 @@
 
 Raspodjela posla:
 
- 1. Student --- Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs 
+ 1. Student --- Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs  -> sve kartice na trelu oznacene sa SS
  2. Student --- Zelić Slobodan SW/5-2017 slobodan.zelic@uns.ac.rs 
- 3. Student --- Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs 
+ 3. Student --- Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs -> sve kartice na trelu oznacene na NK
+ 
+Trello tabla - https://trello.com/b/YQF0T5XZ/mrsisa2020t14 
 
 UPUTSTVO ZA INSTALACIJU I POKRETANJE PROJEKTA
 
