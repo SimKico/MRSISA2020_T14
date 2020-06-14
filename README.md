@@ -31,9 +31,6 @@ Prikazuje se pocetna strana aplikacije i korisnik moze dalje da je koristi.
 *napomena za zakazivanje predmeta: 
  - nakon zakazivanja pregleda stize email, u zavisnosti od browsera moze da se ceka neko vrijeme na povratnu info
 
-*napomena za otvaranje radnog kalendara : 
- - dva puta potrebno pozvati kalendar da bi se svi podaci ucitaju
-
 *napomena za aktivacije naloge preko email-a :
  - koristen je privatan nalog, pa ako zelite da provjerite funkcionalnost unesite svoj email u emailService
 
