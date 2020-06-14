@@ -8,7 +8,8 @@ function prikaziHomepagePacijenta(){
 	$.ajax({
 		url: "/homepagePacijent1/" + email,
 		type: "GET",
-			
+
+		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			localStorage.setItem("ime", result.ime);
 			location.href = "homepagePacijent1.html" ;

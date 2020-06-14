@@ -106,7 +106,7 @@ INSERT INTO user_authority (user_id, authority_id) VALUES (9, 4);
 
 --Dodavanje pregleda--
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
-			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '09:00', 'specoft',4);
+			values('Mon Jun 01 00:00:00 CEST 2020', 0,0, '09:00', 'specoft',5);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
 			values('Mon Jun 03 00:00:00 CEST 2020', 0,0, '10:00', 'specoft',5);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
@@ -127,7 +127,7 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 
 ----Dodavanje pregleda--
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',4, 1, 3);
+			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',9, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
 			values('Mon May 18 00:00:00 CEST 2020', 0,0, '19:00', 'specoft',5, 2, 3);
 			
@@ -223,13 +223,13 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',8, 4, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '16:45', 'specoft',9, 1, 3);
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '16:45', 'specoft',9, 1, 4);
 
 -- NE DODAVATI NOVE PREGLEDE IZNAD NEGO ISPOD --
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',5, 1, 3);
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',5, 1, 4);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
-			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',6, 2, 3);
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',6, 2, 4);
 			
 insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 13, 1);
 insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 14, 1);

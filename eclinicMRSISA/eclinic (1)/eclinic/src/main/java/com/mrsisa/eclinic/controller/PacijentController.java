@@ -2,7 +2,10 @@ package com.mrsisa.eclinic.controller;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,19 +27,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mrsisa.eclinic.dto.AKcDTO;
 import com.mrsisa.eclinic.dto.KlinikaDTO;
+import com.mrsisa.eclinic.dto.LjekarDTO;
 import com.mrsisa.eclinic.dto.PacijentDTO;
-
+import com.mrsisa.eclinic.dto.PregledDTO;
+import com.mrsisa.eclinic.dto.TipPregledaDTO;
 import com.mrsisa.eclinic.dto.ZahtjeviZaReigstracijuDTO;
 import com.mrsisa.eclinic.dto.ZdravstveniKartonDTO;
 import com.mrsisa.eclinic.model.AdminKlinickogCentra;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Pacijent;
+import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
 import com.mrsisa.eclinic.model.ZdravstveniKarton;
 import com.mrsisa.eclinic.repository.ZahtjeviRegRepository;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.PacijentService;
+import com.mrsisa.eclinic.service.PregledService;
 import com.mrsisa.eclinic.service.ZahtjeviRegService;
 import com.mrsisa.eclinic.service.ZdravKartonService;
 
@@ -46,6 +53,9 @@ import com.mrsisa.eclinic.service.ZdravKartonService;
 @CrossOrigin("*")
 public class PacijentController {
 
+	@Autowired
+	private PregledService pregledService;
+	
 	@Autowired
 	private PacijentService pacijentService;
 	@Autowired
@@ -131,6 +141,39 @@ public class PacijentController {
 		 ZdravstveniKarton k = p.getZdravstveniKarton();
 		 ZdravstveniKartonDTO kar = new ZdravstveniKartonDTO(k);
 		 return new ResponseEntity<>(kar, HttpStatus.OK);
+	}	
+	
+	
+//	@RequestMapping(value = "/istorijaOperacija/{email}" ,  method = RequestMethod.GET)
+//	@PreAuthorize("hasRole('PACIENT')")
+//	public ResponseEntity<OperacijaDTO>  getKarton(@PathVariable("email") String email){
+//		System.out.println(email);
+//		Pacijent p = pacijentService.findOneByEmail(email);
+//		 ZdravstveniKarton k = p.getZdravstveniKarton();
+//		 ZdravstveniKartonDTO kar = new ZdravstveniKartonDTO(k);
+//		 return new ResponseEntity<>(kar, HttpStatus.OK);
+//	}	
+	@RequestMapping(value = "/istorijaPregleda/{email}" ,  method = RequestMethod.GET)
+	@PreAuthorize("hasRole('PACIENT')")
+	public ResponseEntity<List<PregledDTO>>  getPreglediPacijenta(@PathVariable("email") String email){
+		System.out.println(email);
+		
+		Pacijent p = pacijentService.findOneByEmail(email);
+		Set<Pregled> pregledi = p.getPregledi();
+		List<PregledDTO> preglediDTO = new ArrayList<PregledDTO>();
+		for(Pregled pregled : pregledi)
+		{
+			System.out.println(pregled.getPacijent().getEmail());
+			
+			if(pregled.getPacijent().getEmail().equals(email)) {
+			LjekarDTO lj = new LjekarDTO(pregled.getLjekar());
+			TipPregledaDTO tip = new TipPregledaDTO( pregled.getTipPregleda(), null);
+			PregledDTO pregledDTO = new PregledDTO(pregled,lj,tip, pregled.getLjekar().getKlinika().getAdresa(),  pregled.getLjekar().getKlinika().getGrad(), pregled.getLjekar().getKlinika().getOcjenaKlinike(), null);
+			preglediDTO.add(pregledDTO);
+			}
+		}
+
+		 return new ResponseEntity<>(preglediDTO, HttpStatus.OK);
 	}	
 	
 }	
