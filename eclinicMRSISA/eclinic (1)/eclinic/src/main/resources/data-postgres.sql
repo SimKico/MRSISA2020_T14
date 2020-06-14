@@ -37,7 +37,7 @@ values('Sarajevo','adr', 'Nova Bolnica', '4', 3, 'Eclinic');
 insert into klinike(grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
 values('Zagreb','adr', 'Dr Pavlovic', '5', 3, 'Eclinic');
 
-insert into klinike(klinika_id,grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
 values('Novi Sad','adr', 'Klinika Diva', '3', 4, 'Eclinic');
 ----KORISNICI--------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
