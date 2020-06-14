@@ -48,6 +48,7 @@ function prikaziKlinike(){
 		$.ajax({
 			url: "/klinika/listaKlinika/" + name,
 			type: "GET",
+			headers: { "Authorization": "Bearer " + token},
 			success: function (result) {
 				localStorage.setItem("klinikaPodaci", JSON.stringify(result));
 				location.href = "klinika.html" ;
@@ -174,6 +175,7 @@ function klinikaZaPregled(){
 		$.ajax({
 			url: "/pregled/pretragaPregleda/" + tipPregleda + "/" + datumPregleda + "/" + naziv,
 			type: "GET",
+			headers: { "Authorization": "Bearer " + token},
 			success: function (result) {	
 				localStorage.setItem("klinikaPodaciZaPregled", JSON.stringify(result));
 				location.href = "klinikaPregled.html" ;
@@ -251,7 +253,6 @@ function potvrdiZakazivanje(){
 	$.ajax({
 		url: "/pregled/zakaziPregled/"+ email,
 		type: "POST",
-
 		headers: { "Authorization": "Bearer " + token},
 		data: {tipPregleda : tipPregleda, datumPregleda: datumPregleda, emailLjekara: emailLjekara, vrijemePregleda : vrijemePregleda, klinika: klinika},
 		success: function (result) {

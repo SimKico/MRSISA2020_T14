@@ -193,7 +193,7 @@ public class PregledController {
 //		TipPregleda tipP = tipPregledaRepository.findOneBytip(Specijalizacija.valueOf(tipPregleda));
 		ZahtjeviZaPregled zakaziPregled = new ZahtjeviZaPregled();
 		// TO DO poslati zahjtev za pregled administratoru klinike
-
+		System.out.println("naerknaslkdnfasenf");
 		zakaziPregled.setDatum(date1);
 		zakaziPregled.setLjekar(lj.getPrijava().geteAdresa());
 		zakaziPregled.setTipPregleda(tipPregleda);
