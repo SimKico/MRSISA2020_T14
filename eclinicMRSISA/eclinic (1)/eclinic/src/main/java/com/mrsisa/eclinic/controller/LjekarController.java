@@ -128,8 +128,9 @@ public class LjekarController {
 		 // (java.sql.Date) new SimpleDateFormat("yyyy-MM-dd").parse(datum)
 
 		System.out.println("oreafasdf");
-		PretragaLjekaraDTO podaci = new PretragaLjekaraDTO(ime, prezime, tipLjekara,Integer.parseInt(ocjena) );
+//		PretragaLjekaraDTO podaci = new PretragaLjekaraDTO(ime, prezime, tipLjekara,Integer.parseInt(ocjena));
 //		List<Ljekar> ljekari = ljekarService.findOneBy(podaci);
+		
 		List<Ljekar> ljekari = ljekarService.findOneByime(ime);
 		
 		List<LjekarDTO> ljekariDTO = new ArrayList<LjekarDTO>();
