@@ -29,7 +29,7 @@ public class IzvjestajPregleda {
    @Column(name="izvjestaj_id", unique=true, nullable=false)
    private Long izvjestajId;
 	 
-   @Column(name="izvjestaj", unique=true, nullable=false)
+   @Column(name="izvjestaj", unique=false, nullable=false)
    private String izvjestaj;
    
    @OneToOne(fetch=FetchType.LAZY)

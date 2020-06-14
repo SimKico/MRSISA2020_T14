@@ -127,18 +127,18 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 
 ----Dodavanje pregleda--
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',4, 1, 2);
+			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',4, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
 			values('Mon May 18 00:00:00 CEST 2020', 0,0, '19:00', 'specoft',5, 2, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,0, '20:00', 'specpulmo',7, 1, 2);
+			values('Mon May 18 00:00:00 CEST 2020', 0,0, '20:00', 'specpulmo',7, 1, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Mon May 18 00:00:00 CEST 2020', 0,0, '21:00', 'specpulmo',8, 2, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',6, 1, 2);
+			values('Mon May 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',6, 1, 4);
 	
 			
 ----zahtjevi za odsustvo--
@@ -179,6 +179,7 @@ insert into lijekovi(naziv_lijeka, sif_lijek_id) values ('Hemomicin', 1);
 --Dodavanje dijagnoza--
 insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala sinusa', 1);
 insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala grla', 1);
+insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Migrena', 1);
 
 --Dodavanje sala--
 insert into sale values (1, 1);
@@ -209,17 +210,27 @@ values('Rade@eclinic.com', 'boloz', 'Rade', 'Radic', '123456', 'Cara Dusana', 'N
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '12:00', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '01:00', 'specoft',5, 1, 3);
+			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '10:30', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
 			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',6, 2, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',7, 3, 2);
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',7, 3, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',8, 4, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '16:45', 'specoft',9, 1, 3);
+
+-- NE DODAVATI NOVE PREGLEDE IZNAD NEGO ISPOD --
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',5, 1, 3);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',6, 2, 3);
+			
+insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 13, 1);
+insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 14, 1);
+-- ISPOD --

@@ -40,7 +40,7 @@
   											  									  ))
 							  											  .append($('<a href="#" onclick = zapocniPregled(this,'+  value.id + ') class="medi-info-btn">').text("ZAPOCNI").attr("id", value.id))))
 							  											 			  
-							
+					
   				});
  			},
  			error: function(data) {
@@ -142,6 +142,19 @@ function zdravstveniKarton(){
 				$('#dioptrija1').val(data.dioptrija==null? "--" : data.dioptrija);
 				$('#visina1').val(data.visinaCm==0? "--" : data.visinaCm);
 				$('#tezina1').val(data.tezinaKg==0? "--" : data.tezinaKg);
+				
+				localStorage.setItem("izvjestaji", JSON.stringify(data.izvjestajPregledaDTO));
+				console.log(localStorage.getItem("izvjestaji"));
+				nesto = JSON.parse(localStorage.getItem("izvjestaji"));
+				console.log(nesto);
+				
+				$.each(data.izvjestajPregledaDTO, function(key, value) {
+					$('#stariIzvjestaji').append($('<option>', { 
+				        value: key,
+				        text : "Pregled: " + value.pregledId 
+				    }));
+				});
+				
 			}
 	  }); 
 }
@@ -282,6 +295,10 @@ function sacuvajIzmjene(){
 		}
   }); 
 	
+}
+
+function prikaziStariIzvjestaj(){
+	$('#stari').prop('hidden', false);
 }
 
 

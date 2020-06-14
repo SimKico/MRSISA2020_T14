@@ -65,16 +65,21 @@ public class ZdravstveniKartonContoller {
 	@ResponseBody
 	public ResponseEntity<ZdravstveniKartonDTO> getOneByEmail(@RequestParam("idPregleda") String idPregleda){
 		
-		System.out.print(idPregleda);
+	    System.out.print(idPregleda);
 		
 		
-		  Pregled pregled = pregledService.getOneByid(Long.parseLong(idPregleda));
-		  
-		  ZdravstveniKarton zk =
-		  zkService.findZkById(pregled.getPacijent().getZdravstveniKarton().
-		  getIdKartona()); ZdravstveniKartonDTO zkDTO = new ZdravstveniKartonDTO(zk,
-		  null, pregled);
-		 
+	    Pregled pregled = pregledService.getOneByid(Long.parseLong(idPregleda));
+	  
+	    ZdravstveniKarton zk = zkService.findZkById(pregled.getPacijent().getZdravstveniKarton().getIdKartona());
+	  
+	    ZdravstveniKartonDTO zkDTO = new ZdravstveniKartonDTO(zk, null, pregled);
+	    zkDTO.setIzvjestajPregledaDTO(new HashSet<>());
+	    
+	    for(IzvjestajPregleda ip : zk.getIzvjestajPregleda()) {
+			
+	    	System.out.print(ip.getIzvjestaj());
+			zkDTO.getIzvjestajPregledaDTO().add(new IzvjestajPregledaDTO(ip));	  
+	    }
 
 		return new ResponseEntity<ZdravstveniKartonDTO>(zkDTO, HttpStatus.OK);
 	}

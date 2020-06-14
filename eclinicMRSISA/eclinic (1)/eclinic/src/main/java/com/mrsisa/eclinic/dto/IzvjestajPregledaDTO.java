@@ -3,6 +3,7 @@ package com.mrsisa.eclinic.dto;
 import java.util.Set;
 
 import com.mrsisa.eclinic.model.IzvjestajPregleda;
+import com.mrsisa.eclinic.model.Recept;
 
 public class IzvjestajPregledaDTO {
 	
@@ -15,6 +16,17 @@ public class IzvjestajPregledaDTO {
 	
 	public IzvjestajPregledaDTO() {
 		super();
+	}
+	
+	public IzvjestajPregledaDTO(IzvjestajPregleda ip) {
+		this.izvjestaj = ip.getIzvjestaj();
+		this.dijagnozaDTO = new DijagnozaDTO(ip.getDijagnoza().getNaziv());
+		//this.lijekovi = ip.getRecepti();
+		for(Recept r : ip.getRecepti()) {
+			this.lijekovi.add(r.getLijek().getNaziv());
+		}
+		this.pregledId = ip.getPregled().getPregled_id();
+		this.pacijentJbo = ip.getPregled().getPacijent().getJedBrojOsiguranika();
 	}
 	
 	public IzvjestajPregledaDTO(IzvjestajPregleda izvjestajPregleda,DijagnozaDTO dijagnozaDTO, Set<String> lijekovi, String jbo) {

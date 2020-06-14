@@ -136,7 +136,11 @@
 					<p id="alergije">
 						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Alergije:
 					</p>
-					<button onClick = "prikaziEdit()" class="btn btn-appoint">Izmijeni podatke</button>
+					<button onClick = "prikaziEdit()" class="btn btn-appoint">Izmijeni podatke</button> <br/>
+					<div>
+					<select id="stariIzvjestaji" style="display: inline-block"></select>
+					<button onClick = "prikaziStariIzvjestaj()" class="btn btn-appoint" style="display: inline-block">Izmijeni izvještaj</button>
+					</div>
 				</div>
 				<div class="col-md-4 col-sm-4" id = "edit" hidden="true">
 					<h3>Pacijent</h3>
@@ -219,10 +223,33 @@
 					</table>
 				</form>
 			</div>
-			<div class="container">
-				<div class="row">
-					<div class="schedule-tab "></div>
-					
+			<div class="container" id="stari">
+					<div >BILOO STAA</div>
+<!-- 					<form onsubmit="izvjestajPregleda(); return false"> -->
+<!-- 					<h2 class="white">STARI IZVJEŠTAJ</h2> -->
+<!-- 					<br /> -->
+<!-- 					<table class=""> -->
+<!-- 						<tr> -->
+<!-- 							<td class="labela" width="300px">Izvještaj:</td> -->
+<!-- 							<td class="podaci" width="300px"><textarea -->
+<!-- 									style="height: 300px" id="izvjestajS" -->
+<!-- 									class="form-control br-radius-zero" required></textarea> -->
+<!-- 								</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td class="labela" width="300px">Dijagnoza:</td> -->
+<!-- 							<td class="podaci"><select id="dijagnozaS" -->
+<!-- 								style="width: 300px"></select></td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td></td> -->
+<!-- 							<td> -->
+<!-- 								<button type="submit" class="btn btn-appoint">Sačuvaj izmjene -->
+<!-- 									</button> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 					</table> -->
+<!-- 				</form> -->
 				</div>
 			</div>
 	</section>
