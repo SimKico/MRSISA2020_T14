@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+
+    <!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Homepage</title>
+    <title>Ažuriraj profil</title>
     <meta
       name="description"
       content="Free Bootstrap Theme by BootstrapMade.com"
@@ -21,9 +22,10 @@
     <!--  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="js/pacijentHomepage.js"></script>
-    <script src="js/listaKlinika.js"></script>
-    <script src = "js/karton.js"></script>
+    <script src = "js/pacijentHomepage.js"></script>
+    <script src = "js/listaKlinika.js"></script>
+     <script src = "js/karton.js"></script>
+    
     <!-- =======================================================
     Theme Name: Medilab
     Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -32,24 +34,11 @@
   ======================================================= -->
   </head>
 
-  <body
-    id="myPage"
-    data-spy="scroll"
-    data-target=".navbar"
-    data-offset="60"
-    onload="prikaziKlinike()"
-  >
-
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload = "popuniKarton()">
     <!--banner-->
     <section id="banner" class="banner">
-    
-
-
-  <!--/ service-->	
-    
       <div class="bg-color">
         <nav class="navbar navbar-default navbar-fixed-top">
-        
           <div class="container">
             <div class="col-md-12">
               <div class="navbar-header">
@@ -70,13 +59,16 @@
                     style="width: 140px; margin-top: -16px;"
                 /></a>
               </div>
-              <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
                   <li class="active">
-                    <a href="#" onclick = "profilPacijenta()">Moj profil</a>
+                    <a href="#" onclick ="prikaziHomepagePacijenta()">Početna strana</a>
+                  </li>
+                  <li class="">
+                    <a href="#" id = "mojProfil"  >Moj profil</a>
                   </li>
                   <li class="active">
-                    <a href="#" id="mojKarton">Moj karton</a>
+                    <a href="#" id="mojKarton"> Moj karton </a>
                   </li>
                   <li class="active">
                     <a href="#" id="istorijaOperacija">Istorija operacija</a>
@@ -84,88 +76,71 @@
                   <li class="active">
                     <a href="#" id="istorijaPregleda">istorija pregleda</a>
                   </li>
-                  <li class="">
-                    <a id="lk"> Lista klinika </a>
+                  <li class="active">
+                   <a href="#" onclick = "prikaziListuKlinika()">Lista klinika</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </nav>
-        
         <div class="container">
           <div class="row">
             <div class="banner-info">
-              <div class="banner-text text-center">
-                  <div class="col-sm-4">
-                  
-                     <table >
-						<tr>
-							<td>Datum pregleda</td>
-							<td>
-								<input type="date" id="datum" class="form-control br-radius-zero"
-				      							 value="2020-06-01"
-				     							  min="2020-05-05" max="2020-12-31" required>
-				     		</td>
-						</tr>
-						<tr>
-							<td>Tip pregleda</td>
-							<td>
-								<input type="text" id = "tip" placeholder="kardiologija" class="form-control br-radius-zero" required>
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td> <input type="submit" value = "Pretraga" class="btn btn-appoint" onclick = "pretraziPreglede()"></td>
-						</tr>
-					</table> 
-					
-    		    </div>
-    		    
-                <table class="table1" id="table1" >
-                  <tr style = " background: rgba(12, 184, 182, 0.21)"  >
-                    <td class="labela" width="300px" id="naziv"  >
-                    <p>  Naziv klinike</p>
-                    </td>
-                    <td class="labela" width="300px" id="grad"> <p>Grad</p></td>
-                  	<td class="labela" width="300px" id="ocjena"><p>Ocjena klinike</p></td> 
-                  </tr>
-                </table>
-                
-              
-              <!--  <a href="#contact" class="btn btn-appoint">Make an Appointment.</a> --> 
-              </div>
-              <div class="overlay-detail text-center">
-                <a href="#service"><i class="fa fa-angle-down"></i></a>
+              <div class="banner-logo text-center">
+                <!--<img src="../img/logo.png" class="img-responsive">  -->
               </div>
             </div>
           </div>
         </div>
+        <form action="action_page.php" method="post">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 class="ser-title">PROFIL</h2>
+                <hr class="botm-line" />
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <h3>Licne informacije</h3>
+                
+                <div class="space"></div>
+                <table class="table1" style ="color:#fff	">
+                  <tr>
+                    <td class="labela" width="300px">Alergije:</td>
+                    <td class="podaci" id = "alergija"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela" width="300px">Dioptrija:</td>
+                    <td class="podaci" id = "dioptrija"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela"><br />Krvna grupa:</td>
+                    <td class="podaci" id = "krvnaGrupa"><br /></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela">Tezina:</td>
+                    <td  id = "tezina"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labela">Visina:</td>
+                    <td id = "visina"></td>
+                  </tr>
+
+                </table>
+               
+                <div class="space"></div>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </section>
-     <!--doctor team-->
-  <section id="doctor-team" class = "section-padding" >
-    <div   class="container" >
-          <table id="table2" style = "visibility : hidden" >
-                  <tr style = " background: rgba(12, 184, 182, 0.21)"  >
-                    <td  width="300px" id="nazivK"  >
-                    <p> Rezultat pretrage </p>
-                    </td>
-                     </td>
-                    <td class="labela" width="300px" id="adresa"><p>Adresa</p></td> 
-                    <td class="labela" width="300px" id="grad"> <p>Grad</p></td>
-                  	<td class="labela" width="300px" id="ocjena"><p>Prosječna ocjena klinike</p></td> 
-                  	<td class="labela" width="300px" id="cijenaPregleda"><p>Cijena pregleda</p></td>
-                  </tr>
-                  </tr>
-          </table>
-        
-      </div>
-    </div>
-  </section>
-  <!--/ doctor team-->
-
-    <!--footer-->
+      <!--footer-->
     <footer id="footer">
       <div class="top-footer">
         <div class="container">
@@ -209,5 +184,12 @@
       </div>
     </footer>
        <!--/ footer-->
-  </body>
+  
+  <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
+ </body>
 </html>
+    

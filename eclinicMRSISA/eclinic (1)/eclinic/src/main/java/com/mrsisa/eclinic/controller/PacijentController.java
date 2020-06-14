@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,15 +27,18 @@ import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.dto.PacijentDTO;
 
 import com.mrsisa.eclinic.dto.ZahtjeviZaReigstracijuDTO;
+import com.mrsisa.eclinic.dto.ZdravstveniKartonDTO;
 import com.mrsisa.eclinic.model.AdminKlinickogCentra;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Pacijent;
 import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
+import com.mrsisa.eclinic.model.ZdravstveniKarton;
 import com.mrsisa.eclinic.repository.ZahtjeviRegRepository;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.PacijentService;
 import com.mrsisa.eclinic.service.ZahtjeviRegService;
+import com.mrsisa.eclinic.service.ZdravKartonService;
 
 
 @RestController
@@ -46,7 +50,8 @@ public class PacijentController {
 	private PacijentService pacijentService;
 	@Autowired
 	private ZahtjeviRegService regService;
-
+	@Autowired
+	private ZdravKartonService kartonService;
 	
 	@RequestMapping(value = "/{email}", method = RequestMethod.GET)
 	@ResponseBody
@@ -96,7 +101,7 @@ public class PacijentController {
 		pacijent = pacijentService.save(pacijent);
 		return new ResponseEntity<>(new PacijentDTO(pacijent), HttpStatus.OK);
 	}
-	@PostMapping(value = "/registracija") 
+	@PostMapping(value = "/registracija", consumes = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<String> getRegistrationRequests(@RequestBody ZahtjeviZaReigstracijuDTO podaci)throws ParseException{
 		System.out.println("usao u reg");
 		System.out.println(podaci.geteAdresa());
@@ -117,7 +122,16 @@ public class PacijentController {
 		
 		return new ResponseEntity<>("Zahjev je poslat.", HttpStatus.CREATED);
 	}
-
+	
+	@RequestMapping(value = "/kartonPacijenta/{email}" ,  method = RequestMethod.GET)
+	@PreAuthorize("hasRole('PACIENT')")
+	public ResponseEntity<ZdravstveniKartonDTO>  getKarton(@PathVariable("email") String email){
+		System.out.println(email);
+		Pacijent p = pacijentService.findOneByEmail(email);
+		 ZdravstveniKarton k = p.getZdravstveniKarton();
+		 ZdravstveniKartonDTO kar = new ZdravstveniKartonDTO(k);
+		 return new ResponseEntity<>(kar, HttpStatus.OK);
+	}	
 	
 }	
 		
