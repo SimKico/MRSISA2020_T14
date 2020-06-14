@@ -187,7 +187,30 @@ function ucitajPodatkePregledaPacijenta(){
 	
 }
 
-
+function istorijaPregleda()
+{
+	
+	$.ajax({
+		url: "/homepagePacijent1/istorijaPregleda/"+email,
+		type: "GET",
+		headers: { "Authorization": "Bearer " + token},
+		success: function (result) {
+			console.log(result);
+			localStorage.setItem('preglediPacijenta',  JSON.stringify(result));
+//			localStorage.setItem("alergije", result.alergije);
+//			localStorage.setItem("dioptrija", result.dioptrija);
+//			localStorage.setItem("krvnaGrupa", result.krvnaGrupa);
+//			localStorage.setItem("tezina", result.tezinaKg);
+//	
+//			localStorage.setItem("visina", result.visinaCm);
+		
+			location.href = "listaPregledaPacijenta.html";
+		},
+		error: function(result) {
+			toastr.error("Something is wrong with your request.(get details)");
+		}
+    });	
+}
 function otkaziPregled(){
 	confirm("Sigurno želite da zakažete pregled?")
 	var id = localStorage.getItem('idPregleda');
