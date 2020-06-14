@@ -1,11 +1,9 @@
 package com.mrsisa.eclinic.dto;
 
-import com.mrsisa.eclinic.model.Specijalizacija;
-
 import java.util.List;
 
-import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Ljekar;
+import com.mrsisa.eclinic.model.Specijalizacija;
 
 
 public class LjekarDTO {

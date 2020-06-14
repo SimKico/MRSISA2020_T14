@@ -28,6 +28,12 @@ public class MedicinskaSestra extends Korisnik {
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "sestra")
 	private Set<Recept> recepti = new HashSet<Recept>();
+	
+	
+
+	public MedicinskaSestra() {
+		super();
+	}
 
 	public Set<ZahtjeviZaOdsustvo> getOdsustvo() {
 		return odsustvo;

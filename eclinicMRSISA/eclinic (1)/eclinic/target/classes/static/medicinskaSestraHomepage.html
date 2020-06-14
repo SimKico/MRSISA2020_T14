@@ -17,13 +17,16 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 <script type="text/javascript">
-	
+var token = localStorage.getItem("token");
+
 	function ucitaj(){
+		email = localStorage.getItem("email");
 		console.log("nesto");
 		$.ajax({
 			type: "GET",
 			url: "/sestra/info",
-			data: {eadresa: "medicinskaSestra1@eclinic.com"},
+			data: {eadresa: email},
+			headers: { "Authorization": "Bearer " + token},
 			success: function(data){
 				console.log(data);
 				localStorage.setItem("eadresa", data.eadresa);
@@ -62,14 +65,14 @@
 						</div>
 						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href=""
+								<li class="inactive"><a href=""
 									id="Registracija klinika">Profil</a></li>
-								<li class="active"><a href=""
+								<li class="inactive"><a href="#"
 									id="Registracija admina klinike">Radni kalendar
 										</a></li>
-								<li class="active"><a href="dodavanjeAKC.html"
+								<li class="inactive"><a href="#"
 									id="Dodavanje admina klinickog centra">Zahtjev za odsustvo</a></li>
-								<li class="active"><a href=""
+								<li class="inactive"><a href=""
 									id="Zahtjevi za registraciju">Pacijenti klinike</a></li>
 								<li class="active"><a href="ovjeravanjeRecepata.html"
 									id="Zahtjevi za registraciju">Ovjera recepata</a></li>

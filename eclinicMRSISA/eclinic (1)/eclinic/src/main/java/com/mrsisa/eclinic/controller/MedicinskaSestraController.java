@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,7 @@ public class MedicinskaSestraController {
 	ReceptService receptService;
 	
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ROLE_SESTRA')")
 	public ResponseEntity<MedicinskaSestraDTO> getSestra(@RequestParam("eadresa") String eadresa){
 		MedicinskaSestra ms = msService.findByEmail(eadresa);
 		MedicinskaSestraDTO sestra = new MedicinskaSestraDTO(ms);
@@ -39,6 +41,7 @@ public class MedicinskaSestraController {
 	}
 	
 	@RequestMapping(value = "/recepti", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ROLE_SESTRA')")
 	public ResponseEntity<List<ReceptDTO>> getRecepti(@RequestParam("eadresa") String eadresa){
 		
 		MedicinskaSestra ms = msService.findByEmail(eadresa);
@@ -59,6 +62,7 @@ public class MedicinskaSestraController {
 	}
 	
 	@PutMapping(value = "/ovjera", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_SESTRA')")
 	public ResponseEntity<ReceptDTO> recept(@RequestBody ReceptDTO receptDTO){
 		
 		Recept recept = receptService.findOneById(Long.parseLong(receptDTO.getIdRecepta()));

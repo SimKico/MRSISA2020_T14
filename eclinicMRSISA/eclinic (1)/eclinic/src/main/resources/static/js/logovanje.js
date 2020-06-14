@@ -31,7 +31,9 @@ function logovanje()
             	location.replace("/adminKlinikeHomepage.html")
             }else if (result.type == "LJ") {
             	location.replace("/zapocinjanjePregleda.html")
-            } else {
+            }else if (result.type == "MS") {
+            	location.replace("/medicinskaSestraHomepage.html")
+            }else {
             	location.replace("/index.html");
             }
             

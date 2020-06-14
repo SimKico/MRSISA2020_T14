@@ -24,11 +24,13 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
      <script type="text/javascript">
+     var token = localStorage.getItem("token");
     function ispisiZahtjeve(){
     	eadresa = localStorage.getItem("eadresa");
   		 $.ajax({
  			type: "GET",
  			url: "/sestra/recepti",
+ 			headers: { "Authorization": "Bearer " + token},
  			data : {eadresa: eadresa},
  			success: function(data){
  				
@@ -69,6 +71,7 @@
     	$.ajax({
     		type : "PUT",
     		url: "sestra/ovjera",
+    		headers: { "Authorization": "Bearer " + token},
     		data: JSON.stringify(data),
     		contentType: "application/json",
     		success: function(data){
@@ -121,7 +124,7 @@
 <!--                     <a href="#" id="Registracija klinika">Registracija klinika</a> -->
 <!--                   </li> -->
                   <li class="active">
-                    <a href="profilAKC.html" id ="Registracija admina klinike" >Vrati se na profil</a>
+                    <a href="medicinskaSestraHomepage.html" id ="Registracija admina klinike" >Vrati se na profil</a>
                   </li>
 <!--                   <li class="active"> -->
 <!--                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a> -->

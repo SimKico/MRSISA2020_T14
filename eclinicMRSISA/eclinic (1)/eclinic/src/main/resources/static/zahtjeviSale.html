@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ovjera recepata</title>
+    <title>Zahtjevi</title>
     <meta
       name="description"
       content="Free Bootstrap Theme by BootstrapMade.com"
@@ -25,11 +25,11 @@
     
      <script type="text/javascript">
      var token = localStorage.getItem("token");
-    function ispisiZahtjeve(){
-    	eadresa = localStorage.getItem("eadresa");
+    	function ispisiZahtjeve(){
+    	eadresa = localStorage.getItem("email");
   		 $.ajax({
  			type: "GET",
- 			url: "/sestra/recepti",
+ 			url: "/sala/zahtjevi",
  			headers: { "Authorization": "Bearer " + token},
  			data : {eadresa: eadresa},
  			success: function(data){
@@ -38,57 +38,57 @@
  				console.log("JUHUUU");
  				index = 0;
  				$.each(data, function(key, value) {
-  					$('.schedule-tab').append($('<div id ="r'+value.idRecepta+'"></div>')
-  									  .append($('<div class="medi-info">').append($('<h3>').text("Recept"))
+ 					date = new Date(value.datum)
+  					$('.schedule-tab').append($('<div id ="r'+value.ljekarId+'"></div>')
+  									  .append($('<div class="medi-info">').append($('<h3>').text("Zahtjev"))
   											  							  .append($('<table style="margin: 8px 0px 0px;" border="1">').append($('<tbody>')
-  											  									.append($('<tr>').append($('<td style="width:250px">').text(" Lijek ")).append($('<td style="width:250px">').text(value.lijek)))
-  											  									
-  											  									  ))
-							  											  .append($('<a href="#" onclick = ovjeriRecept(this,r'+value.idRecepta+ ') class="medi-info-btn">').text("OVJERI").attr("id", value.idRecepta))))
+  											  									.append($('<tr>').append($('<td style="width:250px">').text(" Sala ")).append($('<td style="width:250px">').text(value.sala)))
+  											  									.append($('<tr>').append($('<td style="width:250px">').text(" Satnica ")).append($('<td style="width:250px">').text(value.satnica)))
+  											  									  .append($('<tr>').append($('<td style="width:250px">').text(" Datum ")).append($('<td style="width:250px">').text(date.toLocaleDateString("en-UK")))) 
+  											  							  ))
+							  											  .append($('<a href="#" onclick = zakazi(this,r'+value.ljekarId+ ') class="medi-info-btn">').text("ZAKAŽI").attr("id", value.ljekarId))))
 							  											  
 							  											
   								  
 							
-  				});
+   				});
  			},
  			error: function(data){
- 				alert("Svi recepti su ovjereni");
+ 				alert("Nema zahtjeva.");
+ 				
  			}
  		})
   	}
     
     
-    function ovjeriRecept(data, identifier){
-    	idRecepta = $(data).attr("id");
-    	console.log(idRecepta);
-    	eadresa = localStorage.getItem("eadresa");
-    	console.log(eadresa);
-    	data = {
-    			"lijek" : null,
-    			"eadresaMedSestre" : eadresa,
-    			"idRecepta" : idRecepta
-    	};
+    function zakazi(data, identifier){
+    	idLjekara = $(data).attr("id");
+    	console.log(idLjekara);
+    	localStorage.setItem("idLjekara", idLjekara);
+    	eadresa = localStorage.getItem("email");
     	$.ajax({
-    		type : "PUT",
-    		url: "sestra/ovjera",
-    		headers: { "Authorization": "Bearer " + token},
-    		data: JSON.stringify(data),
-    		contentType: "application/json",
-    		success: function(data){
-    			alert(data);
-    			identifier.remove();
-    			
-    			
-    		},
-    		error: function(data){
-    			console.log(data);
- 				alert(data.responseText);
- 				//identifier.remove();
+ 			type: "GET",
+ 			url: "/sala/zakazi",
+ 			headers: { "Authorization": "Bearer " + token},
+ 			data : {id: idLjekara},
+ 			success: function(data){
+ 				console.log(data);
+ 				$('#divan').prop('hidden' , false);
+ 				$.each(data, function(key, value) {
+ 					if(value.specijalizacija!=null){
+ 						$('#zakazi').append($('<option>', { 
+ 					        value: key,
+ 					        text : value.ime + " " + value.prezime 
+ 					    }));
+ 					}
+					
  				
+ 			});
  			}
-    		
-    	})
+    	});
+ 				
     }
+
   
   </script>
 </head>
@@ -124,7 +124,7 @@
 <!--                     <a href="#" id="Registracija klinika">Registracija klinika</a> -->
 <!--                   </li> -->
                   <li class="active">
-                    <a href="medicinskaSestraHomepage.html" id ="Registracija admina klinike" >Vrati se na profil</a>
+                    <a href="profilAK.html" id ="Registracija admina klinike" >Vrati se na profil</a>
                   </li>
 <!--                   <li class="active"> -->
 <!--                   <a href="#" id = "Dodavanje admina klinickog centra">Dodavanje admina klinickog centra</a> -->
@@ -151,9 +151,14 @@
       <div class="row">
         <div class="schedule-tab " > 
         	<div class="medi-info">
-        	 <h3>  Neovjereni recepti: </font>   </h3>
+        	 <h3>  Zahtjevi za operacije: </h3>
         	</div> 
         </div>
+        
+        <div id="divan" hidden>
+         <select id="zakazi" multiple></select>
+        </div>
+        
       </div>
     </div>
   </section>
