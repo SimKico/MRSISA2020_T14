@@ -24,16 +24,21 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
     <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    
+    
     function regKlinke(){
     	console.log("REG KLinike");
 		naziv =  $("#naziv").val();
 		grad = $("#grad").val();
+		adresa = $("#adresa").val();
 		tip = $("#tip").val();
 		ocjena = 0;
   		 $.ajax({
  			type: "POST",
  			url: "profilAKC/registrujKliniku/",
- 			data: JSON.stringify({naziv: naziv, grad: grad, tipKlinike: tip, ocjenaKlinike: ocjena}),
+ 			headers: { "Authorization": "Bearer " + token},
+ 			data: JSON.stringify({naziv: naziv, grad: grad, tipKlinike: tip, ocjenaKlinike: ocjena, adresa: adresa}),
  		    dataType: 'json',
  		    contentType:  "application/json",
  			success: function(data){
@@ -120,6 +125,10 @@
                         <tr>
                           <td class="labela" width="300px">Grad:</td>
                          <td class="podaci"><input id = "grad" type="text" class="form-control br-radius-zero" required/></td>
+                        </tr>  
+                        <tr>
+                          <td class="labela" width="300px">Adresa:</td>
+                         <td class="podaci"><input id = "adresa" type="text" class="form-control br-radius-zero" required/></td>
                         </tr>         
                         <tr>
                           <td class="labela"  width="300px" >Tip:</td>

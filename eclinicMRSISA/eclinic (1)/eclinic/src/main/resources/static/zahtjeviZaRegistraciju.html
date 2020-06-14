@@ -24,11 +24,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
      <script type="text/javascript">
+     
+     var token = localStorage.getItem("token");
     function ispisiZahtjeve(){
     	console.log("REG KLinike");
   		 $.ajax({
  			type: "GET",
  			url: "zahtjeviReg",
+ 			headers: { "Authorization": "Bearer " + token},
  			success: function(data){
  				
  				console.log(data);
@@ -64,6 +67,7 @@
     	$.ajax({
     		type : "DELETE",
     		url: "zahtjeviReg/odbijanje",
+    		headers: { "Authorization": "Bearer " + token},
     		data: {eadresa: eadresa},
     		success: function(data){
     			alert(data);
@@ -84,6 +88,7 @@
     	$.ajax({
     		type : "PUT",
     		url: "zahtjeviReg/prihvatanje",
+    		headers: { "Authorization": "Bearer " + token},
     		data: {eadresa: eadresa},
     		success: function(data){
     			alert(data);

@@ -24,6 +24,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
     <script type="text/javascript">
+    
+    var token = localStorage.getItem("token");
+   
   
     function dodajAKC(){
     	pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -36,6 +39,7 @@
 			 $.ajax({
 		 			type: "POST",
 		 			url: "profilAKC/dodajAKC/",
+		 			 headers: { "Authorization": "Bearer " + token},
 		 			data: JSON.stringify({ime: ime, prezime: prezime, eadresa: eadresa, lozinka: lozinka}),
 		 		    dataType: 'json',
 		 		    contentType:  "application/json",

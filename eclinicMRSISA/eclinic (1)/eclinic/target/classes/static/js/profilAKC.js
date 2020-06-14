@@ -1,4 +1,6 @@
- function predjiNaProfil(){
+var token = localStorage.getItem("token");
+
+function predjiNaProfil(){
 	  email = localStorage.getItem("email");
 	  console.log("De nestoooo");
 	  console.log(email);
@@ -8,6 +10,7 @@
 	  $.ajax({
 			type: "GET",
 			url: "/profilAKC/profil",
+			headers: { "Authorization": "Bearer " + token},
 			data: data,
 			contentType : "application/json",
 			success: function(data){

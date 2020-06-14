@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -68,6 +69,7 @@ public class AKcController {
 	
 	
 	@RequestMapping(value = "/profil", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	@ResponseBody
 	public ResponseEntity<AKcDTO> getOneByEmail(@RequestParam("eadresa") String eadresa){
 		System.out.print(eadresa);
@@ -76,6 +78,7 @@ public class AKcController {
 	}
 	
 	@PostMapping(value = "/dodajAKC", consumes =  "application/json")
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	public ResponseEntity<AKcDTO> saveAKC(@RequestBody AKcDTO akcDto) {
 		
         Korisnik korisnik = korisnikService.getKorisnikByEmail(akcDto.getEadresa());
@@ -117,7 +120,8 @@ public class AKcController {
 		
 	}
 	
-	@PostMapping(value = "/registrujKliniku", consumes =  "application/json")
+	@PostMapping(value = "/registrujKliniku", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	public ResponseEntity<KlinikaDTO> saveKlinika(@RequestBody KlinikaDTO klinikaDto) {
 		
 		Klinika provjera = klinikaService.findOneKlinkaByNaziv(klinikaDto.getNaziv());
@@ -128,6 +132,7 @@ public class AKcController {
 			klinika.setGrad(klinikaDto.getGrad());
 			klinika.setOcjenaKlinike(klinikaDto.getOcjenaKlinike());
 			klinika.setTipKlinike(klinikaDto.getTipKlinike());
+			klinika.setAdresa(klinikaDto.getAdresa());
 			
 			KlinickiCentar kc = kcService.getKcByName("Eclinic");
 			
@@ -155,6 +160,7 @@ public class AKcController {
 	}
 	
 	@PostMapping(value = "/registrujAdminaKlinike", consumes =  "application/json")
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	public ResponseEntity<AdminKlinikeDTO> saveAdminKl(@RequestBody AdminKlinikeDTO akDto) throws ParseException {
 		
 		Korisnik korisnik = korisnikService.getKorisnikByEmail(akDto.getEadresa());
@@ -202,6 +208,7 @@ public class AKcController {
 	
 
 	@RequestMapping(value = "/zahtjevi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	@ResponseBody
 	public ResponseEntity<List<ZahtjeviZaRegistraciju>> getRegistrationRequests(){
 		

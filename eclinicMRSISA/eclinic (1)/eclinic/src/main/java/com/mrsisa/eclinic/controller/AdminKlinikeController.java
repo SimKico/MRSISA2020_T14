@@ -152,7 +152,7 @@ public class AdminKlinikeController {
 		System.out.println("********\n BROJ TIPOVA PREGLEDA:"+klinika.getTipoviPregleda().size());
 		System.out.println("********\n BROJ SALA:"+sale.size());
 		KlinikaDTO klinikaDTO = new KlinikaDTO(klinika, ljekariDTO,tipoviPregledaDTO,null);
-		klinikaDTO.setSale(pronadjeneSale);
+		//klinikaDTO.setSale(pronadjeneSale);
 
 		return new ResponseEntity<>(klinikaDTO, HttpStatus.OK);
 	}

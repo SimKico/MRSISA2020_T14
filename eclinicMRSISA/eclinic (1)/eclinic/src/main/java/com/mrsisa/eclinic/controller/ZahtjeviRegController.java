@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,6 +59,7 @@ public class ZahtjeviRegController {
 	ZdravKartonService zkService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	@ResponseBody
 	public ResponseEntity<List<ZahtjeviZaRegistraciju>> getRegistrationRequests(){
 		
@@ -68,6 +70,7 @@ public class ZahtjeviRegController {
 	}
 	
 	@DeleteMapping(value = "/odbijanje")
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	public ResponseEntity<String> deleteReg(@RequestParam("eadresa") String eadresa) {
 
 		ZahtjeviZaRegistraciju zahtjev = regService.findOneByEmail(eadresa);
@@ -82,6 +85,7 @@ public class ZahtjeviRegController {
 	}
 	
 	@PutMapping(value = "/prihvatanje")
+	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
 	public ResponseEntity<String> acceptReg(@RequestParam("eadresa") String eadresa) {
 		
 		ZahtjeviZaRegistraciju zahtjev = regService.findOneByEmail(eadresa);

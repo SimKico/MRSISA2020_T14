@@ -24,11 +24,12 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     
     <script type="text/javascript">
-    
+    var token = localStorage.getItem("token");
     function ucitajKlinike(){
   	  $.ajax({
   			type: "GET",
   			url: "/profilAKC/ucitajKlinike",
+  			headers: { "Authorization": "Bearer " + token},
   			success: function(data){
   				console.log(data);
   				console.log(data[0].naziv);
@@ -56,6 +57,7 @@
 			$.ajax({
 	 			type: "POST",
 	 			url: "profilAKC/registrujAdminaKlinike/",
+	 			headers: { "Authorization": "Bearer " + token},
 	 			data: JSON.stringify({ime: ime, prezime: prezime, eadresa: eadresa, lozinka: lozinka, nazivKlinike: nazivKlinike}),
 	 		    dataType: 'json',
 	 		    contentType:  "application/json",
