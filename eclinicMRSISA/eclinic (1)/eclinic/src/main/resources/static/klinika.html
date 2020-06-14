@@ -145,7 +145,52 @@
     <!--/ doctor team-->
     <!--doctor team-->
     <section id="listaPregleda" class = "section-padding" >
+   
     <div class="container" >
+   
+                  <div>
+                  
+                     <table >
+                     	<tr>
+							<td>Datum pregleda</td>
+							<td>
+								<input type="date" id="datum" class="form-control br-radius-zero"
+				      							 value="2020-06-01"
+				     							  min="2020-05-05" max="2020-12-31" required>
+				     		</td>
+						</tr>
+						<tr>
+							<td>Specijalizacija ljekara </td>
+							<td>
+							<input type="text" id = "tip" placeholder="oftamologija" class="form-control br-radius-zero" required>
+				     		</td>
+						</tr>
+						<tr>
+							<td>Ime ljekara</td>
+							<td>
+								<input type="text" id = "ime" placeholder="npr.Stanko" class="form-control br-radius-zero" required>
+							</td>
+						</tr>
+						<tr>
+							<td>Prezime ljekara</td>
+							<td>
+								<input type="text" id = "prezime" placeholder="npr.Stanić" class="form-control br-radius-zero" required>
+							</td>
+						</tr>
+							<tr>
+							<td>Ocjena ljekara </td>
+							<td>
+							<input type="text" id = "ocjena" placeholder="npr.4" class="form-control br-radius-zero" required>
+				     		</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td> <input type="submit" value = "Pretraga" class="btn btn-appoint" onclick = "pretraziLjekare()"></td>
+						</tr>
+						
+					</table> 
+					
+    		    </div>
           <table id="table1"><!-- kasnije hidden  -->
                   <tr style = " background: rgba(12, 184, 182, 0.21)"  >
                     <td class="labela" width="300px" id="ljekar"><p>Ljekar</p></td> 
@@ -157,7 +202,7 @@
                   </tr>
           </table>
 
-        
+      
       </div>
     </div>
   </section>

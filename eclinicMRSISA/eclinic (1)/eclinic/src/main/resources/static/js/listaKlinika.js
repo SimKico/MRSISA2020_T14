@@ -7,7 +7,6 @@ function prikaziListuKlinika(){
 	$.ajax({
 		url: "/klinika/listaKlinika",
 		type: "GET",
-
 		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			localStorage.setItem("result", JSON.stringify(result));
@@ -29,7 +28,8 @@ function prikaziKlinike(){
 	var elements = retrivedJSON.length;
 	var i = 0;
 	for(i; i<elements; i++){
-		var text  = ` <a class = "white" href ="http://localhost:8080/klinika/${retrivedJSON[i].naziv}" id = "${retrivedJSON[i].naziv}">`
+		var text  = ` <a class = "white" href="http://localhost:8080/klinika/${retrivedJSON[i].naziv}" id = "${retrivedJSON[i].naziv}">`
+			console.log(retrivedJSON[i].naziv);
 		$("#table1")
 		.append($("<tr>")
 				.append($("<td>")
@@ -45,6 +45,9 @@ function prikaziKlinike(){
 	
 	$("#table1").click(function(e){
 		var name = e.target.id;
+		
+		
+		console.log(name);
 		$.ajax({
 			url: "/klinika/listaKlinika/" + name,
 			type: "GET",
@@ -156,7 +159,7 @@ function pretraziPreglede(){
 						.append($("<td>")
 							.text(result[i].tipoviPregleda[0].cijena + "€"))
 					);
-//TO DO ZA VISE TIPOVA PREGLEDA			
+		
 			}
 		}
 	,
@@ -199,7 +202,6 @@ function ucitajPodatkeKlinikeZaPregled(){
 	$("#tipKlinike").append(klinikaPodaciZaPregled.tipKlinike);
 	for(i in klinikaPodaciZaPregled.ljekari)
 	{
-	//TO DO srediti izgled ocjene
 		var prosjecnaOcjena = klinikaPodaciZaPregled.ljekari[i].prosjecnaOcjena? "(" +  klinikaPodaciZaPregled.ljekari[i].prosjecnaOcjena + ")" : " ";
 		var br_pregleda = klinikaPodaciZaPregled.ljekari[i].slobodniTermini.length;
 		console.log(br_pregleda);
@@ -282,6 +284,75 @@ function zakaziBrziPregled(){
 			alert("Something is wrong with your request.(get details)");
 		}
     });	
+}
+function pretraziLjekare()
+{ console.log("fasdfas");
+	var tipLjekara = $("#tip").val();
+	 var datumPregleda = $("#datum").val();
+	var ime = $("#ime").val();
+	var prezime = $("#prezime").val();
+	var ocjena = $("#ocjena").val();
+	console.log(tipLjekara + ime + prezime + ocjena + datumPregleda );
 	
+//	console.log(pretragaLjekaraParametri);
+//	localStorage.setItem("pretragaLjekaraParametri", JSON.stringify(pretragaLjekaraParametri));
+	
+	$.ajax({
+		url: "/ljekar/pretragaLjekara" ,
+		method: "GET",
+		dataType: "json",
+        contentType: "application/json",
+		data :({tipLjekara: tipLjekara, ime : ime, prezime: prezime, ocjena : ocjena}),
+		headers: { "Authorization": "Bearer " + token},
+		success: function (result) {
+			console.log(result);
+			localStorage.setItem("ljekariZaListanje", JSON.stringify(result));
+			location.href = "pretragaLjekaraLista.html";
+		}
+	});
+		
+}
+function ucitajPodatkeLjekara()
+{
+	var ljekari = localStorage.getItem('ljekariZaListanje');
+	var ljekari = JSON.parse(ljekari);
+	console.log(ljekari);
+	for(i in ljekari)
+	{
+		var prosjecnaOcjena = ljekari[i].prosjecnaOcjena? "(" + ljekari[i].prosjecnaOcjena + ")" : " ";
+		var br_pregleda = 0;
+		if(ljekari[i].slobodniTermini!= null){
+			br_pregleda = ljekari[i].slobodniTermini.length;}
+		console.log(br_pregleda);
+		var j= 0;
+			var text = `<select id = "termin">`;
+			var appoint  = `<button value="${ljekari[i].eadresa}" onclick = "potvrdiZakazivanje()" class="btn">Zakažite pregled </a>`;
+			console.log("usao");
+			$("#table1")
+			.append($("<tr>")
+					.append($("<td>")
+						.text("dr " + ljekari[i].ime))		
+					.append($("<td>")
+						.text(ljekari[i].prezime))	
+					.append($("<td>")
+						.text(ljekari[i].prosjecnaOcjena))
+					.append($(text))
+					.append($(appoint))
+				
+				);
+			for(j; j<br_pregleda;j++){
+				
+				$("#termin")
+					.append($("<option>")
+									.text(ljekari[i].slobodniTermini[j])	
+									);
+									
+			}
+	}
+	$("button").click(function() {
+		 var fired_button = $(this).val();
+		 localStorage.setItem("emailLjekara",fired_button);
+	   
+	});
 }
 

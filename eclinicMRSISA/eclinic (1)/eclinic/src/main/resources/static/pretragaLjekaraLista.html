@@ -37,7 +37,7 @@
     data-spy="scroll"
     data-target=".navbar"
     data-offset="60"
-    onload="ucitajPodatkeKlinike()"
+    onload="ucitajPodatkeLjekara()"	
   >
     <!--banner-->
     <section id="banner" class="banner">
@@ -69,9 +69,9 @@
                     <a href = "#" onclick = "profilPacijenta()" >Moj profil</a>
                   </li>
                   <li class="active">
-                    <a href="#" id="mojKarton" onclick = "kartonPacijenta()">Moj karton</a>
+                    <a href="#" id="mojKarton"  onclick = "kartonPacijenta()" >Moj karton</a>
                   </li>
-                    <li class="active">
+                   <li class="active">
                     <a href="#" id="istorijaOperacija" onclick = "istorijaOperacija()">Moje operacije</a>
                   </li>
                   <li class="active">
@@ -84,14 +84,11 @@
                     >
                   </li>
                 </ul>
-              </div>
+              
             </div>
           </div>
-        </nav>
-        <div class="container">
-          <div class="row">
-            <div class="banner-info">
-              <div class="banner-logo text-center">
+          </div>
+                  <div class="banner-logo text-center">
                 <div>
                   <h1 class="white" id="naziv"></h1>
                   <h2 class="white" id="grad"></h2>
@@ -100,113 +97,32 @@
 
                 <!-- <img src="img/logo.png" class="img-responsive" /> -->
               </div>
-
-              <div class="collapse navbar-collapse">
-                <h1>
-                
-                  <ui class="white">
-                    <li><a class="white" href="#service">Usluge-</a></li>
-                    <li><a class="white" href="#about">O nama-</a></li>
-                    <li class="white">
-                      <a class="white" href="#testimonial">Ocjena klinike</a>
-                    </li>
-                    <li class="white">
-                      <a class="white" href="#ljekari">Ljekari</a>
-                    </li>
-                    <li class="white">
-                      <a class="white" href="#listaPregleda" >Lista pregleda</a>
-                    </li>
-                  </ui>
-          
-                </h1>
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+         
+        </nav>
+      
     </section>
     <!--/ banner-->
 
     <!--doctor team-->
-    <section id="ljekari" class="section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="ser-title">Naši ljekari</h2>
-            <hr class="botm-line" />
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-6">
-            <div id="tim-ljekara"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--/ doctor team-->
-    <!--doctor team-->
-    <section id="listaPregleda" class = "section-padding" >
+    <section id="doctor-team" class = "section-padding" >
+    <div   class="container" >
    
-    <div class="container" >
-   
-                  <div>
-                  
-                     <table >
-                     	<tr>
-							<td>Datum pregleda</td>
-							<td>
-								<input type="date" id="datum" class="form-control br-radius-zero"
-				      							 value="2020-06-01"
-				     							  min="2020-05-05" max="2020-12-31" required>
-				     		</td>
-						</tr>
-						<tr>
-							<td>Specijalizacija ljekara </td>
-							<td>
-							<input type="text" id = "tip" placeholder="oftamologija" class="form-control br-radius-zero" required>
-				     		</td>
-						</tr>
-						<tr>
-							<td>Ime ljekara</td>
-							<td>
-								<input type="text" id = "ime" placeholder="npr.Stanko" class="form-control br-radius-zero" required>
-							</td>
-						</tr>
-						<tr>
-							<td>Prezime ljekara</td>
-							<td>
-								<input type="text" id = "prezime" placeholder="npr.Stanić" class="form-control br-radius-zero" required>
-							</td>
-						</tr>
-							<tr>
-							<td>Ocjena ljekara </td>
-							<td>
-							<input type="text" id = "ocjena" placeholder="npr.4" class="form-control br-radius-zero" required>
-				     		</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td> <input type="submit" value = "Pretraga" class="btn btn-appoint" onclick = "pretraziLjekare()"></td>
-						</tr>
-						
-					</table> 
-					
-    		    </div>
-          <table id="table1"><!-- kasnije hidden  -->
+          <table id="table1">
                   <tr style = " background: rgba(12, 184, 182, 0.21)"  >
-                    <td class="labela" width="300px" id="ljekar"><p>Ljekar</p></td> 
-                    <td class="labela" width="300px" id="datum"> <p>Datum</p></td>
-                  	<td class="labela" width="300px" id="satnica"><p>Satnica</p></td> 
-                  	<td class="labela" width="300px" id="tip"><p>Tip Pregleda </p></td>
-                  	<td class="labela" width="300px" id="cijena"><p>Cijena</p></td>
-                  	<td class="labela" width="300px" id="popust"><p>Popust</p></td>
+                    <td class="labela" width="300px" id="ime"><p>Ime</p></td> 
+                    <td class="labela" width="300px" id="prezime"> <p>Prezime</p></td>
+                  	<td class="labela" width="300px" id="ocjenaLjekara"><p>Prosječna ocjena ljekara</p></td> 
+                  	<td class="labela" width="300px" id="termini"><p>Termini kada možete zakazati pregled</p></td>
+                  </tr>
                   </tr>
           </table>
 
-      
+        
       </div>
     </div>
   </section>
     <!--/ doctor team-->
+
     <!--testimonial-->
     <section id="testimonial" class="section-padding">
       <div class="container">

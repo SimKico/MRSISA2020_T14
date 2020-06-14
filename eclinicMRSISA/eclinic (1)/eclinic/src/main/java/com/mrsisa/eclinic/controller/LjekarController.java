@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,10 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mrsisa.eclinic.dto.LjekarDTO;
 import com.mrsisa.eclinic.dto.PacijentDTO;
 import com.mrsisa.eclinic.dto.PregledDTO;
+import com.mrsisa.eclinic.dto.PretragaLjekaraDTO;
 import com.mrsisa.eclinic.dto.TipPregledaDTO;
+import com.mrsisa.eclinic.dto.ZahtjeviZaReigstracijuDTO;
 import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Pregled;
+import com.mrsisa.eclinic.model.Specijalizacija;
 import com.mrsisa.eclinic.model.StatusPregleda;
+import com.mrsisa.eclinic.model.TipPregleda;
 import com.mrsisa.eclinic.service.LjekarService;
 import com.mrsisa.eclinic.service.PacijentService;
 import com.mrsisa.eclinic.service.PregledService;
@@ -117,6 +122,23 @@ public class LjekarController {
 		System.out.print(id);
 		return new ResponseEntity<>("Uspjeh", HttpStatus.OK);
 	}
+	@RequestMapping(value = "/pretragaLjekara",  method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	
+	public ResponseEntity<List<LjekarDTO>> pretragaLjekara(@RequestParam String ime,@RequestParam String prezime, @RequestParam String tipLjekara,@RequestParam String ocjena)throws ParseException {	
+		 // (java.sql.Date) new SimpleDateFormat("yyyy-MM-dd").parse(datum)
+
+		System.out.println("oreafasdf");
+		PretragaLjekaraDTO podaci = new PretragaLjekaraDTO(ime, prezime, tipLjekara,Integer.parseInt(ocjena) );
+//		List<Ljekar> ljekari = ljekarService.findOneBy(podaci);
+		List<Ljekar> ljekari = ljekarService.findOneByime(ime);
+		
+		List<LjekarDTO> ljekariDTO = new ArrayList<LjekarDTO>();
+
+		for(Ljekar lj : ljekari) {
+			LjekarDTO ljekar = new LjekarDTO(lj);
+			ljekariDTO.add(ljekar);
+		}
+		return new ResponseEntity<>(ljekariDTO, HttpStatus.OK);
+	}
 	
 }

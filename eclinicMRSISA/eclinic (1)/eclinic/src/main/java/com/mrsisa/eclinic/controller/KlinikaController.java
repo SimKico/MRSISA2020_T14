@@ -62,7 +62,7 @@ public class KlinikaController {
 		return new ResponseEntity<>(listaKlinikaDTO, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "listaKlinika/{naziv}",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/listaKlinika/{naziv}",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<KlinikaDTO> getKlinika(@PathVariable("naziv") String naziv){	
 		Klinika klinika = klinikaService.findOneKlinkaByNaziv(naziv);
 		Set<Ljekar> ljekari = klinika.getLjekari();

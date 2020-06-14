@@ -11,9 +11,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.mrsisa.eclinic.dto.PretragaLjekaraDTO;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Korisnik;
 import com.mrsisa.eclinic.model.Ljekar;
+import com.mrsisa.eclinic.model.Specijalizacija;
 @Repository
 public interface LjekarRepository extends JpaRepository<Ljekar, Long>{
 	//List<Ljekar> findAllById(Long id);
@@ -28,5 +30,15 @@ public interface LjekarRepository extends JpaRepository<Ljekar, Long>{
 	
 	
 	Ljekar findOneByprijava_eAdresa(String eadresa);
-	
+
+//
+//	@Query(value = "Select id from tabela_korisnika\r\n" + 
+//			"where tabela_korisnika.specijalizacija = ?3 and ime = ?1  and prezime = ?2 and ocjena = ?4 \r\n" + 
+//			"\r\n" + 
+//			"\r\n" + 
+//			" ", nativeQuery = true)
+//	List<Ljekar> findOneByPodaci(String ime, String prezime, Specijalizacija specijalizacija, int ocjena);
+
+	List<Ljekar> findOneByime(String ime);
+		
 	}
