@@ -14,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -224,6 +225,7 @@ public class PregledController {
 	}
 
 	@PostMapping(value = "/noviPregled", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
 	public ResponseEntity<ZakaziPregledDTO> zakaziPregled(@RequestBody ZakaziPregledDTO zpDTO) throws ParseException {
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
