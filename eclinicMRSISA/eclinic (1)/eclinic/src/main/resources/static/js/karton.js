@@ -34,8 +34,8 @@ function popuniKarton()
 	$("#dioptrija").append(localStorage.getItem('dioptrija'));
 	$("#krvnaGrupa").append(localStorage.getItem('krvnaGrupa'));
 
-	$("#tezina").append(localStorage.getItem('tezina'));
-	$("#visina").append(localStorage.getItem('visina'));
+	$("#tezina").append(localStorage.getItem('tezina') + "kg");
+	$("#visina").append(localStorage.getItem('visina') + "cm");
 
 }
 
