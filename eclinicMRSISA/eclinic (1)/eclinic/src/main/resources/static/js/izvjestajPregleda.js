@@ -99,6 +99,10 @@ function ucitajDijagnoze(){
 				        value: key,
 				        text : value.dijagnoza 
 				    }));
+					$('#dijagnozaS').append($('<option>', { 
+				        value: key,
+				        text : value.dijagnoza 
+				    }));
 				});
 			}
 	  }); 
@@ -142,6 +146,7 @@ function zdravstveniKarton(){
 				$('#dioptrija').append(data.dioptrija==null? "--" : data.dioptrija);
 				$('#visina').append(data.visinaCm==0? "--" : data.visinaCm);
 				$('#tezina').append(data.tezinaKg==0? "--" : data.tezinaKg);
+				
 				$('#ime1').append(data.imePacijenta);
 				$('#prezime1').append(data.prezimePacijenta);
 				$('#jbo1').append(data.jboPacijenta);
@@ -309,7 +314,38 @@ function sacuvajIzmjene(){
 }
 
 function prikaziStariIzvjestaj(){
+	izvjestaji = JSON.parse(localStorage.getItem("izvjestaji"));
+	index = $('#stariIzvjestaji option:selected').val()
 	$('#stari').prop('hidden', false);
+	console.log(izvjestaji[index].izvjestaj);
+	$('#izvjestajS').empty().val(izvjestaji[index].izvjestaj);
+}
+
+function sacuvajStariIzvjestaj(){
+	izvjestaj = $('#izvjestajS').val();
+	dijagnoza = $('#dijagnozaS option:selected').text();
+	pregledId = Number($('#stariIzvjestaji option:selected').text().slice(9));
+	console.log(pregledId);
+	data = {
+			"izvjestaj" : izvjestaj,
+			"dijagnozaDTO" : dijagnoza,
+			"pregledId" : pregledId
+	};
+	console.log(data);
+	 $.ajax({
+			type: "PUT",
+			url: "/zdravKarton/izmjeniIzvjestaj",
+			headers: { "Authorization": "Bearer " + token},
+			data : JSON.stringify(data),
+			dataType: 'json',
+		    contentType:  "application/json",
+			success: function(data){
+				console.log(data);
+				
+			}
+	  }); 
+	
+	 $('#stari').prop('hidden', true);
 }
 
 
