@@ -25,6 +25,7 @@ import com.mrsisa.eclinic.dto.AdminKlinikeDTO;
 import com.mrsisa.eclinic.dto.KlinikaDTO;
 import com.mrsisa.eclinic.model.AdminKlinickogCentra;
 import com.mrsisa.eclinic.model.AdminKlinike;
+import com.mrsisa.eclinic.model.Authority;
 import com.mrsisa.eclinic.model.KlinickiCentar;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Korisnik;
@@ -32,6 +33,7 @@ import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
 import com.mrsisa.eclinic.service.AKCService;
 import com.mrsisa.eclinic.service.AdminKlinikeService;
+import com.mrsisa.eclinic.service.AuthorityService;
 import com.mrsisa.eclinic.service.KcService;
 import com.mrsisa.eclinic.service.KlinikaService;
 import com.mrsisa.eclinic.service.KorisnikService;
@@ -55,6 +57,9 @@ public class AKcController {
 	private KorisnikService korisnikService;
 	
 	private ZahtjeviRegService regService;
+	
+	@Autowired
+	AuthorityService aService;
 	
 	@Autowired
 	public AKcController(AKCService akcService, PrijavaService prijavaService, KlinikaService klinikaService, AdminKlinikeService akService, KcService kcService, KorisnikService korisnikService,  ZahtjeviRegService regService) {
@@ -105,6 +110,11 @@ public class AKcController {
 			akc.setEnabled(true);
 			akc.setEmail(akcDto.getEadresa());
 			akc.setPassword(pw_hash);
+			
+			Authority a = aService.findByName("ROLE_ADMINKC");
+			List<Authority> aut = new ArrayList<Authority>();
+			aut.add(a);
+			akc.setAuthorities(aut);
 			
 			
 			prijava = prijavaService.save(prijava);
@@ -194,6 +204,11 @@ public class AKcController {
 			ak.setLastPasswordResetDate(sdf.parse(date));
 			ak.setEnabled(true);
 			prijava = prijavaService.save(prijava);
+			
+			Authority a = aService.findByName("ROLE_ADMINK");
+			List<Authority> aut = new ArrayList<Authority>();
+			aut.add(a);
+			ak.setAuthorities(aut);
 			
 			kc.getKorisnik().add(ak);
 			ak = akService.save(ak);

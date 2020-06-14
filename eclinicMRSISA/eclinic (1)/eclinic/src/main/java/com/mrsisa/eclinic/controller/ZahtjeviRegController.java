@@ -19,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mrsisa.eclinic.model.Authority;
 import com.mrsisa.eclinic.model.KlinickiCentar;
 import com.mrsisa.eclinic.model.Korisnik;
 import com.mrsisa.eclinic.model.Pacijent;
 import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
 import com.mrsisa.eclinic.model.ZdravstveniKarton;
+import com.mrsisa.eclinic.service.AuthorityService;
 import com.mrsisa.eclinic.service.EmailService;
 import com.mrsisa.eclinic.service.KcService;
 import com.mrsisa.eclinic.service.KorisnikService;
@@ -57,6 +59,9 @@ public class ZahtjeviRegController {
 	
 	@Autowired
 	ZdravKartonService zkService;
+	
+	@Autowired
+	AuthorityService aService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('ROLE_ADMINKC')")
@@ -151,6 +156,12 @@ public class ZahtjeviRegController {
 		zk = zkService.save(zk);
 		prijava = prijavaService.save(prijava);
 		kc.getKorisnik().add(noviPacijent);
+		
+		Authority a = aService.findByName("ROLE_PACIENT");
+		List<Authority> aut = new ArrayList<Authority>();
+		aut.add(a);
+		noviPacijent.setAuthorities(aut);
+		
 		noviPacijent = pacijentService.save(noviPacijent);
 		
 		regService.remove((long) id);

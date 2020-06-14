@@ -88,11 +88,11 @@ values('LJ', 'Vladimir', 'Velimirovic','Studirao u Beogradu.',5,'09:00-17:00',1,
 --						values('P', false, 'Snjezana', 'Simic', false, null, null, null, null, null, 'Hajduk Veljka bb', '066617528', 'Bosna', 'Derventa', '123456', 'pacijent1@eclinic.com', null,1, 'Eclinic');
 
 -- GIVE AUTHORITIES TO USERS  ============================================================================================================
-INSERT INTO authority(id, name) VALUES (1, 'ROLE_ADMINKC');
-INSERT INTO authority(id, name) VALUES (2, 'ROLE_ADMINK');
-INSERT INTO authority(id, name) VALUES (3, 'ROLE_PACIENT');
-INSERT INTO authority(id, name) VALUES (4, 'ROLE_LJEKAR');
-INSERT INTO authority(id, name) VALUES (5, 'ROLE_SESTRA');
+INSERT INTO authority( name) VALUES ('ROLE_ADMINKC');
+INSERT INTO authority( name) VALUES ('ROLE_ADMINK');
+INSERT INTO authority( name) VALUES ('ROLE_PACIENT');
+INSERT INTO authority( name) VALUES ('ROLE_LJEKAR');
+INSERT INTO authority( name) VALUES ('ROLE_SESTRA');
 
 INSERT INTO user_authority (user_id, authority_id) VALUES (1, 2);
 INSERT INTO user_authority (user_id, authority_id) VALUES (2, 1);
