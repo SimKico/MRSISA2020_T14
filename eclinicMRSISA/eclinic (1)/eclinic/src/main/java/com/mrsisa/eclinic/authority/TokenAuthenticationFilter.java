@@ -36,18 +36,21 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
 		if (authToken != null) {
 			// extract email from token
-			email = tokenUtils.getUsernameFromToken(authToken);
+			email = tokenUtils.getEmailFromToken(authToken);
+			System.out.println(email);
 			
 			if (email != null) {
 				// get user based on email
+				System.out.println("ovdje email");
 				UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-				
+				System.out.println(userDetails);
 				// check token validity
 				if (tokenUtils.validateToken(authToken, userDetails)) {
 					// create authentication
 					TokenBasedAuthentication authentication = new TokenBasedAuthentication(userDetails);
 					authentication.setToken(authToken);
 					SecurityContextHolder.getContext().setAuthentication(authentication);
+					System.out.println("uspjelo");
 				}
 			}
 		}

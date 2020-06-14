@@ -1,3 +1,7 @@
+var email = localStorage.getItem('email');
+var token = localStorage.getItem('token');
+console.log(token);
+
 function prikaziListuKlinika(){
 	console.log("nesto");
 	$.ajax({

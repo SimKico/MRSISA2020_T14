@@ -1,8 +1,14 @@
+var email = localStorage.getItem('email');
+var token = localStorage.getItem('token');
+console.log(token);
+
 function prikaziHomepagePacijenta(){
-	console.log("nesto");
+	console.log("nesto homepagePacijent1");
+	console.log('email');
 	$.ajax({
-		url: "/homepagePacijent1",
+		url: "/homepagePacijent1/" + email,
 		type: "GET",
+		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			localStorage.setItem("ime", result.ime);
 			location.href = "homepagePacijent1.html" ;
@@ -16,10 +22,14 @@ function prikaziHomepagePacijenta(){
 
 function profilPacijenta(){
 	
-	console.log("nesto");
+	console.log("profil pacijenta");
+	console.log("nesto homepagePacijent1");
+	console.log('email');
 	$.ajax({
-		url: "/homepagePacijent1/profilPacijent",
+		url: "/homepagePacijent1/profilPacijent/"+email,
 		type: "GET",
+
+		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			console.log(result);
 			localStorage.setItem("ime", result.ime);
@@ -59,8 +69,9 @@ function popuni()
 function prikaziAzuriranjePacijenta(){
 	console.log("nesto");
 	$.ajax({
-		url: "/homepagePacijent1/profilPacijent/azurirajPodatke",
+		url: "/homepagePacijent1/profilPacijent/azurirajPodatke/" + email,
 		type: "GET",
+		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			console.log(result);
 			console.log("fgdagadfgdf");
@@ -105,10 +116,12 @@ function azurirajPodatke(){
 		
 		 $.ajax({
 			type: "PUT",
-			url: "/homepagePacijent1/profilPacijent/azurirajProfil",
+			url: "/homepagePacijent1/profilPacijent/azurirajProfil/" + email,
 			data: JSON.stringify({adresaPrebivalista: adresa, grad: grad, drzava: drzava, brojTelefona: telefon, jedBrojOsiguranika :jbo}),
 //		    dataType: 'json',
 		    contentType:  "application/json",
+
+			headers: { "Authorization": "Bearer " + token},
 			success: function(result){
 
 				alert("Uspjesno ste azurirali podatke");

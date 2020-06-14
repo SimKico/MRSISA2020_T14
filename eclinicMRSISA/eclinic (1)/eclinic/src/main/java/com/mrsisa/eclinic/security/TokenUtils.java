@@ -46,7 +46,7 @@ public class TokenUtils {
 	public String generateToken(Korisnik korisnik) {
 		return Jwts.builder()
 				.setIssuer(APP_NAME)
-				.setSubject(korisnik.getPassword())
+				.setSubject(korisnik.getEmail())
 				.setAudience(generateAudience())
 				.setIssuedAt(new Date())
 				.setExpiration(generateExpirationDate())
@@ -114,7 +114,20 @@ public class TokenUtils {
 		}
 		return username;
 	}
-	
+	public String getEmailFromToken(String token) {
+		String email;
+		try {
+			final Claims claims = this.getAllClaimsFromToken(token);
+			System.out.println(claims);
+			
+			email = claims.getSubject();
+			System.out.println("email" + email);
+			
+		} catch (Exception e) {
+			email = null;
+		}
+		return email;
+	}
 
 	public Date getIssuedAtDateFromToken(String token) {
 		Date issueAt;
