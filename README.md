@@ -22,5 +22,6 @@ Kada je server pokrenut u zeljenom pretrazivacu (Opera, Chrome, Microsoft Edge) 
 
 Prikazuje se pocetna strana aplikacije i korisnik moze dalje da je koristi.
 
-
+**napomena za odabir klinike iz vise klinike
+ --ne radi uvijek iz prvog puta odabir, nekad mora vise puta da se klikne na hiperlink
 
