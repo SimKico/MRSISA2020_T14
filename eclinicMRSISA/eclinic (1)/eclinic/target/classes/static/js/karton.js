@@ -63,30 +63,30 @@ function istorijaOperacija()
     });	
 }
 
-function istorijaPregleda()
-{
-	
-	$.ajax({
-		url: "/homepagePacijent1/istorijaPregleda/"+email,
-		type: "GET",
-		headers: { "Authorization": "Bearer " + token},
-		success: function (result) {
-			console.log(result);
-			localStorage.setItem('operacijePacijenta',  JSON.stringify(result));
-//			localStorage.setItem("alergije", result.alergije);
-//			localStorage.setItem("dioptrija", result.dioptrija);
-//			localStorage.setItem("krvnaGrupa", result.krvnaGrupa);
-//			localStorage.setItem("tezina", result.tezinaKg);
+//function istorijaPregleda()
+//{
 //	
-//			localStorage.setItem("visina", result.visinaCm);
-		
-			location.href = "listaPregledaPacijenta.html";
-		},
-		error: function(result) {
-			toastr.error("Something is wrong with your request.(get details)");
-		}
-    });	
-}
+//	$.ajax({
+//		url: "/homepagePacijent1/istorijaPregleda/"+email,
+//		type: "GET",
+//		headers: { "Authorization": "Bearer " + token},
+//		success: function (result) {
+//			console.log(result);
+//			localStorage.setItem('operacijePacijenta',  JSON.stringify(result));
+////			localStorage.setItem("alergije", result.alergije);
+////			localStorage.setItem("dioptrija", result.dioptrija);
+////			localStorage.setItem("krvnaGrupa", result.krvnaGrupa);
+////			localStorage.setItem("tezina", result.tezinaKg);
+////	
+////			localStorage.setItem("visina", result.visinaCm);
+//		
+//			location.href = "listaPregledaPacijenta.html";
+//		},
+//		error: function(result) {
+//			toastr.error("Something is wrong with your request.(get details)");
+//		}
+//    });	
+//}
 function ucitajOperacije()
 {
 	var operacijePacijenta = localStorage.getItem('operacijePacijenta');
@@ -118,8 +118,8 @@ function ucitajOperacije()
 }
 
 function ucitajPodatkePregledaPacijenta(){
-	var podaciPregledaPacijenta = localStorage.getItem('preglediPacijenta');
-	var podaciPregledaPacijenta = JSON.parse(podaciPregledaPacijenta);
+	
+	var podaciPregledaPacijenta = JSON.parse(localStorage.getItem('preglediPacijenta'));
 	console.log(podaciPregledaPacijenta);
 	
 	for( i in podaciPregledaPacijenta){
