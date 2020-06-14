@@ -62,7 +62,7 @@ public class PacijentController {
 	private ZahtjeviRegService regService;
 	@Autowired
 	private ZdravKartonService kartonService;
-	
+	private int broj = 0;
 	@RequestMapping(value = "/{email}", method = RequestMethod.GET)
 	@ResponseBody
 	@PreAuthorize("hasRole('PACIENT')")
@@ -153,6 +153,7 @@ public class PacijentController {
 //		 ZdravstveniKartonDTO kar = new ZdravstveniKartonDTO(k);
 //		 return new ResponseEntity<>(kar, HttpStatus.OK);
 //	}	
+	
 	@RequestMapping(value = "/istorijaPregleda/{email}" ,  method = RequestMethod.GET)
 	@PreAuthorize("hasRole('PACIENT')")
 	public ResponseEntity<List<PregledDTO>>  getPreglediPacijenta(@PathVariable("email") String email){
@@ -163,15 +164,17 @@ public class PacijentController {
 		List<PregledDTO> preglediDTO = new ArrayList<PregledDTO>();
 		for(Pregled pregled : pregledi)
 		{
-			System.out.println(pregled.getPacijent().getEmail());
 			
 			if(pregled.getPacijent().getEmail().equals(email)) {
-			LjekarDTO lj = new LjekarDTO(pregled.getLjekar());
-			TipPregledaDTO tip = new TipPregledaDTO( pregled.getTipPregleda(), null);
-			PregledDTO pregledDTO = new PregledDTO(pregled,lj,tip, pregled.getLjekar().getKlinika().getAdresa(),  pregled.getLjekar().getKlinika().getGrad(), pregled.getLjekar().getKlinika().getOcjenaKlinike(), null);
-			preglediDTO.add(pregledDTO);
+				System.out.println(pregled);
+				LjekarDTO lj = new LjekarDTO(pregled.getLjekar());
+				TipPregledaDTO tip = new TipPregledaDTO( pregled.getTipPregleda(), null);
+				PregledDTO pregledDTO = new PregledDTO(pregled,lj,tip, pregled.getLjekar().getKlinika().getAdresa(),  pregled.getLjekar().getKlinika().getGrad(), pregled.getLjekar().getKlinika().getOcjenaKlinike(), null);
+				preglediDTO.add(pregledDTO);
 			}
+			broj++;
 		}
+		System.out.println(broj);
 
 		 return new ResponseEntity<>(preglediDTO, HttpStatus.OK);
 	}	
