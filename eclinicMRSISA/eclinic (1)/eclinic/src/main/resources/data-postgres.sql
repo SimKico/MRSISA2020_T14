@@ -5,8 +5,8 @@ insert into sifarnik_lijekova(naziv_sifarnika)values('Sifarnik lijekova');
 
 
 ----KARTONI--
-insert into zdravstveni_karton(krvna_grupa, alergije, dioptrija, visina, tezina) values ('AB', null, null, 0, 0);
-insert into zdravstveni_karton(krvna_grupa, alergije, dioptrija, visina, tezina) values ('A', null, null, 0, 0);
+insert into zdravstveni_karton(krvna_grupa, alergije, dioptrija, visina, tezina) values ('AB','polen', 'nema', 172, 64);
+insert into zdravstveni_karton(krvna_grupa, alergije, dioptrija, visina, tezina) values ('A','prašina','-1R,-1.25D', 180, 70);
 
 --Dodavanje klinickog centra--
 insert into klinicki_centar(kc_id,sif_dij_id, sif_lijek_id)values('Eclinic',1, 1);
