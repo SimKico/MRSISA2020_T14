@@ -38,7 +38,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 			// extract email from token
 			email = tokenUtils.getEmailFromToken(authToken);
 			System.out.println(email);
-			
+				
 			if (email != null) {
 				// get user based on email
 				System.out.println("ovdje email");

@@ -61,18 +61,42 @@
       </div>
 
   <div class="container">
-    <input type="text" placeholder="Unesite e-mail" class="form-control br-radius-zero" id="email" required>
-	<p></p>
-    <input type="password" placeholder="Unesite sifru" class="form-control br-radius-zero" id="lozinka" required>	
-    <input type="submit" value = "Prijava" class="btn btn-appoint" onclick = "logovanje()"/>
-   <p style = "    mix-blend-mode: color-dodge;">Ukoliko nemate nalog <a href = "registracija.html" >registrujte se</a><p>
-  </div>
-
-    </div>
-	<input type="submit" value = "AK" onclick = "prikaziHomepageAK()"/>
-    <input type="submit" value = "AKC" onclick = "predjiNaProfil()"/>
-    <input type="submit" value = "Pacijent "  onclick = "prikaziHomepagePacijenta()"/>
-     <a href = "zapocinjanjePregleda.html">Pregledi Ljekara</a>
+ 		<form id="registration_form">
+			<div align="center">
+                <h1>Registracija </h1>
+                <div style="float: left; width: 40%;">
+                    <label> Ime: </label>
+                    <input type="text" class="form-control" id="firstName" required>
+                    <label> Email: </label>
+                    <input type="email" class="form-control" id="email" required>
+                    <label> Grad: </label>
+                    <input type="text" class="form-control" id="address" required>
+                    <label>Jedinstveni maticni broj:</label>
+                    <input type="text" class="form-control" id="address" required>
+              <label> Drzava: </label>
+                    <input type="text" class="form-control" id="address" required>
+                </div>
+                <div style="float: right; width: 50%;">
+                    <label> Prezime </label>
+                    <input type="text" class="form-control" id="lastName" required>
+                    
+                    <label> Telefon: </label>
+                    <input type="text" class="form-control" id="phone" required>
+                    
+                    
+                    <label> Lozinka: </label>
+                    <input type="password" class="form-control" id="password" required> 
+                    <label> Potvrdite lozinku: </label>
+                    <input type="password" class="form-control" id="confirmPassword" required>
+                    <br>
+                <input type="submit" class="btn btn-primary" value="Registracija" onclick = "registracija()" > 
+                <br>
+                Ukoliko imate nalog <a href="index.html">prijavite se </a>        
+                </div>
+                
+            </div> 
+            
+        </form>
 
  </section>
    <!--footer-->
