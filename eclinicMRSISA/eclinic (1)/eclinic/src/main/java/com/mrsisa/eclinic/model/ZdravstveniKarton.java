@@ -25,7 +25,8 @@ import javax.persistence.Table;
 @Table(name="zdravstveni_karton")
 public class ZdravstveniKarton {
 	
-   @Id
+
+@Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    @Column(name="karton_id", unique=false, nullable=false)
    private Long idKartona;
@@ -54,6 +55,9 @@ public class ZdravstveniKarton {
    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
    @JoinColumn(name="karton_id")
    private Set<IzvjestajPregleda> izvjestajPregleda = new HashSet<IzvjestajPregleda>();
+   public ZdravstveniKarton() {
+		super();
+	}
 
 public Long getIdKartona() {
 	return idKartona;

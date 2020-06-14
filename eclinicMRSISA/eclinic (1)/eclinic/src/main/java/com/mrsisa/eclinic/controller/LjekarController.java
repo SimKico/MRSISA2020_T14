@@ -122,8 +122,8 @@ public class LjekarController {
 		System.out.print(id);
 		return new ResponseEntity<>("Uspjeh", HttpStatus.OK);
 	}
-	@RequestMapping(value = "/pretragaLjekara",  method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	
+	@RequestMapping(value = "/pretragaLjekara",  method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<LjekarDTO>> pretragaLjekara(@RequestParam String ime,@RequestParam String prezime, @RequestParam String tipLjekara,@RequestParam String ocjena)throws ParseException {	
 		 // (java.sql.Date) new SimpleDateFormat("yyyy-MM-dd").parse(datum)
 

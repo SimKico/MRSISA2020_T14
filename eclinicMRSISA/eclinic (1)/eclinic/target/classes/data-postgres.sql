@@ -230,6 +230,9 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '11:00', 'specoft',9, 1, 3);
 
+			
+			
+			
 -- NE DODAVATI NOVE PREGLEDE IZNAD NEGO ISPOD --
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '12:00', 'specoft',5, 1, 3);
@@ -239,6 +242,9 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 13, 1);
 insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Glavobolja', 3, 14, 1);
 
+--OPERACIJA--
+--insert into operacije(tip_operacije, trajanje,vrijeme_pocetka,broj_sale, karton_id )
+--			values(1, 1, '12:00', 2, 1)
 
 --Zahtjevi za salu--
 insert into zahtjevi_sala(datum, prihvacen, satnica,svrha, ljekar_id,broj_sale,admin_id) values ('Mon Jun 15 00:00:00 CEST 2020', false, '14:00', '123456', 5, 'O1', null);

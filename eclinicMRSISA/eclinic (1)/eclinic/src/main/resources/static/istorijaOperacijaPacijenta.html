@@ -38,7 +38,7 @@
     data-spy="scroll"
     data-target=".navbar"
     data-offset="60"
-    onload = "ucitajPodatkeIstorijeOperacija()"
+    onload = "ucitajOperacije()"
   >
 
     <!--banner-->
@@ -79,10 +79,10 @@
                   <li class="active">
                     <a href="#" id="mojKarton"  onclick = "kartonPacijenta()">Moj karton</a>
                   </li>
-                     <li class="">
+                     <li class="active">
                     <a href="#" id="istorijaOperacija" onclick = "istorijaOperacija()">Moje operacije</a>
                   </li>
-                  <li class="active">
+                  <li class="">
                     <a href="#" id="istorijaPregleda" onclick = "istorijaPregleda()">Moji pregledi</a>
                   </li>
                   <li class="active">
@@ -104,18 +104,12 @@
           <table id="table1"  >
                   <tr style = " background: rgba(12, 184, 182, 0.21)"  >
 
-                    <td class="labela" width="300px" id="odjel"><p>Odjel</p></td> 
-                    <td class="labela" width="300px" id="klinika"><p>Klinika</p></td> 
-                    <td class="labela" width="300px" id="ocjena"><p>Prosječna ocjena klinike</p></td> 
-                    <td class="labela" width="300px" id="adresa"> <p>Adresa</p></td>
-              		 <td class="labela" width="300px" id="grad"><p>Grad</p></td> 
-              		 
-                    <td class="labela" width="300px" id="vrijeme"> <p>Datum pregleda</p></td>
-                    <td class="labela" width="300px" id="vrijeme"> <p>Vrijeme pocetka</p></td>
-                    <td class="labela" width="300px" id="status"> <p>Status pregleda</p></td>
-                  	
-                  	<td class="labela" width="300px" id="cijenaPregleda"><p>Cijena pregleda</p></td>
-                  </tr>
+                    <td class="labela" width="300px" id="odjel"><p>Tip</p></td> 
+                    <td class="labela" width="300px" id="klinika"><p>Ljekari</p></td> 
+                    <td class="labela" width="300px" id="ocjena"><p>Vrijeme</p></td> 
+                    <td class="labela" width="300px" id="adresa"> <p>Klinika</p></td>
+              	
+                 
                   </tr>
           </table>
         

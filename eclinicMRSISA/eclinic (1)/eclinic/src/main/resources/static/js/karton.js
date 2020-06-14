@@ -39,29 +39,29 @@ function popuniKarton()
 
 }
 
-//function istorijaOperacija()
-//{
-//	$.ajax({
-//		url: "/homepagePacijent1/istorijaOperacija/"+email,
-//		type: "GET",
-//
-//		headers: { "Authorization": "Bearer " + token},
-//		success: function (result) {
-//			console.log(result);
-////			localStorage.setItem("alergije", result.alergije);
-////			localStorage.setItem("dioptrija", result.dioptrija);
-////			localStorage.setItem("krvnaGrupa", result.krvnaGrupa);
-////			localStorage.setItem("tezina", result.tezinaKg);
-////	
-////			localStorage.setItem("visina", result.visinaCm);
-//		
-//			location.href = "istorijaOperacija.html";
-//		},
-//		error: function(result) {
-//			toastr.error("Something is wrong with your request.(get details)");
-//		}
-//    });	
-//}
+function istorijaOperacija()
+{
+	$.ajax({
+		url: "/homepagePacijent1/istorijaOperacija/"+email,
+		type: "GET",
+
+		headers: { "Authorization": "Bearer " + token},
+		success: function (result) {
+			console.log(result);
+//			localStorage.setItem("alergije", result.alergije);
+//			localStorage.setItem("dioptrija", result.dioptrija);
+//			localStorage.setItem("krvnaGrupa", result.krvnaGrupa);
+//			localStorage.setItem("tezina", result.tezinaKg);
+//	
+//			localStorage.setItem("visina", result.visinaCm);
+		
+			location.href = "istorijaOperacijaPacijenta.html";
+		},
+		error: function(result) {
+			toastr.error("Something is wrong with your request.(get details)");
+		}
+    });	
+}
 
 function istorijaPregleda()
 {
@@ -72,7 +72,7 @@ function istorijaPregleda()
 		headers: { "Authorization": "Bearer " + token},
 		success: function (result) {
 			console.log(result);
-			localStorage.setItem('preglediPacijenta',  JSON.stringify(result));
+			localStorage.setItem('operacijePacijenta',  JSON.stringify(result));
 //			localStorage.setItem("alergije", result.alergije);
 //			localStorage.setItem("dioptrija", result.dioptrija);
 //			localStorage.setItem("krvnaGrupa", result.krvnaGrupa);
@@ -86,6 +86,35 @@ function istorijaPregleda()
 			toastr.error("Something is wrong with your request.(get details)");
 		}
     });	
+}
+function ucitajOperacije()
+{
+	var operacijePacijenta = localStorage.getItem('operacijePacijenta');
+	var operacijePacijenta = JSON.parse(operacijePacijenta);
+	console.log(operacijePacijenta);
+	
+	for( i in operacijePacijenta){
+		
+			$("#table2")
+			.append($("<tr>")
+					.append($("<td>")
+						.text(operacijePacijenta[i].tipPregledaDTO.specijalizacija))
+//										
+					.append($("<td>")
+						.text(operacijePacijenta[i].ljekarDTO.klinika))
+					.append($("<td>")
+						.text(operacijePacijenta[i].ocjenaKlinike))
+					.append($("<td>")
+						.text(operacijePacijenta[i].adresaKlinike))
+					.append($("<td>")
+						.text(operacijePacijenta[i].grad))
+					.append($("<td>")
+						.text(operacijePacijenta[i].datum))
+			
+				
+				);
+		
+}
 }
 
 function ucitajPodatkePregledaPacijenta(){

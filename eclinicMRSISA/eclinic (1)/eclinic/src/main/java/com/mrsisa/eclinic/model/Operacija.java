@@ -20,7 +20,19 @@ import javax.persistence.Table;
 @Table(name="operacije")
 public class Operacija {
    
-   @Id
+   public Operacija(String idOperacije, Integer trajanje, String tipOperacije, String vrijemePocetka, Sala sala,
+			Set<Ljekar> ljekari, ZdravstveniKarton zdravstveniKarton) {
+		super();
+		this.idOperacije = idOperacije;
+		this.trajanje = trajanje;
+		this.tipOperacije = tipOperacije;
+		this.vrijemePocetka = vrijemePocetka;
+		this.sala = sala;
+		this.ljekari = ljekari;
+		this.zdravstveniKarton = zdravstveniKarton;
+	}
+
+@Id
    @Column(name="operacija_id", unique=false, nullable=false)
    private String idOperacije;
    
