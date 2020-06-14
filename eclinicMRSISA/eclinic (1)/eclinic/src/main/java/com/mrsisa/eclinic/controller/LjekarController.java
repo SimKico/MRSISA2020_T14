@@ -11,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +21,6 @@ import com.mrsisa.eclinic.dto.LjekarDTO;
 import com.mrsisa.eclinic.dto.PacijentDTO;
 import com.mrsisa.eclinic.dto.PregledDTO;
 import com.mrsisa.eclinic.dto.TipPregledaDTO;
-import com.mrsisa.eclinic.dto.ZakaziPregledDTO;
 import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.StatusPregleda;
@@ -61,6 +59,7 @@ public class LjekarController {
 	}
 	
 	@RequestMapping(value = "/pregledi",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
 	public ResponseEntity<List<PregledDTO>> getPregledi(@RequestParam("eadresa") String eadresa) throws ParseException{	
 		
 		Ljekar ljekar = ljekarService.findOneByEmail(eadresa);
@@ -89,12 +88,14 @@ public class LjekarController {
 		}
 		
 		if(pregledi.isEmpty()) {
+			System.out.print("STVARNO!!!!!!");
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(pregledi, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/zapocni",  method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
 	public ResponseEntity<String> checkStart(@RequestParam("id") String id) throws ParseException{	
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

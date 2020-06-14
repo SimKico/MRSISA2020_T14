@@ -70,6 +70,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/auth/**").permitAll()		
 				.antMatchers("/klinika/listaKlinika/**").permitAll()
 				.antMatchers("/homepagePacijent1/registracija/**").permitAll()
+				.antMatchers("/sifarnik/ucitajDijagnoze/**").permitAll()
+				.antMatchers("/sifarnik/ucitajLijekove/**").permitAll()
+				.antMatchers("/zahtjeviReg/aktivacija/{id}/**").permitAll()
+				.antMatchers("/profilAKC/ucitajKlinike/**").permitAll()
 				.antMatchers("/").permitAll()
 				
 //				

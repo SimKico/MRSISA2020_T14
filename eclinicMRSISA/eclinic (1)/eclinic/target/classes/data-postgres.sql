@@ -16,29 +16,29 @@ insert into tip_pregleda(cijena, sifra, trajanje, tip)values(12.5, 'specoft',1,0
 insert into tip_pregleda(cijena, sifra, trajanje, tip)values(20, 'specpulmo',1,1);	
 
 --Dodavanje klinika--
-insert into klinike(klinika_id,grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(0,'Beograd','adr','VMA', '4', 0, 'Eclinic');
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Beograd','adr','VMA', '4', 0, 'Eclinic');
+
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Banjaluka','adr','UKC', '4', 0, 'Eclinic');
+
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Sarajevo','adr' ,'Kosevo', '2', 0, 'Eclinic');
+
+insert into klinike(grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Zagreb','adr', 'Nasa Klinika', '5', 3, 'Eclinic');
+
+insert into klinike(grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Novi Sad','adr' ,'Klinika Svjetlost', '3', 4, 'Eclinic');
+
+insert into klinike(grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Sarajevo','adr', 'Nova Bolnica', '4', 3, 'Eclinic');
+
+insert into klinike(grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
+values('Zagreb','adr', 'Dr Pavlovic', '5', 3, 'Eclinic');
 
 insert into klinike(klinika_id,grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(1,'Banjaluka','adr','UKC', '4', 0, 'Eclinic');
-
-insert into klinike(klinika_id,grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(2,'Sarajevo','adr' ,'Kosevo', '2', 0, 'Eclinic');
-
-insert into klinike(klinika_id,grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(3,'Zagreb','adr', 'Nasa Klinika', '5', 3, 'Eclinic');
-
-insert into klinike(klinika_id,grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(4,'Novi Sad','adr' ,'Klinika Svjetlost', '3', 4, 'Eclinic');
-
-insert into klinike(klinika_id,grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(5,'Sarajevo','adr', 'Nova Bolnica', '4', 3, 'Eclinic');
-
-insert into klinike(klinika_id,grad, adresa,naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(6,'Zagreb','adr', 'Dr Pavlovic', '5', 3, 'Eclinic');
-
-insert into klinike(klinika_id,grad,adresa, naziv_klinike, ocjena_klinike, tip_klinike, kc_id)
-values(7,'Novi Sad','adr', 'Klinika Diva', '3', 4, 'Eclinic');
+values('Novi Sad','adr', 'Klinika Diva', '3', 4, 'Eclinic');
 ----KORISNICI--------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 
@@ -92,10 +92,10 @@ INSERT INTO authority(id, name) VALUES (1, 'ROLE_ADMINKC');
 INSERT INTO authority(id, name) VALUES (2, 'ROLE_ADMINK');
 INSERT INTO authority(id, name) VALUES (3, 'ROLE_PACIENT');
 INSERT INTO authority(id, name) VALUES (4, 'ROLE_LJEKAR');
+INSERT INTO authority(id, name) VALUES (5, 'ROLE_SESTRA');
 
-
-INSERT INTO user_authority (user_id, authority_id) VALUES (1, 1);
-INSERT INTO user_authority (user_id, authority_id) VALUES (2, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (1, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (2, 1);
 INSERT INTO user_authority (user_id, authority_id) VALUES (3, 3);
 INSERT INTO user_authority (user_id, authority_id) VALUES (4, 3);
 INSERT INTO user_authority (user_id, authority_id) VALUES (5, 4);
@@ -127,18 +127,18 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 
 ----Dodavanje pregleda--
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',4, 1, 2);
+			values('Mon May 27 00:00:00 CEST 2020', 0,0, '18:00', 'specoft',4, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
 			values('Mon May 18 00:00:00 CEST 2020', 0,0, '19:00', 'specoft',5, 2, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,0, '20:00', 'specpulmo',7, 1, 2);
+			values('Mon May 18 00:00:00 CEST 2020', 0,0, '20:00', 'specpulmo',7, 1, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Mon May 18 00:00:00 CEST 2020', 0,0, '21:00', 'specpulmo',8, 2, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Mon May 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',6, 1, 2);
+			values('Mon May 18 00:00:00 CEST 2020', 0,1, '22:00', 'specoft',6, 1, 4);
 	
 			
 ----zahtjevi za odsustvo--
@@ -179,6 +179,7 @@ insert into lijekovi(naziv_lijeka, sif_lijek_id) values ('Hemomicin', 1);
 --Dodavanje dijagnoza--
 insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala sinusa', 1);
 insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala grla', 1);
+insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Migrena', 1);
 
 --Dodavanje sala--
 insert into sale values (1, 1);
@@ -207,19 +208,29 @@ values('Rade@eclinic.com', 'boloz', 'Rade', 'Radic', '123456', 'Cara Dusana', 'N
 
 --Pregledi--
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '12:00', 'specoft',5, 1, 3);
+			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '13:30', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '01:00', 'specoft',5, 1, 3);
+			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '14:30', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',5, 1, 3);
+			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '15:30', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
 			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',6, 2, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',7, 3, 2);
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',7, 3, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',8, 4, 3);
 			
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '16:45', 'specoft',9, 1, 3);
+
+-- NE DODAVATI NOVE PREGLEDE IZNAD NEGO ISPOD --
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',5, 1, 3);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '15:45', 'specoft',6, 2, 3);
+			
+insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 13, 1);
+insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 14, 1);
+-- ISPOD --

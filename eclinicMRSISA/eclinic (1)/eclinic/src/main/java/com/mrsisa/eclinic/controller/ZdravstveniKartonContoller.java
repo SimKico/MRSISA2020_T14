@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,6 +63,7 @@ public class ZdravstveniKartonContoller {
 	
 	
 	@RequestMapping(value = "/ucitajZdravKarton", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
 	@ResponseBody
 	public ResponseEntity<ZdravstveniKartonDTO> getOneByEmail(@RequestParam("idPregleda") String idPregleda){
 		
@@ -85,6 +87,7 @@ public class ZdravstveniKartonContoller {
 	}
 	
 	@PostMapping(value= "/izvjestajPregleda", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
 	public ResponseEntity<IzvjestajPregledaDTO> saveIzvjestaj(@RequestBody IzvjestajPregledaDTO ipDTO){
 		
 		System.out.print(ipDTO.getLijekovi());
@@ -120,6 +123,7 @@ public class ZdravstveniKartonContoller {
 	}
 	
 	@PutMapping(value = "/izmjenaPodataka", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
 	public ResponseEntity<ZdravstveniKartonDTO> changePatientInfo(@RequestBody ZdravstveniKartonDTO zkDTO){
 		System.out.print(zkDTO.getImePacijenta());
 		Pacijent pacijent = pacijentService.findOne(zkDTO.getJboPacijenta());

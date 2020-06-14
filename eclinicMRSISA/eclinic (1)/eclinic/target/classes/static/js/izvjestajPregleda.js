@@ -1,19 +1,22 @@
- function ucitajLjekare() {
- 		$.ajax({
- 			type : "GET",
- 			url : "/ljekar/ucitaj",
- 			success : function(data) {
- 				console.log(data);
- 				console.log(data[0].naziv);
- 				$.each(data, function(key, value) {
- 					$('#ljekari').append($('<option>', {
- 						value : value.eadresa,
- 						text : value.ime + " " + value.prezime
- 					}));
- 				});
- 			}
- 		});
- 	}
+var token = localStorage.getItem("token");
+console.log(token);
+
+//function ucitajLjekare() {
+// 		$.ajax({
+// 			type : "GET",
+// 			url : "/ljekar/ucitaj",
+// 			success : function(data) {
+// 				console.log(data);
+// 				console.log(data[0].naziv);
+// 				$.each(data, function(key, value) {
+// 					$('#ljekari').append($('<option>', {
+// 						value : value.eadresa,
+// 						text : value.ime + " " + value.prezime
+// 					}));
+// 				});
+// 			}
+// 		});
+// 	}
      
     function prikaziPreglede(){
     	$('.schedule-tab').empty();
@@ -24,6 +27,7 @@
     	$.ajax({
  			type : "GET",
  			url : "/ljekar/pregledi",
+ 			headers: { "Authorization": "Bearer " + token},
  			data: {eadresa: eadresa},
  			success : function(data) {
  				console.log(data);
@@ -59,6 +63,7 @@ function zapocniPregled (data, identifier){
     	$.ajax({
 			type: "GET",
 			url: "/ljekar/zapocni",
+			headers: { "Authorization": "Bearer " + token},
 			data: {id: idPregleda},
 			success: function(data){
 				console.log(data);
@@ -86,6 +91,7 @@ function ucitajDijagnoze(){
 	  $.ajax({
 			type: "GET",
 			url: "/sifarnik/ucitajDijagnoze",
+			headers: { "Authorization": "Bearer " + token},
 			success: function(data){
 				console.log(data);
 				$.each(data, function(key, value) {
@@ -104,6 +110,7 @@ function ucitajLijekove(){
 	  $.ajax({
 			type: "GET",
 			url: "/sifarnik/ucitajLijekove",
+			headers: { "Authorization": "Bearer " + token},
 			success: function(data){
 				console.log(data);
 				$.each(data, function(key, value) {
@@ -122,6 +129,7 @@ function zdravstveniKarton(){
 	  $.ajax({
 			type: "GET",
 			url: "/zdravKarton/ucitajZdravKarton",
+			headers: { "Authorization": "Bearer " + token},
 			data: {idPregleda: idPregleda},
 			success: function(data){
 				console.log(data);
@@ -185,6 +193,7 @@ function izvjestajPregleda(){
 	 $.ajax({
 			type: "POST",
 			url: "/zdravKarton/izvjestajPregleda",
+			headers: { "Authorization": "Bearer " + token},
 			data : JSON.stringify(data),
 			dataType: 'json',
  		    contentType:  "application/json",
@@ -220,6 +229,7 @@ function zakaziPregled(){
 	$.ajax({
 		type: "POST",
 		url: "/pregled/noviPregled",
+		headers: { "Authorization": "Bearer " + token},
 		data : JSON.stringify(data),
 		dataType: 'json',
 		contentType:  "application/json",
@@ -268,6 +278,7 @@ function sacuvajIzmjene(){
 	$.ajax({
 		type: "PUT",
 		url: "/zdravKarton/izmjenaPodataka",
+		headers: { "Authorization": "Bearer " + token},
 		data : JSON.stringify(data),
 		dataType: 'json',
 		contentType:  "application/json",
