@@ -15,6 +15,7 @@ function logovanje()
         contentType: "application/json",
         data: JSON.stringify(user),
         success: function(result) {
+        	localStorage.clear();
         	console.log(result);
         	console.log(result.accessToken);
             localStorage.setItem("token", result.accessToken);
