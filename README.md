@@ -1,9 +1,10 @@
 # MRSISA2020_T14
 
-Raspodjela posla :
-Student 1. Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs
-Student 2. Zelić Slobodan SW/5-2017 slobodan.zelic@uns.ac.rs
-Student 3. Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs
+Raspodjela posla:
+
+Student 1. Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs /n
+Student 2. Zelić Slobodan SW/5-2017 slobodan.zelic@uns.ac.rs /n
+Student 3. Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs /n
 
 UPUTSTVO ZA INSTALACIJU I POKRETANJE PROJEKTA
 
