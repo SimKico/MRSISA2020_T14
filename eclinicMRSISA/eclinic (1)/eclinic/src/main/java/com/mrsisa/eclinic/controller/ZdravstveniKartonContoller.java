@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ import com.mrsisa.eclinic.dto.ZdravstveniKartonDTO;
 import com.mrsisa.eclinic.model.Dijagnoza;
 import com.mrsisa.eclinic.model.IzvjestajPregleda;
 import com.mrsisa.eclinic.model.Lijek;
+import com.mrsisa.eclinic.model.Pacijent;
 import com.mrsisa.eclinic.model.Pregled;
 import com.mrsisa.eclinic.model.Recept;
 import com.mrsisa.eclinic.model.StatusPregleda;
@@ -110,6 +112,21 @@ public class ZdravstveniKartonContoller {
 		}
 		
 		return new ResponseEntity<>(ipDTO,HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/izmjenaPodataka", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ZdravstveniKartonDTO> changePatientInfo(@RequestBody ZdravstveniKartonDTO zkDTO){
+		System.out.print(zkDTO.getImePacijenta());
+		Pacijent pacijent = pacijentService.findOne(zkDTO.getJboPacijenta());
+		ZdravstveniKarton zk = zkService.findZkById(pacijent.getZdravstveniKarton().getIdKartona());
+		zk.setAlergije(zkDTO.getAlergije());
+		zk.setDioptrija(zkDTO.getDioptrija());
+		zk.setTezinaKg(zkDTO.getTezinaKg());
+		zk.setVisinaCm(zkDTO.getVisinaCm());
+		zk.setKrvnaGrupa(zkDTO.getKrvnaGrupa());
+		zk = zkService.save(zk);
+		ZdravstveniKartonDTO dto = new ZdravstveniKartonDTO(zk);
+		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 	
 	

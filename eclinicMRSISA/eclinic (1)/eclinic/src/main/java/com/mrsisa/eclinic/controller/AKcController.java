@@ -1,12 +1,16 @@
 package com.mrsisa.eclinic.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +27,6 @@ import com.mrsisa.eclinic.model.AdminKlinike;
 import com.mrsisa.eclinic.model.KlinickiCentar;
 import com.mrsisa.eclinic.model.Klinika;
 import com.mrsisa.eclinic.model.Korisnik;
-import com.mrsisa.eclinic.model.Ljekar;
 import com.mrsisa.eclinic.model.Prijava;
 import com.mrsisa.eclinic.model.ZahtjeviZaRegistraciju;
 import com.mrsisa.eclinic.service.AKCService;
@@ -64,7 +67,7 @@ public class AKcController {
 	}
 	
 	
-	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/profil", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<AKcDTO> getOneByEmail(@RequestParam("eadresa") String eadresa){
 		System.out.print(eadresa);
@@ -82,17 +85,23 @@ public class AKcController {
 			
 			Prijava prijava = new Prijava();
 			prijava.seteAdresa(akcDto.getEadresa());
-			prijava.setLozinka(akcDto.getLozinka());
+			
+			String pw_hash = BCrypt.hashpw(akcDto.getLozinka(), BCrypt.gensalt(12));
+			
+			prijava.setLozinka(pw_hash);
 			
 			KlinickiCentar kc = kcService.getKcByName("Eclinic");
 			
 			akc.setAktivan(false);
+			akc.setPredefinisaniAdmin(false);
 			akc.setIme(akcDto.getIme());
 			akc.setPrezime(akcDto.getPrezime());
 			akc.setPrijava(prijava);
 			akc.setPredefinisaniAdmin(false);
 			akc.setDodijeljenaLozinka(true);
-			
+			akc.setEnabled(true);
+			akc.setEmail(akcDto.getEadresa());
+			akc.setPassword(pw_hash);
 			
 			
 			prijava = prijavaService.save(prijava);
@@ -146,7 +155,7 @@ public class AKcController {
 	}
 	
 	@PostMapping(value = "/registrujAdminaKlinike", consumes =  "application/json")
-	public ResponseEntity<AdminKlinikeDTO> saveAdminKl(@RequestBody AdminKlinikeDTO akDto) {
+	public ResponseEntity<AdminKlinikeDTO> saveAdminKl(@RequestBody AdminKlinikeDTO akDto) throws ParseException {
 		
 		Korisnik korisnik = korisnikService.getKorisnikByEmail(akDto.getEadresa());
 		
@@ -156,10 +165,16 @@ public class AKcController {
 
 			Prijava prijava = new Prijava();
 			prijava.seteAdresa(akDto.getEadresa());
-			prijava.setLozinka(akDto.getLozinka());
+			
+			String pw_hash = BCrypt.hashpw(akDto.getLozinka(), BCrypt.gensalt(12));
+			
+			prijava.setLozinka(pw_hash);
 			
 			KlinickiCentar kc = kcService.getKcByName("Eclinic");
 			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			Date datum = new Date();
+			String date = sdf.format(datum);
 			
 			AdminKlinike ak = new AdminKlinike();
 			ak.setAktivan(false);
@@ -168,9 +183,10 @@ public class AKcController {
 			ak.setPrezime(akDto.getPrezime());
 			ak.setPrijava(prijava);
 			ak.setKlinika(klinika);
-			
-			
-			
+			ak.setEmail(akDto.getEadresa());
+			ak.setPassword(pw_hash);
+			ak.setLastPasswordResetDate(sdf.parse(date));
+			ak.setEnabled(true);
 			prijava = prijavaService.save(prijava);
 			
 			kc.getKorisnik().add(ak);

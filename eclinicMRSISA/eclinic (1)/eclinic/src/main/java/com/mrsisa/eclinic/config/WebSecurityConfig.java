@@ -68,16 +68,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// all users are allowed to access /auth/** and /h2-console/**
 				.authorizeRequests()
 				.antMatchers("/auth/**").permitAll()
+				
 //				.antMatchers("/homepagePacijent1/**").permitAll()
 //				
 
 				
 				
 				// every request must be authorized
-				.anyRequest().authenticated().and()
+				.anyRequest().permitAll();
 				
 				// intercept every request via a filter
-				.addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService), BasicAuthenticationFilter.class);
+				//.addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService), BasicAuthenticationFilter.class);
 
 			http.csrf().disable();
 		}

@@ -26,15 +26,17 @@ function logovanje()
             if (result.type == "P") {
             	location.replace("/homepagePacijent1.html");
             } else if (result.type == "AC") {
-            	location.replace("/adminKlinikeHomepage.html");
+            	location.replace("/ProfilAKC.html");
             } else if (result.type == "AK") {
-            	location.replace("/registracijaAdminaKlinika.html")
+            	location.replace("/adminKlinikeHomepage.html")
+            }else if (result.type == "LJ") {
+            	location.replace("/zapocinjanjePregleda.html")
             } else {
             	location.replace("/index.html");
             }
             
         }, error: function(error) {
-            toastr.error("Wrong email or password");
+            alert("Wrong email or password");
             console.log(error);
         }
         });

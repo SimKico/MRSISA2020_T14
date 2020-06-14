@@ -4,7 +4,6 @@ insert into sifarnik_dijagnoza(naziv_sifarnika)values('Sifarnik dijagnoza');
 insert into sifarnik_lijekova(naziv_sifarnika)values('Sifarnik lijekova');
 
 
-
 ----KARTONI--
 insert into zdravstveni_karton(krvna_grupa, alergije, dioptrija, visina, tezina) values ('AB', null, null, 0, 0);
 insert into zdravstveni_karton(krvna_grupa, alergije, dioptrija, visina, tezina) values ('A', null, null, 0, 0);
@@ -189,3 +188,38 @@ insert into sale values (4, 4);
 insert into sale values (5, 5);
 insert into sale values (6, 1);
 insert into sale values (7, 1);
+
+--Zahtjevi za registraciju--
+insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('mile@eclinic.com', 'miloz', 'Mile', 'Milic', '144555', 'Stepe Stapanovica bb', 'Banja Luka', 'BiH', '066555444' );
+
+insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('pero@eclinic.com', 'peloz', 'Pero', 'Peric', '111111', 'Gavrila Principa', 'Derventa', 'BiH', '066775444' );
+
+insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('boro@eclinic.com', 'boloz', 'Boro', 'Boric', '143355', 'Gajeva', 'Novi Sad', 'Srbija', '066558844' );
+
+insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('vaso@eclinic.com', 'boloz', 'Vaso', 'Vasic', '222222', 'Jevrjeska', 'Novi Sad', 'Srbija', '066553334' );
+
+insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
+values('Rade@eclinic.com', 'boloz', 'Rade', 'Radic', '123456', 'Cara Dusana', 'Novi Sad', 'Srbija', '066599844' );
+
+--Pregledi--
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '12:00', 'specoft',5, 1, 3);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '01:00', 'specoft',5, 1, 3);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',5, 1, 3);
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
+			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',6, 2, 3);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',7, 3, 2);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '20:45', 'specoft',8, 4, 3);
+			
+insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
+			values('Sat Jun 13 00:00:00 CEST 2020', 0,1, '16:45', 'specoft',9, 1, 3);

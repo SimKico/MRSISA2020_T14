@@ -108,7 +108,7 @@
 					</div>
 			<div class="text-center form-group" class="container">
 			<div class = "container" align="left"><button  class="btn btn-appoint" onClick="prikaziPolja()">NOVI PREGLED</button></div>
-				<div class="col-md-4 col-sm-4">
+				<div class="col-md-4 col-sm-4" id="info">
 					<h3>Pacijent</h3>
 					<div class="space"></div>
 					<p id="ime">
@@ -136,6 +136,57 @@
 					<p id="alergije">
 						<i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Alergije:
 					</p>
+					<button onClick = "prikaziEdit()" class="btn btn-appoint">Izmijeni podatke</button>
+				</div>
+				<div class="col-md-4 col-sm-4" id = "edit" hidden="true">
+					<h3>Pacijent</h3>
+					<table class="table1">
+                        <tr>
+                          <td class="labela" width="300px"  style ="color:#fff">Ime:</td>
+                          <td class="podaci" id = "ime1"  style ="color:#fff" ></td>
+                        </tr>
+              
+                        <tr>
+                          <td class="labela" width="300px"  style ="color:#fff" >Prezime:</td>
+                          <td class="podaci" id = "prezime1"  style ="color:#fff" ></td>
+                        </tr>
+                        
+                        <tr>
+                          <td class="labela"  style ="color:#fff" ><br />Jedinstveni broj osiguranika:</td>
+                          <td class="podaci" id = "jbo1"  style ="color:#fff" ><br /></td>
+                        </tr>
+              
+                        <tr>
+                          <td class="labela"  style ="color:#fff"><br />Krvna grupa:</td>
+                          <td class="podaci" ><br /><input type="text" id ="krvnaGrupa1" /></td>
+                        </tr>
+              
+                        <tr>
+                          <td class="labela"  style ="color:#fff">Visina (cm):</td>
+                          <td class="podaci"><input type="text" id ="visina1" /></td>
+                        </tr>
+              
+                        <tr>
+                          <td class="labela"  style ="color:#fff">Težina (kg):</td>
+                          <td class="podaci" ><input type="text" id="tezina1"/></td>
+                        </tr>
+              
+                        <tr>
+                          <td class="labela"  style ="color:#fff">Dioptrija:</td>
+                          <td class="podaci" > <input type="text" id ="dioptrija1" /></td>
+                        </tr>
+              
+                        <tr>
+                          <td class="labela"  style ="color:#fff" ><br />Alergije:</td>
+                          <td class="podaci" > <input type="text" id ="alergije1" /></td>
+                        </tr>
+                        <tr>
+                        	<td><button onClick = "ponisti()" class="btn btn-appoint">Poništi</button></td>
+                        	<td><button onClick = "sacuvajIzmjene()" class="btn btn-appoint">Sačuvaj</button></td>
+                        </tr>
+              
+                      </table>
+					
 				</div>
 				<form onsubmit="izvjestajPregleda(); return false">
 					<h2 class="white">IZVJEŠTAJ</h2>

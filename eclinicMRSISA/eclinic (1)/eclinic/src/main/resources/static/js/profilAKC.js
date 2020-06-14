@@ -1,16 +1,26 @@
  function predjiNaProfil(){
-	  
+	  email = localStorage.getItem("email");
 	  console.log("De nestoooo");
+	  console.log(email);
+	  data = {
+		"eadresa" : email	  
+	  };
 	  $.ajax({
 			type: "GET",
-			url: "/profilAKC",
-			data: {eadresa: "predefinisani@eclinic.com"},
+			url: "/profilAKC/profil",
+			data: data,
+			contentType : "application/json",
 			success: function(data){
 				console.log(data);
 				localStorage.setItem("eadresa", data.eadresa);
 				localStorage.setItem("ime", data.ime);
 				localStorage.setItem("prezime", data.prezime);
-				location.href = "profilAKC.html" ;
+				$("#ime").append(localStorage.getItem("ime"));
+				$("#prezime").append(localStorage.getItem("prezime"));
+				$("#eadresa").append(localStorage.getItem("eadresa"));
+			},
+			error: function(data){
+				console.log(data);
 			}
 		})
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -132,12 +133,17 @@ public class ZahtjeviRegController {
 		
 		Prijava prijava = new Prijava();
 		prijava.seteAdresa(zahtjev.geteAdresa());
-		prijava.setLozinka(zahtjev.getLozinka());
+		
+		String pw_hash = BCrypt.hashpw(zahtjev.getLozinka(), BCrypt.gensalt(12));
+		
+		prijava.setLozinka(pw_hash);
 		
 		
 		noviPacijent.setPrijava(prijava);
 		noviPacijent.setZdravstveniKarton(zk);
-		
+		noviPacijent.setEmail(zahtjev.geteAdresa());
+		noviPacijent.setPassword(pw_hash);
+		noviPacijent.setEnabled(true);
 		zk = zkService.save(zk);
 		prijava = prijavaService.save(prijava);
 		kc.getKorisnik().add(noviPacijent);

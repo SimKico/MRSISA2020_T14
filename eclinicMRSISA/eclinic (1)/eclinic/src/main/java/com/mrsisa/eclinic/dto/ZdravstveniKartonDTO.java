@@ -22,6 +22,17 @@ public class ZdravstveniKartonDTO {
 		super();
 	}
 	
+	public ZdravstveniKartonDTO(ZdravstveniKarton zk) {
+		this.krvnaGrupa = zk.getKrvnaGrupa();
+		this.visinaCm = zk.getVisinaCm();
+		this.tezinaKg = zk.getTezinaKg();
+		this.alergije = zk.getAlergije();
+		this.dioptrija = zk.getDioptrija();
+		this.jboPacijenta = zk.getPacijent().getJedBrojOsiguranika();
+		this.prezimePacijenta = zk.getPacijent().getPrezime();
+		this.imePacijenta = zk.getPacijent().getIme();
+	}
+	
 	public ZdravstveniKartonDTO(String krvnaGrupa, int visinaCm, int tezinaKg, String alergije, String dioptrija,
 			String jboPacijenta, String imePacijenta, String prezimePacijenta, Long pregledId) {
 		super();

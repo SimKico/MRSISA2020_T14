@@ -18,7 +18,8 @@
     function prikaziPreglede(){
     	$('.schedule-tab').empty();
     	console.log("Usli smo u f-ju");
-    	eadresa = $("#ljekari option:selected").val();
+    	eadresa = localStorage.getItem("email");
+    	
     	console.log(eadresa);
     	$.ajax({
  			type : "GET",
@@ -133,6 +134,14 @@ function zdravstveniKarton(){
 				$('#dioptrija').append(data.dioptrija==null? "--" : data.dioptrija);
 				$('#visina').append(data.visinaCm==0? "--" : data.visinaCm);
 				$('#tezina').append(data.tezinaKg==0? "--" : data.tezinaKg);
+				$('#ime1').append(data.imePacijenta);
+				$('#prezime1').append(data.prezimePacijenta);
+				$('#jbo1').append(data.jboPacijenta);
+				$('#krvnaGrupa1').val(data.krvnaGrupa==null? "--" : data.krvnaGrupa);
+				$('#alergije1').val(data.alergije==null? "--" : data.alergije);
+				$('#dioptrija1').val(data.dioptrija==null? "--" : data.dioptrija);
+				$('#visina1').val(data.visinaCm==0? "--" : data.visinaCm);
+				$('#tezina1').val(data.tezinaKg==0? "--" : data.tezinaKg);
 			}
 	  }); 
 }
@@ -208,6 +217,68 @@ function zakaziPregled(){
 		error(data){
 			console.log(data);
 			alert("Postoji vec zakazan pregled datuma " + datum + " u vrijeme " + vrijemePocetka);
+		}
+  }); 
+	
+}
+
+function prikaziEdit(){
+	$('#info').prop('hidden', true);
+	$('#edit').prop('hidden', false);
+}
+
+function ponisti(){
+	$('#info').prop('hidden', false);
+	$('#edit').prop('hidden', true);
+}
+
+function sacuvajIzmjene(){
+	imePacijenta = $('#ime1').text();
+	prezimePacijenta = $('#prezime1').text();
+	jboPacijenta = $('#jbo1').text();
+	visinaCm = $('#visina1').val() == "--" ? 0 : $('#visina1').val();
+	tezinaKg = $('#tezina1').val() == "--" ? 0 : $('#tezina1').val();
+	krvnaGrupa = $('#krvnaGrupa1').val();
+	dioptrija = $('#dioptrija1').val();
+	alergije = $('#alergije1').val();
+	console.log(imePacijenta + " " + prezimePacijenta + " " + jboPacijenta + " " + visinaCm + " " +tezinaKg + " " + krvnaGrupa + " " + dioptrija + " " +alergije)
+	data = {
+		"imePacijenta" : imePacijenta,
+		"prezimePacijenta" : prezimePacijenta,
+		"jboPacijenta" : jboPacijenta,
+		"visinaCm" : visinaCm,
+		"tezinaKg" : tezinaKg,
+		"krvnaGrupa" : krvnaGrupa,
+		"dioptrija" : dioptrija,
+		"alergije" : alergije
+	};
+	$.ajax({
+		type: "PUT",
+		url: "/zdravKarton/izmjenaPodataka",
+		data : JSON.stringify(data),
+		dataType: 'json',
+		contentType:  "application/json",
+		success: function(data){
+			console.log(data);
+			$('#info').prop('hidden', false);
+			$('#edit').prop('hidden', true);
+			
+			$('#krvnaGrupa').empty().append("Krvna grupa: ").append(data.krvnaGrupa==null? "--" : data.krvnaGrupa);;
+			$('#alergije').empty().append("Alergije: ").append(data.alergije==null? "--" : data.alergije);;
+			$('#dioptrija').empty().append("Dioptrija: ").append(data.dioptrija==null? "--" : data.dioptrija);;
+			$('#visina').empty().append("Visina (cm): ").append(data.visinaCm==0? "--" : data.visinaCm);;
+			$('#tezina').empty().append("Težina (kg): ").append(data.tezinaKg==0? "--" : data.tezinaKg);;
+			
+			$('#krvnaGrupa1').empty().append("Krvna grupa: ").val(data.krvnaGrupa==null? "--" : data.krvnaGrupa);;
+			$('#alergije1').empty().append("Alergije: ").val(data.alergije==null? "--" : data.alergije);;
+			$('#dioptrija1').empty().append("Dioptrija: ").val(data.dioptrija==null? "--" : data.dioptrija);;
+			$('#visina1').empty().append("Visina (cm): ").val(data.visinaCm==0? "--" : data.visinaCm);;
+			$('#tezina1').empty().append("Težina (kg): ").val(data.tezinaKg==0? "--" : data.tezinaKg);;
+			
+		},
+		error(data){
+			console.log(data);
+			alert("Promjene nisu unesene");
 		}
   }); 
 	
