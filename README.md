@@ -38,12 +38,12 @@ Prikazuje se pocetna strana aplikacije i korisnik moze dalje da je koristi.
  - koristen je privatan nalog, pa ako zelite da provjerite funkcionalnost unesite svoj email u emailService
 
 
-Logovanje na sistem
--pacijent:  pacijent1, 123
--ljekar: ljekar1@eclinic.com, 123
--admin klinickog centra : user, 123
--admin klinike : admink1@eclinic.com, 123
--medicinska sestra : medicinskaSestra4@eclinic.com, 123
+Logovanje na sistem:
+- pacijent:  pacijent1, 123
+- ljekar: ljekar1@eclinic.com, 123
+- admin klinickog centra : user, 123
+- admin klinike : admink1@eclinic.com, 123
+- medicinska sestra : medicinskaSestra4@eclinic.com, 123
 
 Ostale korisnike mozete naci u tabeli tabela_prijava u data-postgres.sql
 -
