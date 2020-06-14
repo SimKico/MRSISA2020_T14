@@ -34,7 +34,7 @@ public class AdminKlinike extends Korisnik {
    
 	
   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)
-  @JoinColumn(name = "id") 
+  @JoinColumn(name = "admin_id") 
   public Set<ZahtjeviZaSale> zahtjeviZaSale = new HashSet<ZahtjeviZaSale>();
  
   @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY)

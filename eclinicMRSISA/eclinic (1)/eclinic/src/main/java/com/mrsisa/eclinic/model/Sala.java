@@ -17,7 +17,7 @@ public class Sala {
 
 	@Id
 	@Column(name="broj_sale", unique=true, nullable=false)
-    private int brojSale;
+    private String brojSale;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "klinika_id", referencedColumnName="klinika_id", nullable=true)
@@ -32,11 +32,11 @@ public class Sala {
 		this.klinika = klinika;
 	}
 
-	public int getBrojSale() {
+	public String getBrojSale() {
 		return brojSale;
 	}
 
-	public void setBrojSale(int brojSale) {
+	public void setBrojSale(String brojSale) {
 		this.brojSale = brojSale;
 	}
 	

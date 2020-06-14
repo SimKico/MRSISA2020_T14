@@ -32,7 +32,7 @@ public class ZahtjeviZaSale {
    private String satnica;
    
    @Column(name="svrha", unique=false, nullable=false)
-   private String svrha;
+   private String jbo;
    
    @Column(name="prihvacen", unique=false, nullable=false)
    private boolean prihvacen;
@@ -44,6 +44,8 @@ public class ZahtjeviZaSale {
    @ManyToOne(fetch=FetchType.LAZY)
    @JoinColumn(name = "ljekar_id", referencedColumnName="id")
    private Ljekar ljekar;
+   
+   
 
 public Long getId() {
 	return id;
@@ -70,11 +72,11 @@ public void setSatnica(String satnica) {
 }
 
 public String getSvrha() {
-	return svrha;
+	return jbo;
 }
 
 public void setSvrha(String svrha) {
-	this.svrha = svrha;
+	this.jbo = svrha;
 }
 
 public boolean isPrihvacen() {

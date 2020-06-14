@@ -83,6 +83,10 @@ values('LJ', 'Micomir', 'Perkovic','Studirao u Banjaluci.',5,'09:00-17:00',1, 'l
 insert into tabela_prijava(eadresa, lozinka)values('ljekar5@eclinic.com', '$2a$12$6D9aDtMhyfGJF/H5BjoQdeZYUoXItPpaEi7z.ctMT8tl57PWvOEqC');
 insert into tabela_korisnika(user_type, ime, prezime,info, ocjena,radno_vrijeme,specijalizacija,prijava_id,klinika_id,karton_id, kc_id, enabled, last_password_reset_date,email, password)
 values('LJ', 'Vladimir', 'Velimirovic','Studirao u Beogradu.',5,'09:00-17:00',1, 'ljekar5@eclinic.com',1,null,'Eclinic', true ,'2020-01-01 21:58:58','ljekar5@eclinic.com', '$2a$12$6D9aDtMhyfGJF/H5BjoQdeZYUoXItPpaEi7z.ctMT8tl57PWvOEqC');
+
+insert into tabela_prijava(eadresa, lozinka)values('medicinskaSestra4@eclinic.com', '$2a$12$6D9aDtMhyfGJF/H5BjoQdeZYUoXItPpaEi7z.ctMT8tl57PWvOEqC');
+insert into tabela_korisnika(user_type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id, email, password, enabled, last_password_reset_date) 
+values('MS', false, 'Sena', 'Senic', false, false, null, null, null, null, null, null, null, null, null,'medicinskaSestra4@eclinic.com', 1,null, 'Eclinic','medicinskaSestra4@eclinic.com','$2a$12$6D9aDtMhyfGJF/H5BjoQdeZYUoXItPpaEi7z.ctMT8tl57PWvOEqC',true, '2020-01-01 21:58:58');
 --
 --nsert into tabela_korisnika(type, aktivan, ime, prezime, dodijeljena_lozinka, predefinisani, info, ocjena, radno_vrijeme, specijalizacija, adresa, broj_telefona, drzava, grad,jbo,prijava_id,klinika_id,karton_id, kc_id) 
 --						values('P', false, 'Snjezana', 'Simic', false, null, null, null, null, null, 'Hajduk Veljka bb', '066617528', 'Bosna', 'Derventa', '123456', 'pacijent1@eclinic.com', null,1, 'Eclinic');
@@ -103,6 +107,7 @@ INSERT INTO user_authority (user_id, authority_id) VALUES (6, 4);
 INSERT INTO user_authority (user_id, authority_id) VALUES (7, 4);
 INSERT INTO user_authority (user_id, authority_id) VALUES (8, 4);
 INSERT INTO user_authority (user_id, authority_id) VALUES (9, 4); 	
+INSERT INTO user_authority (user_id, authority_id) VALUES (10, 5); 	
 
 --Dodavanje pregleda--
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id)
@@ -182,13 +187,14 @@ insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Upala grla', 1);
 insert into dijagnoze(naziv_dijagnoze, sif_dij_id) values ('Migrena', 1);
 
 --Dodavanje sala--
-insert into sale values (1, 1);
-insert into sale values (2, 2);
-insert into sale values (3, 3);
-insert into sale values (4, 4);
-insert into sale values (5, 5);
-insert into sale values (6, 1);
-insert into sale values (7, 1);
+insert into sale (klinika_id, broj_sale) values (1, 'O1');
+insert into sale (klinika_id, broj_sale) values (1, 'O2');
+insert into sale (klinika_id, broj_sale) values (2, 'O3');
+insert into sale (klinika_id, broj_sale) values (3, 'O4');
+insert into sale (klinika_id, broj_sale) values (4, 'O8');
+insert into sale (klinika_id, broj_sale) values (5, 'O5');
+insert into sale (klinika_id, broj_sale) values (6, 'O6');
+insert into sale (klinika_id, broj_sale) values (7, 'O7');
 
 --Zahtjevi za registraciju--
 insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, grad, drzava, broj_telefona)
@@ -232,3 +238,7 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 			
 insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 13, 1);
 insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Glavobolja', 3, 14, 1);
+
+
+--Zahtjevi za salu--
+insert into zahtjevi_sala(datum, prihvacen, satnica,svrha, ljekar_id,broj_sale,admin_id) values ('Mon Jun 15 00:00:00 CEST 2020', false, '14:00', '123456', 5, 'O1', null);
