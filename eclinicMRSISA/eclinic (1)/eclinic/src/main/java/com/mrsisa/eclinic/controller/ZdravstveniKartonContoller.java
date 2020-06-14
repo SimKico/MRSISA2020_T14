@@ -138,5 +138,38 @@ public class ZdravstveniKartonContoller {
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 	
+	@PutMapping(value = "/izmjeniIzvjestaj", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('ROLE_LJEKAR')")
+	public ResponseEntity<IzvjestajPregledaDTO> changePatientReport(@RequestBody IzvjestajPregledaDTO ipDTO){
+		
+		Pregled pregled = pregledService.getOneByid(ipDTO.getPregledId());
+		ZdravstveniKarton zk = zkService.findZkById(pregled.getPacijent().getZdravstveniKarton().getIdKartona());
+		Dijagnoza dijagnoza = dijagnozaService.findDijagnozaByName(ipDTO.getDijagnozaDTO().getDijagnoza());
+		System.out.print(dijagnoza.getNaziv());
+		
+		for(IzvjestajPregleda ip : zk.getIzvjestajPregleda()) {
+			
+			IzvjestajPregleda ipr = ipService.findIzjvPregledaById(ip.getIzvjestaj_id());
+			System.out.print(ipr.getIzvjestaj());
+			
+			if(ipr.getPregled().getPregled_id() == pregled.getPregled_id()) {
+
+				ipr.setDijagnoza(dijagnoza);
+				ipr.setIzvjestaj(ipDTO.getIzvjestaj());
+				ipr = ipService.save(ipr);
+				
+				break;
+				
+			}
+			
+			
+		}
+		
+		
+		
+		
+		return new ResponseEntity<>(ipDTO, HttpStatus.OK);
+	}
+	
 	
 }
