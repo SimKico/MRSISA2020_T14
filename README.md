@@ -1,13 +1,9 @@
 # MRSISA2020_T14
 
-Studenti
-1. Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs
-2. Zelić Slobodan SW/5-2017 slobodan.zelic@uns.ac.rs
-3. Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs
-
-
-Spring Boot RESTfull Maven JQuery Ajax
-
+Raspodjela posla :
+Student 1. Simić Snježana SW/82-2018 simic.snjezana@uns.ac.rs
+Student 2. Zelić Slobodan SW/5-2017 slobodan.zelic@uns.ac.rs
+Student 3. Nataša Kovačević SW/81-2018 kovacevic.natasa@uns.ac.rs
 
 UPUTSTVO ZA INSTALACIJU I POKRETANJE PROJEKTA
 
