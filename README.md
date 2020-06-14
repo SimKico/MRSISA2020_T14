@@ -14,7 +14,10 @@ Nije neophodna instalacija dodatnih biblioteka, sve biblioteke su dostupne zajed
 
 Projekat se pokrece iz razvojnog okruzenja koje podrzava rad sa Maven projektima. Preporucuje se pokretanje iz razvojnog okruzenja Eclipse, iz razloga sto je projekat razvijan u pomenutom okruzenju.
 
-U Eclipse okruzenju projekat se importuje na sledeci nacin: - Odabere se radni prostor za Eclipse (workspace). - Uveze se projekat komandom: File->Import->Existing Maven Projects - Odabere se projekat sa lokacije na disku
+U Eclipse okruzenju projekat se importuje na sledeci nacin:
+- Odabere se radni prostor za Eclipse (workspace).
+- Uveze se projekat komandom: File->Import->Existing Maven Projects 
+- Odabere se projekat sa lokacije na disku
 
 Projekat se pokrece iz Eclipse-a komandom Run As -> Spring Boot Application
 
@@ -22,6 +25,14 @@ Kada je server pokrenut u zeljenom pretrazivacu (Opera, Chrome, Microsoft Edge) 
 
 Prikazuje se pocetna strana aplikacije i korisnik moze dalje da je koristi.
 
-**napomena za odabir klinike iz vise klinike
- --ne radi uvijek iz prvog puta odabir, nekad mora vise puta da se klikne na hiperlink
+**napomena za odabir klinike iz liste klinika
+ -ne radi uvijek iz prvog puta odabir klinike, nekad mora vise puta da se klikne na hiperlink
+ 
+**napomena za zakazivanje predmeta
+ - nakon zakazivanja pregleda stize email, u zavisnosti od browsera moze da se ceka neko vrijeme na povratnu info
 
+**napomena za otvaranje radnog kalendara
+ - dva puta potrebno pozvati kalendar da bi se svi podaci ucitali
+
+**napomena za aktivacije naloge preko email-a
+ - koristen je privatan nalog, pa ako zelite da provjerite funkcionalnost unesite svoj email u emailService
