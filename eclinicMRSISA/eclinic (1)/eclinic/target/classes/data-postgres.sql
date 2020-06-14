@@ -213,11 +213,11 @@ insert into zahtjevi_registracija(eAdresa, lozinka, ime, prezime, jbo, adresa, g
 values('Rade@eclinic.com', 'boloz', 'Rade', 'Radic', '123456', 'Cara Dusana', 'Novi Sad', 'Srbija', '066599844' );
 
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '13:00', 'specoft',5, 1, 3);
+			values('Thu Jun 16 02:30:00 CEST 2020', 0,1, '13:00', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sun Jun 14 02:30:00 CEST 2020', 0,1, '07:00', 'specoft',5, 1, 3);
+			values('Mon Jun 15 02:30:00 CEST 2020', 0,1, '07:00', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda, ljekar_id, klinika_id, pacijent_id)
-			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '18:00', 'specoft',5, 1, 3);
+			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '15:00', 'specoft',5, 1, 3);
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
 			values('Sun Jun 14 00:00:00 CEST 2020', 0,1, '6:00', 'specoft',6, 2, 3);
 			
@@ -239,8 +239,8 @@ insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_preg
 insert into pregledi(datum_pregleda, popust, status, vrijeme_pocetka, sifra_pregleda,ljekar_id, klinika_id, pacijent_id)
 			values('Sat Jun 13 00:00:00 CEST 2020', 0,2, '13:00', 'specoft',6, 2, 3);
 			
-insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 13, 1);
-insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Glavobolja', 3, 14, 1);
+insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Pritisak u ocima', 3, 21, 1);
+insert into izvjestaji_pregleda(izvjestaj, sifra, pregled_id, karton_id) values ('Glavobolja', 3, 22, 1);
 
 --OPERACIJA--
 --insert into operacije(tip_operacije, trajanje,vrijeme_pocetka,broj_sale, karton_id )

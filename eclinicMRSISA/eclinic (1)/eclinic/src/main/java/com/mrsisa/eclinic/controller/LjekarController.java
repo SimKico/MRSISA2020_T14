@@ -75,9 +75,12 @@ public class LjekarController {
 		for(Pregled p : preg) {
 			Date date = new Date();
 			System.out.print(date);
-			if(sdf.parse(sdf.format((p.getDatum()))).before(sdf.parse(sdf.format(date)))) {
-				pregledService.remove(p);
+			if(p.getStatus() == StatusPregleda.zakazan) {
+				if(sdf.parse(sdf.format((p.getDatum()))).before(sdf.parse(sdf.format(date)))) {
+					pregledService.remove(p);
+				}
 			}
+			
 		}
 		for (Pregled p : ljekar.getPregledi()) {
 			if(p.getStatus() == StatusPregleda.zakazan) {

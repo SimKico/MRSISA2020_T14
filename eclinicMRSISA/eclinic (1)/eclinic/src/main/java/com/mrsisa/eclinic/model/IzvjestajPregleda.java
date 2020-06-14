@@ -19,6 +19,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name="izvjestaji_pregleda")
 public class IzvjestajPregleda {
